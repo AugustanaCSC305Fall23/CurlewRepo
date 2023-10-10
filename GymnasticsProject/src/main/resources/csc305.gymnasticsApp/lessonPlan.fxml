@@ -28,17 +28,17 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <CheckBox fx:id="threeCPLCheckbox" layoutX="231.0" layoutY="163.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="137.0" text="3" onAction="#threeCPLCheckboxChanged">
+      <CheckBox fx:id="threeCPLCheckbox" layoutX="231.0" layoutY="163.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="137.0" text="3" onAction="#handleCheckboxChanged">
          <font>
             <Font size="24.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="fourCPLCheckbox" layoutX="231.0" layoutY="215.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="137.0" text="4" onAction="#fourCPLCheckboxChanged">
+      <CheckBox fx:id="fourCPLCheckbox" layoutX="231.0" layoutY="215.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="137.0" text="4" onAction="#handleCheckboxChanged">
          <font>
             <Font size="24.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="fiveCPLCheckbox" layoutX="231.0" layoutY="268.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="137.0" text="5" onAction="#fiveCPLCheckboxChanged">
+      <CheckBox fx:id="fiveCPLCheckbox" layoutX="231.0" layoutY="268.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="137.0" text="5" onAction="#handleCheckboxChanged">
          <font>
             <Font size="24.0" />
          </font>
