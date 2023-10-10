@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to left, blue, red);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to left, blue, red);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.PreviewPageController">
    <children>
       <Line endX="9.0" endY="329.0" layoutX="96.0" layoutY="63.0" startX="8.79998779296875" startY="-70.0" style="-fx-stroke-dash-array: 3, 3;" />
       <AnchorPane layoutX="118.0" layoutY="55.0" prefHeight="289.0" prefWidth="468.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-background-color: white;">
@@ -116,20 +118,29 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <TextField alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: white; -fx-border-radius: 10px; -fx-border-color: black; -fx-background-radius: 10;" text="Print">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </TextField>
-      <TextField alignment="CENTER" layoutX="10.0" layoutY="173.0" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: white; -fx-border-radius: 10px; -fx-border-color: black; -fx-background-radius: 10px;" text="Home">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </TextField>
-      <TextField alignment="CENTER" layoutX="10.0" layoutY="305.0" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: white; -fx-border-radius: 10px; -fx-border-color: black; -fx-background-radius: 10;" text="Save">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </TextField>
+      <VBox alignment="CENTER" layoutX="5.0" layoutY="55.0" prefHeight="289.0" prefWidth="100.0" spacing="30.0">
+         <children>
+            <Button fx:id="printButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#printButtonController" prefHeight="39.0" prefWidth="84.0" text="Print" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="39.0" prefWidth="84.0" text="Home" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#backButtonController" prefHeight="39.0" prefWidth="84.0" text="Back" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="saveButton" alignment="CENTER" mnemonicParsing="false" onAction="#saveController" prefHeight="39.0" prefWidth="84.0" text="Save" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
