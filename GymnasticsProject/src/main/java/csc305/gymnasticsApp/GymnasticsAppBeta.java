@@ -31,10 +31,10 @@ public class GymnasticsAppBeta extends Application {
     }
 
     public static void switchToMainEdit(){
-        switchToView("csc305.gymnasticsApp/mainEditDisplay.fxml");
+        switchToView("/csc305.gymnasticsApp/mainEditDisplay.fxml");
     }
     public static void switchToHomePage(){
-        switchToView("csc305.gymnasticsApp/homePage.fxml");
+        switchToView("/csc305.gymnasticsApp/homePage.fxml");
     }
 
 }
