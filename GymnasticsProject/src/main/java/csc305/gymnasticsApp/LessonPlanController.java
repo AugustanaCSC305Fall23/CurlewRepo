@@ -1,16 +1,16 @@
 package csc305.gymnasticsApp;
 
 import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
-        import javafx.scene.control.Button;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 public class LessonPlanController {
 
     @FXML private Button backButton;
 
     @FXML
-    private void backButtonHandle(ActionEvent event) {
-        GymnasticsAppBeta.switchToHomePage();
+
+    void backButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToHomePage();
     }
 
 }
