@@ -11,7 +11,7 @@ public class HomePageController {
 
     @FXML
     private void handleNewLessonButton(ActionEvent event){
-        GymnasticsAppBeta.switchToLessonPlanConfiguration();
+        GymnasticsAppBeta.switchToLessonPlan();
     }
 
 
