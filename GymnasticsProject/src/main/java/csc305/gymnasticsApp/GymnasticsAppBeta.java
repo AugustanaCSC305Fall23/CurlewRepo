@@ -30,15 +30,18 @@ public class GymnasticsAppBeta extends Application {
 
     }
 
-    public static void switchToMainEdit(){
-        switchToView("/csc305.gymnasticsApp/mainEditDisplay.fxml");
-    }
+    public static void switchToMainEditDisplay(){switchToView("/csc305.gymnasticsApp/mainEditDisplay.fxml");}
+
     public static void switchToHomePage(){
         switchToView("/csc305.gymnasticsApp/homePage.fxml");
     }
 
-    public static void switchToLessonPlanConfiguration(){
-        switchToView("/csc305.gymnasticsApp/lessonPlanConfiguration.fxml");
+    public static void switchToLessonPlan(){
+        switchToView("/csc305.gymnasticsApp/lessonPlan.fxml");
+    }
+
+    public static void switchToPreviewPage(){
+        switchToView("/csc305.gymnasticsApp/previewPage.fxml");
     }
 
 }
