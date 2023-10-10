@@ -6,9 +6,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.HomePageController">
    <children>
-      <Button fx:id="NewLessonButton" layoutX="174.0" layoutY="186.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="252.0" text="Create New Lesson Plan">
+      <Button fx:id="NewLessonButton" layoutX="174.0" layoutY="186.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="252.0" onAction="#handleNewLessonButton" text="Create New Lesson Plan">
          <font>
             <Font size="20.0" />
          </font>
