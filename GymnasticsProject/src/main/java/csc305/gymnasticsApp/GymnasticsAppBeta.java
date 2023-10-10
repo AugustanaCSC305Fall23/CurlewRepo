@@ -37,4 +37,8 @@ public class GymnasticsAppBeta extends Application {
         switchToView("/csc305.gymnasticsApp/homePage.fxml");
     }
 
+    public static void switchToLessonPlanConfiguration(){
+        switchToView("/csc305.gymnasticsApp/lessonPlanConfiguration.fxml");
+    }
+
 }
