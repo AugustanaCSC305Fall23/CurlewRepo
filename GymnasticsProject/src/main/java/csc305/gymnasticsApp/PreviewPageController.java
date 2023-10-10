@@ -3,7 +3,8 @@ package csc305.gymnasticsApp;
 
 import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
-        import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 
 public class PreviewPageController {
 
@@ -26,6 +27,8 @@ public class PreviewPageController {
 
     @FXML
     void homeButtonController(ActionEvent event) {
+        String message = new String("Are you sure you want to exit to the home page? Any unsaved changes will be lost.");
+        new Alert(Alert.AlertType.WARNING, message).showAndWait();
         GymnasticsAppBeta.switchToHomePage();
     }
 
