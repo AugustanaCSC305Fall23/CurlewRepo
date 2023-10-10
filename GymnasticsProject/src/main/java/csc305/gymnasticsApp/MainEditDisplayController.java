@@ -3,6 +3,8 @@ package csc305.gymnasticsApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.control.TextField;
 
 public class MainEditDisplayController {
     @FXML
@@ -12,7 +14,11 @@ public class MainEditDisplayController {
     private Button previewButton;
 
     @FXML
-    private Button saveButton;
+    private TextField drillSearchBar;
+
+    @FXML
+    private ScrollBar scrollBar;
+
 
     @FXML
     void backButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToLessonPlan();
@@ -22,8 +28,5 @@ public class MainEditDisplayController {
     void previewButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToPreviewPage();
     }
 
-    @FXML
-    void saveButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToPreviewPage();
-    }
 
 }

@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
@@ -13,13 +14,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.MainEditDisplayController">
     <children>
-        <TextField alignment="CENTER" layoutX="63.0" layoutY="14.0" prefHeight="26.0" prefWidth="214.0" promptText="Search Bar" style="-fx-background-color: #D3D3D3; -fx-border-radius: 10px; -fx-prompt-text-fill: white;">
+        <TextField fx:id="drillSearchBar" alignment="CENTER" layoutX="63.0" layoutY="14.0" prefHeight="26.0" prefWidth="214.0" promptText="Search Bar" style="-fx-background-color: #D3D3D3; -fx-border-radius: 10px; -fx-prompt-text-fill: white;">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font></TextField>
         <Line endX="9.0" endY="329.0" layoutX="291.0" layoutY="71.0" startX="8.79998779296875" startY="-70.0" />
         <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="38.0" style="-fx-background-color: #D3D3D3; -fx-button-radius: 30px;" textOverrun="WORD_ELLIPSIS" />
-        <ScrollBar layoutX="278.0" layoutY="51.0" orientation="VERTICAL" prefHeight="327.0" prefWidth="14.0" />
+        <ScrollBar fx:id="scrollBar" layoutX="277.0" layoutY="56.0" orientation="VERTICAL" prefHeight="327.0" prefWidth="14.0" />
         <TextField alignment="CENTER" layoutX="354.0" layoutY="20.0" prefHeight="39.0" prefWidth="191.0" promptText="Change Title" style="-fx-prompt-text-fill: white; -fx-background-color: grey; -fx-background-radius: 10px;">
             <font>
                 <Font name="System Bold" size="16.0" />
@@ -135,20 +136,19 @@
             </Pane>
          </children>
       </GridPane>
-      <Button fx:id="backButton" layoutX="332.0" layoutY="342.0" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="39.0" prefWidth="82.0" style="-fx-background-color: Grey; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="previewButton" layoutX="418.0" layoutY="342.0" mnemonicParsing="false" onAction="#previewButtonHandle" prefHeight="39.0" prefWidth="82.0" style="-fx-background-color: Grey; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="saveButton" layoutX="504.0" layoutY="342.0" mnemonicParsing="false" onAction="#saveButtonHandle" prefHeight="39.0" prefWidth="82.0" style="-fx-background-color: Grey; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Save" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Button>
+      <HBox alignment="CENTER" layoutX="324.0" layoutY="327.0" prefHeight="59.0" prefWidth="268.0" spacing="35.0">
+         <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="39.0" prefWidth="82.0" style="-fx-background-color: Grey; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="previewButton" mnemonicParsing="false" onAction="#previewButtonHandle" prefHeight="39.0" prefWidth="82.0" style="-fx-background-color: Grey; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
     </children>
 </AnchorPane>
