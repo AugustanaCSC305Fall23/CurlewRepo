@@ -24,4 +24,27 @@ public class LessonPlanController {
     void doneButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToMainEditDisplay();
     }
 
+    @FXML
+    void threeCPLCheckboxChanged(ActionEvent event) {
+        if (threeCPLCheckbox.isSelected()) {
+            fourCPLCheckbox.setSelected(false);
+            fiveCPLCheckbox.setSelected(false);
+        }
+    }
+
+    @FXML
+    void fourCPLCheckboxChanged(ActionEvent event) {
+        if (fourCPLCheckbox.isSelected()) {
+            threeCPLCheckbox.setSelected(false);
+            fiveCPLCheckbox.setSelected(false);
+        }
+    }
+
+    @FXML
+    void fiveCPLCheckboxChanged(ActionEvent event) {
+        if (fiveCPLCheckbox.isSelected()) {
+            threeCPLCheckbox.setSelected(false);
+            fourCPLCheckbox.setSelected(false);
+        }
+    }
 }
