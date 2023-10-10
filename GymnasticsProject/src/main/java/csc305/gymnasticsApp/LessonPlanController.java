@@ -6,12 +6,11 @@ import javafx.event.ActionEvent;
 
 public class LessonPlanController {
 
-    @FXML
-    private Button backButton;
+    @FXML private Button backButton;
 
     @FXML
-    void backButtonHandle(ActionEvent event) {
-
+    private void backButtonHandle(ActionEvent event) {
+        GymnasticsAppBeta.switchToHomePage();
     }
 
 }
