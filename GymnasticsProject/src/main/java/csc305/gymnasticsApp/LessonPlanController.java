@@ -25,26 +25,15 @@ public class LessonPlanController {
     }
 
     @FXML
-    void threeCPLCheckboxChanged(ActionEvent event) {
-        if (threeCPLCheckbox.isSelected()) {
+    void handleCheckboxChanged(ActionEvent event) {
+        CheckBox selectedCheckbox = (CheckBox) event.getSource();
+
+        if (selectedCheckbox.isSelected()) {
+            threeCPLCheckbox.setSelected(false);
             fourCPLCheckbox.setSelected(false);
             fiveCPLCheckbox.setSelected(false);
+            selectedCheckbox.setSelected(true);
         }
     }
 
-    @FXML
-    void fourCPLCheckboxChanged(ActionEvent event) {
-        if (fourCPLCheckbox.isSelected()) {
-            threeCPLCheckbox.setSelected(false);
-            fiveCPLCheckbox.setSelected(false);
-        }
-    }
-
-    @FXML
-    void fiveCPLCheckboxChanged(ActionEvent event) {
-        if (fiveCPLCheckbox.isSelected()) {
-            threeCPLCheckbox.setSelected(false);
-            fourCPLCheckbox.setSelected(false);
-        }
-    }
 }
