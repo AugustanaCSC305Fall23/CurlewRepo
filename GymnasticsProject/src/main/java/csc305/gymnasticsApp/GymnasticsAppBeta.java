@@ -4,18 +4,22 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class GymnasticsAppBeta extends Application {
     private static Scene scene;
+    private static Stage stage;
     @Override
     public void start(Stage primaryStage){
+        stage = primaryStage;
         scene = new Scene(new BorderPane(), 640, 480);
-        primaryStage.setScene(scene);
+        stage.setScene(scene);
+
         switchToHomePage();
-        primaryStage.show();
+        stage.show();
 
     }
 
@@ -43,5 +47,9 @@ public class GymnasticsAppBeta extends Application {
     public static void switchToPreviewPage(){
         switchToView("/csc305.gymnasticsApp/previewPage.fxml");
     }
-
+    public static void callFileChooser() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.showOpenDialog(stage);
+    }
 }
