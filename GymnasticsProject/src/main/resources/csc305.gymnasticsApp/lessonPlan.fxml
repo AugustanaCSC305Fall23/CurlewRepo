@@ -38,9 +38,9 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="threeCardConfigButton" layoutX="232.0" layoutY="160.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="38.0" style="-fx-background-color: green;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" />
-      <Button fx:id="fourCardConfigButton" layoutX="232.0" layoutY="200.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="38.0" style="-fx-background-color: red;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" />
-      <Button fx:id="fiveCardConfigButton" layoutX="232.0" layoutY="241.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="38.0" style="-fx-background-color: green;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" />
+      <Button fx:id="threeCardConfigButton" layoutX="232.0" layoutY="160.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="38.0" style="-fx-background-color: green;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" onAction="#handleThreeButtonClick" />
+      <Button fx:id="fourCardConfigButton" layoutX="232.0" layoutY="200.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="38.0" style="-fx-background-color: red;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" onAction="#handleFourButtonClick"/>
+      <Button fx:id="fiveCardConfigButton" layoutX="232.0" layoutY="241.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="38.0" style="-fx-background-color: red;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" onAction="#handleFiveButtonClick"/>
       <Button fx:id="doneButton" layoutX="412.0" layoutY="294.0" mnemonicParsing="false" onAction="#doneButtonHandle" prefHeight="52.0" prefWidth="99.0" style="-fx-background-color: Grey; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Done" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="24.0" />
