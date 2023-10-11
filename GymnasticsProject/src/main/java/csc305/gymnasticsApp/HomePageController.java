@@ -18,6 +18,7 @@ public class HomePageController {
     @FXML
     private void handleLoadLessonButton(ActionEvent event) {
         GymnasticsAppBeta.callFileChooser();
+        GymnasticsAppBeta.switchToPreviewPage();
     }
 
 }
