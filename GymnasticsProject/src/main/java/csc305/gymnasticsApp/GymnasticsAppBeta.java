@@ -18,6 +18,15 @@ public class GymnasticsAppBeta extends Application {
         scene = new Scene(new BorderPane(), 640, 480);
         stage.setScene(scene);
 
+        stage.setOnCloseRequest(event -> {
+
+            if(stage.isMaximized()) {
+                stage.setMaximized(false);
+            } else {
+                stage.setMaximized(true);
+            }
+        });
+
         switchToHomePage();
         stage.show();
 

@@ -30,8 +30,6 @@ public class PreviewPageController {
 
     @FXML
     void homeButtonController(ActionEvent event) {
-//        String message = new String("Are you sure you want to exit to the home page? Any unsaved changes will be lost.");
-//        new Alert(Alert.AlertType.WARNING, message).showAndWait();
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Caution");
         alert.setHeaderText("Are you sure you want to exit to the home page? Any unsaved lessons will be lost.");

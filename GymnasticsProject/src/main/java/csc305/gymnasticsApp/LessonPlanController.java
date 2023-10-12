@@ -8,10 +8,8 @@ import javafx.scene.control.CheckBox;
 public class LessonPlanController {
 
 
-    @FXML
-    private Button backButton;
-    @FXML
-    private Button doneButton;
+    @FXML private Button backButton;
+    @FXML private Button doneButton;
     @FXML private CheckBox threeCPLCheckbox;
     @FXML private CheckBox fourCPLCheckbox;
     @FXML private CheckBox fiveCPLCheckbox;
