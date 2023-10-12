@@ -35,7 +35,7 @@ public class PreviewPageController {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Caution");
         alert.setHeaderText("Are you sure you want to exit to the home page? Any unsaved lessons will be lost.");
-        alert.setContentText("Select an option.");
+        alert.setContentText("Please select an option.");
         ButtonType yesButton = new ButtonType("Yes");
         ButtonType noButton = new ButtonType("No");
         alert.getButtonTypes().setAll(yesButton, noButton);
@@ -44,8 +44,6 @@ public class PreviewPageController {
 
         if (result.get() == yesButton) {
             GymnasticsAppBeta.switchToHomePage();
-        } else {
-            
         }
 
     }
