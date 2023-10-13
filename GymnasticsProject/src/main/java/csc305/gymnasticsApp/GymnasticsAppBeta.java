@@ -3,13 +3,16 @@ package csc305.gymnasticsApp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
+import java.io.File;
 import java.io.IOException;
 
 public class GymnasticsAppBeta extends Application {
+
+    private static File selectedFile = null;
     private static Scene scene;
     private static Stage stage;
     @Override
@@ -59,6 +62,11 @@ public class GymnasticsAppBeta extends Application {
     public static void callFileChooser() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
-        fileChooser.showOpenDialog(stage);
+        File gymFile = fileChooser.showOpenDialog(stage);
+
+        if(gymFile != null) {
+            selectedFile = gymFile;
+            System.out.println("Selected file: " + selectedFile.getName());
+        }
     }
 }
