@@ -32,8 +32,7 @@ public class LessonPlanController {
             alert.setContentText("Please select an option.");
             ButtonType okButton = new ButtonType("Ok");
             alert.getButtonTypes().setAll(okButton);
-
-            Optional<ButtonType> result = alert.showAndWait();
+            alert.showAndWait();
         } else {
             GymnasticsAppBeta.switchToMainEditDisplay();
         }
