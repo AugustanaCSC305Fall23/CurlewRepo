@@ -17,6 +17,7 @@ public class GymnasticsAppBeta extends Application {
         stage = primaryStage;
         scene = new Scene(new BorderPane(), 640, 480);
         stage.setScene(scene);
+        stage.setResizable(true);
 
         stage.setOnCloseRequest(event -> {
 
