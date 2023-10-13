@@ -2,8 +2,12 @@ package csc305.gymnasticsApp;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
+
+import java.util.Optional;
 
 public class LessonPlanController {
 
@@ -19,7 +23,20 @@ public class LessonPlanController {
     }
 
     @FXML
-    void doneButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToMainEditDisplay();
+    void doneButtonHandle(ActionEvent event) {
+
+        if ((!threeCPLCheckbox.isSelected()) && (!fourCPLCheckbox.isSelected()) && (!fiveCPLCheckbox.isSelected())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Caution");
+            alert.setHeaderText("Please select a checkbox before proceeding.");
+            alert.setContentText("Please select an option.");
+            ButtonType okButton = new ButtonType("Ok");
+            alert.getButtonTypes().setAll(okButton);
+
+            Optional<ButtonType> result = alert.showAndWait();
+        } else {
+            GymnasticsAppBeta.switchToMainEditDisplay();
+        }
     }
 
     @FXML
