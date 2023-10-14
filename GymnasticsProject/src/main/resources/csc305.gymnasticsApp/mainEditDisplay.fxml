@@ -91,9 +91,9 @@
          <content>
             <VBox fx:id="cardVBox" alignment="TOP_CENTER" prefHeight="504.0" prefWidth="259.2" spacing="5.0">
                <children>
-                  <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="274.0" spacing="10.0">
+                  <HBox fx:id="cardHBox1" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="274.0" spacing="10.0">
                      <children>
-                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" style="-fx-border-color: black;">
+                        <Button fx:id="card1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" style="-fx-border-color: black;">
                            <graphic>
                               <ImageView fitHeight="108.0" fitWidth="108.0">
                                  <image>
@@ -102,7 +102,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" style="-fx-border-color: black;">
+                        <Button fx:id="card2" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" style="-fx-border-color: black;">
                            <graphic>
                               <ImageView fitHeight="108.0" fitWidth="108.0">
                                  <image>
@@ -113,9 +113,9 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="274.0" spacing="10.0">
+                  <HBox fx:id="cardHBox2" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="274.0" spacing="10.0">
                      <children>
-                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" style="-fx-border-color: black;">
+                        <Button fx:id="card3" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" style="-fx-border-color: black;">
                            <graphic>
                               <ImageView fitHeight="108.0" fitWidth="108.0">
                                  <image>
@@ -124,7 +124,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" style="-fx-border-color: black;">
+                        <Button fx:id="card4" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" style="-fx-border-color: black;">
                            <graphic>
                               <ImageView fitHeight="108.0" fitWidth="108.0">
                                  <image>
@@ -135,9 +135,9 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="274.0" spacing="10.0">
+                  <HBox fx:id="cardHBox3" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="274.0" spacing="10.0">
                      <children>
-                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" style="-fx-border-color: black;">
+                        <Button fx:id="card5" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" style="-fx-border-color: black;">
                            <graphic>
                               <ImageView fitHeight="108.0" fitWidth="108.0">
                                  <image>
@@ -146,7 +146,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" style="-fx-border-color: black;">
+                        <Button fx:id="card6" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" style="-fx-border-color: black;">
                            <graphic>
                               <ImageView fitHeight="108.0" fitWidth="108.0">
                                  <image>
@@ -203,15 +203,19 @@
             </Pane>
          </children>
       </GridPane>
-      <TextField fx:id="drillSearchBar" alignment="CENTER" layoutX="69.0" layoutY="11.0" prefHeight="31.0" prefWidth="166.0" promptText="Search Cards" style="-fx-prompt-text-fill: white; -fx-background-color: #D3D3D3; -fx-background-radius: 10px;">
+      <TextField fx:id="drillSearchBar" alignment="CENTER" layoutX="69.0" layoutY="5.0" prefHeight="31.0" prefWidth="166.0" promptText="Search Cards" style="-fx-prompt-text-fill: white; -fx-background-color: #D3D3D3; -fx-background-radius: 10px;">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </TextField>
-      <Button layoutX="7.0" layoutY="12.0" minWidth="38.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" style="-fx-background-color: #D3D3D3;" />
-      <Button fx:id="drillSearchButton" graphicTextGap="0.0" layoutX="240.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goButtonHandle" prefHeight="28.0" prefWidth="54.0" style="-fx-background-color: green;" text="Go" textFill="WHITE">
+      <Button fx:id="drillSearchButton" graphicTextGap="0.0" layoutX="244.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goButtonHandle" prefHeight="37.0" prefWidth="48.0" style="-fx-background-color: green;" text="Go" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
+      <Button graphicTextGap="0.0" layoutX="14.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="48.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
