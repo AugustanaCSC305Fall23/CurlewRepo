@@ -12,6 +12,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainEditDisplayController {
     @FXML
     private Button backButton;
@@ -56,22 +59,34 @@ public class MainEditDisplayController {
     }
 
 
-    private void filterCards (String inputText){
+
+    private void filterCards(String inputText) {
+        List<HBox> toRemove = new ArrayList<>();
         for (Node hBoxNode : cardVBox.getChildren()) {
             if (hBoxNode instanceof HBox) {
                 HBox hBox = (HBox) hBoxNode;
+                boolean isAnyChildVisible = false;
                 for (Node buttonNode : hBox.getChildren()) {
                     if (buttonNode instanceof Button) {
                         Button button = (Button) buttonNode;
                         String buttonText = button.getId().toLowerCase();
                         if (buttonText.contains(inputText)) {
                             button.setVisible(true);
+                            isAnyChildVisible = true;
                         } else {
                             button.setVisible(false);
                         }
                     }
                 }
+                if (isAnyChildVisible) {
+                    toRemove.add(hBox);
+                }
             }
+        }
+        // Removing the filtered HBox nodes from the VBox outside the iteration loop
+        for (HBox hBox : toRemove) {
+            cardVBox.getChildren().remove(hBox);
+            cardVBox.getChildren().add(0, hBox);
         }
     }
 
