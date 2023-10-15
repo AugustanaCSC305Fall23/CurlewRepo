@@ -9,6 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -35,16 +36,8 @@ public class MainEditDisplayController {
     private ScrollPane cardScrollPane;
 
     @FXML
-    private VBox cardVBox;
+    private FlowPane cardFlowPane;
 
-    @FXML
-    private HBox cardHBox1;
-
-    @FXML
-    private HBox cardHBox2;
-
-    @FXML
-    private HBox cardHBox3;
 
     @FXML
     void backButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToLessonPlan();
@@ -61,34 +54,35 @@ public class MainEditDisplayController {
 
 
     private void filterCards(String inputText) {
-        List<HBox> toRemove = new ArrayList<>();
-        for (Node hBoxNode : cardVBox.getChildren()) {
-            if (hBoxNode instanceof HBox) {
-                HBox hBox = (HBox) hBoxNode;
-                boolean isAnyChildVisible = false;
-                for (Node buttonNode : hBox.getChildren()) {
-                    if (buttonNode instanceof Button) {
-                        Button button = (Button) buttonNode;
-                        String buttonText = button.getId().toLowerCase();
-                        if (buttonText.contains(inputText)) {
-                            button.setVisible(true);
-                            isAnyChildVisible = true;
-                        } else {
-                            button.setVisible(false);
-                        }
-                    }
-                }
-                if (isAnyChildVisible) {
-                    toRemove.add(hBox);
-                }
+        List<Button> cardButtons = getAllCardButtons();
+        List<Button> visibleButtons = new ArrayList<>();
+        List<Button> hiddenButtons = new ArrayList<>();
+
+        for (Button cardButton : cardButtons) {
+            String buttonText = cardButton.getId().toLowerCase();
+            if (buttonText.contains(inputText)) {
+                visibleButtons.add(cardButton);
+                cardButton.setVisible(true);
+            } else {
+                hiddenButtons.add(cardButton);
+                cardButton.setVisible(false);
             }
         }
-        // Removing the filtered HBox nodes from the VBox outside the iteration loop
-        for (HBox hBox : toRemove) {
-            cardVBox.getChildren().remove(hBox);
-            cardVBox.getChildren().add(0, hBox);
-        }
+
+        cardFlowPane.getChildren().clear();
+        cardFlowPane.getChildren().addAll(visibleButtons);
+        cardFlowPane.getChildren().addAll(hiddenButtons);
     }
 
+
+    private List<Button> getAllCardButtons() {
+        List<Button> cardButtons = new ArrayList<>();
+        for (int i = 0; i < cardFlowPane.getChildren().size(); i++) {
+            if (cardFlowPane.getChildren().get(i) instanceof Button) {
+                cardButtons.add((Button) cardFlowPane.getChildren().get(i));
+            }
+        }
+        return cardButtons;
+    }
 
 }
