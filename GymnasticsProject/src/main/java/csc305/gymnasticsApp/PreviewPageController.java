@@ -54,7 +54,6 @@ public class PreviewPageController {
         if(job != null) {
             boolean success = job.showPrintDialog(null);
             if(success) {
-                System.out.println(GymnasticsAppBeta.getFile().getName());
                 job.endJob();
             }
         }
