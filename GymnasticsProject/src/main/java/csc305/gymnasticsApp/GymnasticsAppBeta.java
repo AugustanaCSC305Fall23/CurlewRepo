@@ -2,6 +2,7 @@ package csc305.gymnasticsApp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.print.PrinterJob;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
@@ -68,6 +69,18 @@ public class GymnasticsAppBeta extends Application {
         if(gymFile != null) {
             selectedFile = gymFile;
             System.out.println("Selected file: " + selectedFile.getName());
+        }
+    }
+
+    public static void callPrinter(){
+        PrinterJob job = PrinterJob.createPrinterJob();
+
+        if(job != null) {
+            boolean success = job.showPrintDialog(null);
+            if(success) {
+                System.out.println(selectedFile.getName());
+                job.endJob();
+            }
         }
     }
 }
