@@ -58,10 +58,15 @@ public class PreviewPageController {
             }
         }
     }
-
+/*
     @FXML
     void saveController(ActionEvent event) {
+        java.io.File file = GymnasticsAppBeta.getFile();
+        if(file != null) {
+            try{
 
+
+        }
     }
-
+    */
 }
