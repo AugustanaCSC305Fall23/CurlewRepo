@@ -71,7 +71,7 @@ public class GymnasticsAppBeta extends Application {
             System.out.println("Selected file: " + selectedFile.getName());
         }
     }
-
+/*
     public static void callPrinter(){
         PrinterJob job = PrinterJob.createPrinterJob();
 
@@ -82,5 +82,10 @@ public class GymnasticsAppBeta extends Application {
                 job.endJob();
             }
         }
+    }
+
+ */
+    public static File getFile(){
+        return selectedFile;
     }
 }
