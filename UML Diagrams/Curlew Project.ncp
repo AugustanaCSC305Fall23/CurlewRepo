@@ -1,9 +1,0 @@
-<Project>
-  <Name>Curlew Project</Name>
-  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
-    <Name>Gymnastics Project</Name>
-    <Language>Java</Language>
-    <Entities />
-    <Relationships />
-  </ProjectItem>
-</Project>

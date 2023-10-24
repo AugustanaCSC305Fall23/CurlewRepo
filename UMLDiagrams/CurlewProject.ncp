@@ -1,0 +1,111 @@
+<Project>
+  <Name>Curlew Project</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Gymnastics Project</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>GymnasticsAppBeta</Name>
+        <Access>Public</Access>
+        <Location left="10" top="94" />
+        <Size width="259" height="273" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static File selectedFile</Member>
+        <Member type="Field">private static Scene scene</Member>
+        <Member type="Field">private static Stage stage</Member>
+        <Member type="Method">public void Start(Stage primaryStage)</Member>
+        <Member type="Method">private static void switchToView(String fxmlFileName)</Member>
+        <Member type="Method">public static void switchToMainEditDisplay()</Member>
+        <Member type="Method">public static void switchToHomePage()</Member>
+        <Member type="Method">public static void switchToLessonPlan()</Member>
+        <Member type="Method">public static void switchToPreviewPage()</Member>
+        <Member type="Method">public static void callFileChooser()</Member>
+        <Member type="Method">public static File getFile()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>HomePageController</Name>
+        <Access>Public</Access>
+        <Location left="10" top="442" />
+        <Size width="285" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Button NewLessonButton</Member>
+        <Member type="Field">private Button LoadLessonButton</Member>
+        <Member type="Method">private void handleNewLessonButton(ActionEvent event)</Member>
+        <Member type="Method">private void handleLoadLessonButton(ActionEvent event)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>PreviewPageController</Name>
+        <Access>Public</Access>
+        <Location left="432" top="78" />
+        <Size width="282" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Button backButton</Member>
+        <Member type="Field">private Button homeButton</Member>
+        <Member type="Field">private Button printButton</Member>
+        <Member type="Field">private Button saveButton</Member>
+        <Member type="Method">public void backButtonController(ActionEvent event)</Member>
+        <Member type="Method">public void homeButtonController(ActionEvent event)</Member>
+        <Member type="Method">public void printButtonController(ActionEvent event)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MainEditDisplayController</Name>
+        <Access>Public</Access>
+        <Location left="393" top="351" />
+        <Size width="267" height="307" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Button backButton</Member>
+        <Member type="Field">private Button previewButton</Member>
+        <Member type="Field">private TextField drillSearchBar</Member>
+        <Member type="Field">private ScrollBar scrollBar</Member>
+        <Member type="Field">private Button drillSearchButton</Member>
+        <Member type="Field">private ScrollPane cardScrollPane</Member>
+        <Member type="Field">private FlowPane cardFlowPane</Member>
+        <Member type="Method">protected void backButtonHandle(ActionEvent event)</Member>
+        <Member type="Method">protected void previewButtonHandle(ActionEvent event)</Member>
+        <Member type="Method">protected void goButtonHandle(ActionEvent event)</Member>
+        <Member type="Method">private void filterCards(String inputText)</Member>
+        <Member type="Method">private List&lt;Button&gt; getAllCardButtons()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LessonPlanController</Name>
+        <Access>Public</Access>
+        <Location left="820" top="43" />
+        <Size width="296" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Button backButton</Member>
+        <Member type="Field">private Button doneButton</Member>
+        <Member type="Field">private CheckBox threeCPLCheckbox</Member>
+        <Member type="Field">private CheckBox fourCPLCheckbox</Member>
+        <Member type="Field">private CheckBox fiveCPLCheckbox</Member>
+        <Member type="Method">protected void backButtonHandle(ActionEvent event)</Member>
+        <Member type="Method">protected void doneButtonHandle(ActionEvent event)</Member>
+        <Member type="Method">protected void handleCheckboxChanged(ActionEvent event)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CardButton</Name>
+        <Access>Public</Access>
+        <Location left="820" top="351" />
+        <Size width="224" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static String[] cardDescription</Member>
+        <Member type="Method">private void main(String[] args)</Member>
+        <Member type="Method">public void readFile(String path)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Application</Name>
+        <Access>Public</Access>
+        <Location left="50" top="733" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+</Project>
