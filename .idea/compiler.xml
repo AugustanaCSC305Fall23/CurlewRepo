@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="PastaShopApp" />
+        <module name="GymnasticsAppBeta" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="GymnasticsProject" target="17" />
+      <module name="PastaShopApp" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -72,15 +72,7 @@ public class GymnasticsAppBeta extends Application {
         }
     }
 
-    public static void callPrinter(){
-        PrinterJob job = PrinterJob.createPrinterJob();
-
-        if(job != null) {
-            boolean success = job.showPrintDialog(null);
-            if(success) {
-                System.out.println(selectedFile.getName());
-                job.endJob();
-            }
-        }
+    public static File getFile(){
+        return selectedFile;
     }
 }

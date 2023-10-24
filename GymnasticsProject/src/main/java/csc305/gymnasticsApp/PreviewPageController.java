@@ -49,12 +49,24 @@ public class PreviewPageController {
 
     @FXML
     void printButtonController(ActionEvent event) {
+        PrinterJob job = PrinterJob.createPrinterJob();
 
+        if(job != null) {
+            boolean success = job.showPrintDialog(null);
+            if(success) {
+                job.endJob();
+            }
+        }
     }
-
+/*
     @FXML
     void saveController(ActionEvent event) {
+        java.io.File file = GymnasticsAppBeta.getFile();
+        if(file != null) {
+            try{
 
+
+        }
     }
-
+    */
 }
