@@ -19,7 +19,7 @@ public class GymnasticsAppBeta extends Application {
     @Override
     public void start(Stage primaryStage){
         stage = primaryStage;
-        scene = new Scene(new BorderPane(), 640, 480);
+        scene = new Scene(new BorderPane(), 900, 750);
         stage.setScene(scene);
         stage.setResizable(true);
 

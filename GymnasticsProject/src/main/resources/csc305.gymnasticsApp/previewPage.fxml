@@ -135,7 +135,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="saveButton" alignment="CENTER" mnemonicParsing="false" onAction="#saveController" prefHeight="39.0" prefWidth="84.0" text="Save" textAlignment="CENTER">
+            <Button fx:id="saveButton" alignment="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="84.0" text="Save" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

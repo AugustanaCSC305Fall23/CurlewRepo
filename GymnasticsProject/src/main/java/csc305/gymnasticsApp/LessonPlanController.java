@@ -7,8 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 
-import java.util.Optional;
-
 public class LessonPlanController {
 
 
@@ -17,6 +15,7 @@ public class LessonPlanController {
     @FXML private CheckBox threeCPLCheckbox;
     @FXML private CheckBox fourCPLCheckbox;
     @FXML private CheckBox fiveCPLCheckbox;
+    private CheckBox eventAmountCheckBox;
 
     @FXML
     void backButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToHomePage();
@@ -39,8 +38,9 @@ public class LessonPlanController {
     }
 
     @FXML
-    void handleCheckboxChanged(ActionEvent event) {
+    public void handleCheckboxChanged(ActionEvent event) {
         CheckBox selectedCheckbox = (CheckBox) event.getSource();
+        eventAmountCheckBox = selectedCheckbox;
 
         if (selectedCheckbox.isSelected()) {
             threeCPLCheckbox.setSelected(false);
@@ -48,6 +48,10 @@ public class LessonPlanController {
             fiveCPLCheckbox.setSelected(false);
             selectedCheckbox.setSelected(true);
         }
+    }
+
+    public CheckBox getEventAmount() {
+        return eventAmountCheckBox;
     }
 
 }
