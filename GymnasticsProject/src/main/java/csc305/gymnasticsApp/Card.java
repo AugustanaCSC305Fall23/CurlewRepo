@@ -6,7 +6,7 @@ import java.util.List;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBeanBuilder;
 
-public class GymnasticsCard {
+public class Card {
     @CsvBindByName(column = "CODE")
     private String code;
     @CsvBindByName(column ="Event")
@@ -30,15 +30,15 @@ public class GymnasticsCard {
     @CsvBindByName(column ="Keywords")
     private List<String> keywords;
 
-    List<GymnasticsCard> beans;
-    public GymnasticsCard(){
+    List<Card> beans;
+    public Card(){
 
     }
     public void print(){
         {
             try {
                 beans = new CsvToBeanBuilder(new FileReader("DEMO1.csv"))
-                        .withType(GymnasticsCard.class).build().parse();
+                        .withType(Card.class).build().parse();
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
@@ -47,7 +47,7 @@ public class GymnasticsCard {
 
     public String getCode(){return this.code;}
 
-
+//make a filter package
 
 
 
