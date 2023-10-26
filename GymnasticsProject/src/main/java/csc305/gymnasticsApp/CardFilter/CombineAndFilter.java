@@ -1,8 +1,11 @@
-package csc305.gymnasticsApp;
+package csc305.gymnasticsApp.CardFilter;
+
+import csc305.gymnasticsApp.Card;
+import csc305.gymnasticsApp.CardFilter.CardFilter;
 
 import java.util.List;
 
-public class CombineAndFilter implements CardFilter{
+public class CombineAndFilter implements CardFilter {
 
     private List<CardFilter> filters;
 

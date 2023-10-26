@@ -1,5 +1,7 @@
 package csc305.gymnasticsApp;
 
+import csc305.gymnasticsApp.CardFilter.CardFilter;
+
 import java.io.File;
 import java.util.List;
 
@@ -18,3 +20,5 @@ public class CardDatabase {
 
     }
 }
+
+//get card by id

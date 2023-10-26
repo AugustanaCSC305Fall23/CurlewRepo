@@ -6,6 +6,8 @@ module GymnasticsProject {
 
     opens csc305.gymnasticsApp to javafx.fxml;
     exports csc305.gymnasticsApp;
+    exports csc305.gymnasticsApp.CardFilter;
+    opens csc305.gymnasticsApp.CardFilter to javafx.fxml;
 //    exports;
 //    opens to;
 }

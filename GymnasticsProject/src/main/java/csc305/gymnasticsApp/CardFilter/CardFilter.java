@@ -1,4 +1,6 @@
-package csc305.gymnasticsApp;
+package csc305.gymnasticsApp.CardFilter;
+
+import csc305.gymnasticsApp.Card;
 
 public interface CardFilter {
 
