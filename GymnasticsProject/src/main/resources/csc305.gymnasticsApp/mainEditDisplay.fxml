@@ -21,9 +21,9 @@
     <children>
       <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" spacing="10.0" HBox.hgrow="ALWAYS">
+            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" spacing="10.0" style="-fx-background-color: #F5FFFA;" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" spacing="20.0" VBox.vgrow="NEVER">
+                  <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: #F5FFFA;" VBox.vgrow="NEVER">
                      <children>
                         <Button graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="36.8" prefWidth="44.0" textFill="WHITE" HBox.hgrow="ALWAYS">
                            <font>
@@ -45,12 +45,12 @@
                         <Insets left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
-                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.6" prefWidth="440.8" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.6" prefWidth="440.8" style="-fx-background-color: #F5FFFA;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                      <content>
-                        <FlowPane fx:id="cardFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="378.0" vgap="10.0">
+                        <FlowPane fx:id="cardFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="378.0" style="-fx-background-color: #F5FFFA;" vgap="10.0">
                            <children>
                               <Button fx:id="card1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
                                  <graphic>
@@ -139,7 +139,7 @@
                   <Insets />
                </HBox.margin>
             </VBox>
-            <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" style="-fx-border-color: black;" HBox.hgrow="ALWAYS">
+            <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: #F5FFFA;" HBox.hgrow="ALWAYS">
                <children>
                     <TextField alignment="CENTER" layoutX="69.0" layoutY="14.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="312.0" promptText="Change Title" style="-fx-prompt-text-fill: white; -fx-background-color: grey; -fx-background-radius: 10px;">
                         <font>
