@@ -26,9 +26,9 @@ public class GymnasticsCard {
     @CsvBindByName(column ="Level")
     private String level;
     @CsvBindByName(column ="Equipment")
-    private String equipment;
+    private List<String> equipment;
     @CsvBindByName(column ="Keywords")
-    private String keywords;
+    private List<String> keywords;
 
     List<GymnasticsCard> beans;
     public GymnasticsCard(){
