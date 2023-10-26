@@ -6,6 +6,7 @@ import java.util.TreeMap;
 
 public class LessonPlan {
     private List<Card> cards;
+    private String title;
 
     public TreeMap<String, Card> getCardsGroupedByEvent() {
         return null;
@@ -16,6 +17,6 @@ public class LessonPlan {
     }
 
     public void save(File saveFile) {
-        
+
     }
 }
