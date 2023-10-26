@@ -45,7 +45,6 @@ public class GymnasticsAppBeta extends Application {
             System.err.println("Can't find FXML file " + fxmlFileName);
             ex.printStackTrace();
         }
-
     }
 
     public static void switchToMainEditDisplay(){switchToView("/csc305.gymnasticsApp/mainEditDisplay.fxml");}
