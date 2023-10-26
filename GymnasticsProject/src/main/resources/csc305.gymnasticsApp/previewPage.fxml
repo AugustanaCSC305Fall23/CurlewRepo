@@ -15,9 +15,9 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.PreviewPageController">
    <children>
       <Line endX="9.0" endY="329.0" layoutX="96.0" layoutY="63.0" startX="8.79998779296875" startY="-70.0" style="-fx-stroke-dash-array: 3, 3;" />
-      <AnchorPane layoutX="118.0" layoutY="55.0" prefHeight="289.0" prefWidth="468.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-background-color: white;">
+      <AnchorPane fx:id="eventPreviewAnchorPane" layoutX="118.0" layoutY="55.0" prefHeight="289.0" prefWidth="468.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-background-color: white;">
          <children>
-            <TextField alignment="CENTER" layoutX="134.0" layoutY="7.0" prefHeight="18.0" prefWidth="199.0" style="-fx-text-fill: white; -fx-background-color: grey; -fx-background-radius: 10px;" text="Change Title">
+            <TextField fx:id="previewPageTitle" alignment="CENTER" layoutX="134.0" layoutY="7.0" prefHeight="18.0" prefWidth="199.0" style="-fx-text-fill: white; -fx-background-color: grey; -fx-background-radius: 10px;" text="Change Title">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

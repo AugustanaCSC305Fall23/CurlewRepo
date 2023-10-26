@@ -7,8 +7,8 @@
       <Entity type="Class">
         <Name>GymnasticsAppBeta</Name>
         <Access>Public</Access>
-        <Location left="10" top="94" />
-        <Size width="259" height="273" />
+        <Location left="139" top="135" />
+        <Size width="259" height="264" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private static File selectedFile</Member>
         <Member type="Field">private static Scene scene</Member>
@@ -26,8 +26,8 @@
       <Entity type="Class">
         <Name>HomePageController</Name>
         <Access>Public</Access>
-        <Location left="10" top="442" />
-        <Size width="285" height="216" />
+        <Location left="720" top="469" />
+        <Size width="285" height="145" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Button NewLessonButton</Member>
         <Member type="Field">private Button LoadLessonButton</Member>
@@ -38,8 +38,8 @@
       <Entity type="Class">
         <Name>PreviewPageController</Name>
         <Access>Public</Access>
-        <Location left="432" top="78" />
-        <Size width="282" height="216" />
+        <Location left="1083" top="403" />
+        <Size width="282" height="196" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Button backButton</Member>
         <Member type="Field">private Button homeButton</Member>
@@ -53,8 +53,8 @@
       <Entity type="Class">
         <Name>MainEditDisplayController</Name>
         <Access>Public</Access>
-        <Location left="393" top="351" />
-        <Size width="267" height="307" />
+        <Location left="528" top="18" />
+        <Size width="267" height="281" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Button backButton</Member>
         <Member type="Field">private Button previewButton</Member>
@@ -73,8 +73,8 @@
       <Entity type="Class">
         <Name>LessonPlanController</Name>
         <Access>Public</Access>
-        <Location left="820" top="43" />
-        <Size width="296" height="216" />
+        <Location left="1041" top="81" />
+        <Size width="296" height="213" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Button backButton</Member>
         <Member type="Field">private Button doneButton</Member>
@@ -89,8 +89,8 @@
       <Entity type="Class">
         <Name>CardButton</Name>
         <Access>Public</Access>
-        <Location left="820" top="351" />
-        <Size width="224" height="216" />
+        <Location left="401" top="538" />
+        <Size width="224" height="128" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private static String[] cardDescription</Member>
         <Member type="Method">private void main(String[] args)</Member>
@@ -100,12 +100,137 @@
       <Entity type="Class">
         <Name>Application</Name>
         <Access>Public</Access>
-        <Location left="50" top="733" />
+        <Location left="188" top="35" />
         <Size width="162" height="216" />
         <Collapsed>True</Collapsed>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
-    <Relationships />
+    <Relationships>
+      <Relationship type="Association" first="3" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>579</X>
+          <Y>324</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>579</X>
+          <Y>513</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="0" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="3" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>762</X>
+          <Y>348</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1157</X>
+          <Y>378</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="4">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>844</X>
+          <Y>102</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1016</X>
+          <Y>102</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>762</X>
+          <Y>363</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="2" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>529</X>
+          <Y>444</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>423</X>
+          <Y>363</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1120</X>
+          <Y>337</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>423</X>
+          <Y>363</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1059</X>
+          <Y>363</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
   </ProjectItem>
 </Project>

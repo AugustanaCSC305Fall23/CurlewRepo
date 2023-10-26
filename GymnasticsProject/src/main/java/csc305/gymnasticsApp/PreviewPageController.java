@@ -7,6 +7,7 @@ import javafx.print.PrinterJob;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.AnchorPane;
 
 import java.util.Optional;
 
@@ -49,9 +50,10 @@ public class PreviewPageController {
 
     @FXML
     void printButtonController(ActionEvent event) {
+        AnchorPane previewPane = new AnchorPane();
         PrinterJob job = PrinterJob.createPrinterJob();
-
-        if(job != null) {
+        //previewPane.getChildren().addAll();
+        if(job != null /*&& job.showPrintDialog(previewPane.getScene().getWindow())*/) {
             boolean success = job.showPrintDialog(null);
             if(success) {
                 job.endJob();
