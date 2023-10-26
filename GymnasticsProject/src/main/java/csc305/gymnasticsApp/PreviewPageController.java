@@ -48,19 +48,12 @@ public class PreviewPageController {
 
     }
 
+    /*
     @FXML
     void printButtonController(ActionEvent event) {
-        AnchorPane previewPane = new AnchorPane();
-        PrinterJob job = PrinterJob.createPrinterJob();
-        //previewPane.getChildren().addAll();
-        if(job != null /*&& job.showPrintDialog(previewPane.getScene().getWindow())*/) {
-            boolean success = job.showPrintDialog(null);
-            if(success) {
-                job.endJob();
-            }
-        }
+
     }
-/*
+
     @FXML
     void saveController(ActionEvent event) {
         java.io.File file = GymnasticsAppBeta.getFile();
