@@ -47,10 +47,10 @@
                   </HBox>
                   <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.6" prefWidth="440.8" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                      <padding>
-                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                      <content>
-                        <FlowPane fx:id="cardFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="420.0" vgap="10.0">
+                        <FlowPane fx:id="cardFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="378.0" vgap="10.0">
                            <children>
                               <Button fx:id="card1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
                                  <graphic>
@@ -131,7 +131,7 @@
                         </FlowPane>
                      </content>
                      <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                        <Insets />
                      </VBox.margin>
                   </ScrollPane>
                </children>
@@ -171,7 +171,7 @@
                         <Pane prefHeight="106.0" prefWidth="94.0" style="-fx-border-color: black;" GridPane.columnIndex="2" />
                      </children>
                   </GridPane>
-                  <HBox alignment="CENTER" layoutX="14.0" layoutY="495.0" prefHeight="105.0" prefWidth="422.0" spacing="35.0">
+                  <HBox alignment="CENTER" layoutX="14.0" layoutY="507.0" prefHeight="78.0" prefWidth="422.0" spacing="35.0">
                      <children>
                         <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="60.0" prefWidth="126.0" style="-fx-background-color: Grey; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER">
                            <font>
@@ -201,11 +201,11 @@
                      </children>
                   </GridPane>
                </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
             </Pane>
          </children>
-         <padding>
-            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-         </padding>
       </HBox>
     </children>
 </AnchorPane>
