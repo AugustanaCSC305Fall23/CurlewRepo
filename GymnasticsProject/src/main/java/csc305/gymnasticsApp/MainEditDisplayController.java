@@ -65,6 +65,7 @@ public class MainEditDisplayController implements Initializable {
 
 
     private void filterCards(String inputText) {
+        inputText = inputText.replaceAll("\\s+", "");
         List<Button> cardButtons = getAllCardButtons();
         List<Button> visibleButtons = new ArrayList<>();
         List<Button> hiddenButtons = new ArrayList<>();
@@ -97,6 +98,7 @@ public class MainEditDisplayController implements Initializable {
     }
 
 
+    // Initializes the treemap on the mainEditDisplay screen
     @Override
     public void initialize(URL arg0, ResourceBundle arg1){
         TreeItem<String> rootItem = new TreeItem<>("Root");
@@ -106,6 +108,7 @@ public class MainEditDisplayController implements Initializable {
         treeView.setRoot(rootItem);
     }
 
+    //Manages
     public void selectItem(MouseEvent event){
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
         TreeItem<String> parent = selectedItem.getParent();
@@ -132,11 +135,30 @@ public class MainEditDisplayController implements Initializable {
         parent.getChildren().remove(selectedItem);
     }
 
-    public void addCardToTreeView(MouseEvent event){
+    public void addCardToTreeView(MouseEvent event) {
         Button cardButton = (Button) event.getSource();
-        TreeItem<String> newCard = new TreeItem<>(cardButton.getId());
-        eventOneItems.getChildren().addAll(newCard);
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Add Card to Event");
+        alert.setHeaderText("Select the event to add the card to");
+
+        ButtonType eventOneButton = new ButtonType("Event 1");
+        ButtonType eventTwoButton = new ButtonType("Event 2");
+        ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(eventOneButton, eventTwoButton, cancelButton);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        result.ifPresent(buttonType -> {
+            if (buttonType == eventOneButton) {
+                TreeItem<String> newCard = new TreeItem<>(cardButton.getId().substring(cardButton.getId().length() - 5));
+                eventOneItems.getChildren().add(newCard);
+            } else if (buttonType == eventTwoButton) {
+                TreeItem<String> newCard = new TreeItem<>(cardButton.getId().substring(cardButton.getId().length() - 5));
+                eventTwoItems.getChildren().add(newCard);
+            }
+        });
     }
 
 }
