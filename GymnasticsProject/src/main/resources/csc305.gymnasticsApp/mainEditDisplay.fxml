@@ -138,7 +138,7 @@
             </VBox>
             <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="450.0" spacing="30.0" HBox.hgrow="ALWAYS">
                <children>
-                    <TextField alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Outline Title" style="-fx-prompt-text-fill: white; -fx-background-color: grey; -fx-background-radius: 10px;" VBox.vgrow="ALWAYS">
+                    <TextField alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Outline Title" style="-fx-prompt-text-fill: white; -fx-background-color: grey; -fx-background-radius: 10px; -fx-text-fill: white;" VBox.vgrow="ALWAYS">
                         <font>
                             <Font name="System Bold" size="16.0" />
                         </font>

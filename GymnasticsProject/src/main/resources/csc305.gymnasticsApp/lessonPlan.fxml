@@ -9,16 +9,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.LessonPlanController">
+<AnchorPane minHeight="600.0" minWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.LessonPlanController">
    <children>
-      <VBox alignment="CENTER" spacing="35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" fillWidth="false" spacing="35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField alignment="CENTER" editable="false" minHeight="75.0" minWidth="450.0" style="-fx-text-fill: white; -fx-background-color: black; -fx-background-radius: 10px;" text="Lesson Plan Configuration">
+            <TextField alignment="CENTER" editable="false" minHeight="75.0" minWidth="450.0" style="-fx-text-fill: white; -fx-background-color: black; -fx-background-radius: 10px;" text="Lesson Plan Configuration" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" editable="false" minHeight="25.0" minWidth="450.0" style="-fx-background-color: grey; -fx-background-radius: 10px; -fx-text-fill: white;" text="Events in Lesson">
+            <TextField alignment="CENTER" editable="false" minHeight="25.0" minWidth="450.0" style="-fx-background-color: grey; -fx-background-radius: 10px; -fx-text-fill: white;" text="Events in Lesson" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

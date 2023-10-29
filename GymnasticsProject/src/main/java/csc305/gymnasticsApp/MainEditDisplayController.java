@@ -43,10 +43,10 @@ public class MainEditDisplayController implements Initializable {
     private TreeView treeView;
 
     @FXML
-    private TreeItem<String> eventOneItems = new TreeItem<>("Event 1");
+    public TreeItem<String> eventOneItems = new TreeItem<>("Event 1");
 
     @FXML
-    private TreeItem<String> eventTwoItems = new TreeItem<>("Event 2");
+    public TreeItem<String> eventTwoItems = new TreeItem<>("Event 2");
 
 
 
@@ -59,9 +59,10 @@ public class MainEditDisplayController implements Initializable {
     }
 
     @FXML
-    void goButtonHandle(ActionEvent event) {filterCards(drillSearchBar.getText().toLowerCase());
-    }
+    void goButtonHandle(ActionEvent event) {
 
+        filterCards(drillSearchBar.getText().toLowerCase());
+    }
 
 
     private void filterCards(String inputText) {
@@ -159,6 +160,9 @@ public class MainEditDisplayController implements Initializable {
                 eventTwoItems.getChildren().add(newCard);
             }
         });
+        eventOneItems.setExpanded(true);
+        eventTwoItems.setExpanded(true);
+
     }
 
 }
