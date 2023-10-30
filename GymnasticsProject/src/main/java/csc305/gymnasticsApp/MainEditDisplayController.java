@@ -22,6 +22,9 @@ public class MainEditDisplayController implements Initializable {
     private Button backButton;
 
     @FXML
+    private VBox filterMenu;
+
+    @FXML
     private Button previewButton;
 
     @FXML
@@ -60,8 +63,17 @@ public class MainEditDisplayController implements Initializable {
 
     @FXML
     void goButtonHandle(ActionEvent event) {
-
         filterCards(drillSearchBar.getText().toLowerCase());
+    }
+
+    @FXML
+    void openFilterMenu(ActionEvent event){
+        filterMenu.setVisible(true);
+    }
+
+    @FXML
+    void closeFilterMenu(ActionEvent event){
+        filterMenu.setVisible(false);
     }
 
 
@@ -164,5 +176,6 @@ public class MainEditDisplayController implements Initializable {
         eventTwoItems.setExpanded(true);
 
     }
+
 
 }
