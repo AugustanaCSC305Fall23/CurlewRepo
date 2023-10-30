@@ -6,36 +6,50 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBeanBuilder;
 
 public class Card {
-    @CsvBindByName(column = "CODE")
+    @CsvBindByName(column = "CODE",required = true)
     private String code;
-    @CsvBindByName(column ="Event")
+    @CsvBindByName(column ="Event",required = true)
     private String event;
-    @CsvBindByName(column ="Category")
+    @CsvBindByName(column ="Category",required = true)
     private String category;
-    @CsvBindByName(column ="Title")
+    @CsvBindByName(column ="Title",required = true)
     private String title;
-    @CsvBindByName(column ="Pack Folder")
+    @CsvBindByName(column ="Pack Folder",required = true)
     private String packFolder;
-    @CsvBindByName(column ="Image")
+    @CsvBindByName(column ="Image",required = true)
     private String image;
-    @CsvBindByName(column ="Gender")
+    @CsvBindByName(column ="Gender",required = true)
     private String gender;
-    @CsvBindByName(column ="Model Sex")
+    @CsvBindByName(column ="Model Sex",required = true)
     private String modelGender;
-    @CsvBindByName(column ="Level")
+    @CsvBindByName(column ="Level",required = true)
     private String level;
-    @CsvBindByName(column ="Equipment")
+    @CsvBindByName(column ="Equipment",required = true)
     private List<String> equipment;
-    @CsvBindByName(column ="Keywords")
+    @CsvBindByName(column ="Keywords",required = true)
     private List<String> keywords;
 
     List<Card> beans;
-    public Card(){
 
+    {
+        try {
+            InputStream inputStream = Card.class.getResourceAsStream("/GymSoftwarePics/DEMO1.csv");
+            if (inputStream != null) {
+                beans = new CsvToBeanBuilder<Card>(new InputStreamReader(inputStream))
+                        .withType(Card.class).build().parse();
+            } else {
+                System.err.println("CSV file not found in the classpath.");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("An error occurred while parsing the CSV file: " + e.getMessage(), e);
+        }
     }
 
 
-    public Card(String code, String event, String category, String title, String packFolder, String image,
+
+
+
+    /*public Card(String code, String event, String category, String title, String packFolder, String image,
                 String gender, String modelGender, String level, List<String> equipment, List<String> keywords) {
         this.code = code;
         this.event = event;
@@ -49,16 +63,17 @@ public class Card {
         this.equipment = equipment;
         this.keywords = keywords;
     }
+    */
+   // public static void main(String[] args) {
+    //}
 
-    public static void main(String[] args) {
+
+
+
+
+    public void print(){
         try {
-            InputStream inputStream = Card.class.getResourceAsStream("/GymSoftwarePics/DEMO1.csv");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-
-            List<Card> cards = new CsvToBeanBuilder<Card>(reader)
-                    .withType(Card.class).build().parse();
-
-            for (Card card : cards) {
+            for(Card card : beans) {
                 System.out.println("Code: " + card.code);
                 System.out.println("Event: " + card.event);
                 System.out.println("Category: " + card.category);
@@ -78,25 +93,10 @@ public class Card {
         }
     }
 
-
-
-
-    /*
-    public void print(){
-        {
-            try {
-                beans = new CsvToBeanBuilder(new FileReader("DEMO1.csv"))
-                        .withType(Card.class).build().parse();
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-
     public String getCode(){return this.code;}
 
 //make a filter package
 
-    */
+
 
 }
