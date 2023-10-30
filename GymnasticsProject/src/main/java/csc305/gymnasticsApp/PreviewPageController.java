@@ -48,12 +48,13 @@ public class PreviewPageController {
 
     }
 
-    /*
+
     @FXML
     void printButtonController(ActionEvent event) {
 
     }
 
+    /*
     @FXML
     void saveController(ActionEvent event) {
         java.io.File file = GymnasticsAppBeta.getFile();

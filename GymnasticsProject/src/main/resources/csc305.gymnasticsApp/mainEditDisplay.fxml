@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeView?>
@@ -13,6 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.MainEditDisplayController">
     <children>
@@ -20,26 +22,26 @@
          <children>
             <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" spacing="10.0" style="-fx-background-color: #F5FFFA;" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: #F5FFFA;" VBox.vgrow="NEVER">
+                  <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="444.0" spacing="20.0" style="-fx-background-color: #F5FFFA;" VBox.vgrow="NEVER">
                      <children>
-                        <Button graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="36.8" prefWidth="44.0" textFill="WHITE" HBox.hgrow="ALWAYS">
+                        <Button fx:id="filterButton" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openFilterMenu" prefHeight="37.0" prefWidth="70.0" text="Filters" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="drillSearchBar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.8" prefWidth="162.4" promptText="Search Cards" style="-fx-prompt-text-fill: white; -fx-background-color: #D3D3D3; -fx-background-radius: 10px;" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="drillSearchBar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="162.4" promptText="Search Cards" style="-fx-prompt-text-fill: white; -fx-background-color: #D3D3D3; -fx-background-radius: 10px;" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="drillSearchButton" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goButtonHandle" prefHeight="36.8" prefWidth="44.0" style="-fx-background-color: green;" text="Go" textFill="WHITE" HBox.hgrow="ALWAYS">
+                        <Button fx:id="drillSearchButton" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goButtonHandle" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: green;" text="Go" textFill="WHITE" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
                      </children>
                      <padding>
-                        <Insets left="5.0" right="5.0" top="5.0" />
+                        <Insets left="10.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
                   <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.6" prefWidth="440.8" style="-fx-background-color: #F5FFFA;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
@@ -49,7 +51,7 @@
                      <content>
                         <FlowPane fx:id="cardFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="378.0" style="-fx-background-color: #F5FFFA;" vgap="10.0">
                            <children>
-                              <Button fx:id="card1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
+                              <Button fx:id="S1ALLShapesHollowDemo11pngNFALLNonehollowdishbananaCard1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
                                  <graphic>
                                     <ImageView fitHeight="198.0" fitWidth="198.0">
                                        <image>
@@ -58,7 +60,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button fx:id="card2" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
+                              <Button fx:id="S30ALLShapesOpenShoulderDrillDemo12pngNFALLStickBandshoulderflexibilityCard2" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
                                  <graphic>
                                     <ImageView fitHeight="198.0" fitWidth="198.0">
                                        <image>
@@ -67,7 +69,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button fx:id="card3" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
+                              <Button fx:id="H5FloorHandstandHalfHandstandDemo13pngNFBABIPacmantallblockresiLhandstandpikehandstandhandstandCard3" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
                                  <graphic>
                                     <ImageView fitHeight="198.0" fitWidth="198.0">
                                        <image>
@@ -76,7 +78,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button fx:id="card24" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
+                              <Button fx:id="BS9FloorBackwardSaltoBackwardFlipOverMailboxDemo14pngNFABMailboxbacksaltomailboxCard4" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
                                  <graphic>
                                     <ImageView fitHeight="198.0" fitWidth="198.0">
                                        <image>
@@ -85,7 +87,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button fx:id="card15" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
+                              <Button fx:id="W4FloorWalkoversFrontWalkoverOveraBarrelDemo15pngFFABIBarrelelevatedsurfacewalkoversplithandstandbarrelCard5" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
                                  <graphic>
                                     <ImageView fitHeight="198.0" fitWidth="198.0">
                                        <image>
@@ -94,7 +96,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button fx:id="card26" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
+                              <Button fx:id="HS5FloorHandspringsJumpFlyBackDemo16pngNFABIMiniTrampTableTrainer2incherbackhandspringroundoffreboundarchCard6" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
                                  <graphic>
                                     <ImageView fitHeight="198.0" fitWidth="198.0">
                                        <image>
@@ -103,20 +105,20 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button fx:id="card261" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
+                              <Button fx:id="H13FloorHandstandHandstandForwardRollDrillDemo17pngNFABIWedgeTallPanelMathandstandforwardrollcandlestraightarmCard7" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
                                  <graphic>
                                     <ImageView fitHeight="198.0" fitWidth="198.0">
                                        <image>
-                                          <Image url="@../GymSoftwarePics/DEMO1Pack/6.png" />
+                                          <Image url="@../GymSoftwarePics/DEMO1Pack/7.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button fx:id="card262" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
+                              <Button fx:id="C3FloorCartwheelProgressionsOveraMatwithFoamBlockDemo18pngNFIPanelMatFoamBlockblockscartwheelpanelmatleverlungeCard8" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
                                  <graphic>
                                     <ImageView fitHeight="198.0" fitWidth="198.0">
                                        <image>
-                                          <Image url="@../GymSoftwarePics/DEMO1Pack/6.png" />
+                                          <Image url="@../GymSoftwarePics/DEMO1Pack/8.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -138,7 +140,7 @@
             </VBox>
             <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="450.0" spacing="30.0" HBox.hgrow="ALWAYS">
                <children>
-                    <TextField alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Outline Title" style="-fx-prompt-text-fill: white; -fx-background-color: grey; -fx-background-radius: 10px;" VBox.vgrow="ALWAYS">
+                    <TextField alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Outline Title" style="-fx-prompt-text-fill: white; -fx-background-color: grey; -fx-background-radius: 10px; -fx-text-fill: white;" VBox.vgrow="ALWAYS">
                         <font>
                             <Font name="System Bold" size="16.0" />
                         </font>
@@ -146,7 +148,7 @@
                         <Insets />
                      </VBox.margin>
                     </TextField>
-                  <TreeView fx:id="treeView" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="387.0" prefWidth="410.0" style="-fx-border-color: black; -fx-font-size: 24px;" VBox.vgrow="ALWAYS" />
+                  <TreeView fx:id="treeView" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="387.0" prefWidth="410.0" style="-fx-border-color: black; -fx-font-size: 28px;" VBox.vgrow="ALWAYS" />
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="422.0" spacing="35.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="60.0" prefWidth="126.0" style="-fx-background-color: Grey; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER">
@@ -168,5 +170,227 @@
             </VBox>
          </children>
       </HBox>
+      <VBox fx:id="filterMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="filterDoneButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeFilterMenu" pickOnBounds="false" prefHeight="56.0" prefWidth="250.0" style="-fx-background-radius: 0; -fx-font-weight: bold; -fx-font-size: 30px;" text="Done" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </Button>
+            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="250.0" style="-fx-background-color: white;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+               <content>
+                  <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="5.0" style="-fx-border-width: 2; -fx-background-color: white;">
+                     <children>
+                        <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Gender" wrappingWidth="94.42501831054688">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Male">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Female">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Neutral">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Event" wrappingWidth="94.42501831054688">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="All">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Floor">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Uneven Bars">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Beam">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Vault">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Tramp">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Strength">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Event" wrappingWidth="94.42501831054688">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="All">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Floor">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Uneven Bars">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Beam">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Vault">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Tramp">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Strength">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Event" wrappingWidth="94.42501831054688">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="All">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Floor">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Uneven Bars">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Beam">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Vault">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Tramp">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Strength">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Event" wrappingWidth="94.42501831054688">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="All">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Floor">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Uneven Bars">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Beam">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Vault">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Tramp">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Strength">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children></VBox>
     </children>
 </AnchorPane>
