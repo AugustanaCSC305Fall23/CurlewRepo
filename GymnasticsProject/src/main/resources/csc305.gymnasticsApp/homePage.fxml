@@ -7,14 +7,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.HomePageController">
    <children>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="900.0" spacing="70.0" style="-fx-background-color: linear-gradient(#D4F3FF, white);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Welcome To Gym Coach Hero">
                <font>
-                  <Font size="40.0" />
+                  <Font size="50.0" />
                </font>
             </Text>
             <Button fx:id="NewLessonButton" alignment="CENTER" minHeight="150.0" minWidth="400.0" mnemonicParsing="false" onAction="#handleNewLessonButton" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Create New Lesson Plan" VBox.vgrow="ALWAYS">
