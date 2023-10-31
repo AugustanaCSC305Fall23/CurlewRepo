@@ -24,14 +24,12 @@ public class Card {
     @CsvBindByName(column ="Level")
     private String level;
     @CsvBindByName(column ="Equipment")
-    private List<String> equipment;
+    private String equipment;
     @CsvBindByName(column ="Keywords")
-    private List<String> keywords;
+    private String keywords;
 
 
-    public String getCode() {
-        return code;
-    }
+    public String getCode() {return code;}
     public void setCode(String code) {
         this.code = code;
     }
@@ -92,17 +90,17 @@ public class Card {
         this.level = level;
     }
 
-    public List<String> getEquipment() {
+    public String getEquipment() {
         return equipment;
     }
-    public void setEquipment(List<String> equipment) {
+    public void setEquipment(String equipment) {
         this.equipment = equipment;
     }
 
-    public List<String> getKeywords() {
+    public String getKeywords() {
         return keywords;
     }
-    public void setKeywords(List<String> keywords) {
+    public void setKeywords(String keywords) {
         this.keywords = keywords;
     }
 
