@@ -2,6 +2,8 @@ package csc305.gymnasticsApp;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 import csc305.gymnasticsApp.CardFilter.CardFilter;
+import csc305.gymnasticsApp.CardFilter.CodeFilter;
+import csc305.gymnasticsApp.CardFilter.GenderFilter;
 
 import java.io.File;
 import java.io.FileReader;
@@ -14,10 +16,28 @@ import java.util.List;
 public class CardDatabase {
     private static List<Card> allCards = new ArrayList<>();
 
-    public List<Card> filter(CardFilter specificFilter) {
-        return null;
+    public static void main(String[] args){
+        addCardsFromCSVFile();
+        setUniqueIDs();
+        printAllCards(allCards);
+        CardFilter male = new CodeFilter("S1");
+        List<Card> filteredCards = filter(male);
+        System.out.println();
+        System.out.println();
+        printAllCards(filteredCards);
+
     }
 
+    public static List<Card> filter(CardFilter specificFilter) {
+        List<Card> filteredCards = new ArrayList<>();
+        for(Card card : allCards){
+            if(specificFilter.matches(card)){
+                filteredCards.add(card);
+            }
+
+        }
+        return filteredCards;
+    }
     public static void addCardsFromCSVFile() {
         List<Card> cardsFromCSV = null;
         File[] csvFileList = addAllCSVFilesFromFolder(new File("src/main/resources/GymSoftwarePics/CSVFiles"));
@@ -37,6 +57,7 @@ public class CardDatabase {
         }
 
     }
+
     private static void setUniqueIDs(){
         for(Card card : allCards){
             card.setUniqueID();
@@ -46,12 +67,6 @@ public class CardDatabase {
     public static File[] addAllCSVFilesFromFolder(File folderName) {
         File[] csvArray = folderName.listFiles();
         return csvArray;
-    }
-
-    public static void main(String[] args){
-        addCardsFromCSVFile();
-        setUniqueIDs();
-        printAllCards(allCards);
     }
 
     public static void printAllCards(List<Card> cardList){
