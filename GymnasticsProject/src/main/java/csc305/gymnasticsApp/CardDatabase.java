@@ -35,29 +35,11 @@ public class CardDatabase {
             }
         }
         allCards.addAll(beans);
-
-        /*{
-            try {
-                InputStream inputStream = Card.class.getResourceAsStream("/GymSoftwarePics/CSVFiles/DEMO1.csv");
-                if (inputStream != null) {
-                    beans = new CsvToBeanBuilder(new InputStreamReader(inputStream))
-                            .withType(Card.class).build().parse();
-                } else {
-                    System.err.println("CSV file not found in the classpath.");
-                }
-            } catch (Exception e) {
-                throw new RuntimeException("An error occurred while parsing the CSV file: " + e.getMessage(), e);
-            }
-        }*/
     }
 
     public static File[] addAllCSVFilesFromFolder(File folderName) {
         File[] csvArray = folderName.listFiles();
         return csvArray;
-
-
-
-
     }
 
     public static void main(String[] args){
