@@ -37,6 +37,11 @@ public class CardDatabase {
         }
 
     }
+    private static void setUniqueIDs(){
+        for(Card card : allCards){
+            card.setUniqueID();
+        }
+    }
 
     public static File[] addAllCSVFilesFromFolder(File folderName) {
         File[] csvArray = folderName.listFiles();
@@ -45,6 +50,7 @@ public class CardDatabase {
 
     public static void main(String[] args){
         addCardsFromCSVFile();
+        setUniqueIDs();
         printAllCards(allCards);
     }
 

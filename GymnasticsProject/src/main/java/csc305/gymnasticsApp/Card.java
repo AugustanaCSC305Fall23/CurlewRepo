@@ -28,6 +28,8 @@ public class Card {
     @CsvBindByName(column ="Keywords")
     private String keywords;
 
+    private String uniqueID;
+
 
     public String getCode() {return code;}
     public void setCode(String code) {
@@ -104,6 +106,13 @@ public class Card {
         this.keywords = keywords;
     }
 
+    public String getUniqueID() {
+        return uniqueID;
+    }
+    public void setUniqueID() {
+        this.uniqueID = packFolder + "." + code + "." + event + "." + gender;
+    }
+
     @Override
     public String toString() {
         return "Card{" +
@@ -118,6 +127,7 @@ public class Card {
                 ", level='" + level + '\'' +
                 ", equipment=" + equipment +
                 ", keywords=" + keywords +
+                ", Unique ID=" + uniqueID+
                 '}';
     }
 
