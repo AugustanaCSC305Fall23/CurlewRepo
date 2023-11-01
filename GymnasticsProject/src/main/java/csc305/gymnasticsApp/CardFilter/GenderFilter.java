@@ -4,13 +4,14 @@ import csc305.gymnasticsApp.Card;
 import csc305.gymnasticsApp.CardFilter.CardFilter;
 
 public class GenderFilter implements CardFilter {
-
-    public void GenderFilter(char desiredGender) {
-
+    private String desiredGender;
+    public GenderFilter(String desiredGender) {
+        this.desiredGender = desiredGender;
     }
 
     @Override
     public boolean matches(Card canidateCard) {
-        return true;
+        return(canidateCard.getGender().equalsIgnoreCase(desiredGender));
+
     }
 }

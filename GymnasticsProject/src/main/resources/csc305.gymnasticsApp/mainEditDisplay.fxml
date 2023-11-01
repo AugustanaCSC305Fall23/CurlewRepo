@@ -20,9 +20,9 @@
     <children>
       <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" spacing="10.0" style="-fx-background-color: #F5FFFA;" HBox.hgrow="ALWAYS">
+            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="444.0" spacing="20.0" style="-fx-background-color: #F5FFFA;" VBox.vgrow="NEVER">
+                  <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="444.0" spacing="20.0" VBox.vgrow="NEVER">
                      <children>
                         <Button fx:id="filterButton" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openFilterMenu" prefHeight="37.0" prefWidth="70.0" text="Filters" HBox.hgrow="ALWAYS">
                            <font>
@@ -44,12 +44,12 @@
                         <Insets left="10.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
-                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.6" prefWidth="440.8" style="-fx-background-color: #F5FFFA;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.6" prefWidth="440.8" style="-fx-background-color: white;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                      <content>
-                        <FlowPane fx:id="cardFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="378.0" style="-fx-background-color: #F5FFFA;" vgap="10.0">
+                        <FlowPane fx:id="cardFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="378.0" style="-fx-background-color: white;" vgap="10.0">
                            <children>
                               <Button fx:id="S1ALLShapesHollowDemo11pngNFALLNonehollowdishbananaCard1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
                                  <graphic>
@@ -140,7 +140,7 @@
             </VBox>
             <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="450.0" spacing="30.0" HBox.hgrow="ALWAYS">
                <children>
-                    <TextField alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Outline Title" style="-fx-prompt-text-fill: white; -fx-background-color: grey; -fx-background-radius: 10px; -fx-text-fill: white;" VBox.vgrow="ALWAYS">
+                    <TextField alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Outline Title" style="-fx-prompt-text-fill: white; -fx-background-color: black; -fx-background-radius: 10px; -fx-text-fill: white;" VBox.vgrow="ALWAYS">
                         <font>
                             <Font name="System Bold" size="16.0" />
                         </font>
@@ -151,12 +151,12 @@
                   <TreeView fx:id="treeView" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="387.0" prefWidth="410.0" style="-fx-border-color: black; -fx-font-size: 28px;" VBox.vgrow="ALWAYS" />
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="422.0" spacing="35.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="60.0" prefWidth="126.0" style="-fx-background-color: Grey; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER">
+                        <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="60.0" prefWidth="126.0" style="-fx-background-color: black; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="previewButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previewButtonHandle" prefHeight="60.0" prefWidth="126.0" style="-fx-background-color: Grey; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview" textAlignment="CENTER" wrapText="true">
+                        <Button fx:id="previewButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previewButtonHandle" prefHeight="60.0" prefWidth="126.0" style="-fx-background-color: black; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
