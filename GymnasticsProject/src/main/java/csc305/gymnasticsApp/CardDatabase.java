@@ -4,32 +4,41 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import csc305.gymnasticsApp.CardFilter.CardFilter;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class CardDatabase {
-    private List<Card> allCards;
+    private static List<Card> allCards = new ArrayList<>();
 
     public List<Card> filter(CardFilter specificFilter) {
         return null;
     }
 
-    public void addCardsFromCSVFile(File csvFile) {
-
-    }
-
-    public void addAllCSVFilesFromFolder(File folderName) {
-
-    }
-    
-    public static void main(String[] args){
+    public static void addCardsFromCSVFile() {
         List<Card> beans = null;
+        File[] csvFileList = addAllCSVFilesFromFolder(new File("src/main/resources/GymSoftwarePics/CSVFiles"));
 
-        {
+        for(File csvFile: csvFileList){
             try {
-                InputStream inputStream = Card.class.getResourceAsStream("/GymSoftwarePics/DEMO1.csv");
+                if (csvFile != null) {
+                    beans = new CsvToBeanBuilder(new FileReader(csvFile))
+                            .withType(Card.class).build().parse();
+                } else {
+                    System.err.println("CSV file not found in the classpath.");
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("An error occurred while parsing the CSV file: " + e.getMessage(), e);
+            }
+        }
+        allCards.addAll(beans);
+
+        /*{
+            try {
+                InputStream inputStream = Card.class.getResourceAsStream("/GymSoftwarePics/CSVFiles/DEMO1.csv");
                 if (inputStream != null) {
                     beans = new CsvToBeanBuilder(new InputStreamReader(inputStream))
                             .withType(Card.class).build().parse();
@@ -39,16 +48,29 @@ public class CardDatabase {
             } catch (Exception e) {
                 throw new RuntimeException("An error occurred while parsing the CSV file: " + e.getMessage(), e);
             }
-        }
-        printAllCards(beans);
+        }*/
     }
-    
+
+    public static File[] addAllCSVFilesFromFolder(File folderName) {
+        File[] csvArray = folderName.listFiles();
+        return csvArray;
+
+
+
+
+    }
+
+    public static void main(String[] args){
+        addCardsFromCSVFile();
+        printAllCards(allCards);
+    }
+
     public static void printAllCards(List<Card> cardList){
         for(Card card : cardList){
             System.out.println(card.toString());
         }
     }
-    
+
 }
 
 //get card by id
