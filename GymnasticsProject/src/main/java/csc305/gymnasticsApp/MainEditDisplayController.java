@@ -1,5 +1,7 @@
 package csc305.gymnasticsApp;
 
+import csc305.gymnasticsApp.CardFilter.CombineAndFilter;
+import csc305.gymnasticsApp.CardFilter.GenderFilter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +12,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+//import javax.swing.*;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -177,5 +181,44 @@ public class MainEditDisplayController implements Initializable {
 
     }
 
+    private CheckBox genderCheckBox;
+    @FXML
+    private CheckBox checkBoxFemale;
+
+    @FXML
+    private CheckBox checkBoxMale;
+
+    @FXML
+    private CheckBox checkBoxNeutral;
+
+    @FXML
+    void setChangedTextBox(ActionEvent event) {
+        CheckBox selectedCheckBox = (CheckBox) event.getSource();
+        genderCheckBox = selectedCheckBox;
+
+        if (selectedCheckBox.isSelected()) {
+            checkBoxFemale.setSelected(false);
+            checkBoxNeutral.setSelected(false);
+            checkBoxMale.setSelected(false);
+            selectedCheckBox.setSelected(true);
+        }
+
+        getGenderCheckBox();
+    }
+
+    public void getGenderCheckBox() {
+        if(genderCheckBox == checkBoxFemale) {
+            new GenderFilter("F");
+        } else if (genderCheckBox == checkBoxNeutral) {
+            new GenderFilter("N");
+        } else {
+            new GenderFilter("M");
+        }
+    }
+
+    @FXML
+    void setFilterController(ActionEvent event) {
+        new CombineAndFilter();
+    }
 
 }
