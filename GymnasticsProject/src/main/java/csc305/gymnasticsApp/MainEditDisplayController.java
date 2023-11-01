@@ -201,18 +201,17 @@ public class MainEditDisplayController implements Initializable {
             checkBoxNeutral.setSelected(false);
             checkBoxMale.setSelected(false);
             selectedCheckBox.setSelected(true);
+            new GenderFilter(getGenderCheckBox());
         }
-
-        getGenderCheckBox();
     }
 
-    public void getGenderCheckBox() {
+    public String getGenderCheckBox() {
         if(genderCheckBox == checkBoxFemale) {
-            new GenderFilter("F");
+            return "F";
         } else if (genderCheckBox == checkBoxNeutral) {
-            new GenderFilter("N");
+            return "N";
         } else {
-            new GenderFilter("M");
+            return "M";
         }
     }
 
