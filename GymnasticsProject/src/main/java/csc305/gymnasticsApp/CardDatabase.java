@@ -19,13 +19,13 @@ public class CardDatabase {
     }
 
     public static void addCardsFromCSVFile() {
-        List<Card> beans = null;
+        List<Card> cardsFromCSV = null;
         File[] csvFileList = addAllCSVFilesFromFolder(new File("src/main/resources/GymSoftwarePics/CSVFiles"));
 
         for(File csvFile: csvFileList){
             try {
                 if (csvFile != null) {
-                    beans = new CsvToBeanBuilder(new FileReader(csvFile))
+                    cardsFromCSV = new CsvToBeanBuilder(new FileReader(csvFile))
                             .withType(Card.class).build().parse();
                 } else {
                     System.err.println("CSV file not found in the classpath.");
@@ -33,8 +33,9 @@ public class CardDatabase {
             } catch (Exception e) {
                 throw new RuntimeException("An error occurred while parsing the CSV file: " + e.getMessage(), e);
             }
+            allCards.addAll(cardsFromCSV);
         }
-        allCards.addAll(beans);
+
     }
 
     public static File[] addAllCSVFilesFromFolder(File folderName) {
