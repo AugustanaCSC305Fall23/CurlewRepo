@@ -177,37 +177,37 @@
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="All">
+                              <CheckBox mnemonicParsing="false" onAction="#allCheckBox" prefHeight="26.0" prefWidth="154.0" text="All">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Floor">
+                              <CheckBox mnemonicParsing="false" onAction="#floorCheckBox" prefHeight="26.0" prefWidth="154.0" text="Floor">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Uneven Bars">
+                              <CheckBox mnemonicParsing="false" onAction="#unevenBarsCheckBox" prefHeight="26.0" prefWidth="154.0" text="Uneven Bars">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Beam">
+                              <CheckBox mnemonicParsing="false" onAction="#beamCheckBox" prefHeight="26.0" prefWidth="154.0" text="Beam">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Vault">
+                              <CheckBox mnemonicParsing="false" onAction="#vaultCheckBox" prefHeight="26.0" prefWidth="154.0" text="Vault">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Tramp">
+                              <CheckBox mnemonicParsing="false" onAction="#trampCheckBox" prefHeight="26.0" prefWidth="154.0" text="Tramp">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Strength">
+                              <CheckBox mnemonicParsing="false" onAction="#strengthCheckBox" prefHeight="26.0" prefWidth="154.0" text="Strength">
                                  <font>
                                     <Font size="18.0" />
                                  </font>

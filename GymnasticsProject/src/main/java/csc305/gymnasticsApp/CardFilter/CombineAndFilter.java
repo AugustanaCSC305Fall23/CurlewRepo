@@ -1,10 +1,8 @@
 package csc305.gymnasticsApp.CardFilter;
 
 import csc305.gymnasticsApp.Card;
-import csc305.gymnasticsApp.CardFilter.CardFilter;
 import csc305.gymnasticsApp.MainEditDisplayController;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +13,8 @@ public class CombineAndFilter implements CardFilter {
 
 
         List<String> filters = Arrays.asList(
-                new GenderFilter(MainEditDisplayController.gender).getDesiredGender());
+                new GenderFilter().getDesiredGenders().toString(),
+                new EventFilter().getDesiredEvents().toString());
         System.out.println(filters);
     }
 

@@ -1,22 +1,33 @@
 package csc305.gymnasticsApp.CardFilter;
 
 import csc305.gymnasticsApp.Card;
-import csc305.gymnasticsApp.CardFilter.CardFilter;
-import csc305.gymnasticsApp.MainEditDisplayController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GenderFilter implements CardFilter {
-    private String desiredGender;
-    public GenderFilter(String desiredGender) {
-        this.desiredGender = desiredGender;
+    public static List<String> desiredGenders;
+    public GenderFilter() {
+        if (desiredGenders == null) {
+            desiredGenders = new ArrayList<String>();
+        }
     }
 
-    public String getDesiredGender() {
-        return desiredGender;
+    public List<String> getDesiredGenders() {
+        return desiredGenders;
+    }
+
+    public void add(String desiredGender) {
+        if(!(desiredGenders.contains(desiredGender))) {
+            desiredGenders.add(desiredGender);
+        } else {
+            desiredGenders.remove(desiredGender);
+        }
     }
 
     @Override
     public boolean matches(Card canidateCard) {
-        return(canidateCard.getGender().equalsIgnoreCase(desiredGender));
+        return(canidateCard.getGender().equalsIgnoreCase(desiredGenders.toString()));
 
     }
 }
