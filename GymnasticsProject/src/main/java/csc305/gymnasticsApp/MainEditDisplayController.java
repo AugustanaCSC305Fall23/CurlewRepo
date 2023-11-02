@@ -130,6 +130,7 @@ public class MainEditDisplayController implements Initializable {
                 cardButton.setPrefWidth(200.0);
                 cardButton.setMnemonicParsing(false);
                 cardButton.setStyle("-fx-border-color: black;");
+                cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton, card));
                 cardFlowPane.getChildren().add(cardButton);
             }
         } catch (FileNotFoundException e) {
@@ -160,7 +161,6 @@ public class MainEditDisplayController implements Initializable {
         treeView.setRoot(rootItem);
     }
 
-    //Manages
     public void selectItem(MouseEvent event){
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
         TreeItem<String> parent = selectedItem.getParent();
@@ -187,9 +187,7 @@ public class MainEditDisplayController implements Initializable {
         parent.getChildren().remove(selectedItem);
     }
 
-    public void addCardToTreeView(MouseEvent event) {
-        Button cardButton = (Button) event.getSource();
-
+    public void addCardToTreeView(Button cardButton, Card card) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Add Card to Event");
         alert.setHeaderText("Select the event to add the card to");
@@ -204,10 +202,10 @@ public class MainEditDisplayController implements Initializable {
 
         result.ifPresent(buttonType -> {
             if (buttonType == eventOneButton) {
-                TreeItem<String> newCard = new TreeItem<>(cardButton.getId().substring(cardButton.getId().length() - 5));
+                TreeItem<String> newCard = new TreeItem<>(card.getTitle());
                 eventOneItems.getChildren().add(newCard);
             } else if (buttonType == eventTwoButton) {
-                TreeItem<String> newCard = new TreeItem<>(cardButton.getId().substring(cardButton.getId().length() - 5));
+                TreeItem<String> newCard = new TreeItem<>(card.getTitle());
                 eventTwoItems.getChildren().add(newCard);
             }
         });
@@ -215,6 +213,7 @@ public class MainEditDisplayController implements Initializable {
         eventTwoItems.setExpanded(true);
 
     }
+
 
     private CheckBox genderCheckBox;
     @FXML

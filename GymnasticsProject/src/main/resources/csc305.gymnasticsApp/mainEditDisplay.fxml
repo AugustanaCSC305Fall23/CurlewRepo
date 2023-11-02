@@ -8,8 +8,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
@@ -54,80 +52,6 @@
                      </padding>
                      <content>
                         <FlowPane fx:id="cardFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="378.0" style="-fx-background-color: #F5FFFA;" vgap="10.0">
-                           <children>
-                              <Button fx:id="S1ALLShapesHollowDemo11pngNFALLNonehollowdishbananaCard1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
-                                 <graphic>
-                                    <ImageView fitHeight="198.0" fitWidth="198.0">
-                                       <image>
-                                          <Image url="@../GymSoftwarePics/DEMO1Pack/1.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="S30ALLShapesOpenShoulderDrillDemo12pngNFALLStickBandshoulderflexibilityCard2" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
-                                 <graphic>
-                                    <ImageView fitHeight="198.0" fitWidth="198.0">
-                                       <image>
-                                          <Image url="@../GymSoftwarePics/DEMO1Pack/2.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="H5FloorHandstandHalfHandstandDemo13pngNFBABIPacmantallblockresiLhandstandpikehandstandhandstandCard3" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
-                                 <graphic>
-                                    <ImageView fitHeight="198.0" fitWidth="198.0">
-                                       <image>
-                                          <Image url="@../GymSoftwarePics/DEMO1Pack/3.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="BS9FloorBackwardSaltoBackwardFlipOverMailboxDemo14pngNFABMailboxbacksaltomailboxCard4" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
-                                 <graphic>
-                                    <ImageView fitHeight="198.0" fitWidth="198.0">
-                                       <image>
-                                          <Image url="@../GymSoftwarePics/DEMO1Pack/4.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="W4FloorWalkoversFrontWalkoverOveraBarrelDemo15pngFFABIBarrelelevatedsurfacewalkoversplithandstandbarrelCard5" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
-                                 <graphic>
-                                    <ImageView fitHeight="198.0" fitWidth="198.0">
-                                       <image>
-                                          <Image url="@../GymSoftwarePics/DEMO1Pack/5.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="HS5FloorHandspringsJumpFlyBackDemo16pngNFABIMiniTrampTableTrainer2incherbackhandspringroundoffreboundarchCard6" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
-                                 <graphic>
-                                    <ImageView fitHeight="198.0" fitWidth="198.0">
-                                       <image>
-                                          <Image url="@../GymSoftwarePics/DEMO1Pack/6.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="H13FloorHandstandHandstandForwardRollDrillDemo17pngNFABIWedgeTallPanelMathandstandforwardrollcandlestraightarmCard7" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
-                                 <graphic>
-                                    <ImageView fitHeight="198.0" fitWidth="198.0">
-                                       <image>
-                                          <Image url="@../GymSoftwarePics/DEMO1Pack/7.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="C3FloorCartwheelProgressionsOveraMatwithFoamBlockDemo18pngNFIPanelMatFoamBlockblockscartwheelpanelmatleverlungeCard8" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#addCardToTreeView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
-                                 <graphic>
-                                    <ImageView fitHeight="198.0" fitWidth="198.0">
-                                       <image>
-                                          <Image url="@../GymSoftwarePics/DEMO1Pack/8.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                           </children>
                            <rotationAxis>
                               <Point3D />
                            </rotationAxis>
