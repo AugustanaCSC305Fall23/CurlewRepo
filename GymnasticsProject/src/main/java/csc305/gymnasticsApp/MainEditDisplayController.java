@@ -3,6 +3,7 @@ package csc305.gymnasticsApp;
 import csc305.gymnasticsApp.CardFilter.CombineAndFilter;
 import csc305.gymnasticsApp.CardFilter.EventFilter;
 import csc305.gymnasticsApp.CardFilter.GenderFilter;
+import csc305.gymnasticsApp.CardFilter.ModelGenderFilter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -285,6 +286,23 @@ public class MainEditDisplayController implements Initializable {
     void vaultCheckBox(ActionEvent event) {
         new EventFilter().add("Vault");
     }
+
+
+    //****************
+    //MODEL SEX FILTER
+    //****************
+
+    public static String modelGender;
+    @FXML
+    void modelCheckBoxFemale(ActionEvent event) {
+        new ModelGenderFilter().add("F");
+    }
+
+    @FXML
+    void modelCheckBoxMale(ActionEvent event) {
+        new ModelGenderFilter().add("M");
+    }
+
 
 
 

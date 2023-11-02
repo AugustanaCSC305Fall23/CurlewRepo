@@ -116,7 +116,7 @@
                      <children>
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold;" text="Gender" textAlignment="CENTER">
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-font-weight: bold;" text="Gender" textAlignment="CENTER">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -216,42 +216,33 @@
                         </VBox>
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Event" wrappingWidth="94.42501831054688">
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Model Sex" textAlignment="CENTER">
+                                 <textFill>
+                                    <RadialGradient centerX="0.5110192837465565" centerY="0.516548463356974" radius="0.6514285714285715">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.1568627506494522" green="0.45098039507865906" blue="1.0" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="0.37037035822868347" green="0.7166666388511658" blue="1.0" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </textFill>
                                  <font>
-                                    <Font size="24.0" />
+                                    <Font name="System Bold" size="24.0" />
                                  </font>
-                              </Text>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="All">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Floor">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Uneven Bars">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Beam">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Vault">
+                              </Label>
+                              <CheckBox mnemonicParsing="false" onAction="#modelCheckBoxMale" prefHeight="26.0" prefWidth="154.0" text="Male">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Tramp">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Strength">
+                              <CheckBox mnemonicParsing="false" onAction="#modelCheckBoxFemale" prefHeight="26.0" prefWidth="154.0" text="Female">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
