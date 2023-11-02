@@ -18,6 +18,7 @@ import javafx.scene.layout.VBox;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.sql.Array;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
@@ -55,10 +56,12 @@ public class MainEditDisplayController implements Initializable {
     private TreeView treeView;
 
     @FXML
-    public TreeItem<String> eventOneItems = new TreeItem<>("Event 1");
+    public static TreeItem<String> eventOneItems = new TreeItem<>("Event 1");
 
     @FXML
-    public TreeItem<String> eventTwoItems = new TreeItem<>("Event 2");
+    public static TreeItem<String> eventTwoItems = new TreeItem<>("Event 2");
+
+    public String[] cardParentEvent = {"Event1", "Event2"};
 
 
 
@@ -66,10 +69,6 @@ public class MainEditDisplayController implements Initializable {
     void backButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToLessonPlan();
     }
 
-    @FXML
-    void testButtonHandle(ActionEvent event) {
-        addCardsToFlowPane();
-    }
 
     @FXML
     void previewButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToPreviewPage();
@@ -159,11 +158,16 @@ public class MainEditDisplayController implements Initializable {
 
         treeView.setShowRoot(false);
         treeView.setRoot(rootItem);
+        addCardsToFlowPane();
     }
 
+
+    //DELETES CARD
     public void selectItem(MouseEvent event){
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
         TreeItem<String> parent = selectedItem.getParent();
+
+
         if(parent.equals(eventOneItems) || parent.equals(eventTwoItems)) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Caution");
@@ -176,6 +180,13 @@ public class MainEditDisplayController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == yesButton) {
+                if(parent.toString().equals(cardParentEvent[0])){
+                    Card card = CardDatabase.getCardFromTreeItem(selectedItem.getValue(), 1);
+                    CardDatabase.deleteEventOneTreeCard(card);
+                } else{
+                    Card card = CardDatabase.getCardFromTreeItem(selectedItem.getValue(), 2);
+                    CardDatabase.deleteEventTwoTreeCard(card);
+                }
                 deleteCardFromTreeView(event);
             }
         }
@@ -192,8 +203,8 @@ public class MainEditDisplayController implements Initializable {
         alert.setTitle("Add Card to Event");
         alert.setHeaderText("Select the event to add the card to");
 
-        ButtonType eventOneButton = new ButtonType("Event 1");
-        ButtonType eventTwoButton = new ButtonType("Event 2");
+        ButtonType eventOneButton = new ButtonType(cardParentEvent[0]);
+        ButtonType eventTwoButton = new ButtonType(cardParentEvent[1]);
         ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
         alert.getButtonTypes().setAll(eventOneButton, eventTwoButton, cancelButton);
@@ -204,14 +215,15 @@ public class MainEditDisplayController implements Initializable {
             if (buttonType == eventOneButton) {
                 TreeItem<String> newCard = new TreeItem<>(card.getTitle());
                 eventOneItems.getChildren().add(newCard);
+                CardDatabase.addEventOneTreeCard(card);
             } else if (buttonType == eventTwoButton) {
                 TreeItem<String> newCard = new TreeItem<>(card.getTitle());
                 eventTwoItems.getChildren().add(newCard);
+                CardDatabase.addEventTwoTreeCard(card);
             }
         });
         eventOneItems.setExpanded(true);
         eventTwoItems.setExpanded(true);
-
     }
 
 

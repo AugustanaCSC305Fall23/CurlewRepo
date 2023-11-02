@@ -16,6 +16,9 @@ import java.util.List;
 public class CardDatabase {
     private static List<Card> allCards = new ArrayList<>();
 
+    private static List<Card> eventOneTreeCards = new ArrayList<>();
+    private static List<Card> eventTwoTreeCards = new ArrayList<>();
+
     public static void main(String[] args){
         addCardsFromCSVFile();
         setUniqueIDs();
@@ -79,6 +82,48 @@ public class CardDatabase {
             System.out.println(card.toString());
         }
     }
+
+    public static void addEventOneTreeCard(Card card){
+        eventOneTreeCards.add(card);
+    }
+
+    public static void addEventTwoTreeCard(Card card){
+        eventTwoTreeCards.add(card);
+    }
+
+    public static void deleteEventOneTreeCard(Card card){
+        eventOneTreeCards.remove(card);
+    }
+
+    public static void deleteEventTwoTreeCard(Card card){
+        eventTwoTreeCards.remove(card);
+    }
+
+    public static Card getCardFromTreeItem(String value, int treeNum) {
+        if (treeNum == 1){
+            for(int i = 0; i < eventOneTreeCards.size(); i++){
+                if (eventOneTreeCards.get(i).getTitle().equals(value)){
+                    return eventOneTreeCards.get(i);
+                }
+            }
+        } else{
+            for(int i = 0; i < eventTwoTreeCards.size(); i++){
+                if (eventTwoTreeCards.get(i).getTitle().equals(value)){
+                    return eventTwoTreeCards.get(i);
+                }
+            }
+        }
+        return eventOneTreeCards.get(0);
+    }
+
+    public static List<Card> getEventOneTreeCards(){
+        return eventOneTreeCards;
+    }
+
+    public static List<Card> getEventTwoTreeCards(){
+        return eventTwoTreeCards;
+    }
+
 
 }
 

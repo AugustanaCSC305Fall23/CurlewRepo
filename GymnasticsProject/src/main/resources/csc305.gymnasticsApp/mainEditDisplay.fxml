@@ -89,11 +89,6 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="testButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#testButtonHandle" prefHeight="60.0" prefWidth="126.0" style="-fx-background-color: Grey; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Test" textAlignment="CENTER">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Button>
                      </children>
                   </HBox>
                </children>
