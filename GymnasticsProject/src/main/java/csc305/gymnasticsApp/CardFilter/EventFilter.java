@@ -2,10 +2,17 @@ package csc305.gymnasticsApp.CardFilter;
 
 import csc305.gymnasticsApp.Card;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EventFilter implements CardFilter{
-    private String desiredEvent;
-    public EventFilter(String desiredEvent) {
-        this.desiredEvent = desiredEvent;
+    private List<String> desiredEvent;
+    public EventFilter() {
+        desiredEvent = new ArrayList<String>();
+    }
+
+    public void add(String event) {
+        desiredEvent.add(event);
     }
 
     @Override

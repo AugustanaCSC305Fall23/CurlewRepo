@@ -181,7 +181,7 @@ public class MainEditDisplayController implements Initializable {
 
     }
 
-    private CheckBox genderCheckBox;
+    private static CheckBox genderCheckBox;
     @FXML
     private CheckBox checkBoxFemale;
 
@@ -193,27 +193,50 @@ public class MainEditDisplayController implements Initializable {
 
     @FXML
     void setChangedTextBox(ActionEvent event) {
-        CheckBox selectedCheckBox = (CheckBox) event.getSource();
-        genderCheckBox = selectedCheckBox;
+        genderCheckBox = (CheckBox) event.getSource();
+        System.out.println(genderCheckBox.toString());
 
-        if (selectedCheckBox.isSelected()) {
+        /*if (selectedCheckBox.isSelected()) {
             checkBoxFemale.setSelected(false);
             checkBoxNeutral.setSelected(false);
             checkBoxMale.setSelected(false);
             selectedCheckBox.setSelected(true);
-            new GenderFilter(getGenderCheckBox());
-        }
+
+        }*/
+        new GenderFilter(getGenderCheckBox());
     }
 
     public String getGenderCheckBox() {
-        if(genderCheckBox == checkBoxFemale) {
-            return "F";
-        } else if (genderCheckBox == checkBoxNeutral) {
-            return "N";
-        } else {
+        System.out.println(genderCheckBox);
+        if(genderCheckBox.equals(checkBoxMale)) {
             return "M";
+        } else if (genderCheckBox.equals(checkBoxNeutral)) {
+            return "N";
+        } else if (genderCheckBox.equals(checkBoxFemale)){
+            return "F";
+        } else {
+            return null;
         }
     }
+
+
+    @FXML
+    private CheckBox allEventsCheckBox;
+    @FXML
+    private CheckBox beamCheckBox;
+    @FXML
+    private CheckBox floorEventCheckBox;
+    @FXML
+    private CheckBox strengthCheckBox;
+    @FXML
+    private CheckBox trampCheckBox;
+    @FXML
+    private CheckBox ubEventCheckBox;
+    @FXML
+    private CheckBox vaultCheckBox;
+
+
+
 
     @FXML
     void setFilterController(ActionEvent event) {
