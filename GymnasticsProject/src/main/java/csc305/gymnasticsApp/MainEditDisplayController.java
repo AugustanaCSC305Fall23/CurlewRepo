@@ -230,18 +230,18 @@ public class MainEditDisplayController implements Initializable {
     @FXML
     void setChangedTextBoxFemale(ActionEvent event) {
         gender = "F";
-        new GenderFilter(gender);
+        new GenderFilter().add(gender);
     }
 
     @FXML
     void setChangedTextBoxMale(ActionEvent event) {
         gender = "M";
-        new GenderFilter(gender);    }
+        new GenderFilter().add(gender);    }
 
     @FXML
     void setChangedTextBoxNeut(ActionEvent event) {
         gender = "N";
-        new GenderFilter(gender);    }
+        new GenderFilter().add(gender);    }
 
 
     @FXML
