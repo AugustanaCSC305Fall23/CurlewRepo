@@ -98,7 +98,7 @@
             </VBox>
          </children>
       </HBox>
-      <VBox fx:id="filterMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="filterMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="200.0" spacing="10.0">
                <children>
@@ -137,17 +137,17 @@
                                     </RadialGradient>
                                  </textFill>
                               </Label>
-                              <CheckBox fx:id="checkBoxMale" mnemonicParsing="false" onAction="#setChangedTextBox" prefHeight="26.0" prefWidth="154.0" text="Male">
+                              <CheckBox fx:id="checkBoxMale" mnemonicParsing="false" onAction="#setChangedTextBoxMale" prefHeight="26.0" prefWidth="154.0" text="Male">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox fx:id="checkBoxFemale" mnemonicParsing="false" onAction="#setChangedTextBox" prefHeight="26.0" prefWidth="154.0" text="Female">
+                              <CheckBox fx:id="checkBoxFemale" mnemonicParsing="false" onAction="#setChangedTextBoxFemale" prefHeight="26.0" prefWidth="154.0" text="Female">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox fx:id="checkBoxNeutral" mnemonicParsing="false" onAction="#setChangedTextBox" prefHeight="26.0" prefWidth="154.0" text="Neutral">
+                              <CheckBox fx:id="checkBoxNeutral" mnemonicParsing="false" onAction="#setChangedTextBoxNeut" prefHeight="26.0" prefWidth="154.0" text="Neutral">
                                  <font>
                                     <Font size="18.0" />
                                  </font>

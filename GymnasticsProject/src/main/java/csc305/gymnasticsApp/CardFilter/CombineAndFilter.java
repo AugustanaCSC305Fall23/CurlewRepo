@@ -12,10 +12,10 @@ public class CombineAndFilter implements CardFilter {
 
 
     public CombineAndFilter() {
-        String desiredGender = new MainEditDisplayController().getGenderCheckBox();
+
 
         List<String> filters = Arrays.asList(
-                new GenderFilter(desiredGender).getDesiredGender());
+                new GenderFilter(MainEditDisplayController.gender).getDesiredGender());
         System.out.println(filters);
     }
 

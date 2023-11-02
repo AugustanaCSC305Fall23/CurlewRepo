@@ -226,44 +226,22 @@ public class MainEditDisplayController implements Initializable {
         eventTwoItems.setExpanded(true);
     }
 
-
-    private static CheckBox genderCheckBox;
+    public static String gender;
     @FXML
-    private CheckBox checkBoxFemale;
-
-    @FXML
-    private CheckBox checkBoxMale;
-
-    @FXML
-    private CheckBox checkBoxNeutral;
-
-    @FXML
-    void setChangedTextBox(ActionEvent event) {
-        genderCheckBox = (CheckBox) event.getSource();
-        System.out.println(genderCheckBox.toString());
-
-        /*if (selectedCheckBox.isSelected()) {
-            checkBoxFemale.setSelected(false);
-            checkBoxNeutral.setSelected(false);
-            checkBoxMale.setSelected(false);
-            selectedCheckBox.setSelected(true);
-
-        }*/
-        new GenderFilter(getGenderCheckBox());
+    void setChangedTextBoxFemale(ActionEvent event) {
+        gender = "F";
+        new GenderFilter(gender);
     }
 
-    public String getGenderCheckBox() {
-        System.out.println(genderCheckBox);
-        if(genderCheckBox.equals(checkBoxMale)) {
-            return "M";
-        } else if (genderCheckBox.equals(checkBoxNeutral)) {
-            return "N";
-        } else if (genderCheckBox.equals(checkBoxFemale)){
-            return "F";
-        } else {
-            return null;
-        }
-    }
+    @FXML
+    void setChangedTextBoxMale(ActionEvent event) {
+        gender = "M";
+        new GenderFilter(gender);    }
+
+    @FXML
+    void setChangedTextBoxNeut(ActionEvent event) {
+        gender = "N";
+        new GenderFilter(gender);    }
 
 
     @FXML
