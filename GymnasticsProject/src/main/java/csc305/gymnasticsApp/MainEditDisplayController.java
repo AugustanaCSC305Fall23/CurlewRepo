@@ -8,12 +8,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 //import javax.swing.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -24,6 +27,8 @@ import java.util.List;
 public class MainEditDisplayController implements Initializable {
     @FXML
     private Button backButton;
+    @FXML
+    private Button testButton;
 
     @FXML
     private VBox filterMenu;
@@ -59,6 +64,11 @@ public class MainEditDisplayController implements Initializable {
 
     @FXML
     void backButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToLessonPlan();
+    }
+
+    @FXML
+    void testButtonHandle(ActionEvent event) {
+        addCardsToFlowPane();
     }
 
     @FXML
@@ -102,6 +112,31 @@ public class MainEditDisplayController implements Initializable {
         cardFlowPane.getChildren().addAll(visibleButtons);
         cardFlowPane.getChildren().addAll(hiddenButtons);
     }
+
+    private void addCardsToFlowPane(){
+        try {
+            cardFlowPane.getChildren().clear();
+            for(Card card : CardDatabase.getAllCards()) {
+                Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
+                        card.getPackFolder().toUpperCase() + "Pack/" +
+                        card.getImage()));
+                ImageView iv = new ImageView(image);
+                iv.setFitHeight(198.0);
+                iv.setFitWidth(198.0);
+                Button cardButton = new Button("", iv);
+                cardButton.setMinHeight(Double.MIN_VALUE);
+                cardButton.setMinWidth(Double.MIN_VALUE);
+                cardButton.setPrefHeight(200.0);
+                cardButton.setPrefWidth(200.0);
+                cardButton.setMnemonicParsing(false);
+                cardButton.setStyle("-fx-border-color: black;");
+                cardFlowPane.getChildren().add(cardButton);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
     private List<Button> getAllCardButtons() {

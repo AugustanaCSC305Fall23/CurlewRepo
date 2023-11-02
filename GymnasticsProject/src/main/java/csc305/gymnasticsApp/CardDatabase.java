@@ -58,6 +58,11 @@ public class CardDatabase {
 
     }
 
+    public static List<Card> getAllCards() {
+        addCardsFromCSVFile();
+        return allCards;
+    }
+
     private static void setUniqueIDs(){
         for(Card card : allCards){
             card.setUniqueID();
