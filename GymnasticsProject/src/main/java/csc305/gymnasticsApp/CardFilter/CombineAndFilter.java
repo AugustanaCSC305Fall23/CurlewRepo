@@ -13,7 +13,8 @@ public class CombineAndFilter implements CardFilter {
 
 
         List<String> filters = Arrays.asList(
-                new GenderFilter().getDesiredGenders().toString());
+                new GenderFilter().getDesiredGenders().toString(),
+                new EventFilter().getDesiredEvents().toString());
         System.out.println(filters);
     }
 

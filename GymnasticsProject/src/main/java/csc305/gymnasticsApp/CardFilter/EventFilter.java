@@ -6,18 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventFilter implements CardFilter{
-    private List<String> desiredEvent;
+    public static List<String> desiredEvents;
     public EventFilter() {
-        desiredEvent = new ArrayList<String>();
+        if (desiredEvents == null) {
+            desiredEvents = new ArrayList<String>();
+        }
     }
 
     public void add(String event) {
-        desiredEvent.add(event);
+        if (!(desiredEvents.contains(event))) {
+            desiredEvents.add(event);
+        } else {
+            desiredEvents.remove(event);
+        }
+    }
+
+    public List<String> getDesiredEvents(){
+        return desiredEvents;
     }
 
     @Override
     public boolean matches(Card canidateCard) {
-        return(canidateCard.getEvent().equals(desiredEvent));
+        return(canidateCard.getEvent().equals(desiredEvents));
 
     }
 }

@@ -1,6 +1,7 @@
 package csc305.gymnasticsApp;
 
 import csc305.gymnasticsApp.CardFilter.CombineAndFilter;
+import csc305.gymnasticsApp.CardFilter.EventFilter;
 import csc305.gymnasticsApp.CardFilter.GenderFilter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -226,6 +227,9 @@ public class MainEditDisplayController implements Initializable {
         eventTwoItems.setExpanded(true);
     }
 
+    //*************
+    //GENDER FILTER
+    //*************
     public static String gender;
     @FXML
     void setChangedTextBoxFemale(ActionEvent event) {
@@ -244,20 +248,43 @@ public class MainEditDisplayController implements Initializable {
         new GenderFilter().add(gender);    }
 
 
+    //************
+    //EVENT FILTER
+    //************
     @FXML
-    private CheckBox allEventsCheckBox;
+    void allCheckBox(ActionEvent event) {
+        new EventFilter().add("ALL");
+    }
+
     @FXML
-    private CheckBox beamCheckBox;
+    void beamCheckBox(ActionEvent event) {
+        new EventFilter().add("Beam");
+    }
+
     @FXML
-    private CheckBox floorEventCheckBox;
+    void floorCheckBox(ActionEvent event) {
+        new EventFilter().add("Floor");
+    }
+
     @FXML
-    private CheckBox strengthCheckBox;
+    void strengthCheckBox(ActionEvent event) {
+        new EventFilter().add("Strength");
+    }
+
     @FXML
-    private CheckBox trampCheckBox;
+    void trampCheckBox(ActionEvent event) {
+        new EventFilter().add("Tramp");
+    }
+
     @FXML
-    private CheckBox ubEventCheckBox;
+    void unevenBarsCheckBox(ActionEvent event) {
+        new EventFilter().add("Uneven Bars");
+    }
+
     @FXML
-    private CheckBox vaultCheckBox;
+    void vaultCheckBox(ActionEvent event) {
+        new EventFilter().add("Vault");
+    }
 
 
 
