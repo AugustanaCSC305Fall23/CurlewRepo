@@ -10,11 +10,15 @@ import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class CardDatabase {
     private static List<Card> allCards = new ArrayList<>();
+
+    private static Map<String, Card> IDToCard= new HashMap<String, Card>;
 
     private static List<Card> eventOneTreeCards = new ArrayList<>();
     private static List<Card> eventTwoTreeCards = new ArrayList<>();
