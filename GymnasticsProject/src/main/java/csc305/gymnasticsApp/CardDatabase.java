@@ -18,7 +18,7 @@ import java.util.Map;
 public class CardDatabase {
     private static List<Card> allCards = new ArrayList<>();
 
-    private static Map<String, Card> IDToCard= new HashMap<String, Card>;
+    private static Map<String, Card> IDToCard= new HashMap<String, Card>();
 
     private static List<Card> eventOneTreeCards = new ArrayList<>();
     private static List<Card> eventTwoTreeCards = new ArrayList<>();
@@ -26,6 +26,7 @@ public class CardDatabase {
     public static void main(String[] args){
         addCardsFromCSVFile();
         setUniqueIDs();
+        addCardsToMap();
         printAllCards(allCards);
         CardFilter male = new CodeFilter("S1");
         List<Card> filteredCards = filter(male);
@@ -35,6 +36,11 @@ public class CardDatabase {
 
     }
 
+    private static void addCardsToMap(){
+        for(Card card:allCards){
+            IDToCard.put(card.getUniqueID(),card);
+        }
+    }
     public static List<Card> filter(CardFilter specificFilter) {
         List<Card> filteredCards = new ArrayList<>();
         for(Card card : allCards){
@@ -67,6 +73,8 @@ public class CardDatabase {
 
     public static List<Card> getAllCards() {
         addCardsFromCSVFile();
+        setUniqueIDs();
+        addCardsToMap();
         return allCards;
     }
 
@@ -128,6 +136,10 @@ public class CardDatabase {
         return eventTwoTreeCards;
     }
 
+    public static Card getCardByID(String id){
+        Card card = IDToCard.get(id);
+        return card;
+    }
 
 }
 
