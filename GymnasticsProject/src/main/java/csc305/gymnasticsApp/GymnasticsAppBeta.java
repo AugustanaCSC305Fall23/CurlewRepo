@@ -11,11 +11,24 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * The GymnasticsAppBeta class is the main application for the Gymnastics App.
+ * It extends the JavaFX Application class and provides functionality to switch between
+ * different views and handle file operations.
+ */
 public class GymnasticsAppBeta extends Application {
-
+    // Static variables for the selected file, scene, and stage.
     private static File selectedFile = null;
     private static Scene scene;
     private static Stage stage;
+
+    /**
+     *
+     * @param primaryStage - The primary stage for this application, onto which
+     * the application scene can be set.
+     * Applications may create other stages, if needed, but they will not be
+     * primary stages.
+     */
     @Override
     public void start(Stage primaryStage){
         stage = primaryStage;
@@ -23,8 +36,8 @@ public class GymnasticsAppBeta extends Application {
         stage.setScene(scene);
         stage.setResizable(true);
 
+        // Handles window close event by toggling maximized state.
         stage.setOnCloseRequest(event -> {
-
             if(stage.isMaximized()) {
                 stage.setMaximized(false);
             } else {
@@ -37,6 +50,10 @@ public class GymnasticsAppBeta extends Application {
 
     }
 
+    /**
+     * @param fxmlFileName - The name of the FXML file
+     * Switches the application's view to the selected FXML view
+     */
     private static void switchToView(String fxmlFileName) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(GymnasticsAppBeta.class.getResource(fxmlFileName));
@@ -47,19 +64,35 @@ public class GymnasticsAppBeta extends Application {
         }
     }
 
+    /**
+     * Switches the view to the main edit display
+     */
     public static void switchToMainEditDisplay(){switchToView("/csc305.gymnasticsApp/mainEditDisplay.fxml");}
 
+    /**
+     * Switches the view to the home page display
+     */
     public static void switchToHomePage(){
         switchToView("/csc305.gymnasticsApp/homePage.fxml");
     }
 
+    /**
+     * Switches the view to the lesson plan display.
+     */
     public static void switchToLessonPlan(){
         switchToView("/csc305.gymnasticsApp/lessonPlan.fxml");
     }
 
+    /**
+     * Switches the view to the preview page display.
+     */
     public static void switchToPreviewPage(){
         switchToView("/csc305.gymnasticsApp/previewPage.fxml");
     }
+
+    /**
+     * Opens a file chooser dialog for selecting the Gymnastics Picture files
+     */
     public static void callFileChooser() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
@@ -71,6 +104,10 @@ public class GymnasticsAppBeta extends Application {
         }
     }
 
+    /**
+     * Retrieves the currently selected file
+     * @return - The selected file, or null if no file is selected is return.
+     */
     public static File getFile(){
         return selectedFile;
     }

@@ -25,7 +25,9 @@ import java.util.ResourceBundle;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * The MainEditDisplayController class is responsible for handling user interactions and events on the main edit display page of the application.
+ */
 public class MainEditDisplayController implements Initializable {
     @FXML
     private Button backButton;
@@ -65,32 +67,59 @@ public class MainEditDisplayController implements Initializable {
     public String[] cardParentEvent = {"Event1", "Event2"};
 
 
-
+    /**
+     * Handles the action when the "Back" button is clicked, allowing the user to return to the lesson plan page.
+     *
+     * @param event - The ActionEvent triggered by clicking the "Back" button.
+     */
     @FXML
     void backButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToLessonPlan();
     }
 
-
+    /**
+     * Handles the action when the "Preview" button is clicked, allowing the user to preview the lesson.
+     *
+     * @param event - The ActionEvent triggered by clicking the "Preview" button.
+     */
     @FXML
     void previewButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToPreviewPage();
     }
 
+    /**
+     * Handles the action when the "Go" button is clicked to filter cards based on the search bar input.
+     *
+     * @param event - The ActionEvent triggered by clicking the "Go" button.
+     */
     @FXML
     void goButtonHandle(ActionEvent event) {
         filterCards(drillSearchBar.getText().toLowerCase());
     }
 
+    /**
+     * Handles the action when the filter menu is opened.
+     *
+     * @param event - The ActionEvent triggered when opening the filter menu.
+     */
     @FXML
     void openFilterMenu(ActionEvent event){
         filterMenu.setVisible(true);
     }
 
+    /**
+     * Handles the action when the filter menu is closed.
+     *
+     * @param event - The ActionEvent triggered when closing the filter menu.
+     */
     @FXML
     void closeFilterMenu(ActionEvent event){
         filterMenu.setVisible(false);
     }
 
-
+    /**
+     * Filters the displayed cards based on the input text in the search bar.
+     *
+     * @param inputText - The text to filter cards by.
+     */
     private void filterCards(String inputText) {
         inputText = inputText.replaceAll("\\s+", "");
         List<Button> cardButtons = getAllCardButtons();
@@ -113,6 +142,9 @@ public class MainEditDisplayController implements Initializable {
         cardFlowPane.getChildren().addAll(hiddenButtons);
     }
 
+    /**
+     * Adds cards to the FlowPane for display.
+     */
     private void addCardsToFlowPane(){
         try {
             cardFlowPane.getChildren().clear();
@@ -139,7 +171,11 @@ public class MainEditDisplayController implements Initializable {
     }
 
 
-
+    /**
+     * Retrieves all card buttons from the FlowPane.
+     *
+     * @return A list of all card buttons in the FlowPane.
+     */
     private List<Button> getAllCardButtons() {
         List<Button> cardButtons = new ArrayList<>();
         for (int i = 0; i < cardFlowPane.getChildren().size(); i++) {
@@ -150,8 +186,12 @@ public class MainEditDisplayController implements Initializable {
         return cardButtons;
     }
 
-
-    // Initializes the treemap on the mainEditDisplay screen
+    /**
+     * Initializes the tree view on the main edit display screen.
+     *
+     * @param arg0      The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param arg1      The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1){
         TreeItem<String> rootItem = new TreeItem<>("Root");

@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class PreviewPageController {
@@ -54,15 +56,13 @@ public class PreviewPageController {
 
     }
 
-    /*
+
     @FXML
     void saveController(ActionEvent event) {
-        java.io.File file = GymnasticsAppBeta.getFile();
-        if(file != null) {
-            try{
+        List<Card> cardList = new ArrayList<Card>();
+        cardList.addAll(CardDatabase.getEventOneTreeCards());
+        cardList.addAll(CardDatabase.getEventTwoTreeCards());
 
-
-        }
     }
-    */
+
 }
