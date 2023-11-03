@@ -110,7 +110,8 @@ public class Card {
         return uniqueID;
     }
     public void setUniqueID() {
-        this.uniqueID = packFolder + "." + code + "." + event + "." + gender;
+        this.uniqueID = packFolder + "." + code + "." + event + "." + gender + "."
+                + title + "." + category + "." + level + "." + equipment + "." + keywords;
     }
 
     @Override

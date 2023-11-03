@@ -27,7 +27,13 @@ public class EventFilter implements CardFilter{
 
     @Override
     public boolean matches(Card canidateCard) {
-        return(canidateCard.getEvent().equals(desiredEvents));
+        boolean match = false;
+        for(String filter:desiredEvents){
+            if(filter.equalsIgnoreCase(canidateCard.getEvent())){
+                match = true;
+            }
+        }
+        return match;
 
     }
 }
