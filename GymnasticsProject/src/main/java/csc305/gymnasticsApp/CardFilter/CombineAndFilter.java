@@ -23,7 +23,8 @@ public class CombineAndFilter implements CardFilter {
         // Creates a list of criteria from GenderFilter and EventFilter
         List<String> filters = Arrays.asList(
                 new GenderFilter().getDesiredGenders().toString(),
-                new EventFilter().getDesiredEvents().toString());
+                new EventFilter().getDesiredEvents().toString(),
+                new ModelGenderFilter().getSelectedModelGender().toString());
         System.out.println(filters);
     }
 

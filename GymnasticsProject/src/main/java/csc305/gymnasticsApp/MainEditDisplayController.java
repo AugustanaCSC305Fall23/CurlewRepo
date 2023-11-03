@@ -3,23 +3,21 @@ package csc305.gymnasticsApp;
 import csc305.gymnasticsApp.CardFilter.CombineAndFilter;
 import csc305.gymnasticsApp.CardFilter.EventFilter;
 import csc305.gymnasticsApp.CardFilter.GenderFilter;
+import csc305.gymnasticsApp.CardFilter.ModelGenderFilter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 //import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
-import java.sql.Array;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
@@ -152,17 +150,7 @@ public class MainEditDisplayController implements Initializable {
                 Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
-                ImageView iv = new ImageView(image);
-                iv.setFitHeight(198.0);
-                iv.setFitWidth(198.0);
-                Button cardButton = new Button("", iv);
-                cardButton.setMinHeight(Double.MIN_VALUE);
-                cardButton.setMinWidth(Double.MIN_VALUE);
-                cardButton.setPrefHeight(200.0);
-                cardButton.setPrefWidth(200.0);
-                cardButton.setMnemonicParsing(false);
-                cardButton.setStyle("-fx-border-color: black;");
-                cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton, card));
+                Button cardButton = createCardButton(card, image);
                 cardFlowPane.getChildren().add(cardButton);
             }
         } catch (FileNotFoundException e) {
@@ -170,6 +158,21 @@ public class MainEditDisplayController implements Initializable {
         }
     }
 
+    private Button createCardButton(Card card, Image image) {
+        ImageView iv = new ImageView(image);
+        iv.setFitHeight(198.0);
+        iv.setFitWidth(198.0);
+        Button cardButton = new Button("", iv);
+        cardButton.setMinHeight(Double.MIN_VALUE);
+        cardButton.setMinWidth(Double.MIN_VALUE);
+        cardButton.setPrefHeight(200.0);
+        cardButton.setPrefWidth(200.0);
+        cardButton.setMnemonicParsing(false);
+        cardButton.setStyle("-fx-border-color: black;");
+        cardButton.setId(card.getUniqueID());
+        cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton, card));
+        return cardButton;
+    }
 
     /**
      * Retrieves all card buttons from the FlowPane.
@@ -325,6 +328,23 @@ public class MainEditDisplayController implements Initializable {
     void vaultCheckBox(ActionEvent event) {
         new EventFilter().add("Vault");
     }
+
+
+    //****************
+    //MODEL SEX FILTER
+    //****************
+
+    public static String modelGender;
+    @FXML
+    void modelCheckBoxFemale(ActionEvent event) {
+        new ModelGenderFilter().add("F");
+    }
+
+    @FXML
+    void modelCheckBoxMale(ActionEvent event) {
+        new ModelGenderFilter().add("M");
+    }
+
 
 
 

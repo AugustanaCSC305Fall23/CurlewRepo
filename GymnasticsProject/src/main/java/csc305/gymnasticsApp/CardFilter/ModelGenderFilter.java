@@ -1,19 +1,31 @@
 package csc305.gymnasticsApp.CardFilter;
 
 import csc305.gymnasticsApp.Card;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * The ModelGenderFilter class is an implementation of the CardFilter interface
  * designed to filter Card objects based on a desired model gender.
  */
+
 public class ModelGenderFilter implements CardFilter {
-    private String desiredModelGender;
-    /**
-     * Constructs a new ModelGenderFilter with the desired model gender to match.
-     *
-     * @param desiredModelGender The model gender that Card objects should match.
-     */
-    public ModelGenderFilter(String desiredModelGender) {
-        this.desiredModelGender = desiredModelGender;
+    public static List<String> selectedModelGender;
+    public ModelGenderFilter() {
+        if (selectedModelGender == null) {
+            selectedModelGender = new ArrayList<String>();
+        }
+    }
+
+    public void add(String desiredModelGender) {
+        if (!(selectedModelGender.contains(desiredModelGender))) {
+            selectedModelGender.add(desiredModelGender);
+        } else {
+            selectedModelGender.remove(desiredModelGender);
+        }
+    }
+
+    public List<String> getSelectedModelGender() {
+        return selectedModelGender;
     }
     /**
      * Determines whether a given Card matches the desired model gender.
@@ -23,7 +35,7 @@ public class ModelGenderFilter implements CardFilter {
      */
     @Override
     public boolean matches(Card canidateCard) {
-        return(canidateCard.getModelGender().equalsIgnoreCase(desiredModelGender));
+        return(canidateCard.getModelGender().equalsIgnoreCase(selectedModelGender.toString()));
 
     }
 }
