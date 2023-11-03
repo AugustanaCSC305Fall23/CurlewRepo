@@ -239,7 +239,8 @@ public class Card {
      * Set the unique ID of the card based on pakc folder, code, event, and gender.
      */
     public void setUniqueID() {
-        this.uniqueID = packFolder + "." + code + "." + event + "." + gender;
+        this.uniqueID = packFolder + "." + code + "." + event + "." + gender + "."
+                + title + "." + category + "." + level + "." + equipment + "." + keywords;
     }
 
     /**

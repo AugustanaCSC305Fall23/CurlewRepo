@@ -1,9 +1,6 @@
 package csc305.gymnasticsApp;
 
-import csc305.gymnasticsApp.CardFilter.CombineAndFilter;
-import csc305.gymnasticsApp.CardFilter.EventFilter;
-import csc305.gymnasticsApp.CardFilter.GenderFilter;
-import csc305.gymnasticsApp.CardFilter.ModelGenderFilter;
+import csc305.gymnasticsApp.CardFilter.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -62,6 +59,9 @@ public class MainEditDisplayController implements Initializable {
     @FXML
     public static TreeItem<String> eventTwoItems = new TreeItem<>("Event 2");
 
+    private static List<Button> currentFilteredCards = new ArrayList<>();
+    private static List<Button> allCards = new ArrayList<>();
+
     public String[] cardParentEvent = {"Event1", "Event2"};
 
 
@@ -90,7 +90,7 @@ public class MainEditDisplayController implements Initializable {
      */
     @FXML
     void goButtonHandle(ActionEvent event) {
-        filterCards(drillSearchBar.getText().toLowerCase());
+        filterCardsFromSearch(drillSearchBar.getText().toLowerCase());
     }
 
     /**
@@ -113,6 +113,7 @@ public class MainEditDisplayController implements Initializable {
         filterMenu.setVisible(false);
     }
 
+
     /**
      * Filters the displayed cards based on the input text in the search bar.
      *
@@ -121,10 +122,13 @@ public class MainEditDisplayController implements Initializable {
     private void filterCards(String inputText) {
         inputText = inputText.replaceAll("\\s+", "");
         List<Button> cardButtons = getAllCardButtons();
+    }
+
+    private void filterCardsFromSearch(String inputText) {
         List<Button> visibleButtons = new ArrayList<>();
         List<Button> hiddenButtons = new ArrayList<>();
 
-        for (Button cardButton : cardButtons) {
+        for (Button cardButton : allCards) {
             String buttonText = cardButton.getId().toLowerCase();
             if (buttonText.contains(inputText)) {
                 visibleButtons.add(cardButton);
@@ -138,6 +142,26 @@ public class MainEditDisplayController implements Initializable {
         cardFlowPane.getChildren().clear();
         cardFlowPane.getChildren().addAll(visibleButtons);
         cardFlowPane.getChildren().addAll(hiddenButtons);
+        currentFilteredCards.addAll(visibleButtons);
+    }
+
+    //Need to reset currentFilteredCards at some point
+    public void filterCardsByCheckbox(CardFilter filter) {
+        List<Button> visibleButtons = new ArrayList<>();
+        List<Button> hiddenButtons = new ArrayList<>();
+        for (Button cardButton : currentFilteredCards) {
+            if (filter.matches(CardDatabase.getCardByID(cardButton.getId()))) {
+                visibleButtons.add(cardButton);
+                cardButton.setVisible(true);
+            } else {
+                hiddenButtons.add(cardButton);
+                cardButton.setVisible(false);
+            }
+        }
+        cardFlowPane.getChildren().clear();
+        cardFlowPane.getChildren().addAll(visibleButtons);
+        cardFlowPane.getChildren().addAll(hiddenButtons);
+        currentFilteredCards.addAll(visibleButtons);
     }
 
     /**
@@ -199,10 +223,10 @@ public class MainEditDisplayController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1){
         TreeItem<String> rootItem = new TreeItem<>("Root");
         rootItem.getChildren().addAll(eventOneItems, eventTwoItems);
-
         treeView.setShowRoot(false);
         treeView.setRoot(rootItem);
         addCardsToFlowPane();
+        allCards = getAllCardButtons();
     }
 
 
