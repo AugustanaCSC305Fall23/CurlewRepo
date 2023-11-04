@@ -24,6 +24,9 @@ import java.util.List;
  * The MainEditDisplayController class is responsible for handling user interactions and events on the main edit display page of the application.
  */
 public class MainEditDisplayController implements Initializable {
+
+    @FXML
+    private TextField courseTitle;
     @FXML
     private Button backButton;
     @FXML
@@ -80,7 +83,18 @@ public class MainEditDisplayController implements Initializable {
      * @param event - The ActionEvent triggered by clicking the "Preview" button.
      */
     @FXML
-    void previewButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToPreviewPage();
+    void previewButtonHandle(ActionEvent event) {
+        Course.setCourseTitle(courseTitle.getText());
+        if(!(CardDatabase.getEventOneTreeCards().isEmpty())) {
+            Course.setEventOneCards(CardDatabase.getEventOneTreeCards());
+        }
+        if(!(CardDatabase.getEventTwoTreeCards().isEmpty())) {
+            Course.setEventTwoCards(CardDatabase.getEventTwoTreeCards());
+        }
+        Course.setEventOneName("Event 1 Test");
+        Course.setEventTwoName("Event 2 Test");
+        GymnasticsAppBeta.switchToPreviewPage();
+        Course.printEverything();
     }
 
     /**
@@ -125,6 +139,7 @@ public class MainEditDisplayController implements Initializable {
     }
 
     private void filterCardsFromSearch(String inputText) {
+        currentFilteredCards.clear();
         List<Button> visibleButtons = new ArrayList<>();
         List<Button> hiddenButtons = new ArrayList<>();
 
@@ -138,10 +153,8 @@ public class MainEditDisplayController implements Initializable {
                 cardButton.setVisible(false);
             }
         }
-
-        cardFlowPane.getChildren().clear();
+        cardFlowPane.getChildren().clear(); // Clear the cardFlowPane before adding visible buttons
         cardFlowPane.getChildren().addAll(visibleButtons);
-        cardFlowPane.getChildren().addAll(hiddenButtons);
         currentFilteredCards.addAll(visibleButtons);
     }
 
@@ -149,7 +162,7 @@ public class MainEditDisplayController implements Initializable {
     public void filterCardsByCheckbox(CardFilter filter) {
         List<Button> visibleButtons = new ArrayList<>();
         List<Button> hiddenButtons = new ArrayList<>();
-        for (Button cardButton : currentFilteredCards) {
+        for (Button cardButton : allCards) {
             if (filter.matches(CardDatabase.getCardByID(cardButton.getId()))) {
                 visibleButtons.add(cardButton);
                 cardButton.setVisible(true);
@@ -158,9 +171,10 @@ public class MainEditDisplayController implements Initializable {
                 cardButton.setVisible(false);
             }
         }
+
         cardFlowPane.getChildren().clear();
         cardFlowPane.getChildren().addAll(visibleButtons);
-        cardFlowPane.getChildren().addAll(hiddenButtons);
+        currentFilteredCards.clear();
         currentFilteredCards.addAll(visibleButtons);
     }
 
@@ -170,12 +184,14 @@ public class MainEditDisplayController implements Initializable {
     private void addCardsToFlowPane(){
         try {
             cardFlowPane.getChildren().clear();
+            allCards.clear();
             for(Card card : CardDatabase.getAllCards()) {
                 Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
                 Button cardButton = createCardButton(card, image);
                 cardFlowPane.getChildren().add(cardButton);
+                allCards.add(cardButton);
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
