@@ -33,7 +33,21 @@ public class Course {
         eventTwoName = name;
     }
     public static void save(File saveFile) {
-
+    }
+    public static String getCourseTitle(){
+        return courseTitle;
+    }
+    public static String getEventOneName(){
+        return eventOneName;
+    }
+    public static String getEventTwoName(){
+        return eventTwoName;
+    }
+    public static List<Card> getEventOneCards(){
+        return eventOneCards;
+    }
+    public static List<Card> getEventTwoCards(){
+        return eventTwoCards;
     }
 
     public static void printEverything(){
