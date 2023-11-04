@@ -20,16 +20,19 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.MainEditDisplayController">
    <children>
-      <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #292A2D;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" spacing="10.0" style="-fx-background-color: #F5FFFA;" HBox.hgrow="ALWAYS">
+            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" spacing="10.0" style="-fx-background-color: #292A2D;" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="444.0" spacing="20.0" style="-fx-background-color: #F5FFFA;" VBox.vgrow="NEVER">
+                  <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="444.0" spacing="20.0" style="-fx-background-color: #292A2D;" VBox.vgrow="NEVER">
                      <children>
-                        <Button fx:id="filterButton" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openFilterMenu" prefHeight="37.0" prefWidth="70.0" text="Filters" HBox.hgrow="ALWAYS">
+                        <Button fx:id="filterButton" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openFilterMenu" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: FE8078;" text="Filters" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets top="2.0" />
+                           </HBox.margin>
                         </Button>
                         <TextField fx:id="drillSearchBar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="162.4" promptText="Search Cards" style="-fx-prompt-text-fill: white; -fx-background-color: #D3D3D3; -fx-background-radius: 10px;" HBox.hgrow="ALWAYS">
                            <font>
@@ -51,7 +54,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                      <content>
-                        <FlowPane fx:id="cardFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="378.0" style="-fx-background-color: #F5FFFA;" vgap="10.0">
+                        <FlowPane fx:id="cardFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="378.0" style="-fx-background-color: #121212;" vgap="10.0">
                            <rotationAxis>
                               <Point3D />
                            </rotationAxis>
@@ -66,30 +69,33 @@
                   <Insets />
                </HBox.margin>
             </VBox>
-            <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="450.0" spacing="30.0" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="450.0" spacing="25.0" style="-fx-background-color: #292A2D;" HBox.hgrow="ALWAYS">
                <children>
                   <TextField alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Outline Title" style="-fx-prompt-text-fill: white; -fx-background-color: grey; -fx-background-radius: 10px; -fx-text-fill: white;" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
                   <TreeView fx:id="treeView" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="387.0" prefWidth="410.0" style="-fx-border-color: black; -fx-font-size: 28px;" VBox.vgrow="ALWAYS" />
-                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="422.0" spacing="35.0" VBox.vgrow="ALWAYS">
+                  <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="422.0" spacing="50.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="60.0" prefWidth="126.0" style="-fx-background-color: Grey; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER">
+                        <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="65.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-text-fill: #292A2D; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="previewButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previewButtonHandle" prefHeight="60.0" prefWidth="126.0" style="-fx-background-color: Grey; -fx-text-fill: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview" textAlignment="CENTER" wrapText="true">
+                        <Button fx:id="previewButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previewButtonHandle" prefHeight="65.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-text-fill: #292A2D; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
                   </HBox>
                </children>
                <HBox.margin>
@@ -98,7 +104,7 @@
             </VBox>
          </children>
       </HBox>
-      <VBox fx:id="filterMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="filterMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #933547;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="200.0" spacing="10.0">
                <children>
@@ -110,32 +116,16 @@
                   </Button>
                </children>
             </HBox>
-            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="250.0" style="-fx-background-color: white;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="250.0" style="-fx-background-color: #933547;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                <content>
-                  <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="5.0" style="-fx-border-width: 2; -fx-background-color: white;">
+                  <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="5.0" style="-fx-border-width: 2; -fx-background-color: #933547;">
                      <children>
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-font-weight: bold;" text="Gender" textAlignment="CENTER">
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-font-weight: bold;" text="Gender" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
-                                 <textFill>
-                                    <RadialGradient centerX="0.5110192837465565" centerY="0.516548463356974" radius="0.6514285714285715">
-                                       <stops>
-                                          <Stop>
-                                             <color>
-                                                <Color red="0.1568627506494522" green="0.45098039507865906" blue="1.0" />
-                                             </color>
-                                          </Stop>
-                                          <Stop offset="1.0">
-                                             <color>
-                                                <Color red="0.37037035822868347" green="0.7166666388511658" blue="1.0" />
-                                             </color>
-                                          </Stop>
-                                       </stops>
-                                    </RadialGradient>
-                                 </textFill>
                               </Label>
                               <CheckBox fx:id="checkBoxMale" mnemonicParsing="false" onAction="#setChangedTextBoxMale" prefHeight="26.0" prefWidth="154.0" text="Male">
                                  <font>
@@ -156,23 +146,7 @@
                         </VBox>
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" text="Event" textAlignment="CENTER">
-                                 <textFill>
-                                    <RadialGradient centerX="0.5110192837465565" centerY="0.516548463356974" radius="0.6514285714285715">
-                                       <stops>
-                                          <Stop>
-                                             <color>
-                                                <Color red="0.1568627506494522" green="0.45098039507865906" blue="1.0" />
-                                             </color>
-                                          </Stop>
-                                          <Stop offset="1.0">
-                                             <color>
-                                                <Color red="0.37037035822868347" green="0.7166666388511658" blue="1.0" />
-                                             </color>
-                                          </Stop>
-                                       </stops>
-                                    </RadialGradient>
-                                 </textFill>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="Event" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -216,9 +190,8 @@
                         </VBox>
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-<<<<<<< HEAD
                               <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="All">
-=======
+
                               <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Model Sex" textAlignment="CENTER">
                                  <textFill>
                                     <RadialGradient centerX="0.5110192837465565" centerY="0.516548463356974" radius="0.6514285714285715">
@@ -240,8 +213,8 @@
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
+                              </CheckBox>
                               <CheckBox mnemonicParsing="false" onAction="#modelCheckBoxMale" prefHeight="26.0" prefWidth="154.0" text="Male">
->>>>>>> 57f923f206a2d059777da7f9484a163e507d763b
                                  <font>
                                     <Font size="18.0" />
                                  </font>
