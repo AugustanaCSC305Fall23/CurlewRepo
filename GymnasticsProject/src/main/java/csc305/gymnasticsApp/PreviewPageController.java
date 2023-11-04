@@ -68,8 +68,8 @@ public class PreviewPageController {
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
                 ImageView imageView = new ImageView(image);
-                imageView.setFitWidth(100); // Set the width of the image view
-                imageView.setFitHeight(100); // Set the height of the image view
+                imageView.setFitWidth(250); // Set the width of the image view
+                imageView.setFitHeight(200); // Set the height of the image view
                 eventOneCardHBox.getChildren().add(imageView);
             }
             for (Card card : Course.getEventTwoCards()) {
@@ -77,8 +77,8 @@ public class PreviewPageController {
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
                 ImageView imageView = new ImageView(image);
-                imageView.setFitWidth(100); // Set the width of the image view
-                imageView.setFitHeight(100); // Set the height of the image view
+                imageView.setFitWidth(250); // Set the width of the image view
+                imageView.setFitHeight(200); // Set the height of the image view
                 eventTwoCardHBox1.getChildren().add(imageView);
             }
         }catch (FileNotFoundException e) {

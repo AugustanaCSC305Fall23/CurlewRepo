@@ -10,28 +10,35 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #292A2D;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.PreviewPageController">
    <children>
-      <AnchorPane fx:id="eventPreviewAnchorPane" layoutX="239.0" layoutY="100.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-background-color: white;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="100.0">
+      <AnchorPane fx:id="eventPreviewAnchorPane" layoutX="186.0" layoutY="30.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="700.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-background-color: white;" AnchorPane.bottomAnchor="39.60000000000002" AnchorPane.leftAnchor="186.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="30.0">
          <children>
-            <TextField fx:id="coursePlanTitle" alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="18.0" prefWidth="199.0" style="-fx-text-fill: white; -fx-background-color: grey; -fx-background-radius: 10px;" text="Change Title">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="eventOneTitle" alignment="CENTER" layoutX="45.0" layoutY="80.0" prefHeight="26.0" prefWidth="154.0" style="-fx-text-fill: white; -fx-background-color: #D3D3D3; -fx-background-radius: 10px;" text="Event">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="eventTwoTitle" alignment="CENTER" layoutX="45.0" layoutY="226.0" prefHeight="26.0" prefWidth="154.0" style="-fx-text-fill: white; -fx-background-color: #D3D3D3; -fx-background-radius: 10px;" text="Change Title">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </TextField>
-            <HBox fx:id="eventOneCardHBox" layoutX="46.0" layoutY="116.0" prefHeight="100.0" prefWidth="522.0" style="-fx-background-color: grey;" />
-            <HBox fx:id="eventTwoCardHBox1" layoutX="46.0" layoutY="274.0" prefHeight="100.0" prefWidth="522.0" style="-fx-background-color: grey;" />
+            <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="700.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TextField fx:id="coursePlanTitle" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;" text="Change Title" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="eventTwoTitle" prefHeight="30.0" prefWidth="200.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;" text="Event Two Title">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </TextField>
+                  <HBox fx:id="eventOneCardHBox" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="600.0" spacing="10.0" style="-fx-background-color: #D3D3D3;" VBox.vgrow="ALWAYS" />
+                  <TextField fx:id="eventOneTitle" prefHeight="30.0" prefWidth="200.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;" text="Event One Title">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </TextField>
+                  <HBox fx:id="eventTwoCardHBox1" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="600.0" spacing="10.0" style="-fx-background-color: #D3D3D3;" VBox.vgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+               </padding>
+            </VBox>
          </children>
       </AnchorPane>
-      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="184.0" spacing="30.0" style="-fx-border-color: black; -fx-border-width: 0 2 0 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="184.0" spacing="30.0" style="-fx-border-color: black; -fx-border-width: 0 2 0 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="printButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#printButtonController" prefHeight="70.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-font-family: Inter;" text="Print" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                <font>
