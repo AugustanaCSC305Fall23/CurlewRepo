@@ -118,22 +118,22 @@
       </AnchorPane>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="184.0" spacing="30.0" style="-fx-border-color: black; -fx-border-width: 0 2 0 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="printButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#printButtonController" prefHeight="70.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-font-family: Inter;" text="Print" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+            <Button fx:id="printButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#printButtonController" prefHeight="70.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold;" text="Print" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="70.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-font-family: Inter;" text="Home" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="70.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold;" text="Home" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonController" prefHeight="70.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-font-family: Inter;" text="Back" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+            <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonController" prefHeight="70.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold;" text="Back" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="saveButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-font-family: Inter;" text="Save" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+            <Button fx:id="saveButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold;" text="Save" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
