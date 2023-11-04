@@ -71,7 +71,7 @@
             </VBox>
             <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="450.0" spacing="25.0" style="-fx-background-color: #292A2D;" HBox.hgrow="ALWAYS">
                <children>
-                  <TextField alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Outline Title" style="-fx-prompt-text-fill: white; -fx-background-color: grey; -fx-background-radius: 10px; -fx-text-fill: white;" VBox.vgrow="ALWAYS">
+                  <TextField fx:id="courseTitle" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Plan Title" style="-fx-prompt-text-fill: white; -fx-background-color: grey; -fx-background-radius: 10px; -fx-text-fill: white;" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -191,7 +191,6 @@
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
                               <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="All">
-
                               <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Model Sex" textAlignment="CENTER">
                                  <textFill>
                                     <RadialGradient centerX="0.5110192837465565" centerY="0.516548463356974" radius="0.6514285714285715">
