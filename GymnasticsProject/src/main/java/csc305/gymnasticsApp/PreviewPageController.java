@@ -2,8 +2,7 @@ package csc305.gymnasticsApp;
 
 
 import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
-import javafx.print.PrinterJob;
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -13,6 +12,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
+import javafx.print.PageLayout;
+import javafx.print.Printer;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -21,6 +25,8 @@ import java.util.Optional;
 
 public class PreviewPageController {
 
+    @FXML
+    private AnchorPane eventPreviewAnchorPane;
     @FXML
     private Button backButton;
 
@@ -112,7 +118,8 @@ public class PreviewPageController {
 
     @FXML
     void printButtonController(ActionEvent event) {
-
+        Node lessonPlanNode = eventPreviewAnchorPane;
+        PrintLessonPlan.printPlan(lessonPlanNode, eventPreviewAnchorPane);
     }
 
 

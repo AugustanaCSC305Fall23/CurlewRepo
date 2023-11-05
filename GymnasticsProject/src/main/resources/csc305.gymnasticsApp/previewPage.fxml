@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #292A2D;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.PreviewPageController">
    <children>
-      <AnchorPane fx:id="eventPreviewAnchorPane" layoutX="186.0" layoutY="30.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="700.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-background-color: white;" AnchorPane.bottomAnchor="39.60000000000002" AnchorPane.leftAnchor="186.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="30.0">
+      <AnchorPane fx:id="eventPreviewAnchorPane" layoutX="186.0" layoutY="30.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="700.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-background-color: orange;" AnchorPane.bottomAnchor="39.60000000000002" AnchorPane.leftAnchor="186.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="30.0">
          <children>
             <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="700.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
