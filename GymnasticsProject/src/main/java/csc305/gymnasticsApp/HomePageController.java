@@ -22,7 +22,7 @@ public class HomePageController {
      */
     @FXML
     private void handleNewLessonButton(ActionEvent event){
-        GymnasticsAppBeta.switchToLessonPlan();
+        GymnasticsAppBeta.switchToMainEditDisplay();
     }
 
     /**

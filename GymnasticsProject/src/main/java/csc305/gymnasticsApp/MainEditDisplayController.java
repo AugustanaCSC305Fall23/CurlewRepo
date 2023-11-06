@@ -74,7 +74,7 @@ public class MainEditDisplayController implements Initializable {
      * @param event - The ActionEvent triggered by clicking the "Back" button.
      */
     @FXML
-    void backButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToLessonPlan();
+    void backButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToHomePage();
     }
 
     /**

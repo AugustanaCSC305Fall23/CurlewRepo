@@ -20,13 +20,13 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.MainEditDisplayController">
    <children>
-      <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #292A2D;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: EEF8FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" spacing="10.0" style="-fx-background-color: #292A2D;" HBox.hgrow="ALWAYS">
+            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" spacing="10.0" style="-fx-background-color: EEF8FF;" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="444.0" spacing="20.0" style="-fx-background-color: #292A2D;" VBox.vgrow="NEVER">
+                  <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="444.0" spacing="20.0" style="-fx-background-color: EEF8FF;" VBox.vgrow="NEVER">
                      <children>
-                        <Button fx:id="filterButton" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openFilterMenu" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: FE8078;" text="Filters" HBox.hgrow="ALWAYS">
+                        <Button fx:id="filterButton" alignment="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openFilterMenu" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: #3A5069;" text="Filters" textFill="#eef8ff" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -34,27 +34,33 @@
                               <Insets top="2.0" />
                            </HBox.margin>
                         </Button>
-                        <TextField fx:id="drillSearchBar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="162.4" promptText="Search Cards" style="-fx-prompt-text-fill: white; -fx-background-color: #D3D3D3; -fx-background-radius: 10px;" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="drillSearchBar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="162.4" promptText="Search Cards" style="-fx-prompt-text-fill: EEF8FF; -fx-background-color: A2AE98; -fx-background-radius: 2.0em;" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="drillSearchButton" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goButtonHandle" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: green;" text="Go" textFill="WHITE" HBox.hgrow="ALWAYS">
+                        <Button fx:id="drillSearchButton" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goButtonHandle" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.3em; -fx-font-weight: bold;" text="Search" textFill="#eef8ff" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets top="2.0" />
+                           </HBox.margin>
                         </Button>
                      </children>
                      <padding>
                         <Insets left="10.0" right="5.0" top="5.0" />
                      </padding>
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin>
                   </HBox>
                   <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.6" prefWidth="440.8" style="-fx-background-color: #F5FFFA;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                      <content>
-                        <FlowPane fx:id="cardFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="378.0" style="-fx-background-color: #121212;" vgap="10.0">
+                        <FlowPane fx:id="cardFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="378.0" style="-fx-background-color: #3A5069;" vgap="10.0">
                            <rotationAxis>
                               <Point3D />
                            </rotationAxis>
@@ -66,12 +72,12 @@
                   </ScrollPane>
                </children>
                <HBox.margin>
-                  <Insets />
+                  <Insets bottom="10.0" />
                </HBox.margin>
             </VBox>
-            <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="450.0" spacing="25.0" style="-fx-background-color: #292A2D;" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="450.0" spacing="25.0" style="-fx-background-color: EEF8FF;" HBox.hgrow="ALWAYS">
                <children>
-                  <TextField fx:id="courseTitle" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Plan Title" style="-fx-prompt-text-fill: white; -fx-background-color: grey; -fx-background-radius: 10px; -fx-text-fill: white;" VBox.vgrow="ALWAYS">
+                  <TextField fx:id="courseTitle" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Plan Title" style="-fx-prompt-text-fill: EEF8FF; -fx-background-color: A2AE98; -fx-background-radius: 2.0em; -fx-text-fill: white;" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -82,12 +88,12 @@
                   <TreeView fx:id="treeView" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="387.0" prefWidth="410.0" style="-fx-border-color: black; -fx-font-size: 28px;" VBox.vgrow="ALWAYS" />
                   <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="422.0" spacing="50.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="65.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-text-fill: #292A2D; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER">
+                        <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="65.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER" textFill="#eef8ff">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="previewButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previewButtonHandle" prefHeight="65.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-text-fill: #292A2D; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview" textAlignment="CENTER" wrapText="true">
+                        <Button fx:id="previewButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previewButtonHandle" prefHeight="65.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -104,40 +110,40 @@
             </VBox>
          </children>
       </HBox>
-      <VBox fx:id="filterMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #933547;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="filterMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: D48973;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button fx:id="filterDoneButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeFilterMenu" pickOnBounds="false" prefHeight="56.0" prefWidth="110.0" style="-fx-background-radius: 0; -fx-font-weight: bold; -fx-font-size: 15px;" text="Done" textAlignment="CENTER" />
-                  <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setFilterController" prefHeight="56.0" prefWidth="110.0" style="-fx-background-radius: 0; -fx-font-weight: bold; -fx-font-size: 15px;" text="Set Filter">
+                  <Button fx:id="filterDoneButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeFilterMenu" pickOnBounds="false" prefHeight="56.0" prefWidth="110.0" style="-fx-background-radius: 2.0em; -fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.5em; -fx-font-weight: bold;" text="Done" textAlignment="CENTER" textFill="#eef8ff" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setFilterController" prefHeight="56.0" prefWidth="110.0" style="-fx-background-radius: 2.0em; -fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.5em; -fx-font-weight: bold;" text="Set Filter" textFill="#eef8ff">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
                </children>
             </HBox>
-            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="250.0" style="-fx-background-color: #933547;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="250.0" style="-fx-background-color: D48973;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                <content>
-                  <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="5.0" style="-fx-border-width: 2; -fx-background-color: #933547;">
+                  <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="5.0" style="-fx-border-width: 2; -fx-background-color: D48973;">
                      <children>
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-font-weight: bold;" text="Gender" textAlignment="CENTER" textFill="WHITE">
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-font-weight: bold; -fx-font-family: Inter; -fx-font-size: 2.1em;" text="Gender" textAlignment="CENTER" textFill="#eef8ff">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <CheckBox fx:id="checkBoxMale" mnemonicParsing="false" onAction="#setChangedTextBoxMale" prefHeight="26.0" prefWidth="154.0" text="Male">
+                              <CheckBox fx:id="checkBoxMale" mnemonicParsing="false" onAction="#setChangedTextBoxMale" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Male">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox fx:id="checkBoxFemale" mnemonicParsing="false" onAction="#setChangedTextBoxFemale" prefHeight="26.0" prefWidth="154.0" text="Female">
+                              <CheckBox fx:id="checkBoxFemale" mnemonicParsing="false" onAction="#setChangedTextBoxFemale" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Female">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox fx:id="checkBoxNeutral" mnemonicParsing="false" onAction="#setChangedTextBoxNeut" prefHeight="26.0" prefWidth="154.0" text="Neutral">
+                              <CheckBox fx:id="checkBoxNeutral" mnemonicParsing="false" onAction="#setChangedTextBoxNeut" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Neutral">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -146,42 +152,42 @@
                         </VBox>
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" text="Event" textAlignment="CENTER" textFill="WHITE">
+                              <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: inter; -fx-font-size: 2.1em; -fx-font-weight: bold;" text="Event" textAlignment="CENTER" textFill="#eef8ff">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <CheckBox mnemonicParsing="false" onAction="#allCheckBox" prefHeight="26.0" prefWidth="154.0" text="All">
+                              <CheckBox mnemonicParsing="false" onAction="#allCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="All">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" onAction="#floorCheckBox" prefHeight="26.0" prefWidth="154.0" text="Floor">
+                              <CheckBox mnemonicParsing="false" onAction="#floorCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Floor">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" onAction="#unevenBarsCheckBox" prefHeight="26.0" prefWidth="154.0" text="Uneven Bars">
+                              <CheckBox mnemonicParsing="false" onAction="#unevenBarsCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Uneven Bars">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" onAction="#beamCheckBox" prefHeight="26.0" prefWidth="154.0" text="Beam">
+                              <CheckBox mnemonicParsing="false" onAction="#beamCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Beam">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" onAction="#vaultCheckBox" prefHeight="26.0" prefWidth="154.0" text="Vault">
+                              <CheckBox mnemonicParsing="false" onAction="#vaultCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Vault">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" onAction="#trampCheckBox" prefHeight="26.0" prefWidth="154.0" text="Tramp">
+                              <CheckBox mnemonicParsing="false" onAction="#trampCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Tramp">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" onAction="#strengthCheckBox" prefHeight="26.0" prefWidth="154.0" text="Strength">
+                              <CheckBox mnemonicParsing="false" onAction="#strengthCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Strength">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
