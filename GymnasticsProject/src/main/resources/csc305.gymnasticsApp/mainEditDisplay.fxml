@@ -26,7 +26,7 @@
                <children>
                   <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="444.0" spacing="20.0" style="-fx-background-color: EEF8FF;" VBox.vgrow="NEVER">
                      <children>
-                        <Button fx:id="filterButton" alignment="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openFilterMenu" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: #3A5069;" text="Filters" textFill="#eef8ff" HBox.hgrow="ALWAYS">
+                        <Button fx:id="filterButton" alignment="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openFilterMenu" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: #3A5069;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Filters" textFill="#eef8ff" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -39,7 +39,7 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="drillSearchButton" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goButtonHandle" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.3em; -fx-font-weight: bold;" text="Search" textFill="#eef8ff" HBox.hgrow="ALWAYS">
+                        <Button fx:id="drillSearchButton" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goButtonHandle" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.3em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Search" textFill="#eef8ff" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -114,8 +114,8 @@
          <children>
             <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button fx:id="filterDoneButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeFilterMenu" pickOnBounds="false" prefHeight="56.0" prefWidth="110.0" style="-fx-background-radius: 2.0em; -fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.5em; -fx-font-weight: bold;" text="Done" textAlignment="CENTER" textFill="#eef8ff" />
-                  <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setFilterController" prefHeight="56.0" prefWidth="110.0" style="-fx-background-radius: 2.0em; -fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.5em; -fx-font-weight: bold;" text="Set Filter" textFill="#eef8ff">
+                  <Button fx:id="filterDoneButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeFilterMenu" pickOnBounds="false" prefHeight="56.0" prefWidth="110.0" style="-fx-background-radius: 2.0em; -fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.5em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Done" textAlignment="CENTER" textFill="#eef8ff" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setFilterController" prefHeight="56.0" prefWidth="110.0" style="-fx-background-radius: 2.0em; -fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.5em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Set Filter" textFill="#eef8ff">
                      <font>
                         <Font size="14.0" />
                      </font>
