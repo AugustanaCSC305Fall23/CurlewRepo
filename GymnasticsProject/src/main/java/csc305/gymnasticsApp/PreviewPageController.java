@@ -13,14 +13,11 @@ import javafx.print.PageLayout;
 import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
+import javafx.scene.layout.VBox;
 import javafx.scene.layout.TilePane;
 import javafx.stage.FileChooser;
 import org.w3c.dom.Document;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +25,7 @@ import java.util.Optional;
 public class PreviewPageController {
 
     @FXML
-    private AnchorPane eventPreviewAnchorPane;
+    private VBox eventPreviewVBox;
     @FXML
     private Button backButton;
 
@@ -120,33 +117,37 @@ public class PreviewPageController {
 
     @FXML
     void printButtonController(ActionEvent event) {
-        Node lessonPlanNode = eventPreviewAnchorPane;
-        PrintLessonPlan.printPlan(lessonPlanNode, eventPreviewAnchorPane);
+        Node lessonPlanNode = eventPreviewVBox;
+        PrintLessonPlan.printPlan(lessonPlanNode, eventPreviewVBox);
     }
-
 
     @FXML
     void saveController(ActionEvent event) throws IOException {
         List<Card> cardList = new ArrayList<Card>();
         cardList.addAll(CardDatabase.getEventOneTreeCards());
         cardList.addAll(CardDatabase.getEventTwoTreeCards());
-        TilePane r = new TilePane();
-        TextInputDialog td = new TextInputDialog("Enter here!");
-        td.setHeaderText("Enter your file name without an extension!");
-        Button save = new Button("Save");
-        r.getChildren().add(save);
-        td.showAndWait();
-        String fileName = td.getEditor().getText() + ".GymPlanFile";
-        FileWriter fileWriter = new FileWriter(fileName);
-        for(int i = 0; i < cardList.size(); i++){
-            fileWriter.write(cardList.get(i).getUniqueID());
-        }
-        fileWriter.close();
+
+
+
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save File");
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Gym Plan Files (*.GymPlanFile)", "*.GymPlanFile");
         fileChooser.getExtensionFilters().add(extensionFilter);
 
-    }
+        // Show the file save dialog and get the selected file.
+        File selectedFile = fileChooser.showSaveDialog(null);
 
+        if (selectedFile != null) {
+            // Create a FileWriter for the selected file and write the data.
+            try (FileWriter fileWriter = new FileWriter(selectedFile)) {
+                fileWriter.write(coursePlanTitle + " end\n" + eventOneTitle + " end\n" + eventTwoTitle + " end\n");
+                for (int i = 0; i < cardList.size(); i++) {
+                    fileWriter.write(cardList.get(i).getUniqueID() + " end\n");
+                }
+            } catch (IOException e) {
+                // Handle the exception appropriately (e.g., show an error message).
+                e.printStackTrace();
+            }
+        }
+    }
 }

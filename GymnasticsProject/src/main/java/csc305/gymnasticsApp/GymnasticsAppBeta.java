@@ -32,7 +32,7 @@ public class GymnasticsAppBeta extends Application {
     @Override
     public void start(Stage primaryStage){
         stage = primaryStage;
-        scene = new Scene(new BorderPane(), 900, 750);
+        scene = new Scene(new BorderPane(), 1000, 700);
         stage.setScene(scene);
         stage.setResizable(true);
 
@@ -87,6 +87,7 @@ public class GymnasticsAppBeta extends Application {
     public static void callFileChooser() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
+        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Gym Plan Files (*.GymPlanFile)", "*.GymPlanFile");
         File gymFile = fileChooser.showOpenDialog(stage);
 
         if(gymFile != null) {

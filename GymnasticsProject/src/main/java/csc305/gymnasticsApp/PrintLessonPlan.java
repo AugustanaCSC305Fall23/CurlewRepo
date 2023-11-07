@@ -8,15 +8,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.SnapshotParameters;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class PrintLessonPlan {
 
-    public static void printPlan(Node printNode, AnchorPane eventPreviewAnchorPane) {
+    public static void printPlan(Node printNode, VBox eventPreviewVBox) {
         Printer printer = Printer.getDefaultPrinter();
         PrinterJob job = PrinterJob.createPrinterJob(printer);
 
-        if (job != null && job.showPrintDialog(eventPreviewAnchorPane.getScene().getWindow())) {
+        if (job != null && job.showPrintDialog(eventPreviewVBox.getScene().getWindow())) {
             PageLayout pageLayout = job.getJobSettings().getPageLayout();
 
             double scaleX = pageLayout.getPrintableWidth() / printNode.getBoundsInParent().getWidth();
