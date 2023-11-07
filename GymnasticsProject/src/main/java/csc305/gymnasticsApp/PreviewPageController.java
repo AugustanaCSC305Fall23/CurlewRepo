@@ -73,7 +73,7 @@ public class PreviewPageController {
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
                 ImageView imageView = new ImageView(image);
-                imageView.setFitWidth(250); // Set the width of the image view
+                imageView.setFitWidth(200); // Set the width of the image view
                 imageView.setFitHeight(200); // Set the height of the image view
                 eventOneCardHBox.getChildren().add(imageView);
             }
@@ -82,7 +82,7 @@ public class PreviewPageController {
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
                 ImageView imageView = new ImageView(image);
-                imageView.setFitWidth(250); // Set the width of the image view
+                imageView.setFitWidth(200); // Set the width of the image view
                 imageView.setFitHeight(200); // Set the height of the image view
                 eventTwoCardHBox1.getChildren().add(imageView);
             }
@@ -140,7 +140,7 @@ public class PreviewPageController {
         if (selectedFile != null) {
             // Create a FileWriter for the selected file and write the data.
             try (FileWriter fileWriter = new FileWriter(selectedFile)) {
-                fileWriter.write(coursePlanTitle + " end\n" + eventOneTitle + " end\n" + eventTwoTitle + " end\n");
+                fileWriter.write(Course.getCourseTitle() + " end\n" + Course.getEventOneName() + " end\n" + Course.getEventTwoName() + " end\n");
                 for (int i = 0; i < cardList.size(); i++) {
                     fileWriter.write(cardList.get(i).getUniqueID() + " end\n");
                 }

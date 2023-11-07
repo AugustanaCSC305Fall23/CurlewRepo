@@ -104,17 +104,26 @@ public class MainEditDisplayController implements Initializable {
      */
     @FXML
     void previewButtonHandle(ActionEvent event) {
-        Course.setCourseTitle(courseTitle.getText());
-        if(!(CardDatabase.getEventOneTreeCards().isEmpty())) {
-            Course.setEventOneCards(CardDatabase.getEventOneTreeCards());
+        if(courseTitle.getText() == "") {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Course title can't be blank.");
+            alert.setContentText("Please enter a course title name.");
+            alert.showAndWait();
+        } else {
+            Course.setCourseTitle(courseTitle.getText());
+            if(!(CardDatabase.getEventOneTreeCards().isEmpty())) {
+                Course.setEventOneCards(CardDatabase.getEventOneTreeCards());
+            }
+            if(!(CardDatabase.getEventTwoTreeCards().isEmpty())) {
+                Course.setEventTwoCards(CardDatabase.getEventTwoTreeCards());
+            }
+            Course.setEventOneName("Event 1 Test");
+            Course.setEventTwoName("Event 2 Test");
+            GymnasticsAppBeta.switchToPreviewPage();
+            Course.printEverything();
         }
-        if(!(CardDatabase.getEventTwoTreeCards().isEmpty())) {
-            Course.setEventTwoCards(CardDatabase.getEventTwoTreeCards());
-        }
-        Course.setEventOneName("Event 1 Test");
-        Course.setEventTwoName("Event 2 Test");
-        GymnasticsAppBeta.switchToPreviewPage();
-        Course.printEverything();
+
     }
 
     /**
