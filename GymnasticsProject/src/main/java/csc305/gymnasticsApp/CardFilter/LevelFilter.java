@@ -1,20 +1,37 @@
 package csc305.gymnasticsApp.CardFilter;
 
 import csc305.gymnasticsApp.Card;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The LevelFilter class is an implementation of the CardFilter interface
  * designed to filter Card objects based on a desired level.
  */
 public class LevelFilter implements CardFilter{
-    private String desiredLevel;
+    public static List<String> desiredLevels;
     /**
      * Constructs a new LevelFilter with the desired level to match.
-     *
-     * @param desiredLevel - The level that Card objects should match.
      */
-    public LevelFilter(String desiredLevel) {
-        this.desiredLevel = desiredLevel;
+    public LevelFilter() {
+        if (desiredLevels == null) {
+            desiredLevels = new ArrayList<>();
+        }
     }
+
+    public void add(String desiredLevel) {
+        if(!(desiredLevels.contains(desiredLevel))) {
+            desiredLevels.add(desiredLevel);
+        } else {
+            desiredLevels.remove(desiredLevel);
+        }
+    }
+
+    public List<String> getDesiredLevels() {
+        return desiredLevels;
+    }
+
     /**
      * Determines whether a given Card matches the desired level.
      *
@@ -23,7 +40,7 @@ public class LevelFilter implements CardFilter{
      */
     @Override
     public boolean matches(Card canidateCard) {
-        return(canidateCard.getLevel().equalsIgnoreCase(desiredLevel));
+        return(canidateCard.getLevel().equalsIgnoreCase(desiredLevels.toString()));
 
     }
 }

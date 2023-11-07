@@ -18,7 +18,7 @@ public class GenderFilter implements CardFilter {
      */
     public GenderFilter() {
         if (desiredGenders == null) {
-            desiredGenders = new ArrayList<String>();
+            desiredGenders = new ArrayList<>();
         }
     }
 
