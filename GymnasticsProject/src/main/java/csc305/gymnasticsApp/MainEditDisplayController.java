@@ -67,6 +67,24 @@ public class MainEditDisplayController implements Initializable {
 
     public String[] cardParentEvent = {"Event1", "Event2"};
 
+    public static boolean isInitialized = false;
+
+    /**
+     * Initializes the tree view on the main edit display screen.
+     *
+     * @param arg0      The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param arg1      The resources used to localize the root object, or null if the root object was not localized.
+     */
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1){
+        TreeItem<String> rootItem = new TreeItem<>("Root");
+        rootItem.getChildren().addAll(eventOneItems, eventTwoItems);
+        treeView.setShowRoot(false);
+        treeView.setRoot(rootItem);
+        addCardsToFlowPane();
+        allCards = getAllCardButtons();
+    }
+
 
     /**
      * Handles the action when the "Back" button is clicked, allowing the user to return to the lesson plan page.
@@ -157,8 +175,8 @@ public class MainEditDisplayController implements Initializable {
         cardFlowPane.getChildren().addAll(visibleButtons);
         currentFilteredCards.addAll(visibleButtons);
     }
-
     //Need to reset currentFilteredCards at some point
+
     public void filterCardsByCheckbox(CardFilter filter) {
         List<Button> visibleButtons = new ArrayList<>();
         List<Button> hiddenButtons = new ArrayList<>();
@@ -182,19 +200,25 @@ public class MainEditDisplayController implements Initializable {
      * Adds cards to the FlowPane for display.
      */
     private void addCardsToFlowPane(){
-        try {
-            cardFlowPane.getChildren().clear();
-            allCards.clear();
-            for(Card card : CardDatabase.getAllCards()) {
-                Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
-                        card.getPackFolder().toUpperCase() + "Pack/" +
-                        card.getImage()));
-                Button cardButton = createCardButton(card, image);
-                cardFlowPane.getChildren().add(cardButton);
-                allCards.add(cardButton);
+        if(!isInitialized) {
+            try {
+                cardFlowPane.getChildren().clear();
+                allCards.clear();
+                for (Card card : CardDatabase.getAllCards()) {
+                    Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
+                            card.getPackFolder().toUpperCase() + "Pack/" +
+                            card.getImage()));
+                    Button cardButton = createCardButton(card, image);
+                    cardFlowPane.getChildren().add(cardButton);
+                    allCards.add(cardButton);
+                }
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            isInitialized = true;
+        }else{
+            cardFlowPane.getChildren().clear();
+            cardFlowPane.getChildren().addAll(allCards);
         }
     }
 
@@ -227,22 +251,6 @@ public class MainEditDisplayController implements Initializable {
             }
         }
         return cardButtons;
-    }
-
-    /**
-     * Initializes the tree view on the main edit display screen.
-     *
-     * @param arg0      The location used to resolve relative paths for the root object, or null if the location is not known.
-     * @param arg1      The resources used to localize the root object, or null if the root object was not localized.
-     */
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1){
-        TreeItem<String> rootItem = new TreeItem<>("Root");
-        rootItem.getChildren().addAll(eventOneItems, eventTwoItems);
-        treeView.setShowRoot(false);
-        treeView.setRoot(rootItem);
-        addCardsToFlowPane();
-        allCards = getAllCardButtons();
     }
 
 
