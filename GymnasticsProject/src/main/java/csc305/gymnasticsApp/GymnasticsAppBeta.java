@@ -8,8 +8,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * The GymnasticsAppBeta class is the main application for the Gymnastics App.
@@ -21,6 +25,8 @@ public class GymnasticsAppBeta extends Application {
     private static File selectedFile = null;
     private static Scene scene;
     private static Stage stage;
+
+    private static boolean fileLoaded = false;
 
     /**
      *
@@ -86,21 +92,38 @@ public class GymnasticsAppBeta extends Application {
      */
     public static void callFileChooser() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Gym Plan Files (*.GymPlanFile)", "*.GymPlanFile");
-        File gymFile = fileChooser.showOpenDialog(stage);
+        fileChooser.setTitle("Open Gym Lesson Plan");
 
-        if(gymFile != null) {
-            selectedFile = gymFile;
-            System.out.println("Selected file: " + selectedFile.getName());
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Gym Plan Files (*.GymPlanFile)", "*.GymPlanFile");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File gymPlanFile = fileChooser.showOpenDialog(stage);
+        if(gymPlanFile != null) {
+            selectedFile = gymPlanFile;
         }
-    }
 
+    }
     /**
      * Retrieves the currently selected file
      * @return - The selected file, or null if no file is selected is return.
      */
     public static File getFile(){
         return selectedFile;
+    }
+
+    public static boolean getLoaded() {return fileLoaded; }
+    public static ArrayList<String> setPreviewPage(){
+        fileLoaded = true;
+        ArrayList<String> arrayList = new ArrayList<String>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(selectedFile))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                //System.out.println(line);
+                arrayList.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return arrayList;
     }
 }

@@ -52,8 +52,9 @@ public class PreviewPageController {
 
     @FXML
     private HBox eventTwoCardHBox1;
-
+/*
     public void initialize() {
+
         if (Course.getCourseTitle() != null) {
             coursePlanTitle.setText(Course.getCourseTitle());
         }
@@ -65,6 +66,43 @@ public class PreviewPageController {
         }
         displayEventCards();
     }
+    */
+    public void initialize() {
+    if(GymnasticsAppBeta.getLoaded()) {
+            ArrayList<String> arrayList = GymnasticsAppBeta.setPreviewPage();
+            coursePlanTitle.setText(arrayList.get(0));
+            eventOneTitle.setText(arrayList.get(1));
+            eventTwoTitle.setText(arrayList.get(2));
+            ArrayList<String> arrayList1 = new ArrayList<String>();
+            ArrayList<String> arrayList2 = new ArrayList<String>();
+            int endI = 0;
+            for(int i = 3; i < arrayList.size(); i++) {
+                if(arrayList.get(i) == "end") {
+                    break;
+                } else {
+                    arrayList1.add(arrayList.get(i));
+                }
+            }
+            for(int i = arrayList1.size(); i < arrayList.size(); i++) {
+                if(arrayList.get(i) != "end") {
+                    arrayList2.add(arrayList.get(i));
+                }
+            }
+            displayEventCards(arrayList1, arrayList2);
+        } else {
+            if (Course.getCourseTitle() != null) {
+                coursePlanTitle.setText(Course.getCourseTitle());
+            }
+            if (Course.getEventOneName() != null) {
+                eventOneTitle.setText(Course.getEventOneName());
+            }
+            if (Course.getEventTwoName() != null) {
+                eventTwoTitle.setText(Course.getEventTwoName());
+            }
+            displayEventCards();
+        }
+    }
+
 
     public void displayEventCards() {
         try {
@@ -91,6 +129,41 @@ public class PreviewPageController {
         }
     }
 
+    public void displayEventCards(ArrayList<String> cardList1, ArrayList<String> cardList2) {
+        List<Card> cardList = CardDatabase.getAllCards();
+        try {
+            for(int i = 0; i < cardList.size(); i++) {
+                //System.out.println(cardList.get(i).getUniqueID());
+                for(int j = 0; j < cardList1.size(); j++) {
+                    //System.out.println(cardList1.get(j));
+                    if(cardList.get(i).getUniqueID() == cardList1.get(j)) {
+                        Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
+                                cardList.get(i).getPackFolder().toUpperCase() + "Pack/" +
+                                cardList.get(i).getImage()));
+                        ImageView imageView = new ImageView(image);
+                        imageView.setFitWidth(200); // Set the width of the image view
+                        imageView.setFitHeight(200); // Set the height of the image view
+                        eventTwoCardHBox1.getChildren().add(imageView);
+                    }
+                }
+            }
+            for(int i = 0; i < cardList.size(); i++) {
+                for(int j = 0; j < cardList2.size(); j++) {
+                    if(cardList.get(i).getUniqueID() == cardList2.get(j)) {
+                        Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
+                                cardList.get(i).getPackFolder().toUpperCase() + "Pack/" +
+                                cardList.get(i).getImage()));
+                        ImageView imageView = new ImageView(image);
+                        imageView.setFitWidth(200); // Set the width of the image view
+                        imageView.setFitHeight(200); // Set the height of the image view
+                        eventTwoCardHBox1.getChildren().add(imageView);
+                    }
+                }
+            }
+        }catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @FXML
     void backButtonController(ActionEvent event) {
         GymnasticsAppBeta.switchToMainEditDisplay();
@@ -123,9 +196,10 @@ public class PreviewPageController {
 
     @FXML
     void saveController(ActionEvent event) throws IOException {
-        List<Card> cardList = new ArrayList<Card>();
-        cardList.addAll(CardDatabase.getEventOneTreeCards());
-        cardList.addAll(CardDatabase.getEventTwoTreeCards());
+        List<Card> cardList1 = new ArrayList<Card>();
+        cardList1.addAll(CardDatabase.getEventOneTreeCards());
+        List<Card> cardList2 = new ArrayList<Card>();
+        cardList2.addAll(CardDatabase.getEventTwoTreeCards());
 
 
 
@@ -140,9 +214,13 @@ public class PreviewPageController {
         if (selectedFile != null) {
             // Create a FileWriter for the selected file and write the data.
             try (FileWriter fileWriter = new FileWriter(selectedFile)) {
-                fileWriter.write(Course.getCourseTitle() + " end\n" + Course.getEventOneName() + " end\n" + Course.getEventTwoName() + " end\n");
-                for (int i = 0; i < cardList.size(); i++) {
-                    fileWriter.write(cardList.get(i).getUniqueID() + " end\n");
+                fileWriter.write(Course.getCourseTitle() + "\n" + Course.getEventOneName() + "\n" + Course.getEventTwoName() + "\n");
+                for (int i = 0; i < cardList1.size(); i++) {
+                    fileWriter.write(cardList1.get(i).getUniqueID() + "\n");
+                }
+                fileWriter.write("end\n");
+                for(int i = 0; i < cardList2.size(); i++) {
+                    fileWriter.write(cardList2.get(i).getUniqueID() + "\n");
                 }
             } catch (IOException e) {
                 // Handle the exception appropriately (e.g., show an error message).
