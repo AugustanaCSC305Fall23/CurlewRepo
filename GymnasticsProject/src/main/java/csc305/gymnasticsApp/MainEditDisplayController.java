@@ -421,7 +421,7 @@ public class MainEditDisplayController implements Initializable {
 
     @FXML
     void resetButton(ActionEvent event) {
-        
+
     }
 
 }
