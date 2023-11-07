@@ -73,7 +73,7 @@ public class PreviewPageController {
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
                 ImageView imageView = new ImageView(image);
-                imageView.setFitWidth(250); // Set the width of the image view
+                imageView.setFitWidth(200); // Set the width of the image view
                 imageView.setFitHeight(200); // Set the height of the image view
                 eventOneCardHBox.getChildren().add(imageView);
             }
@@ -82,7 +82,7 @@ public class PreviewPageController {
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
                 ImageView imageView = new ImageView(image);
-                imageView.setFitWidth(250); // Set the width of the image view
+                imageView.setFitWidth(200); // Set the width of the image view
                 imageView.setFitHeight(200); // Set the height of the image view
                 eventTwoCardHBox1.getChildren().add(imageView);
             }

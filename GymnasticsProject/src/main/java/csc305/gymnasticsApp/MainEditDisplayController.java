@@ -289,6 +289,14 @@ public class MainEditDisplayController implements Initializable {
         List<Button> cardButtons = getAllCardButtons();
     }
 
+    public void resetFlowPane(){
+        cardFlowPane.getChildren().clear();
+        for(Button card : allCards){
+            card.setVisible(true);
+        }
+        cardFlowPane.getChildren().addAll(allCards);
+    }
+
     private void filterCardsFromSearch(String inputText) {
         List<Button> visibleButtons = new ArrayList<>();
         List<Button> hiddenButtons = new ArrayList<>();
@@ -335,7 +343,9 @@ public class MainEditDisplayController implements Initializable {
         gender = "F";
         GenderFilter genderFilter = new GenderFilter();
         genderFilter.add("F");
+        System.out.println(genderFilter.getDesiredGenders().toString());
         filterCardsByCheckbox(genderFilter);
+
     }
 
     @FXML
@@ -452,13 +462,7 @@ public class MainEditDisplayController implements Initializable {
             }
             }
         }
-        currentFilteredCards.clear();
-        currentFilteredCards.addAll(allCards);
-        for(Button cardButton:currentFilteredCards){
-            cardButton.setVisible(true);
-        }
-        cardFlowPane.getChildren().clear();
-        cardFlowPane.getChildren().addAll(currentFilteredCards);
+        resetFlowPane();
     }
 
 }
