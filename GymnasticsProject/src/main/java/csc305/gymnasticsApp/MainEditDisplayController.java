@@ -62,7 +62,7 @@ public class MainEditDisplayController implements Initializable {
     @FXML
     public static TreeItem<String> eventTwoItems = new TreeItem<>("Event 2");
 
-    private static List<Button> currentFilteredCards = new ArrayList<>();
+    private static final List<Button> currentFilteredCards = new ArrayList<>();
     private static List<Button> allCards = new ArrayList<>();
 
     public String[] cardParentEvent = {"Event1", "Event2"};
@@ -146,56 +146,8 @@ public class MainEditDisplayController implements Initializable {
     }
 
 
-    /**
-     * Filters the displayed cards based on the input text in the search bar.
-     *
-     * @param inputText - The text to filter cards by.
-     */
-    private void filterCards(String inputText) {
-        inputText = inputText.replaceAll("\\s+", "");
-        List<Button> cardButtons = getAllCardButtons();
-    }
 
-    private void filterCardsFromSearch(String inputText) {
-        currentFilteredCards.clear();
-        List<Button> visibleButtons = new ArrayList<>();
-        List<Button> hiddenButtons = new ArrayList<>();
-
-        for (Button cardButton : allCards) {
-            String buttonText = cardButton.getId().toLowerCase();
-            if (buttonText.contains(inputText)) {
-                visibleButtons.add(cardButton);
-                cardButton.setVisible(true);
-            } else {
-                hiddenButtons.add(cardButton);
-                cardButton.setVisible(false);
-            }
-        }
-        cardFlowPane.getChildren().clear(); // Clear the cardFlowPane before adding visible buttons
-        cardFlowPane.getChildren().addAll(visibleButtons);
-        currentFilteredCards.addAll(visibleButtons);
-    }
     //Need to reset currentFilteredCards at some point
-
-    public void filterCardsByCheckbox(CardFilter filter) {
-        List<Button> visibleButtons = new ArrayList<>();
-        List<Button> hiddenButtons = new ArrayList<>();
-        for (Button cardButton : allCards) {
-            if (filter.matches(CardDatabase.getCardByID(cardButton.getId()))) {
-                visibleButtons.add(cardButton);
-                cardButton.setVisible(true);
-            } else {
-                hiddenButtons.add(cardButton);
-                cardButton.setVisible(false);
-            }
-        }
-
-        cardFlowPane.getChildren().clear();
-        cardFlowPane.getChildren().addAll(visibleButtons);
-        currentFilteredCards.clear();
-        currentFilteredCards.addAll(visibleButtons);
-    }
-
     /**
      * Adds cards to the FlowPane for display.
      */
@@ -221,7 +173,6 @@ public class MainEditDisplayController implements Initializable {
             cardFlowPane.getChildren().addAll(allCards);
         }
     }
-
     private Button createCardButton(Card card, Image image) {
         ImageView iv = new ImageView(image);
         iv.setFitHeight(198.0);
@@ -254,7 +205,9 @@ public class MainEditDisplayController implements Initializable {
     }
 
 
+
     //DELETES CARD
+
     public void selectItem(MouseEvent event){
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
         TreeItem<String> parent = selectedItem.getParent();
@@ -283,7 +236,6 @@ public class MainEditDisplayController implements Initializable {
             }
         }
     }
-
     public void deleteCardFromTreeView(MouseEvent event){
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
         TreeItem<String> parent = selectedItem.getParent();
@@ -317,6 +269,52 @@ public class MainEditDisplayController implements Initializable {
         eventOneItems.setExpanded(true);
         eventTwoItems.setExpanded(true);
     }
+    /**
+     * Filters the displayed cards based on the input text in the search bar.
+     *
+     * @param inputText - The text to filter cards by.
+     */
+    private void filterCards(String inputText, CardFilter filter) {
+        inputText = inputText.replaceAll("\\s+", "");
+        List<Button> cardButtons = getAllCardButtons();
+    }
+
+    private void filterCardsFromSearch(String inputText) {
+        List<Button> visibleButtons = new ArrayList<>();
+        List<Button> hiddenButtons = new ArrayList<>();
+        for (Button cardButton : allCards) {
+            String buttonText = cardButton.getId().toLowerCase();
+            if (buttonText.contains(inputText.toLowerCase())) {
+                visibleButtons.add(cardButton);
+                cardButton.setVisible(true);
+            } else {
+                hiddenButtons.add(cardButton);
+                cardButton.setVisible(false);
+            }
+        }
+        cardFlowPane.getChildren().clear(); // Clear the cardFlowPane before adding visible buttons
+        cardFlowPane.getChildren().addAll(visibleButtons);
+        currentFilteredCards.addAll(visibleButtons);
+    }
+
+    public void filterCardsByCheckbox(CardFilter filter) {
+        List<Button> visibleButtons = new ArrayList<>();
+        List<Button> hiddenButtons = new ArrayList<>();
+        for (Button cardButton : allCards) {
+            if (filter.matches(CardDatabase.getCardByID(cardButton.getId()))) {
+                visibleButtons.add(cardButton);
+                cardButton.setVisible(true);
+            } else {
+                hiddenButtons.add(cardButton);
+                cardButton.setVisible(false);
+            }
+        }
+
+        cardFlowPane.getChildren().clear();
+        cardFlowPane.getChildren().addAll(visibleButtons);
+        currentFilteredCards.clear();
+        currentFilteredCards.addAll(visibleButtons);
+    }
 
     //*************
     //GENDER FILTER
@@ -325,7 +323,9 @@ public class MainEditDisplayController implements Initializable {
     @FXML
     void setChangedTextBoxFemale(ActionEvent event) {
         gender = "F";
-        new GenderFilter().add(gender);
+        GenderFilter genderFilter = new GenderFilter();
+        genderFilter.add("F");
+        filterCardsByCheckbox(genderFilter);
     }
 
     @FXML
@@ -394,12 +394,45 @@ public class MainEditDisplayController implements Initializable {
     }
 
 
+    //************
+    //LEVEL FILTER
+    //************
 
+    @FXML
+    void levelCheckBoxAB(ActionEvent event) {
+        new LevelFilter().add("AB");
+    }
+
+    @FXML
+    void levelCheckBoxAdvanced(ActionEvent event) {
+        new LevelFilter().add("A");
+    }
+
+    @FXML
+    void levelCheckBoxAll(ActionEvent event) {
+        new LevelFilter().add("ALL");
+    }
+
+    @FXML
+    void levelCheckBoxBeginner(ActionEvent event) {
+        new LevelFilter().add("B");
+    }
+
+    @FXML
+    void levelCheckBoxIntermediate(ActionEvent event) {
+        new LevelFilter().add("I");
+    }
 
 
     @FXML
     void setFilterController(ActionEvent event) {
         new CombineAndFilter();
+        filterMenu.setVisible(false);
+    }
+
+    @FXML
+    void resetButton(ActionEvent event) {
+        
     }
 
 }
