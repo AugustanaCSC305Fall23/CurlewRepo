@@ -55,7 +55,7 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="saveButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold;" text="Save" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+            <Button fx:id="saveButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#saveController" prefHeight="70.0" prefWidth="130.0" style="-fx-background-color: #DC3A38; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold;" text="Save" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
