@@ -70,24 +70,22 @@ public class PreviewPageController {
     public void initialize() {
     if(GymnasticsAppBeta.getLoaded()) {
             ArrayList<String> arrayList = GymnasticsAppBeta.setPreviewPage();
-            coursePlanTitle.setText(arrayList.get(0));
-            eventOneTitle.setText(arrayList.get(1));
-            eventTwoTitle.setText(arrayList.get(2));
+            coursePlanTitle.setText(arrayList.remove(0));
+            eventOneTitle.setText(arrayList.remove(0));
+            eventTwoTitle.setText(arrayList.remove(0));
             ArrayList<String> arrayList1 = new ArrayList<String>();
             ArrayList<String> arrayList2 = new ArrayList<String>();
-            int endI = 0;
-            for(int i = 3; i < arrayList.size(); i++) {
-                if(arrayList.get(i) == "end") {
+
+            for(int i = 0; i < arrayList.size(); i++) {
+                if(arrayList.get(i).equals("end")) {
+                    arrayList.remove(i);
                     break;
                 } else {
-                    arrayList1.add(arrayList.get(i));
+                    arrayList1.add(arrayList.remove(i));
+                    i--;
                 }
             }
-            for(int i = arrayList1.size(); i < arrayList.size(); i++) {
-                if(arrayList.get(i) != "end") {
-                    arrayList2.add(arrayList.get(i));
-                }
-            }
+            arrayList2 = arrayList;
             displayEventCards(arrayList1, arrayList2);
         } else {
             if (Course.getCourseTitle() != null) {
@@ -133,10 +131,8 @@ public class PreviewPageController {
         List<Card> cardList = CardDatabase.getAllCards();
         try {
             for(int i = 0; i < cardList.size(); i++) {
-                //System.out.println(cardList.get(i).getUniqueID());
                 for(int j = 0; j < cardList1.size(); j++) {
-                    //System.out.println(cardList1.get(j));
-                    if(cardList.get(i).getUniqueID() == cardList1.get(j)) {
+                    if(cardList.get(i).getUniqueID().equals(cardList1.get(j))) {
                         Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
                                 cardList.get(i).getPackFolder().toUpperCase() + "Pack/" +
                                 cardList.get(i).getImage()));
@@ -149,7 +145,7 @@ public class PreviewPageController {
             }
             for(int i = 0; i < cardList.size(); i++) {
                 for(int j = 0; j < cardList2.size(); j++) {
-                    if(cardList.get(i).getUniqueID() == cardList2.get(j)) {
+                    if(cardList.get(i).getUniqueID().equals(cardList2.get(j))) {
                         Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
                                 cardList.get(i).getPackFolder().toUpperCase() + "Pack/" +
                                 cardList.get(i).getImage()));
