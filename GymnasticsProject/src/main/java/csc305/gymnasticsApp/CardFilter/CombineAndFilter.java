@@ -24,7 +24,8 @@ public class CombineAndFilter implements CardFilter {
         List<String> filters = Arrays.asList(
                 new GenderFilter().getDesiredGenders().toString(),
                 new EventFilter().getDesiredEvents().toString(),
-                new ModelGenderFilter().getSelectedModelGender().toString());
+                new ModelGenderFilter().getSelectedModelGender().toString(),
+                new LevelFilter().getDesiredLevels().toString());
         System.out.println(filters);
     }
 

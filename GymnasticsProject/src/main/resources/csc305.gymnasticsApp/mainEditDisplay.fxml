@@ -107,7 +107,7 @@
             </VBox>
          </children>
       </HBox>
-      <VBox fx:id="filterMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: D48973;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="filterMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: D48973;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="200.0" spacing="10.0">
                <children>
@@ -190,64 +190,56 @@
                                  </font>
                               </CheckBox>
                            </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </VBox>
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <CheckBox mnemonicParsing="false" onAction="#modelCheckBoxMale" prefHeight="26.0" prefWidth="154.0" text="Male">
+                              <Label style="-fx-font-family: Inter; -fx-font-size: 2.1em; -fx-font-weight: bold;" text="Model Gender" textFill="#eef8ff" />
+                              <CheckBox mnemonicParsing="false" onAction="#modelCheckBoxMale" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Male">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" onAction="#modelCheckBoxFemale" prefHeight="26.0" prefWidth="154.0" text="Female">
+                              <CheckBox mnemonicParsing="false" onAction="#modelCheckBoxFemale" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Female">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
                            </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </VBox>
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Event" wrappingWidth="94.42501831054688">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="All">
+                              <Label style="-fx-font-family: Inter; -fx-font-size: 2.1em; -fx-font-weight: bold;" text="Level" textFill="#eef8ff" />
+                              <CheckBox mnemonicParsing="false" onAction="#levelCheckBoxAll" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="All">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Floor">
+                              <CheckBox mnemonicParsing="false" onAction="#levelCheckBoxBeginner" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Beginner">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Uneven Bars">
+                              <CheckBox mnemonicParsing="false" onAction="#levelCheckBoxAB" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Adv-Beginner">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Beam">
+                              <CheckBox mnemonicParsing="false" onAction="#levelCheckBoxIntermediate" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Intermediate">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Vault">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Tramp">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Strength">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" onAction="#levelCheckBoxAdvanced" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Advanced" />
                            </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </VBox>
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>

@@ -386,7 +386,34 @@ public class MainEditDisplayController implements Initializable {
     }
 
 
+    //************
+    //LEVEL FILTER
+    //************
 
+    @FXML
+    void levelCheckBoxAB(ActionEvent event) {
+        new LevelFilter().add("AB");
+    }
+
+    @FXML
+    void levelCheckBoxAdvanced(ActionEvent event) {
+        new LevelFilter().add("A");
+    }
+
+    @FXML
+    void levelCheckBoxAll(ActionEvent event) {
+        new LevelFilter().add("ALL");
+    }
+
+    @FXML
+    void levelCheckBoxBeginner(ActionEvent event) {
+        new LevelFilter().add("B");
+    }
+
+    @FXML
+    void levelCheckBoxIntermediate(ActionEvent event) {
+        new LevelFilter().add("I");
+    }
 
 
     @FXML
