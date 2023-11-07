@@ -136,17 +136,6 @@ public class MainEditDisplayController implements Initializable {
     }
 
     /**
-     * Handles the action when the filter menu is closed.
-     *
-     * @param event - The ActionEvent triggered when closing the filter menu.
-     */
-    @FXML
-    void closeFilterMenu(ActionEvent event){
-        filterMenu.setVisible(false);
-    }
-
-
-    /**
      * Filters the displayed cards based on the input text in the search bar.
      *
      * @param inputText - The text to filter cards by.
@@ -427,6 +416,12 @@ public class MainEditDisplayController implements Initializable {
     @FXML
     void setFilterController(ActionEvent event) {
         new CombineAndFilter();
+        filterMenu.setVisible(false);
+    }
+
+    @FXML
+    void resetButton(ActionEvent event) {
+        
     }
 
 }
