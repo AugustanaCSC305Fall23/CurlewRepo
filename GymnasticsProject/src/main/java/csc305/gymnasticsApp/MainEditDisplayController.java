@@ -84,6 +84,7 @@ public class MainEditDisplayController implements Initializable {
         treeView.setRoot(rootItem);
         addCardsToFlowPane();
         allCards = getAllCardButtons();
+        resetFlowPane();
     }
 
 
@@ -328,65 +329,57 @@ public class MainEditDisplayController implements Initializable {
     //*************
     //GENDER FILTER
     //*************
-    public static String gender;
+    @FXML public CheckBox checkBoxMale;
+    @FXML public CheckBox checkBoxFemale;
+    @FXML public CheckBox checkBoxNeutral;
     @FXML
-    void setChangedTextBoxFemale(ActionEvent event) {
-        gender = "F";
+    void setChangedGenderBox(ActionEvent event){
         GenderFilter genderFilter = new GenderFilter();
-        genderFilter.add("F");
+        if(event.getSource() == checkBoxMale){
+            genderFilter.add("M");
+        }else if(event.getSource() == checkBoxFemale){
+            genderFilter.add("F");
+        }else{
+            genderFilter.add("N");
+        }
         System.out.println(genderFilter.getDesiredGenders().toString());
         filterCardsByCheckbox(genderFilter);
-
     }
-
-    @FXML
-    void setChangedTextBoxMale(ActionEvent event) {
-        gender = "M";
-        new GenderFilter().add(gender);    }
-
-    @FXML
-    void setChangedTextBoxNeut(ActionEvent event) {
-        gender = "N";
-        new GenderFilter().add(gender);    }
 
 
     //************
     //EVENT FILTER
     //************
-    @FXML
-    void allCheckBox(ActionEvent event) {
-        new EventFilter().add("ALL");
-    }
+    @FXML public CheckBox checkBoxAll;
+    @FXML public CheckBox checkBoxFloor;
+    @FXML public CheckBox checkBoxUnevenBars;
+    @FXML public CheckBox checkBoxBeam;
+    @FXML public CheckBox checkBoxVault;
+    @FXML public CheckBox checkBoxTramp;
+    @FXML public CheckBox checkBoxStrength;
 
     @FXML
-    void beamCheckBox(ActionEvent event) {
-        new EventFilter().add("Beam");
+    void eventCheckBoxHandle(ActionEvent event){
+       EventFilter eventFilter = new EventFilter();
+       if(event.getSource() == checkBoxFloor){
+           eventFilter.add("floor");
+       }else if(event.getSource() == checkBoxUnevenBars){
+           eventFilter.add("Uneven Bars");
+       }else if(event.getSource() == checkBoxBeam){
+           eventFilter.add("beam");
+       }else if(event.getSource() == checkBoxVault){
+           eventFilter.add("vault");
+       }else if(event.getSource() == checkBoxTramp){
+           eventFilter.add("tramp");
+       }else if(event.getSource() == checkBoxStrength){
+           eventFilter.add("strength");
+       }else{
+           eventFilter.add("ALL");
+        }
+       filterCardsByCheckbox(eventFilter);
     }
 
-    @FXML
-    void floorCheckBox(ActionEvent event) {
-        new EventFilter().add("Floor");
-    }
 
-    @FXML
-    void strengthCheckBox(ActionEvent event) {
-        new EventFilter().add("Strength");
-    }
-
-    @FXML
-    void trampCheckBox(ActionEvent event) {
-        new EventFilter().add("Tramp");
-    }
-
-    @FXML
-    void unevenBarsCheckBox(ActionEvent event) {
-        new EventFilter().add("Uneven Bars");
-    }
-
-    @FXML
-    void vaultCheckBox(ActionEvent event) {
-        new EventFilter().add("Vault");
-    }
 
 
     //****************

@@ -133,17 +133,17 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <CheckBox fx:id="checkBoxMale" mnemonicParsing="false" onAction="#setChangedTextBoxMale" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Male">
+                              <CheckBox fx:id="checkBoxMale" mnemonicParsing="false" onAction="#setChangedGenderBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Male">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox fx:id="checkBoxFemale" mnemonicParsing="false" onAction="#setChangedTextBoxFemale" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Female">
+                              <CheckBox fx:id="checkBoxFemale" mnemonicParsing="false" onAction="#setChangedGenderBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Female">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox fx:id="checkBoxNeutral" mnemonicParsing="false" onAction="#setChangedTextBoxNeut" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Neutral">
+                              <CheckBox fx:id="checkBoxNeutral" mnemonicParsing="false" onAction="#setChangedGenderBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Neutral">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -157,37 +157,37 @@
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <CheckBox mnemonicParsing="false" onAction="#allCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="All">
+                              <CheckBox fx:id = "checkBoxAll" mnemonicParsing="false" onAction="#eventCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="All">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" onAction="#floorCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Floor">
+                              <CheckBox fx:id = "checkBoxFloor" mnemonicParsing="false" onAction="#eventCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Floor">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" onAction="#unevenBarsCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Uneven Bars">
+                              <CheckBox fx:id = "checkBoxUnevenBars" mnemonicParsing="false" onAction="#eventCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Uneven Bars">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" onAction="#beamCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Beam">
+                              <CheckBox fx:id = "checkBoxBeam" mnemonicParsing="false" onAction="#eventCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Beam">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox cacheShape="false" mnemonicParsing="false" onAction="#vaultCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Vault">
+                              <CheckBox fx:id = "checkBoxVault" cacheShape="false" mnemonicParsing="false" onAction="#eventCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Vault">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" onAction="#trampCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Tramp">
+                              <CheckBox fx:id = "checkBoxTramp" mnemonicParsing="false" onAction="#eventCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Tramp">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" onAction="#strengthCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Strength">
+                              <CheckBox fx:id = "checkBoxStrength" mnemonicParsing="false" onAction="#eventCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Strength">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
