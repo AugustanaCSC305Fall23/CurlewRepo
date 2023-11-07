@@ -86,6 +86,8 @@ public class CardDatabase {
      * @return A list of all gymnastics cards in the database.
      */
     public static List<Card> getAllCards() {
+        allCards.clear();
+        IDToCard.clear();
         addCardsFromCSVFile();
         setUniqueIDs();
         addCardsToMap();
