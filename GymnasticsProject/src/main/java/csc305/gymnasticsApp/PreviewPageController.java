@@ -140,6 +140,7 @@ public class PreviewPageController {
         if (selectedFile != null) {
             // Create a FileWriter for the selected file and write the data.
             try (FileWriter fileWriter = new FileWriter(selectedFile)) {
+                fileWriter.write(coursePlanTitle + " end\n" + eventOneTitle + " end\n" + eventTwoTitle + " end\n");
                 for (int i = 0; i < cardList.size(); i++) {
                     fileWriter.write(cardList.get(i).getUniqueID() + " end\n");
                 }
