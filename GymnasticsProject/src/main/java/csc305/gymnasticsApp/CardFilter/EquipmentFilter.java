@@ -2,20 +2,37 @@ package csc305.gymnasticsApp.CardFilter;
 
 import csc305.gymnasticsApp.Card;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The EquipmentFilter class is an implementation of the CardFilter interface
  * designed to filter Card objects based on a desired equipment keyword.
  */
 public class EquipmentFilter implements CardFilter {
-    private String desiredEquipment;
+    public static List<String> desiredEquipments;
 
     /**
      * Constructs a new EquipmentFilter with the desired equipment keyword to match.
-     *
-     * @param desiredEquipment - The equipment keyword that Card objects should match.
      */
-    public EquipmentFilter(String desiredEquipment) {
-        this.desiredEquipment = desiredEquipment;
+    public EquipmentFilter() {
+        if (desiredEquipments == null) {
+            desiredEquipments = new ArrayList<>();
+        }
+    }
+
+
+    public void add(String equipment) {
+        if (!(desiredEquipments.contains(equipment))) {
+            desiredEquipments.add(equipment);
+        } else {
+            desiredEquipments.remove(equipment);
+        }
+    }
+
+
+    public static List<String> getDesiredEquipments() {
+        return desiredEquipments;
     }
 
     /**
@@ -32,7 +49,7 @@ public class EquipmentFilter implements CardFilter {
 
         // Checks if the desired equipment keyword is present in the list of keywords.
         for(String equipment : equipmentList){
-            if(equipment.equalsIgnoreCase(desiredEquipment)){
+            if(equipment.equalsIgnoreCase(desiredEquipments.toString())){
                 match = true;
             }
         }
