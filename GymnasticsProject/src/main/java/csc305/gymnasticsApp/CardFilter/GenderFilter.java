@@ -52,6 +52,9 @@ public class GenderFilter implements CardFilter {
     @Override
     public boolean matches(Card canidateCard) {
         boolean match = false;
+        if(desiredGenders.isEmpty()) {
+            match = true;
+        }
         for(String filter:desiredGenders){
             if(filter.equalsIgnoreCase(canidateCard.getGender())){
                 match = true;
