@@ -3,10 +3,7 @@ package csc305.gymnasticsApp;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -16,9 +13,14 @@ import javafx.print.PageLayout;
 import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
+import javafx.scene.layout.TilePane;
+import javafx.stage.FileChooser;
+import org.w3c.dom.Document;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -124,10 +126,26 @@ public class PreviewPageController {
 
 
     @FXML
-    void saveController(ActionEvent event) {
+    void saveController(ActionEvent event) throws IOException {
         List<Card> cardList = new ArrayList<Card>();
         cardList.addAll(CardDatabase.getEventOneTreeCards());
         cardList.addAll(CardDatabase.getEventTwoTreeCards());
+        TilePane r = new TilePane();
+        TextInputDialog td = new TextInputDialog("Enter here!");
+        td.setHeaderText("Enter your file name without an extension!");
+        Button save = new Button("Save");
+        r.getChildren().add(save);
+        td.showAndWait();
+        String fileName = td.getEditor().getText() + ".GymPlanFile";
+        FileWriter fileWriter = new FileWriter(fileName);
+        for(int i = 0; i < cardList.size(); i++){
+            fileWriter.write(cardList.get(i).getUniqueID());
+        }
+        fileWriter.close();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save File");
+        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Gym Plan Files (*.GymPlanFile)", "*.GymPlanFile");
+        fileChooser.getExtensionFilters().add(extensionFilter);
 
     }
 
