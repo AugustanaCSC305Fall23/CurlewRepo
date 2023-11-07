@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.MainEditDisplayController">
    <children>
@@ -111,8 +110,12 @@
          <children>
             <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button fx:id="filterDoneButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeFilterMenu" pickOnBounds="false" prefHeight="56.0" prefWidth="110.0" style="-fx-background-radius: 2.0em; -fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.5em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Done" textAlignment="CENTER" textFill="#eef8ff" />
-                  <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setFilterController" prefHeight="56.0" prefWidth="110.0" style="-fx-background-radius: 2.0em; -fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.5em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Set Filter" textFill="#eef8ff">
+                  <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#resetButton" prefHeight="56.0" prefWidth="110.0" style="-fx-background-radius: 2.0em; -fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.5em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Reset" textFill="#eef8ff">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setFilterController" prefHeight="56.0" prefWidth="110.0" style="-fx-background-radius: 2.0em; -fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.5em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Done" textFill="#eef8ff">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -121,7 +124,7 @@
             </HBox>
             <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="250.0" style="-fx-background-color: D48973;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                <content>
-                  <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="5.0" style="-fx-border-width: 2; -fx-background-color: D48973;">
+                  <VBox fx:id ="filterVBox" alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="5.0" style="-fx-border-width: 2; -fx-background-color: D48973;">
                      <children>
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
@@ -194,9 +197,9 @@
                               <Insets top="5.0" />
                            </VBox.margin>
                         </VBox>
-                        <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                        <VBox prefHeight="100.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label style="-fx-font-family: Inter; -fx-font-size: 2.1em; -fx-font-weight: bold;" text="Model Gender" textFill="#eef8ff" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: Inter; -fx-font-size: 2.1em; -fx-font-weight: bold;" text="Model Gender" textFill="#eef8ff" />
                               <CheckBox mnemonicParsing="false" onAction="#modelCheckBoxMale" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Male">
                                  <font>
                                     <Font size="18.0" />
@@ -214,7 +217,7 @@
                         </VBox>
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label style="-fx-font-family: Inter; -fx-font-size: 2.1em; -fx-font-weight: bold;" text="Level" textFill="#eef8ff" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: Inter; -fx-font-size: 2.1em; -fx-font-weight: bold;" text="Level" textAlignment="CENTER" textFill="#eef8ff" />
                               <CheckBox mnemonicParsing="false" onAction="#levelCheckBoxAll" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="All">
                                  <font>
                                     <Font size="18.0" />
@@ -243,46 +246,8 @@
                         </VBox>
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Event" wrappingWidth="94.42501831054688">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="All">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Floor">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Uneven Bars">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Beam">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Vault">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Tramp">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Strength">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
+                              <Label style="-fx-font-family: Inter; -fx-font-size: 2.1em; -fx-font-weight: bold;" text="Equipment" textFill="#eef8ff" />
+                              <TextField promptText="Equipment Keyword" style="-fx-font-family: Inter;" />
                            </children>
                         </VBox>
                      </children>

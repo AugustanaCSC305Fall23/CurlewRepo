@@ -3,10 +3,7 @@ package csc305.gymnasticsApp;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -17,9 +14,10 @@ import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import javafx.scene.layout.TilePane;
+import javafx.stage.FileChooser;
+import org.w3c.dom.Document;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -123,13 +121,32 @@ public class PreviewPageController {
         PrintLessonPlan.printPlan(lessonPlanNode, eventPreviewVBox);
     }
 
-
     @FXML
-    void saveController(ActionEvent event) {
+    void saveController(ActionEvent event) throws IOException {
         List<Card> cardList = new ArrayList<Card>();
         cardList.addAll(CardDatabase.getEventOneTreeCards());
         cardList.addAll(CardDatabase.getEventTwoTreeCards());
 
-    }
 
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save File");
+        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Gym Plan Files (*.GymPlanFile)", "*.GymPlanFile");
+        fileChooser.getExtensionFilters().add(extensionFilter);
+
+        // Show the file save dialog and get the selected file.
+        File selectedFile = fileChooser.showSaveDialog(null);
+
+        if (selectedFile != null) {
+            // Create a FileWriter for the selected file and write the data.
+            try (FileWriter fileWriter = new FileWriter(selectedFile)) {
+                for (int i = 0; i < cardList.size(); i++) {
+                    fileWriter.write(cardList.get(i).getUniqueID() + " end\n");
+                }
+            } catch (IOException e) {
+                // Handle the exception appropriately (e.g., show an error message).
+                e.printStackTrace();
+            }
+        }
+    }
 }
