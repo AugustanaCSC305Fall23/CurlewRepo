@@ -4,6 +4,7 @@ import csc305.gymnasticsApp.CardFilter.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -430,9 +431,25 @@ public class MainEditDisplayController implements Initializable {
         filterMenu.setVisible(false);
     }
 
+    @FXML public VBox filterVBox;
     @FXML
     void resetButton(ActionEvent event) {
-
+        for(Node nodeOut : filterVBox.getChildren()){
+            if(nodeOut instanceof VBox) {
+                for (Node nodeIn : ((VBox) nodeOut).getChildren()){
+                    if(nodeIn instanceof CheckBox){
+                        ((CheckBox) nodeIn).setSelected(false);
+                    }
+            }
+            }
+        }
+        currentFilteredCards.clear();
+        currentFilteredCards.addAll(allCards);
+        for(Button cardButton:currentFilteredCards){
+            cardButton.setVisible(true);
+        }
+        cardFlowPane.getChildren().clear();
+        cardFlowPane.getChildren().addAll(currentFilteredCards);
     }
 
 }
