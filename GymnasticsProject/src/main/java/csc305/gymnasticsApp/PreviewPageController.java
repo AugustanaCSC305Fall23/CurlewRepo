@@ -139,7 +139,7 @@ public class PreviewPageController {
                         ImageView imageView = new ImageView(image);
                         imageView.setFitWidth(200); // Set the width of the image view
                         imageView.setFitHeight(200); // Set the height of the image view
-                        eventTwoCardHBox1.getChildren().add(imageView);
+                        eventOneCardHBox.getChildren().add(imageView);
                     }
                 }
             }
