@@ -16,6 +16,7 @@ import javafx.print.PageLayout;
 import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
+import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,7 +27,7 @@ import java.util.Optional;
 public class PreviewPageController {
 
     @FXML
-    private AnchorPane eventPreviewAnchorPane;
+    private VBox eventPreviewVBox;
     @FXML
     private Button backButton;
 
@@ -118,8 +119,8 @@ public class PreviewPageController {
 
     @FXML
     void printButtonController(ActionEvent event) {
-        Node lessonPlanNode = eventPreviewAnchorPane;
-        PrintLessonPlan.printPlan(lessonPlanNode, eventPreviewAnchorPane);
+        Node lessonPlanNode = eventPreviewVBox;
+        PrintLessonPlan.printPlan(lessonPlanNode, eventPreviewVBox);
     }
 
 
