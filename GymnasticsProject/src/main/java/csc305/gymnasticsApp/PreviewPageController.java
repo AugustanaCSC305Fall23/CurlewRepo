@@ -52,24 +52,13 @@ public class PreviewPageController {
 
     @FXML
     private HBox eventTwoCardHBox1;
-/*
-    public void initialize() {
 
-        if (Course.getCourseTitle() != null) {
-            coursePlanTitle.setText(Course.getCourseTitle());
-        }
-        if (Course.getEventOneName() != null) {
-            eventOneTitle.setText(Course.getEventOneName());
-        }
-        if (Course.getEventTwoName() != null) {
-            eventTwoTitle.setText(Course.getEventTwoName());
-        }
-        displayEventCards();
-    }
-    */
     public void initialize() {
     if(GymnasticsAppBeta.getLoaded()) {
             ArrayList<String> arrayList = GymnasticsAppBeta.setPreviewPage();
+            for(int i = 0; i < arrayList.size(); i++) {
+                System.out.println(arrayList.get(i));
+            }
             coursePlanTitle.setText(arrayList.remove(0));
             eventOneTitle.setText(arrayList.remove(0));
             eventTwoTitle.setText(arrayList.remove(0));
@@ -210,7 +199,7 @@ public class PreviewPageController {
         if (selectedFile != null) {
             // Create a FileWriter for the selected file and write the data.
             try (FileWriter fileWriter = new FileWriter(selectedFile)) {
-                fileWriter.write(Course.getCourseTitle() + "\n" + Course.getEventOneName() + "\n" + Course.getEventTwoName() + "\n");
+                fileWriter.write(coursePlanTitle.getText() + "\n" + eventOneTitle.getText() + "\n" + eventTwoTitle.getText() + "\n");
                 for (int i = 0; i < cardList1.size(); i++) {
                     fileWriter.write(cardList1.get(i).getUniqueID() + "\n");
                 }

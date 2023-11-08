@@ -44,16 +44,18 @@ public class EquipmentFilter implements CardFilter {
     @Override
     public boolean matches(Card canidateCard) {
         //Splits the keywords of the candidateCard into an array.
-        String[] equipmentList = canidateCard.getKeywords().split(",");
-        boolean match = false;
+//        String[] equipmentList = canidateCard.getKeywords().split(",");
+//        boolean match = false;
+//
+//        // Checks if the desired equipment keyword is present in the list of keywords.
+//        for(String equipment : equipmentList){
+//            if(equipment.equalsIgnoreCase(desiredEquipments.toString())){
+//                match = true;
+//            }
+//        }
+//        return match;
+        return (canidateCard.getEquipment().equalsIgnoreCase(desiredEquipments.toString()));
 
-        // Checks if the desired equipment keyword is present in the list of keywords.
-        for(String equipment : equipmentList){
-            if(equipment.equalsIgnoreCase(desiredEquipments.toString())){
-                match = true;
-            }
-        }
-        return match;
 
     }
 }

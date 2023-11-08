@@ -66,7 +66,7 @@ public class MainEditDisplayController implements Initializable {
     private static final List<Button> currentFilteredCards = new ArrayList<>();
     private static List<Button> allCards = new ArrayList<>();
 
-    public String[] cardParentEvent = {"Event1", "Event2"};
+    public String[] cardParentEvent = {"Event 1", "Event 2"};
 
     public static boolean isInitialized = false;
 
@@ -86,6 +86,9 @@ public class MainEditDisplayController implements Initializable {
         allCards = getAllCardButtons();
         resetFlowPane();
         initFilterList();
+        if (Course.getCourseTitle() != null){
+            courseTitle.setText(Course.getCourseTitle());
+        }
     }
 
 
@@ -237,7 +240,7 @@ public class MainEditDisplayController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == yesButton) {
-                if(parent.toString().equals(cardParentEvent[0])){
+                if(parent.getValue().equals(cardParentEvent[0])){
                     Card card = CardDatabase.getCardFromTreeItem(selectedItem.getValue(), 1);
                     CardDatabase.deleteEventOneTreeCard(card);
                 } else{
@@ -453,30 +456,59 @@ public class MainEditDisplayController implements Initializable {
     //************
     //LEVEL FILTER
     //************
+    @FXML
+    private CheckBox levelABCheckBox;
 
     @FXML
-    void levelCheckBoxAB(ActionEvent event) {
-        new LevelFilter().add("AB");
+    private CheckBox levelAdvancedCheckBox;
+
+    @FXML
+    private CheckBox levelAllCheckBox;
+
+    @FXML
+    private CheckBox levelBeginnerCheckBox;
+
+    @FXML
+    private CheckBox levelIntermediateCheckBox;
+
+
+    @FXML
+    void setLevelCheckBox(ActionEvent event) {
+        LevelFilter levelFilter = new LevelFilter();
+        if (event.getSource() == levelABCheckBox) {
+            levelFilter.add("AB");
+            levelFilter.add("ALL");
+        } else if (event.getSource() == levelAdvancedCheckBox) {
+            levelFilter.add("A");
+            levelFilter.add("ALL");
+        } else if (event.getSource() == levelIntermediateCheckBox) {
+            levelFilter.add("I");
+            levelFilter.add("ALL");
+        } else if (event.getSource() == levelBeginnerCheckBox) {
+            levelFilter.add("B");
+            levelFilter.add("ALL");
+        } else {
+            levelFilter.add("ALL");
+            levelFilter.add("B");
+            levelFilter.add("AB");
+            levelFilter.add("I");
+            levelFilter.add("A");
+        }
+        filterCardsByCheckbox();
     }
 
-    @FXML
-    void levelCheckBoxAdvanced(ActionEvent event) {
-        new LevelFilter().add("A");
-    }
+
+    //****************
+    //Equipment Filter
+    //****************
+
+    @FXML private TextField equipmentTextfield;
 
     @FXML
-    void levelCheckBoxAll(ActionEvent event) {
-        new LevelFilter().add("ALL");
-    }
-
-    @FXML
-    void levelCheckBoxBeginner(ActionEvent event) {
-        new LevelFilter().add("B");
-    }
-
-    @FXML
-    void levelCheckBoxIntermediate(ActionEvent event) {
-        new LevelFilter().add("I");
+    void setEquipmentTextField(ActionEvent event) {
+        String desiredEquipment = equipmentTextfield.getText();
+        EquipmentFilter equipmentFilter = new EquipmentFilter();
+        equipmentFilter.add(desiredEquipment);
     }
 
 
