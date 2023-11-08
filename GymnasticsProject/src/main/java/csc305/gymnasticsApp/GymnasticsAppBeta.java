@@ -115,10 +115,8 @@ public class GymnasticsAppBeta extends Application {
         fileLoaded = true;
         ArrayList<String> arrayList = new ArrayList<String>();
         try (BufferedReader reader = new BufferedReader(new FileReader(selectedFile))) {
-
             String line;
             while ((line = reader.readLine()) != null) {
-                //System.out.println(line);
                 arrayList.add(line);
             }
         } catch (IOException e) {
