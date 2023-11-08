@@ -85,6 +85,7 @@ public class MainEditDisplayController implements Initializable {
         addCardsToFlowPane();
         allCards = getAllCardButtons();
         resetFlowPane();
+        initFilterList();
     }
 
 
@@ -295,15 +296,29 @@ public class MainEditDisplayController implements Initializable {
         for(Button card : allCards){
             card.setVisible(true);
         }
+        currentFilteredCards.addAll(allCards);
         cardFlowPane.getChildren().addAll(allCards);
     }
+
+    private GenderFilter genderFilter = new GenderFilter();
+    private ModelGenderFilter  modelGenderFilter = new ModelGenderFilter();
+    private EventFilter eventFilter = new EventFilter();
+    private List<CardFilter> filterList;
+
+    private void initFilterList(){
+        filterList = new ArrayList<>();
+        filterList.add(genderFilter);
+        filterList.add(modelGenderFilter);
+        filterList.add(eventFilter);
+    }
+
 
     private void filterCardsFromSearch(String inputText) {
         List<Button> visibleButtons = new ArrayList<>();
         List<Button> hiddenButtons = new ArrayList<>();
         for (Button cardButton : allCards) {
             String buttonText = cardButton.getId().toLowerCase();
-            if (buttonText.contains(inputText.toLowerCase())) {
+            if (buttonText.contains(inputText.toLowerCase()) && currentFilteredCards.contains(cardButton)) {
                 visibleButtons.add(cardButton);
                 cardButton.setVisible(true);
             } else {
@@ -316,17 +331,25 @@ public class MainEditDisplayController implements Initializable {
         currentFilteredCards.addAll(visibleButtons);
     }
 
-    public void filterCardsByCheckbox(CardFilter filter) {
+    public void filterCardsByCheckbox() {
         List<Button> visibleButtons = new ArrayList<>();
         List<Button> hiddenButtons = new ArrayList<>();
         for (Button cardButton : allCards) {
-            if (filter.matches(CardDatabase.getCardByID(cardButton.getId()))) {
+            boolean isVisible = true;
+            for(CardFilter filter : filterList) {
+                if (!filter.matches(CardDatabase.getCardByID(cardButton.getId()))) {
+                    isVisible = false;
+                    break;
+                }
+            }
+            if (isVisible) {
                 visibleButtons.add(cardButton);
                 cardButton.setVisible(true);
             } else {
                 hiddenButtons.add(cardButton);
                 cardButton.setVisible(false);
             }
+
         }
 
         cardFlowPane.getChildren().clear();
@@ -334,16 +357,15 @@ public class MainEditDisplayController implements Initializable {
         currentFilteredCards.clear();
         currentFilteredCards.addAll(visibleButtons);
     }
-
     //*************
     //GENDER FILTER
     //*************
     @FXML public CheckBox checkBoxMale;
     @FXML public CheckBox checkBoxFemale;
     @FXML public CheckBox checkBoxNeutral;
+
     @FXML
     void setChangedGenderBox(ActionEvent event){
-        GenderFilter genderFilter = new GenderFilter();
         if(event.getSource() == checkBoxMale){
             genderFilter.add("M");
         }else if(event.getSource() == checkBoxFemale){
@@ -352,9 +374,17 @@ public class MainEditDisplayController implements Initializable {
             genderFilter.add("N");
         }
         System.out.println(genderFilter.getDesiredGenders().toString());
-        filterCardsByCheckbox(genderFilter);
+        if(!genderFilter.getDesiredGenders().isEmpty()) {
+            if (!filterList.contains(genderFilter)) {
+                filterList.add(genderFilter);
+            }
+        }else{
+            if (filterList.contains(genderFilter)) {
+                filterList.remove(genderFilter);
+            }
+        }
+        filterCardsByCheckbox();
     }
-
 
     //************
     //EVENT FILTER
@@ -369,7 +399,6 @@ public class MainEditDisplayController implements Initializable {
 
     @FXML
     void eventCheckBoxHandle(ActionEvent event){
-       EventFilter eventFilter = new EventFilter();
        if(event.getSource() == checkBoxFloor){
            eventFilter.add("floor");
        }else if(event.getSource() == checkBoxUnevenBars){
@@ -385,26 +414,40 @@ public class MainEditDisplayController implements Initializable {
        }else{
            eventFilter.add("ALL");
         }
-       filterCardsByCheckbox(eventFilter);
+        if(!eventFilter.getDesiredEvents().isEmpty()) {
+            if (!filterList.contains(eventFilter)) {
+                filterList.add(eventFilter);
+            }
+        }else{
+            if (filterList.contains(eventFilter)) {
+                filterList.remove(eventFilter);
+            }
+        }
+       filterCardsByCheckbox();
     }
-
 
 
 
     //****************
     //MODEL SEX FILTER
     //****************
-
-    public static String modelGender;
+    @FXML public CheckBox modelCheckboxMale;
+    @FXML public CheckBox modelCheckboxFemale;
     @FXML
-    void modelCheckBoxFemale(ActionEvent event) {
-        new ModelGenderFilter().add("F");
+    void modelGenderCheckBoxHandle(ActionEvent event){
+        if(event.getSource() == modelCheckboxMale){
+            modelGenderFilter.add("M");
+        }else{
+            modelGenderFilter.add("F");
+        }
+        if(!modelGenderFilter.getSelectedModelGender().isEmpty()) {
+            if (!filterList.contains(modelGenderFilter)) {
+                filterList.add(modelGenderFilter);
+            }
+        }
+        filterCardsByCheckbox();
     }
 
-    @FXML
-    void modelCheckBoxMale(ActionEvent event) {
-        new ModelGenderFilter().add("M");
-    }
 
 
     //************

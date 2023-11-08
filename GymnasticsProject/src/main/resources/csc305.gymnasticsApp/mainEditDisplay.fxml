@@ -200,12 +200,12 @@
                         <VBox prefHeight="100.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
                               <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: Inter; -fx-font-size: 2.1em; -fx-font-weight: bold;" text="Model Gender" textFill="#eef8ff" />
-                              <CheckBox mnemonicParsing="false" onAction="#modelCheckBoxMale" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Male">
+                              <CheckBox fx:id="modelCheckboxMale" mnemonicParsing="false" onAction="#modelGenderCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Male">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" onAction="#modelCheckBoxFemale" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Female">
+                              <CheckBox fx:id="modelCheckboxFemale"  mnemonicParsing="false" onAction="#modelGenderCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Female">
                                  <font>
                                     <Font size="18.0" />
                                  </font>

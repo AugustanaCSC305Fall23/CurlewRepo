@@ -18,6 +18,7 @@ public interface CardFilter {
     default boolean matches(Card canidateCard) {
         return true;
     }
+
 }
 
 //pass in an instance of any filter

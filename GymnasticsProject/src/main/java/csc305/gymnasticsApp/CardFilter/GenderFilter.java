@@ -22,6 +22,8 @@ public class GenderFilter implements CardFilter {
         }
     }
 
+
+
     /**
      * Gets the list of desired genders that have been added to this filter.
      *
