@@ -66,7 +66,7 @@ public class MainEditDisplayController implements Initializable {
     private static final List<Button> currentFilteredCards = new ArrayList<>();
     private static List<Button> allCards = new ArrayList<>();
 
-    public String[] cardParentEvent = {"Event1", "Event2"};
+    public String[] cardParentEvent = {"Event 1", "Event 2"};
 
     public static boolean isInitialized = false;
 
@@ -85,6 +85,9 @@ public class MainEditDisplayController implements Initializable {
         addCardsToFlowPane();
         allCards = getAllCardButtons();
         resetFlowPane();
+        if (Course.getCourseTitle() != null){
+            courseTitle.setText(Course.getCourseTitle());
+        }
     }
 
 
@@ -236,7 +239,7 @@ public class MainEditDisplayController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == yesButton) {
-                if(parent.toString().equals(cardParentEvent[0])){
+                if(parent.getValue().equals(cardParentEvent[0])){
                     Card card = CardDatabase.getCardFromTreeItem(selectedItem.getValue(), 1);
                     CardDatabase.deleteEventOneTreeCard(card);
                 } else{
