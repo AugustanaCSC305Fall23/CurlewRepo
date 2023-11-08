@@ -29,4 +29,7 @@ public class CodeFilter implements CardFilter {
         return(canidateCard.getCode().equalsIgnoreCase(codeFilter));
 
     }
+
+    @Override
+    public void reset() {}
 }

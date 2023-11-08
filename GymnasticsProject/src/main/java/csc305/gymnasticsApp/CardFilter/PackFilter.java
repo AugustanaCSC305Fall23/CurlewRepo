@@ -26,4 +26,7 @@ public class PackFilter implements CardFilter{
         return(canidateCard.getPackFolder().equalsIgnoreCase(desiredPack));
 
     }
+
+    @Override
+    public void reset() {}
 }

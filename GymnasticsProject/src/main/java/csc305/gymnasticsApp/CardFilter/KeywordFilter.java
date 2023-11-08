@@ -36,4 +36,7 @@ public class KeywordFilter implements CardFilter{
         }
         return match;
     }
+
+    @Override
+    public void reset() {}
 }

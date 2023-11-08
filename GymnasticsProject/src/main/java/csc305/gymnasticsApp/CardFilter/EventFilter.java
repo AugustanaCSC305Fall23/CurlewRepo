@@ -21,6 +21,11 @@ public class EventFilter implements CardFilter{
         }
     }
 
+    public void reset(){
+        desiredEvents.clear();
+        desiredEvents.add("ALL");
+    }
+
     public List<String> getDesiredEvents(){
         return desiredEvents;
     }
@@ -28,12 +33,15 @@ public class EventFilter implements CardFilter{
     @Override
     public boolean matches(Card canidateCard) {
         boolean match = false;
-        if(desiredEvents.isEmpty()){
+        if(desiredEvents.size() == 1) {
             match = true;
-        }
-        for(String filter:desiredEvents){
-            if(filter.equalsIgnoreCase(canidateCard.getEvent())){
-                match = true;
+        }else if(canidateCard.getEvent().equalsIgnoreCase("ALL")){
+            match = true;
+        }else {
+            for (String filter : desiredEvents) {
+                if (filter.equalsIgnoreCase(canidateCard.getEvent())) {
+                    match = true;
+                }
             }
         }
         return match;

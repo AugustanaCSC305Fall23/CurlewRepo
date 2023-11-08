@@ -218,27 +218,27 @@
                         <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
                               <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: Inter; -fx-font-size: 2.1em; -fx-font-weight: bold;" text="Level" textAlignment="CENTER" textFill="#eef8ff" />
-                              <CheckBox fx:id="levelAllCheckBox" mnemonicParsing="false" onAction="#setLevelCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="All">
+                              <CheckBox fx:id="levelAllCheckBox" mnemonicParsing="false" onAction="#levelCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="All">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox fx:id="levelBeginnerCheckBox" mnemonicParsing="false" onAction="#setLevelCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Beginner">
+                              <CheckBox fx:id="levelBeginnerCheckBox" mnemonicParsing="false" onAction="#levelCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Beginner">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox fx:id="levelABCheckBox" mnemonicParsing="false" onAction="#setLevelCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Adv-Beginner">
+                              <CheckBox fx:id="levelABCheckBox" mnemonicParsing="false" onAction="#levelCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Adv-Beginner">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox fx:id="levelIntermediateCheckBox" mnemonicParsing="false" onAction="#setLevelCheckBox" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Intermediate">
+                              <CheckBox fx:id="levelIntermediateCheckBox" mnemonicParsing="false" onAction="#levelCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Intermediate">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox fx:id="levelAdvancedCheckBox" mnemonicParsing="false" onAction="#setLevelCheckBox" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Advanced" />
+                              <CheckBox fx:id="levelAdvancedCheckBox" mnemonicParsing="false" onAction="#levelCheckBoxHandle" style="-fx-font-family: Inter; -fx-font-size: 1.7em;" text="Advanced" />
                            </children>
                            <VBox.margin>
                               <Insets top="5.0" />

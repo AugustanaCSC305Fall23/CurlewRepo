@@ -32,6 +32,12 @@ public class LevelFilter implements CardFilter{
         return desiredLevels;
     }
 
+    public void reset(){
+        desiredLevels.clear();
+        desiredLevels.add("ALL");
+    }
+
+
     /**
      * Determines whether a given Card matches the desired level.
      *
@@ -41,14 +47,17 @@ public class LevelFilter implements CardFilter{
     @Override
     public boolean matches(Card canidateCard) {
         boolean match = false;
-        if (desiredLevels.isEmpty()) {
+        if (desiredLevels.size() == 1) {
             match = true;
-        }
-        for (String level : desiredLevels) {
-            String[] cardLevels = canidateCard.getLevel().split(" ");
-            for (String levelInCard : cardLevels) {
-                if (levelInCard.equalsIgnoreCase(level)) {
-                    match = true;
+        }else if(canidateCard.getLevel().equalsIgnoreCase("ALL")){
+            match = true;
+        }else {
+            for (String level : desiredLevels) {
+                String[] cardLevels = canidateCard.getLevel().split(" ");
+                for (String levelInCard : cardLevels) {
+                    if (levelInCard.equalsIgnoreCase(level)) {
+                        match = true;
+                    }
                 }
             }
         }

@@ -18,6 +18,8 @@ public class CategoryFilter implements CardFilter{
         this.desiredCategory = desiredCategory;
     }
 
+    public void reset(){};
+
     /**
      * Determines whether a given Card matches the desired category.
      *

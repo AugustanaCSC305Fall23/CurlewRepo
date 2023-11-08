@@ -28,7 +28,8 @@ public class CombineAndFilter implements CardFilter {
                 new LevelFilter().getDesiredLevels().toString());
         System.out.println(filters);
     }
-
+    @Override
+    public void reset() {}
     /**
      * Determines whether a given Card matches the combined criteria defined by multiple filters.
      *

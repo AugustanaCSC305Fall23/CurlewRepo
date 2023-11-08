@@ -26,4 +26,7 @@ public class TitleFilter implements CardFilter{
         return(canidateCard.getTitle().equalsIgnoreCase(desiredTitle));
 
     }
+
+    @Override
+    public void reset() {}
 }

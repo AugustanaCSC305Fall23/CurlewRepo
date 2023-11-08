@@ -45,6 +45,10 @@ public class GenderFilter implements CardFilter {
             desiredGenders.remove(desiredGender);
         }
     }
+
+    public void reset(){
+        desiredGenders.clear();
+    }
     /**
      * Determines whether a given Card matches the list of desired genders.
      *

@@ -306,13 +306,18 @@ public class MainEditDisplayController implements Initializable {
     private GenderFilter genderFilter = new GenderFilter();
     private ModelGenderFilter  modelGenderFilter = new ModelGenderFilter();
     private EventFilter eventFilter = new EventFilter();
-    private List<CardFilter> filterList;
+    private LevelFilter levelFilter = new LevelFilter();
+    private List<CardFilter> filterList = new ArrayList<>();
 
     private void initFilterList(){
-        filterList = new ArrayList<>();
+        genderFilter.getDesiredGenders().clear();
         filterList.add(genderFilter);
+        modelGenderFilter.getSelectedModelGender().clear();
         filterList.add(modelGenderFilter);
+        eventFilter.reset();
         filterList.add(eventFilter);
+        levelFilter.reset();
+        filterList.add(levelFilter);
     }
 
 
@@ -355,6 +360,7 @@ public class MainEditDisplayController implements Initializable {
 
         }
 
+        System.out.println(filterList);
         cardFlowPane.getChildren().clear();
         cardFlowPane.getChildren().addAll(visibleButtons);
         currentFilteredCards.clear();
@@ -365,7 +371,6 @@ public class MainEditDisplayController implements Initializable {
     //*************
     @FXML public CheckBox checkBoxMale;
     @FXML public CheckBox checkBoxFemale;
-    @FXML public CheckBox checkBoxNeutral;
 
     @FXML
     void setChangedGenderBox(ActionEvent event){
@@ -392,7 +397,6 @@ public class MainEditDisplayController implements Initializable {
     //************
     //EVENT FILTER
     //************
-    @FXML public CheckBox checkBoxAll;
     @FXML public CheckBox checkBoxFloor;
     @FXML public CheckBox checkBoxUnevenBars;
     @FXML public CheckBox checkBoxBeam;
@@ -415,16 +419,6 @@ public class MainEditDisplayController implements Initializable {
        }else if(event.getSource() == checkBoxStrength){
            eventFilter.add("strength");
        }else{
-           eventFilter.add("ALL");
-        }
-        if(!eventFilter.getDesiredEvents().isEmpty()) {
-            if (!filterList.contains(eventFilter)) {
-                filterList.add(eventFilter);
-            }
-        }else{
-            if (filterList.contains(eventFilter)) {
-                filterList.remove(eventFilter);
-            }
         }
        filterCardsByCheckbox();
     }
@@ -435,18 +429,12 @@ public class MainEditDisplayController implements Initializable {
     //MODEL SEX FILTER
     //****************
     @FXML public CheckBox modelCheckboxMale;
-    @FXML public CheckBox modelCheckboxFemale;
     @FXML
     void modelGenderCheckBoxHandle(ActionEvent event){
         if(event.getSource() == modelCheckboxMale){
             modelGenderFilter.add("M");
         }else{
             modelGenderFilter.add("F");
-        }
-        if(!modelGenderFilter.getSelectedModelGender().isEmpty()) {
-            if (!filterList.contains(modelGenderFilter)) {
-                filterList.add(modelGenderFilter);
-            }
         }
         filterCardsByCheckbox();
     }
@@ -456,25 +444,17 @@ public class MainEditDisplayController implements Initializable {
     //************
     //LEVEL FILTER
     //************
-    @FXML
-    private CheckBox levelABCheckBox;
+    @FXML public CheckBox levelABCheckBox;
 
-    @FXML
-    private CheckBox levelAdvancedCheckBox;
+    @FXML public CheckBox levelAdvancedCheckBox;
 
-    @FXML
-    private CheckBox levelAllCheckBox;
+    @FXML public CheckBox levelBeginnerCheckBox;
 
-    @FXML
-    private CheckBox levelBeginnerCheckBox;
-
-    @FXML
-    private CheckBox levelIntermediateCheckBox;
+    @FXML public CheckBox levelIntermediateCheckBox;
 
 
     @FXML
-    void setLevelCheckBox(ActionEvent event) {
-        LevelFilter levelFilter = new LevelFilter();
+    void levelCheckBoxHandle(ActionEvent event) {
         if (event.getSource() == levelABCheckBox) {
             levelFilter.add("AB");
             levelFilter.add("ALL");
@@ -489,10 +469,6 @@ public class MainEditDisplayController implements Initializable {
             levelFilter.add("ALL");
         } else {
             levelFilter.add("ALL");
-            levelFilter.add("B");
-            levelFilter.add("AB");
-            levelFilter.add("I");
-            levelFilter.add("A");
         }
         filterCardsByCheckbox();
     }

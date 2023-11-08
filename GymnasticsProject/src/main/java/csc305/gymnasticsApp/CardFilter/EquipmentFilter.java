@@ -20,7 +20,10 @@ public class EquipmentFilter implements CardFilter {
             desiredEquipments = new ArrayList<>();
         }
     }
-
+    @Override
+    public void reset() {
+        desiredEquipments.clear();
+    }
 
     public void add(String equipment) {
         if (!(desiredEquipments.contains(equipment))) {
