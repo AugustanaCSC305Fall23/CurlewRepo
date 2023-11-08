@@ -85,6 +85,9 @@ public class MainEditDisplayController implements Initializable {
         addCardsToFlowPane();
         allCards = getAllCardButtons();
         resetFlowPane();
+        if (Course.getCourseTitle() != null){
+            courseTitle.setText(Course.getCourseTitle());
+        }
     }
 
 
