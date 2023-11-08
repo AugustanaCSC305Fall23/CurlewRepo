@@ -40,7 +40,18 @@ public class LevelFilter implements CardFilter{
      */
     @Override
     public boolean matches(Card canidateCard) {
-        return(canidateCard.getLevel().equalsIgnoreCase(desiredLevels.toString()));
-
+        boolean match = false;
+        if (desiredLevels.isEmpty()) {
+            match = true;
+        }
+        for (String level : desiredLevels) {
+            String[] cardLevels = canidateCard.getLevel().split(" ");
+            for (String levelInCard : cardLevels) {
+                if (levelInCard.equalsIgnoreCase(level)) {
+                    match = true;
+                }
+            }
+        }
+        return match;
     }
 }

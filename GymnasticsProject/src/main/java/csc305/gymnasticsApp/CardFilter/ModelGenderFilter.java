@@ -12,7 +12,7 @@ public class ModelGenderFilter implements CardFilter {
     public static List<String> selectedModelGender;
     public ModelGenderFilter() {
         if (selectedModelGender == null) {
-            selectedModelGender = new ArrayList<String>();
+            selectedModelGender = new ArrayList<>();
         }
     }
 
@@ -35,7 +35,15 @@ public class ModelGenderFilter implements CardFilter {
      */
     @Override
     public boolean matches(Card canidateCard) {
-        return(canidateCard.getModelGender().equalsIgnoreCase(selectedModelGender.toString()));
-
+        boolean match = false;
+        if (selectedModelGender.isEmpty()) {
+            match = true;
+        }
+        for (String modelGender : selectedModelGender) {
+            if (modelGender.equalsIgnoreCase(canidateCard.getModelGender())) {
+                match = true;
+            }
+        }
+        return match;
     }
 }
