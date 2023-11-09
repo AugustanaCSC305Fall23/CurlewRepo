@@ -55,13 +55,20 @@ public class PreviewPageController {
 
     public void initialize() {
     if(GymnasticsAppBeta.getLoaded()) {
+            Course.resetCourse();
             ArrayList<String> arrayList = GymnasticsAppBeta.setPreviewPage();
             for(int i = 0; i < arrayList.size(); i++) {
                 System.out.println(arrayList.get(i));
             }
-            coursePlanTitle.setText(arrayList.remove(0));
-            eventOneTitle.setText(arrayList.remove(0));
-            eventTwoTitle.setText(arrayList.remove(0));
+            String loadTitle = arrayList.remove(0);
+            String loadEventOneTitle = arrayList.remove(0);
+            String loadEventTwoTitle = arrayList.remove(0);
+            coursePlanTitle.setText(loadTitle);
+            eventOneTitle.setText(loadEventOneTitle);
+            eventTwoTitle.setText(loadEventTwoTitle);
+            Course.setCourseTitle(loadTitle);
+            Course.setEventOneName(loadEventOneTitle);
+            Course.setEventTwoName(loadEventTwoTitle);
             ArrayList<String> arrayList1 = new ArrayList<String>();
             ArrayList<String> arrayList2 = new ArrayList<String>();
 
@@ -118,10 +125,13 @@ public class PreviewPageController {
 
     public void displayEventCards(ArrayList<String> cardList1, ArrayList<String> cardList2) {
         List<Card> cardList = CardDatabase.getAllCards();
+        TreeItem<String> eventOneItems = new TreeItem<>("Event 1");
+        TreeItem<String> eventTwoItems = new TreeItem<>("Event 2");
         try {
             for(int i = 0; i < cardList.size(); i++) {
                 for(int j = 0; j < cardList1.size(); j++) {
                     if(cardList.get(i).getUniqueID().equals(cardList1.get(j))) {
+                        TreeItem<String> newCard = new TreeItem<String>(cardList.get(i).getTitle());
                         Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
                                 cardList.get(i).getPackFolder().toUpperCase() + "Pack/" +
                                 cardList.get(i).getImage()));
@@ -129,12 +139,15 @@ public class PreviewPageController {
                         imageView.setFitWidth(200); // Set the width of the image view
                         imageView.setFitHeight(200); // Set the height of the image view
                         eventOneCardHBox.getChildren().add(imageView);
+                        Course.addToEventOne(cardList.get(i));
+                        eventOneItems.getChildren().add(newCard);
                     }
                 }
             }
             for(int i = 0; i < cardList.size(); i++) {
                 for(int j = 0; j < cardList2.size(); j++) {
                     if(cardList.get(i).getUniqueID().equals(cardList2.get(j))) {
+                        TreeItem<String> newCard = new TreeItem<String>(cardList.get(i).getTitle());
                         Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
                                 cardList.get(i).getPackFolder().toUpperCase() + "Pack/" +
                                 cardList.get(i).getImage()));
@@ -142,9 +155,12 @@ public class PreviewPageController {
                         imageView.setFitWidth(200); // Set the width of the image view
                         imageView.setFitHeight(200); // Set the height of the image view
                         eventTwoCardHBox1.getChildren().add(imageView);
+                        Course.addToEventTwo(cardList.get(i));
+                        eventTwoItems.getChildren().add(newCard);
                     }
                 }
             }
+            //MainEditDisplayController.addTreeCardItems(eventOneItems, eventTwoItems);
         }catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -167,6 +183,8 @@ public class PreviewPageController {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.get() == yesButton) {
+            Course.resetCourse();
+            MainEditDisplayController.clearTreeCardItems();
             GymnasticsAppBeta.switchToHomePage();
         }
 

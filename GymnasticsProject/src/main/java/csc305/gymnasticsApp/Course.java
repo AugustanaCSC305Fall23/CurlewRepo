@@ -50,6 +50,13 @@ public class Course {
         return eventTwoCards;
     }
 
+    public static void addToEventOne(Card card){
+        eventOneCards.add(card);
+    }
+    public static void addToEventTwo(Card card){
+        eventTwoCards.add(card);
+    }
+
     public static void printEverything(){
         System.out.println(courseTitle + " " + eventOneName + " " + eventTwoName);
         if (!(eventOneCards.isEmpty())) {
@@ -64,6 +71,13 @@ public class Course {
         }
     }
 
+    public static void resetCourse(){
+        courseTitle = "";
+        eventOneName = "";
+        eventTwoName = "";
+        eventOneCards.clear();
+        eventTwoCards.clear();
+    }
 
     public static Course loadCourseFile(File courseFile) {
         return null;

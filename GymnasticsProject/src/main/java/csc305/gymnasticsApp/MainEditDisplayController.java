@@ -91,6 +91,18 @@ public class MainEditDisplayController implements Initializable {
         }
     }
 
+    public static void addTreeCardItems(TreeItem<String> firstEventItems,TreeItem<String> secondEventItems){
+        eventOneItems = firstEventItems;
+        eventTwoItems = secondEventItems;
+    }
+
+    public static void clearTreeCardItems(){
+        eventOneItems.getChildren().clear();
+        eventTwoItems.getChildren().clear();
+    }
+
+
+
 
     /**
      * Handles the action when the "Back" button is clicked, allowing the user to return to the lesson plan page.
