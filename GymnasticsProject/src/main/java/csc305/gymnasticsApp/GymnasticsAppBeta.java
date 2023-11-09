@@ -113,17 +113,15 @@ public class GymnasticsAppBeta extends Application {
     public static boolean getLoaded() {return fileLoaded; }
     public static ArrayList<String> setPreviewPage(){
         ArrayList<String> arrayList = new ArrayList<String>();
-        if(selectedFile != null){
-            fileLoaded = true;
-            try (BufferedReader reader = new BufferedReader(new FileReader(selectedFile))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    arrayList.add(line);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+        fileLoaded = true;
+        try (BufferedReader reader = new BufferedReader(new FileReader(selectedFile))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                arrayList.add(line);
             }
-        } 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return arrayList;
     }
 }
