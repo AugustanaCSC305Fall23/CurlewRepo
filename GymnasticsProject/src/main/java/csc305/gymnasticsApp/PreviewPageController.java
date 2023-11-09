@@ -20,6 +20,8 @@ import java.util.Optional;
 public class PreviewPageController {
 
     @FXML
+    private TextField equipmentBox;
+    @FXML
     private VBox eventPreviewVBox;
     @FXML
     private Button backButton;
@@ -59,19 +61,27 @@ public class PreviewPageController {
         if (LessonPlan.getEventTwoName() != null) {
             eventTwoTitle.setText(LessonPlan.getEventTwoName());
         }
-        displayEventCards();
+        displayEventCards(LessonPlan.getEventOneCards().size(), LessonPlan.getEventTwoCards().size());
     }
 
 
-    public void displayEventCards() {
+    public void displayEventCards(int numCardsEventOne, int numCardsEventTwo) {
         try {
             for (Card card : LessonPlan.getEventOneCards()) {
                 Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
                 ImageView imageView = new ImageView(image);
-                imageView.setFitWidth(200); // Set the width of the image view
-                imageView.setFitHeight(200); // Set the height of the image view
+                if (numCardsEventOne <= 3) {
+                    imageView.setFitWidth(200); // Set the width of the image view
+                    imageView.setFitHeight(200); // Set the height of the image view
+                } else if(numCardsEventOne == 4){
+                    imageView.setFitWidth(180);
+                    imageView.setFitHeight(180);
+                } else if(numCardsEventOne == 5){
+                    imageView.setFitWidth(140);
+                    imageView.setFitHeight(140);
+                }
                 eventOneCardHBox.getChildren().add(imageView);
             }
             for (Card card : LessonPlan.getEventTwoCards()) {
@@ -79,8 +89,16 @@ public class PreviewPageController {
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
                 ImageView imageView = new ImageView(image);
-                imageView.setFitWidth(200); // Set the width of the image view
-                imageView.setFitHeight(200); // Set the height of the image view
+                if(numCardsEventTwo <= 3) {
+                    imageView.setFitWidth(200); // Set the width of the image view
+                    imageView.setFitHeight(200); // Set the height of the image view
+                } else if(numCardsEventTwo == 4){
+                    imageView.setFitWidth(180);
+                    imageView.setFitHeight(180);
+                } else if(numCardsEventTwo == 5){
+                    imageView.setFitWidth(140);
+                    imageView.setFitHeight(140);
+                }
                 eventTwoCardHBox1.getChildren().add(imageView);
             }
         }catch (FileNotFoundException e) {
