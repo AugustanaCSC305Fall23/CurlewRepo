@@ -33,8 +33,10 @@ public class HomePageController {
     @FXML
     private void handleLoadLessonButton(ActionEvent event) {
         GymnasticsAppBeta.callFileChooser();
-        GymnasticsAppBeta.setPreviewPage();
-        GymnasticsAppBeta.switchToPreviewPage();
+        if(GymnasticsAppBeta.getLoaded() == true) {
+            GymnasticsAppBeta.setPreviewPage();
+            GymnasticsAppBeta.switchToPreviewPage();
+        }
     }
 
 }

@@ -160,7 +160,7 @@ public class PreviewPageController {
                     }
                 }
             }
-            //MainEditDisplayController.addTreeCardItems(eventOneItems, eventTwoItems);
+            MainEditDisplayController.addTreeCardItems(eventOneItems, eventTwoItems);
         }catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
