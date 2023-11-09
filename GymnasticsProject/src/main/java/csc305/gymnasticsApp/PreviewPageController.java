@@ -25,6 +25,8 @@ import java.util.Optional;
 public class PreviewPageController {
 
     @FXML
+    private TextField equipmentBox;
+    @FXML
     private VBox eventPreviewVBox;
     @FXML
     private Button backButton;
@@ -54,7 +56,7 @@ public class PreviewPageController {
     private HBox eventTwoCardHBox1;
 
     public void initialize() {
-    if(GymnasticsAppBeta.getLoaded()) {
+        if(GymnasticsAppBeta.getLoaded()) {
             Course.resetCourse();
             ArrayList<String> arrayList = GymnasticsAppBeta.setPreviewPage();
             for(int i = 0; i < arrayList.size(); i++) {
@@ -94,6 +96,20 @@ public class PreviewPageController {
                 eventTwoTitle.setText(Course.getEventTwoName());
             }
             displayEventCards(Course.getEventOneCards().size(), Course.getEventTwoCards().size());
+        }
+        equipmentBox.setText("Equipment: ");
+        for(int i = 0; i < Course.getEventOneCards().size(); i++){
+            if(i == 0){
+                equipmentBox.setText(equipmentBox.getText() + Course.getEventOneCards().get(i).getEquipment());
+            }
+            if (!(equipmentBox.getText().contains(Course.getEventOneCards().get(i).getEquipment()))) {
+                equipmentBox.setText(equipmentBox.getText() + ", " + Course.getEventOneCards().get(i).getEquipment());
+            }
+        }
+        for(int i = 0; i < Course.getEventTwoCards().size(); i++){
+            if(!(equipmentBox.getText().contains(Course.getEventOneCards().get(i).getEquipment()))) {
+                equipmentBox.setText(equipmentBox.getText() + ", " + Course.getEventOneCards().get(i).getEquipment());
+            }
         }
     }
 
