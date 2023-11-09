@@ -107,8 +107,8 @@ public class PreviewPageController {
             }
         }
         for(int i = 0; i < Course.getEventTwoCards().size(); i++){
-            if(!(equipmentBox.getText().contains(Course.getEventOneCards().get(i).getEquipment()))) {
-                equipmentBox.setText(equipmentBox.getText() + ", " + Course.getEventOneCards().get(i).getEquipment());
+            if(!(equipmentBox.getText().contains(Course.getEventTwoCards().get(i).getEquipment()))) {
+                equipmentBox.setText(equipmentBox.getText() + ", " + Course.getEventTwoCards().get(i).getEquipment());
             }
         }
     }
