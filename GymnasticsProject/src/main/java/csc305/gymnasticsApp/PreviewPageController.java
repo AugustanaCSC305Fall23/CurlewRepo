@@ -54,7 +54,7 @@ public class PreviewPageController {
     private HBox eventTwoCardHBox1;
 
     public void initialize() {
-    if(GymnasticsAppBeta.getLoaded()) {
+        if(GymnasticsAppBeta.getLoaded()) {
             Course.resetCourse();
             ArrayList<String> arrayList = GymnasticsAppBeta.setPreviewPage();
             for(int i = 0; i < arrayList.size(); i++) {
