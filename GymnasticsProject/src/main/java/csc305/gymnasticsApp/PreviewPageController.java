@@ -93,20 +93,28 @@ public class PreviewPageController {
             if (Course.getEventTwoName() != null) {
                 eventTwoTitle.setText(Course.getEventTwoName());
             }
-            displayEventCards();
+            displayEventCards(Course.getEventOneCards().size(), Course.getEventTwoCards().size());
         }
     }
 
 
-    public void displayEventCards() {
+    public void displayEventCards(int numCardsEventOne, int numCardsEventTwo) {
         try {
             for (Card card : Course.getEventOneCards()) {
                 Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
                 ImageView imageView = new ImageView(image);
-                imageView.setFitWidth(200); // Set the width of the image view
-                imageView.setFitHeight(200); // Set the height of the image view
+                if (numCardsEventOne <= 3) {
+                    imageView.setFitWidth(200); // Set the width of the image view
+                    imageView.setFitHeight(200); // Set the height of the image view
+                } else if(numCardsEventOne == 4){
+                    imageView.setFitWidth(180);
+                    imageView.setFitHeight(180);
+                } else if(numCardsEventOne == 5){
+                    imageView.setFitWidth(140);
+                    imageView.setFitHeight(140);
+                }
                 eventOneCardHBox.getChildren().add(imageView);
             }
             for (Card card : Course.getEventTwoCards()) {
@@ -114,8 +122,16 @@ public class PreviewPageController {
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
                 ImageView imageView = new ImageView(image);
-                imageView.setFitWidth(200); // Set the width of the image view
-                imageView.setFitHeight(200); // Set the height of the image view
+                if(numCardsEventTwo <= 3) {
+                    imageView.setFitWidth(200); // Set the width of the image view
+                    imageView.setFitHeight(200); // Set the height of the image view
+                } else if(numCardsEventTwo == 4){
+                    imageView.setFitWidth(180);
+                    imageView.setFitHeight(180);
+                } else if(numCardsEventTwo == 5){
+                    imageView.setFitWidth(140);
+                    imageView.setFitHeight(140);
+                }
                 eventTwoCardHBox1.getChildren().add(imageView);
             }
         }catch (FileNotFoundException e) {
