@@ -8,16 +8,14 @@ public class FilterTester {
 
 
     public static void main(String[] args){
-        testGenderFilter();
+        testFilter();
     }
 
-    private static void testGenderFilter(){
-        GenderFilter genderFilter = new GenderFilter();
-        //genderFilter.add("n");
-        genderFilter.add("f");
+    private static void testFilter(){
+        EquipmentFilter genderFilter = new EquipmentFilter();
+
         for(Card card: CardDatabase.getAllCards()){
             if(genderFilter.matches(card)){
-                System.out.println("yes" + card.getGender());
             }
         }
     }
