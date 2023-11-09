@@ -22,8 +22,6 @@ public class CardDatabase {
 
     private static Map<String, Card> IDToCard= new HashMap<String, Card>();
 
-    private static List<Card> eventOneTreeCards = new ArrayList<>();
-    private static List<Card> eventTwoTreeCards = new ArrayList<>();
     /**
      * Main method for testing and demonstrating the functionality of the CardDatabase class.
      *
@@ -121,84 +119,7 @@ public class CardDatabase {
             System.out.println(card.toString());
         }
     }
-    public static void resetTreeCards(){
-        eventOneTreeCards.clear();
-        eventTwoTreeCards.clear();
-    }
-    /**
-     * Adds a card to the list of event one tree cards.
-     *
-     * @param card The card to be added to the list.
-     */
-    public static void addEventOneTreeCard(Card card){
-        eventOneTreeCards.add(card);
-    }
-    /**
-     * Adds a card to the list of event two tree cards.
-     *
-     * @param card The card to be added to the list.
-     */
-    public static void addEventTwoTreeCard(Card card){
-        eventTwoTreeCards.add(card);
-    }
-    /**
-     * Deletes a card from the list of event one tree cards.
-     *
-     * @param card The card to be removed from the list.
-     */
-    public static void deleteEventOneTreeCard(Card card){
-        eventOneTreeCards.remove(card);
-    }
-    /**
-     * Deletes a card from the list of event two tree cards.
-     *
-     * @param card The card to be removed from the list.
-     */
-    public static void deleteEventTwoTreeCard(Card card){
-        eventTwoTreeCards.remove(card);
-    }
-    /**
-     * Retrieves a card from the specified tree list based on the card's title.
-     *
-     * @param value - The title of the card to retrieve.
-     * @param treeNum - The number representing the tree (1 or 2).
-     * @return The card matching the title, or the first card if not found.
-     */
-    public static Card getCardFromTreeItem(String value, int treeNum) {
-        if (treeNum == 1){
-            for(int i = 0; i < eventOneTreeCards.size(); i++){
-                if (eventOneTreeCards.get(i).getTitle().equals(value)){
-                    return eventOneTreeCards.get(i);
-                }
-            }
-        }else {
-            for (int i = 0; i < eventTwoTreeCards.size(); i++) {
-                if (eventTwoTreeCards.get(i).getTitle().equals(value)) {
-                    return eventTwoTreeCards.get(i);
-                }
-            }
-        }
-        //return eventOneTreeCards.get(0);
-        return null;
-    }
 
-    /**
-     * Gets the EventOneTreeCards
-     *
-     * @return The EventOneTreeCards
-     */
-    public static List<Card> getEventOneTreeCards(){
-        return eventOneTreeCards;
-    }
-
-    /**
-     * Gets the EventTwoTreeCards
-     *
-     * @return The EventTwoTreeCards
-     */
-    public static List<Card> getEventTwoTreeCards(){
-        return eventTwoTreeCards;
-    }
 
     public static Card getCardByID(String id){
         Card card = IDToCard.get(id);

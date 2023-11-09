@@ -58,6 +58,12 @@ public class LessonPlan {
     public static void addToEventTwo(Card card){
         eventTwoCards.add(card);
     }
+    public static void deleteFromEventOne(Card card){
+        eventOneCards.remove(card);
+    }
+    public static void deleteFromEventTwo(Card card){
+        eventTwoCards.remove(card);
+    }
 
     public static void printEverything(){
         System.out.println(lessonPlanTitle + " " + eventOneName + " " + eventTwoName);
@@ -72,22 +78,27 @@ public class LessonPlan {
             System.out.println("Event two cards is empty");
         }
     }
+
+
     public static void loadPlanFromFile() {
         if (GymnasticsAppBeta.getLoaded() && !hasBeenLoaded) {
             System.out.println("LOADING FROM FILE");
             CardDatabase.getAllCards();
-            resetCourse();
-            ArrayList<String> arrayList = GymnasticsAppBeta.setPreviewPage();
-            for(int i = 0; i < arrayList.size(); i++) {
-                System.out.println(arrayList.get(i));
+            resetLessonPlan();
+            if(eventOneCards.isEmpty()){
+                System.out.println("clear");
+            }else {
+                for (Card card : eventOneCards) {
+                    System.out.println(card.getTitle());
+                }
             }
+            ArrayList<String> arrayList = GymnasticsAppBeta.setPreviewPage();
             String loadTitle = arrayList.remove(0);
             String loadEventOneTitle = arrayList.remove(0);
             String loadEventTwoTitle = arrayList.remove(0);
             setLessonPlanTitle(loadTitle);
             setEventOneName(loadEventOneTitle);
             setEventTwoName(loadEventTwoTitle);
-            ArrayList<String> arrayList1 = new ArrayList<String>();
 
             for(int i = 0; i < arrayList.size(); i++) {
                 if(arrayList.get(i).equals("end")) {
@@ -96,28 +107,52 @@ public class LessonPlan {
                 } else {
                     Card card = CardDatabase.getCardByID(arrayList.remove(i));
                     eventOneCards.add(card);
-                    CardDatabase.addEventOneTreeCard(card);
+                    System.out.println(card.getTitle());
                     i--;
                 }
             }
+            System.out.println("");
             for(int j = 0; j < arrayList.size(); j++){
                 Card card = CardDatabase.getCardByID(arrayList.remove(j));
                 eventTwoCards.add(card);
-                CardDatabase.addEventTwoTreeCard(card);
+                System.out.println(card.getTitle());
                 j--;
+            }
+            for(Card card: eventOneCards){
+                System.out.println(card.getTitle());
             }
             MainEditDisplayController.addTreeCardItem(eventOneCards,eventTwoCards);
             hasBeenLoaded = true;
         }
     }
 
-    public static void resetCourse(){
+    public static Card getCardFromTreeItem(String value, int treeNum) {
+        if (treeNum == 1){
+            for(int i = 0; i < eventOneCards.size(); i++){
+                if (eventOneCards.get(i).getTitle().equals(value)){
+                    return eventOneCards.get(i);
+                }
+            }
+        }else {
+            for (int i = 0; i < eventTwoCards.size(); i++) {
+                if (eventTwoCards.get(i).getTitle().equals(value)) {
+                    return eventTwoCards.get(i);
+                }
+            }
+        }
+        //return eventOneTreeCards.get(0);
+        return null;
+    }
+    public static void resetBoolean(){
+        hasBeenLoaded = false;
+    }
+
+    public static void resetLessonPlan(){
         lessonPlanTitle = "";
         eventOneName = "";
         eventTwoName = "";
         eventOneCards.clear();
         eventTwoCards.clear();
-        CardDatabase.resetTreeCards();
     }
 
     public static LessonPlan loadCourseFile(File courseFile) {

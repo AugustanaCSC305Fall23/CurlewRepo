@@ -32,6 +32,7 @@ public class HomePageController {
      */
     @FXML
     private void handleLoadLessonButton(ActionEvent event) {
+        LessonPlan.resetBoolean();
         GymnasticsAppBeta.callFileChooser();
         GymnasticsAppBeta.setPreviewPage();
         if(GymnasticsAppBeta.getLoaded() == true) {

@@ -82,6 +82,8 @@ public class MainEditDisplayController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1){
         if(rootItem.getChildren().size() == 0) {
             rootItem.getChildren().addAll(eventOneItems, eventTwoItems);
+        }else if(rootItem.getChildren().size() != 2){
+            System.out.println("Duplicating");
         }
         treeView.setShowRoot(false);
         treeView.setRoot(rootItem);
@@ -94,9 +96,18 @@ public class MainEditDisplayController implements Initializable {
         }
     }
 
+
+
     public static void addTreeCardItem(List<Card> eventOneCards,List<Card> eventTwoCards){
+        //for(Card card : eventOneCards){
+        //    System.out.println(card.getTitle());
+        //}
+        rootItem.getChildren().clear();
+        eventOneItems.getChildren().clear();
+        eventTwoItems.getChildren().clear();
         for(Card card : eventOneCards){
             TreeItem<String> newCard = new TreeItem<String>(card.getTitle());
+            //System.out.println(card.getTitle());
             eventOneItems.getChildren().add(newCard);
         }
         for(Card card : eventTwoCards){
@@ -107,8 +118,10 @@ public class MainEditDisplayController implements Initializable {
     }
 
     public static void clearTreeCardItems(){
+        rootItem.getChildren().clear();
         eventOneItems.getChildren().clear();
         eventTwoItems.getChildren().clear();
+
     }
 
 
@@ -120,7 +133,22 @@ public class MainEditDisplayController implements Initializable {
      * @param event - The ActionEvent triggered by clicking the "Back" button.
      */
     @FXML
-    void backButtonHandle(ActionEvent event) {GymnasticsAppBeta.switchToHomePage();
+    void backButtonHandle(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Caution");
+        alert.setHeaderText("Are you sure you want to exit to the home page? Any unsaved lessons will be lost.");
+        alert.setContentText("Please select an option.");
+        ButtonType yesButton = new ButtonType("Yes");
+        ButtonType noButton = new ButtonType("No");
+        alert.getButtonTypes().setAll(yesButton, noButton);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == yesButton) {
+            LessonPlan.resetLessonPlan();
+            MainEditDisplayController.clearTreeCardItems();
+            GymnasticsAppBeta.switchToHomePage();
+        }
     }
 
     /**
@@ -138,12 +166,6 @@ public class MainEditDisplayController implements Initializable {
             alert.showAndWait();
         } else {
             LessonPlan.setLessonPlanTitle(courseTitle.getText());
-            if(!(CardDatabase.getEventOneTreeCards().isEmpty())) {
-                LessonPlan.setEventOneCards(CardDatabase.getEventOneTreeCards());
-            }
-            if(!(CardDatabase.getEventTwoTreeCards().isEmpty())) {
-                LessonPlan.setEventTwoCards(CardDatabase.getEventTwoTreeCards());
-            }
             LessonPlan.setEventOneName("Event 1 Test");
             LessonPlan.setEventTwoName("Event 2 Test");
             GymnasticsAppBeta.switchToPreviewPage();
@@ -263,11 +285,11 @@ public class MainEditDisplayController implements Initializable {
 
             if (result.get() == yesButton) {
                 if(parent.getValue().equals(cardParentEvent[0])){
-                    Card card = CardDatabase.getCardFromTreeItem(selectedItem.getValue(), 1);
-                    CardDatabase.deleteEventOneTreeCard(card);
+                    Card card = LessonPlan.getCardFromTreeItem(selectedItem.getValue(), 1);
+                    LessonPlan.deleteFromEventOne(card);
                 } else{
-                    Card card = CardDatabase.getCardFromTreeItem(selectedItem.getValue(), 2);
-                    CardDatabase.deleteEventTwoTreeCard(card);
+                    Card card = LessonPlan.getCardFromTreeItem(selectedItem.getValue(), 2);
+                    LessonPlan.deleteFromEventTwo(card);
                 }
                 deleteCardFromTreeView(event);
             }
@@ -296,11 +318,11 @@ public class MainEditDisplayController implements Initializable {
             if (buttonType == eventOneButton) {
                 TreeItem<String> newCard = new TreeItem<>(card.getTitle());
                 eventOneItems.getChildren().add(newCard);
-                CardDatabase.addEventOneTreeCard(card);
+                LessonPlan.addToEventOne(card);
             } else if (buttonType == eventTwoButton) {
                 TreeItem<String> newCard = new TreeItem<>(card.getTitle());
                 eventTwoItems.getChildren().add(newCard);
-                CardDatabase.addEventTwoTreeCard(card);
+                LessonPlan.addToEventTwo(card);
             }
         });
         eventOneItems.setExpanded(true);

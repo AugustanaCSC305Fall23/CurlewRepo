@@ -138,7 +138,7 @@ public class PreviewPageController {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.get() == yesButton) {
-            LessonPlan.resetCourse();
+            LessonPlan.resetLessonPlan();
             MainEditDisplayController.clearTreeCardItems();
             GymnasticsAppBeta.switchToHomePage();
         }
@@ -155,9 +155,9 @@ public class PreviewPageController {
     @FXML
     void saveController(ActionEvent event) throws IOException {
         List<Card> cardList1 = new ArrayList<Card>();
-        cardList1.addAll(CardDatabase.getEventOneTreeCards());
+        cardList1.addAll(LessonPlan.getEventOneCards());
         List<Card> cardList2 = new ArrayList<Card>();
-        cardList2.addAll(CardDatabase.getEventTwoTreeCards());
+        cardList2.addAll(LessonPlan.getEventTwoCards());
 
 
 
