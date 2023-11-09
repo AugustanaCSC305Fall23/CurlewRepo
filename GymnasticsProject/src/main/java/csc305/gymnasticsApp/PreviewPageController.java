@@ -62,6 +62,20 @@ public class PreviewPageController {
             eventTwoTitle.setText(LessonPlan.getEventTwoName());
         }
         displayEventCards(LessonPlan.getEventOneCards().size(), LessonPlan.getEventTwoCards().size());
+        equipmentBox.setText("Equipment: ");
+        for(int i = 0; i < LessonPlan.getEventOneCards().size(); i++){
+            if(i == 0){
+                equipmentBox.setText(equipmentBox.getText() + LessonPlan.getEventOneCards().get(i).getEquipment());
+            }
+            if(!(equipmentBox.getText().contains(LessonPlan.getEventOneCards().get(i).getEquipment()))){
+                equipmentBox.setText(equipmentBox.getText() +", " + LessonPlan.getEventOneCards().get(i).getEquipment());
+            }
+        }
+        for(int i = 0; i<LessonPlan.getEventTwoCards().size(); i++){
+            if(!(equipmentBox.getText().contains(LessonPlan.getEventTwoCards().get(i).getEquipment()))){
+                equipmentBox.setText(equipmentBox.getText() + ", " + LessonPlan.getEventTwoCards().get(i).getEquipment());
+            }
+        }
     }
 
 
@@ -106,51 +120,6 @@ public class PreviewPageController {
         }
 
     }
-    /*
-    public void displayEventCards(ArrayList<String> cardList1, ArrayList<String> cardList2) {
-        List<Card> cardList = CardDatabase.getAllCards();
-        TreeItem<String> eventOneItems = new TreeItem<>("Event 1");
-        TreeItem<String> eventTwoItems = new TreeItem<>("Event 2");
-        try {
-            for(int i = 0; i < cardList.size(); i++) {
-                for(int j = 0; j < cardList1.size(); j++) {
-                    if(cardList.get(i).getUniqueID().equals(cardList1.get(j))) {
-                        TreeItem<String> newCard = new TreeItem<String>(cardList.get(i).getTitle());
-                        Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
-                                cardList.get(i).getPackFolder().toUpperCase() + "Pack/" +
-                                cardList.get(i).getImage()));
-                        ImageView imageView = new ImageView(image);
-                        imageView.setFitWidth(200); // Set the width of the image view
-                        imageView.setFitHeight(200); // Set the height of the image view
-                        eventOneCardHBox.getChildren().add(imageView);
-                        LessonPlan.addToEventOne(cardList.get(i));
-                        eventOneItems.getChildren().add(newCard);
-                    }
-                }
-            }
-            for(int i = 0; i < cardList.size(); i++) {
-                for(int j = 0; j < cardList2.size(); j++) {
-                    if(cardList.get(i).getUniqueID().equals(cardList2.get(j))) {
-                        TreeItem<String> newCard = new TreeItem<String>(cardList.get(i).getTitle());
-                        Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
-                                cardList.get(i).getPackFolder().toUpperCase() + "Pack/" +
-                                cardList.get(i).getImage()));
-                        ImageView imageView = new ImageView(image);
-                        imageView.setFitWidth(200); // Set the width of the image view
-                        imageView.setFitHeight(200); // Set the height of the image view
-                        eventTwoCardHBox1.getChildren().add(imageView);
-                        LessonPlan.addToEventTwo(cardList.get(i));
-                        eventTwoItems.getChildren().add(newCard);
-                    }
-                }
-            }
-            //MainEditDisplayController.addTreeCardItems(eventOneItems, eventTwoItems);
-        }catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-     */
     @FXML
     void backButtonController(ActionEvent event) {
         GymnasticsAppBeta.switchToMainEditDisplay();
