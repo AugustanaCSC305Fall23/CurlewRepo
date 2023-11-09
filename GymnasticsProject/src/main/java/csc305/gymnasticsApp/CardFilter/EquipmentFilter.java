@@ -44,9 +44,6 @@ public class EquipmentFilter implements CardFilter {
     public boolean matches(Card canidateCard) {
         //Splits the keywords of the candidateCard into an array.
         String[] equipmentList = canidateCard.getEquipment().split(",|/");
-        for(String equip:equipmentList){
-            System.out.println(equip + "+");
-        }
         boolean match = false;
 
         // Checks if the desired equipment keyword is present in the list of keywords.

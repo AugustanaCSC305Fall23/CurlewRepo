@@ -99,6 +99,7 @@ public class GymnasticsAppBeta extends Application {
         File gymPlanFile = fileChooser.showOpenDialog(stage);
         if(gymPlanFile != null) {
             selectedFile = gymPlanFile;
+            fileLoaded = true;
         }
 
     }
@@ -112,7 +113,6 @@ public class GymnasticsAppBeta extends Application {
 
     public static boolean getLoaded() {return fileLoaded; }
     public static ArrayList<String> setPreviewPage(){
-        fileLoaded = true;
         ArrayList<String> arrayList = new ArrayList<String>();
         try (BufferedReader reader = new BufferedReader(new FileReader(selectedFile))) {
             String line;

@@ -1,85 +1,22 @@
 package csc305.gymnasticsApp;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 
 public class Course {
-    //private List<LessonPlan> plan;
-    private static String courseTitle;
-    private static String eventOneName;
-    private static String eventTwoName;
-    private static List<Card> eventOneCards = new ArrayList<>();
-    private static List<Card> eventTwoCards = new ArrayList<>();
+    private List<Card> cards;
+    private String title;
 
-
-    public static void setEventOneCards(List<Card> cardList){
-        eventOneCards = cardList;
-    }
-
-    public static void setEventTwoCards(List<Card> cardList){
-        eventTwoCards = cardList;
-    }
-
-    public static void setCourseTitle(String title){
-        courseTitle = title;
-    }
-
-    public static void setEventOneName(String name){
-        eventOneName = name;
-    }
-
-    public static void setEventTwoName(String name){
-        eventTwoName = name;
-    }
-    public static void save(File saveFile) {
-    }
-    public static String getCourseTitle(){
-        return courseTitle;
-    }
-    public static String getEventOneName(){
-        return eventOneName;
-    }
-    public static String getEventTwoName(){
-        return eventTwoName;
-    }
-    public static List<Card> getEventOneCards(){
-        return eventOneCards;
-    }
-    public static List<Card> getEventTwoCards(){
-        return eventTwoCards;
-    }
-
-    public static void addToEventOne(Card card){
-        eventOneCards.add(card);
-    }
-    public static void addToEventTwo(Card card){
-        eventTwoCards.add(card);
-    }
-
-    public static void printEverything(){
-        System.out.println(courseTitle + " " + eventOneName + " " + eventTwoName);
-        if (!(eventOneCards.isEmpty())) {
-            System.out.println(eventOneCards.get(0).toString());
-        } else{
-            System.out.println("Event one cards is empty");
-        }
-        if(!(eventTwoCards.isEmpty())) {
-            System.out.println(eventTwoCards.get(0).toString());
-        } else{
-            System.out.println("Event two cards is empty");
-        }
-    }
-
-    public static void resetCourse(){
-        courseTitle = "";
-        eventOneName = "";
-        eventTwoName = "";
-        eventOneCards.clear();
-        eventTwoCards.clear();
-    }
-
-    public static Course loadCourseFile(File courseFile) {
+    public TreeMap<String, Card> getCardsGroupedByEvent() {
         return null;
+    }
+
+    public void addCard(Card newCard) {
+
+    }
+
+    public void save(File saveFile) {
+
     }
 }

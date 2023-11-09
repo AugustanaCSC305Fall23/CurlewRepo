@@ -58,6 +58,7 @@ public class MainEditDisplayController implements Initializable {
     @FXML
     private TreeView treeView;
 
+    public static TreeItem<String> rootItem = new TreeItem<>("Root");
     @FXML
     public static TreeItem<String> eventOneItems = new TreeItem<>("Event 1");
 
@@ -79,22 +80,30 @@ public class MainEditDisplayController implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1){
-        TreeItem<String> rootItem = new TreeItem<>("Root");
-        rootItem.getChildren().addAll(eventOneItems, eventTwoItems);
+        if(rootItem.getChildren().size() == 0) {
+            rootItem.getChildren().addAll(eventOneItems, eventTwoItems);
+        }
         treeView.setShowRoot(false);
         treeView.setRoot(rootItem);
         addCardsToFlowPane();
         allCards = getAllCardButtons();
         resetFlowPane();
         initFilterList();
-        if (Course.getCourseTitle() != null){
-            courseTitle.setText(Course.getCourseTitle());
+        if (LessonPlan.getLessonPlanTitle() != null){
+            courseTitle.setText(LessonPlan.getLessonPlanTitle());
         }
     }
 
-    public static void addTreeCardItems(TreeItem<String> firstEventItems,TreeItem<String> secondEventItems){
-        eventOneItems = firstEventItems;
-        eventTwoItems = secondEventItems;
+    public static void addTreeCardItem(List<Card> eventOneCards,List<Card> eventTwoCards){
+        for(Card card : eventOneCards){
+            TreeItem<String> newCard = new TreeItem<String>(card.getTitle());
+            eventOneItems.getChildren().add(newCard);
+        }
+        for(Card card : eventTwoCards){
+            TreeItem<String> newCard = new TreeItem<String>(card.getTitle());
+            eventTwoItems.getChildren().add(newCard);
+        }
+        rootItem.getChildren().addAll(eventOneItems, eventTwoItems);
     }
 
     public static void clearTreeCardItems(){
@@ -124,21 +133,21 @@ public class MainEditDisplayController implements Initializable {
         if(courseTitle.getText() == "") {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("Course title can't be blank.");
+            alert.setHeaderText("LessonPlan title can't be blank.");
             alert.setContentText("Please enter a course title name.");
             alert.showAndWait();
         } else {
-            Course.setCourseTitle(courseTitle.getText());
+            LessonPlan.setLessonPlanTitle(courseTitle.getText());
             if(!(CardDatabase.getEventOneTreeCards().isEmpty())) {
-                Course.setEventOneCards(CardDatabase.getEventOneTreeCards());
+                LessonPlan.setEventOneCards(CardDatabase.getEventOneTreeCards());
             }
             if(!(CardDatabase.getEventTwoTreeCards().isEmpty())) {
-                Course.setEventTwoCards(CardDatabase.getEventTwoTreeCards());
+                LessonPlan.setEventTwoCards(CardDatabase.getEventTwoTreeCards());
             }
-            Course.setEventOneName("Event 1 Test");
-            Course.setEventTwoName("Event 2 Test");
+            LessonPlan.setEventOneName("Event 1 Test");
+            LessonPlan.setEventTwoName("Event 2 Test");
             GymnasticsAppBeta.switchToPreviewPage();
-            Course.printEverything();
+            LessonPlan.printEverything();
         }
 
     }
@@ -376,7 +385,7 @@ public class MainEditDisplayController implements Initializable {
 
         }
 
-        System.out.println(filterList.get(filterList.indexOf(equipmentFilter)));
+        //System.out.println(filterList.get(filterList.indexOf(equipmentFilter)));
         cardFlowPane.getChildren().clear();
         cardFlowPane.getChildren().addAll(visibleButtons);
         currentFilteredCards.clear();

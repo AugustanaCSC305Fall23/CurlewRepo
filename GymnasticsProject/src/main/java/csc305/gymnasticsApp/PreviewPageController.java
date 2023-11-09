@@ -6,17 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
-import javafx.print.PageLayout;
-import javafx.print.Printer;
-import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-import javafx.scene.layout.TilePane;
 import javafx.stage.FileChooser;
-import org.w3c.dom.Document;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +34,7 @@ public class PreviewPageController {
     private Button saveButton;
 
     @FXML
-    private TextField coursePlanTitle;
+    private TextField lessonPlanTitle;
 
     @FXML
     private TextField eventOneTitle;
@@ -54,53 +49,23 @@ public class PreviewPageController {
     private HBox eventTwoCardHBox1;
 
     public void initialize() {
-    if(GymnasticsAppBeta.getLoaded()) {
-            Course.resetCourse();
-            ArrayList<String> arrayList = GymnasticsAppBeta.setPreviewPage();
-            for(int i = 0; i < arrayList.size(); i++) {
-                System.out.println(arrayList.get(i));
-            }
-            String loadTitle = arrayList.remove(0);
-            String loadEventOneTitle = arrayList.remove(0);
-            String loadEventTwoTitle = arrayList.remove(0);
-            coursePlanTitle.setText(loadTitle);
-            eventOneTitle.setText(loadEventOneTitle);
-            eventTwoTitle.setText(loadEventTwoTitle);
-            Course.setCourseTitle(loadTitle);
-            Course.setEventOneName(loadEventOneTitle);
-            Course.setEventTwoName(loadEventTwoTitle);
-            ArrayList<String> arrayList1 = new ArrayList<String>();
-            ArrayList<String> arrayList2 = new ArrayList<String>();
-
-            for(int i = 0; i < arrayList.size(); i++) {
-                if(arrayList.get(i).equals("end")) {
-                    arrayList.remove(i);
-                    break;
-                } else {
-                    arrayList1.add(arrayList.remove(i));
-                    i--;
-                }
-            }
-            arrayList2 = arrayList;
-            displayEventCards(arrayList1, arrayList2);
-        } else {
-            if (Course.getCourseTitle() != null) {
-                coursePlanTitle.setText(Course.getCourseTitle());
-            }
-            if (Course.getEventOneName() != null) {
-                eventOneTitle.setText(Course.getEventOneName());
-            }
-            if (Course.getEventTwoName() != null) {
-                eventTwoTitle.setText(Course.getEventTwoName());
-            }
-            displayEventCards();
+        LessonPlan.loadPlanFromFile();
+        if (LessonPlan.getLessonPlanTitle() != null) {
+            lessonPlanTitle.setText(LessonPlan.getLessonPlanTitle());
         }
+        if (LessonPlan.getEventOneName() != null) {
+            eventOneTitle.setText(LessonPlan.getEventOneName());
+        }
+        if (LessonPlan.getEventTwoName() != null) {
+            eventTwoTitle.setText(LessonPlan.getEventTwoName());
+        }
+        displayEventCards();
     }
 
 
     public void displayEventCards() {
         try {
-            for (Card card : Course.getEventOneCards()) {
+            for (Card card : LessonPlan.getEventOneCards()) {
                 Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
@@ -109,7 +74,7 @@ public class PreviewPageController {
                 imageView.setFitHeight(200); // Set the height of the image view
                 eventOneCardHBox.getChildren().add(imageView);
             }
-            for (Card card : Course.getEventTwoCards()) {
+            for (Card card : LessonPlan.getEventTwoCards()) {
                 Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
@@ -121,8 +86,9 @@ public class PreviewPageController {
         }catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-    }
 
+    }
+    /*
     public void displayEventCards(ArrayList<String> cardList1, ArrayList<String> cardList2) {
         List<Card> cardList = CardDatabase.getAllCards();
         TreeItem<String> eventOneItems = new TreeItem<>("Event 1");
@@ -139,7 +105,7 @@ public class PreviewPageController {
                         imageView.setFitWidth(200); // Set the width of the image view
                         imageView.setFitHeight(200); // Set the height of the image view
                         eventOneCardHBox.getChildren().add(imageView);
-                        Course.addToEventOne(cardList.get(i));
+                        LessonPlan.addToEventOne(cardList.get(i));
                         eventOneItems.getChildren().add(newCard);
                     }
                 }
@@ -155,7 +121,7 @@ public class PreviewPageController {
                         imageView.setFitWidth(200); // Set the width of the image view
                         imageView.setFitHeight(200); // Set the height of the image view
                         eventTwoCardHBox1.getChildren().add(imageView);
-                        Course.addToEventTwo(cardList.get(i));
+                        LessonPlan.addToEventTwo(cardList.get(i));
                         eventTwoItems.getChildren().add(newCard);
                     }
                 }
@@ -165,6 +131,8 @@ public class PreviewPageController {
             throw new RuntimeException(e);
         }
     }
+
+     */
     @FXML
     void backButtonController(ActionEvent event) {
         GymnasticsAppBeta.switchToMainEditDisplay();
@@ -183,7 +151,7 @@ public class PreviewPageController {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.get() == yesButton) {
-            Course.resetCourse();
+            LessonPlan.resetCourse();
             MainEditDisplayController.clearTreeCardItems();
             GymnasticsAppBeta.switchToHomePage();
         }
@@ -217,7 +185,7 @@ public class PreviewPageController {
         if (selectedFile != null) {
             // Create a FileWriter for the selected file and write the data.
             try (FileWriter fileWriter = new FileWriter(selectedFile)) {
-                fileWriter.write(coursePlanTitle.getText() + "\n" + eventOneTitle.getText() + "\n" + eventTwoTitle.getText() + "\n");
+                fileWriter.write(lessonPlanTitle.getText() + "\n" + eventOneTitle.getText() + "\n" + eventTwoTitle.getText() + "\n");
                 for (int i = 0; i < cardList1.size(); i++) {
                     fileWriter.write(cardList1.get(i).getUniqueID() + "\n");
                 }

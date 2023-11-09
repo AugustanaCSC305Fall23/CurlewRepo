@@ -167,14 +167,15 @@ public class CardDatabase {
                     return eventOneTreeCards.get(i);
                 }
             }
-        } else{
-            for(int i = 0; i < eventTwoTreeCards.size(); i++){
-                if (eventTwoTreeCards.get(i).getTitle().equals(value)){
+        }else {
+            for (int i = 0; i < eventTwoTreeCards.size(); i++) {
+                if (eventTwoTreeCards.get(i).getTitle().equals(value)) {
                     return eventTwoTreeCards.get(i);
                 }
             }
         }
-        return eventOneTreeCards.get(0);
+        //return eventOneTreeCards.get(0);
+        return null;
     }
 
     /**
