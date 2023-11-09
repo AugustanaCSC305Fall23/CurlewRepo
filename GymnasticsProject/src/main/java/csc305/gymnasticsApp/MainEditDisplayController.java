@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
@@ -296,17 +297,18 @@ public class MainEditDisplayController implements Initializable {
 
     public void resetFlowPane(){
         cardFlowPane.getChildren().clear();
-        for(Button card : allCards){
-            card.setVisible(true);
-        }
-        currentFilteredCards.addAll(allCards);
-        cardFlowPane.getChildren().addAll(allCards);
+        initFilterList();
+        filterCardsByCheckbox();
+        equipmentTextfield.clear();
+        equipmentTextfield.setPromptText("Equipment Keyword");
+
     }
 
     private GenderFilter genderFilter = new GenderFilter();
     private ModelGenderFilter  modelGenderFilter = new ModelGenderFilter();
     private EventFilter eventFilter = new EventFilter();
     private LevelFilter levelFilter = new LevelFilter();
+    private EquipmentFilter equipmentFilter = new EquipmentFilter();
     private List<CardFilter> filterList = new ArrayList<>();
 
     private void initFilterList(){
@@ -318,6 +320,8 @@ public class MainEditDisplayController implements Initializable {
         filterList.add(eventFilter);
         levelFilter.reset();
         filterList.add(levelFilter);
+        equipmentFilter.reset();
+        filterList.add(equipmentFilter);
     }
 
 
@@ -360,7 +364,7 @@ public class MainEditDisplayController implements Initializable {
 
         }
 
-        System.out.println(filterList);
+        System.out.println(filterList.get(filterList.indexOf(equipmentFilter)));
         cardFlowPane.getChildren().clear();
         cardFlowPane.getChildren().addAll(visibleButtons);
         currentFilteredCards.clear();
@@ -381,7 +385,6 @@ public class MainEditDisplayController implements Initializable {
         }else{
             genderFilter.add("N");
         }
-        System.out.println(genderFilter.getDesiredGenders().toString());
         if(!genderFilter.getDesiredGenders().isEmpty()) {
             if (!filterList.contains(genderFilter)) {
                 filterList.add(genderFilter);
@@ -457,18 +460,13 @@ public class MainEditDisplayController implements Initializable {
     void levelCheckBoxHandle(ActionEvent event) {
         if (event.getSource() == levelABCheckBox) {
             levelFilter.add("AB");
-            levelFilter.add("ALL");
         } else if (event.getSource() == levelAdvancedCheckBox) {
             levelFilter.add("A");
-            levelFilter.add("ALL");
         } else if (event.getSource() == levelIntermediateCheckBox) {
             levelFilter.add("I");
-            levelFilter.add("ALL");
         } else if (event.getSource() == levelBeginnerCheckBox) {
             levelFilter.add("B");
-            levelFilter.add("ALL");
         } else {
-            levelFilter.add("ALL");
         }
         filterCardsByCheckbox();
     }
@@ -481,10 +479,10 @@ public class MainEditDisplayController implements Initializable {
     @FXML private TextField equipmentTextfield;
 
     @FXML
-    void setEquipmentTextField(ActionEvent event) {
+    void setEquipmentTextField(KeyEvent event) {
         String desiredEquipment = equipmentTextfield.getText();
-        EquipmentFilter equipmentFilter = new EquipmentFilter();
         equipmentFilter.add(desiredEquipment);
+        filterCardsByCheckbox();
     }
 
 
