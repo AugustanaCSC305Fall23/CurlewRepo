@@ -117,6 +117,7 @@ public class LessonPlan {
         eventTwoName = "";
         eventOneCards.clear();
         eventTwoCards.clear();
+        CardDatabase.resetTreeCards();
     }
 
     public static LessonPlan loadCourseFile(File courseFile) {

@@ -121,6 +121,10 @@ public class CardDatabase {
             System.out.println(card.toString());
         }
     }
+    public static void resetTreeCards(){
+        eventOneTreeCards.clear();
+        eventTwoTreeCards.clear();
+    }
     /**
      * Adds a card to the list of event one tree cards.
      *
