@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
@@ -193,7 +194,6 @@ public class MainEditDisplayController implements Initializable {
     void openFilterMenu(ActionEvent event){
         filterMenu.setVisible(true);
     }
-
     /**
      * Handles the action when the filter menu is closed.
      *
@@ -549,5 +549,4 @@ public class MainEditDisplayController implements Initializable {
         }
         resetFlowPane();
     }
-
 }
