@@ -81,7 +81,7 @@ public class MainEditDisplayController implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1){
-        if(rootItem.getChildren().size() == 0) {
+        if(rootItem.getChildren().isEmpty()) {
             rootItem.getChildren().addAll(eventOneItems, eventTwoItems);
         }else if(rootItem.getChildren().size() != 2){
             System.out.println("Duplicating");

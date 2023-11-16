@@ -22,23 +22,43 @@ public class CardDatabase {
 
     private static Map<String, Card> IDToCard= new HashMap<String, Card>();
 
-    /**
-     * Main method for testing and demonstrating the functionality of the CardDatabase class.
-     *
-     * @param args - Command-line arguments (not used).
-     */
-    public static void main(String[] args){
-        addCardsFromCSVFile();
-        setUniqueIDs();
-        addCardsToMap();
-        printAllCards(allCards);
-        CardFilter male = new CodeFilter("S1");
-        List<Card> filteredCards = filter(male);
-        System.out.println();
-        System.out.println();
-        printAllCards(filteredCards);
 
+    public CardDatabase() {
+        List<Card> cardsFromCSV = null;
+        File[] csvFileList = addAllCSVFilesFromFolder(new File("src/main/resources/GymSoftwarePics/CSVFiles"));
+
+        for(File csvFile: csvFileList){
+            try {
+                if (csvFile != null) {
+                    cardsFromCSV = new CsvToBeanBuilder(new FileReader(csvFile))
+                            .withType(Card.class).build().parse();
+                } else {
+                    System.err.println("CSV file not found in the classpath.");
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("An error occurred while parsing the CSV file: " + e.getMessage(), e);
+            }
+            allCards.addAll(cardsFromCSV);
+        }
     }
+
+//    /**
+//     * Main method for testing and demonstrating the functionality of the CardDatabase class.
+//     *
+//     * @param args - Command-line arguments (not used).
+//     */
+//    public static void main(String[] args){
+//        addCardsFromCSVFile();
+//        setUniqueIDs();
+//        addCardsToMap();
+//        printAllCards(allCards);
+//        CardFilter male = new CodeFilter("S1");
+//        List<Card> filteredCards = filter(male);
+//        System.out.println();
+//        System.out.println();
+//        printAllCards(filteredCards);
+//
+//    }
 
     private static void addCardsToMap(){
         for(Card card:allCards){

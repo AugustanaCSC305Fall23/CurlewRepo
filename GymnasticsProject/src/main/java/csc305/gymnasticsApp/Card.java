@@ -34,6 +34,10 @@ public class Card {
 
     private String uniqueID;
 
+    public Card() {
+        this.code = code;
+    }
+
     /**
      * Get the code of the card.
      *
