@@ -1,6 +1,7 @@
 package csc305.gymnasticsApp;
 
 
+import java.io.File;
 import java.util.List;
 import com.opencsv.bean.CsvBindByName;
 
@@ -35,7 +36,18 @@ public class Card {
     private String uniqueID;
 
     public Card() {
-        this.code = code;
+        this.code = getCode();
+        this.event = getEvent();
+        this.category = getCategory();
+        this.title = getTitle();
+        this.packFolder = getPackFolder();
+        this.image = getImage();
+        this.gender = getGender();
+        this.modelGender = getModelGender();
+        this.level = getLevel();
+        this.equipment = getEquipment();
+        this.keywords = getKeywords();
+        this.uniqueID = getUniqueID();
     }
 
     /**
