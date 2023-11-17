@@ -50,6 +50,9 @@ public class PreviewPageController {
     @FXML
     private HBox eventTwoCardHBox1;
 
+    @FXML
+    private Button hideEquipment;
+
     public void initialize() {
         LessonPlan.loadPlanFromFile();
         if (LessonPlan.getLessonPlanTitle() != null) {
@@ -125,6 +128,14 @@ public class PreviewPageController {
         GymnasticsAppBeta.switchToMainEditDisplay();
     }
 
+    @FXML
+    void handleEquipmentBar(ActionEvent event){
+        if(equipmentBox.isVisible()){
+            equipmentBox.setVisible(false);
+        } else{
+            equipmentBox.setVisible(true);
+        }
+    }
     @FXML
     void homeButtonController(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
