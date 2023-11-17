@@ -60,9 +60,15 @@ public class PreviewPageController {
         }
         if (LessonPlan.getEventOneName() != null) {
             eventOneTitle.setText(LessonPlan.getEventOneName());
+        } else{
+            eventOneTitle.setText("Event 1");
+            LessonPlan.setEventOneName("Event 1");
         }
         if (LessonPlan.getEventTwoName() != null) {
             eventTwoTitle.setText(LessonPlan.getEventTwoName());
+        } else{
+            eventTwoTitle.setText("Event 2");
+            LessonPlan.setEventTwoName("Event 2");
         }
         displayEventCards(LessonPlan.getEventOneCards().size(), LessonPlan.getEventTwoCards().size());
         equipmentBox.setText("Equipment: ");
@@ -151,6 +157,8 @@ public class PreviewPageController {
         if (result.get() == yesButton) {
             LessonPlan.resetLessonPlan();
             MainEditDisplayController.clearTreeCardItems();
+            MainEditDisplayController.eventOneItems.setValue("Event 1");
+            MainEditDisplayController.eventTwoItems.setValue("Event 2");
             GymnasticsAppBeta.switchToHomePage();
         }
 

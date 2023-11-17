@@ -107,7 +107,6 @@ public class MainEditDisplayController implements Initializable {
         eventTwoItems.getChildren().clear();
         for (Card card : eventOneCards) {
             TreeItem<String> newCard = new TreeItem<String>(card.getTitle());
-            //System.out.println(card.getTitle());
             eventOneItems.getChildren().add(newCard);
         }
         for (Card card : eventTwoCards) {
@@ -145,6 +144,8 @@ public class MainEditDisplayController implements Initializable {
         if (result.get() == yesButton) {
             LessonPlan.resetLessonPlan();
             MainEditDisplayController.clearTreeCardItems();
+            MainEditDisplayController.eventOneItems.setValue("Event 1");
+            MainEditDisplayController.eventTwoItems.setValue("Event 2");
             GymnasticsAppBeta.switchToHomePage();
         }
     }
@@ -156,7 +157,7 @@ public class MainEditDisplayController implements Initializable {
      */
     @FXML
     void previewButtonHandle(ActionEvent event) {
-        if (courseTitle.getText() == "") {
+        if (courseTitle.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("LessonPlan title can't be blank.");
@@ -164,8 +165,6 @@ public class MainEditDisplayController implements Initializable {
             alert.showAndWait();
         } else {
             LessonPlan.setLessonPlanTitle(courseTitle.getText());
-            LessonPlan.setEventOneName("Event 1 Test");
-            LessonPlan.setEventTwoName("Event 2 Test");
             GymnasticsAppBeta.switchToPreviewPage();
             LessonPlan.printEverything();
             /*
@@ -274,7 +273,7 @@ public class MainEditDisplayController implements Initializable {
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
         TreeItem<String> parent = selectedItem.getParent();
 
-
+        //checks if not parent (event)
         if(parent.equals(eventOneItems) || parent.equals(eventTwoItems)) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Caution");
@@ -295,6 +294,21 @@ public class MainEditDisplayController implements Initializable {
                 }
                 deleteCardFromTreeView(event);
             }
+        } else{ //is event, so shows text box
+            TextInputDialog renameDialog= new TextInputDialog();
+            renameDialog.setTitle("Rename " + selectedItem.getValue());
+            renameDialog.setHeaderText("What do you want to rename this event to?");
+            renameDialog.setContentText("New Event Name: ");
+
+            Optional<String> result = renameDialog.showAndWait();
+            result.ifPresent(newName -> {
+                if(selectedItem.equals(eventOneItems)){
+                    LessonPlan.setEventOneName(newName);
+                } else{
+                    LessonPlan.setEventTwoName(newName);
+                }
+                selectedItem.setValue(newName);
+            });
         }
     }
     public void deleteCardFromTreeView(MouseEvent event){

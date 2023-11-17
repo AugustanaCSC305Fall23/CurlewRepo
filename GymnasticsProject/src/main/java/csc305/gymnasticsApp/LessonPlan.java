@@ -99,6 +99,8 @@ public class LessonPlan {
             setLessonPlanTitle(loadTitle);
             setEventOneName(loadEventOneTitle);
             setEventTwoName(loadEventTwoTitle);
+            MainEditDisplayController.eventOneItems.setValue(loadEventOneTitle);
+            MainEditDisplayController.eventTwoItems.setValue(loadEventTwoTitle);
 
             for(int i = 0; i < arrayList.size(); i++) {
                 if(arrayList.get(i).equals("end")) {
@@ -149,8 +151,8 @@ public class LessonPlan {
 
     public static void resetLessonPlan(){
         lessonPlanTitle = "";
-        eventOneName = "";
-        eventTwoName = "";
+        eventOneName = "Event 1";
+        eventTwoName = "Event 2";
         eventOneCards.clear();
         eventTwoCards.clear();
     }
