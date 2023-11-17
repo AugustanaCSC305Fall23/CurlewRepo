@@ -319,18 +319,23 @@ public class MainEditDisplayController implements Initializable {
         ButtonType eventOneButton = new ButtonType(cardParentEvent[0]);
         ButtonType eventTwoButton = new ButtonType(cardParentEvent[1]);
         ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-
         alert.getButtonTypes().setAll(eventOneButton, eventTwoButton, cancelButton);
+
+        for(ButtonType buttonType:alert.getButtonTypes()){
+            Button buttonTest = (Button) alert.getDialogPane().lookupButton(buttonType);
+            buttonTest.setStyle("-fx-font-size: 30px; -fx-min-width: 150px; -fx-min-height: 40px; -fx-translate-y: -20px");
+        }
+
 
         Optional<ButtonType> result = alert.showAndWait();
 
         result.ifPresent(buttonType -> {
             if (buttonType == eventOneButton) {
-                TreeItem<String> newCard = new TreeItem<>(card.getTitle());
+                TreeItem<String> newCard = new TreeItem<>(card.getCode() + " " + card.getTitle());
                 eventOneItems.getChildren().add(newCard);
                 LessonPlan.addToEventOne(card);
             } else if (buttonType == eventTwoButton) {
-                TreeItem<String> newCard = new TreeItem<>(card.getTitle());
+                TreeItem<String> newCard = new TreeItem<>(card.getCode() + " " + card.getTitle());
                 eventTwoItems.getChildren().add(newCard);
                 LessonPlan.addToEventTwo(card);
             }
