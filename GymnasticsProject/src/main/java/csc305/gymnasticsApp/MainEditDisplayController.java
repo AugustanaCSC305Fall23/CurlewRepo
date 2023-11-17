@@ -76,14 +76,14 @@ public class MainEditDisplayController implements Initializable {
     /**
      * Initializes the tree view on the main edit display screen.
      *
-     * @param arg0      The location used to resolve relative paths for the root object, or null if the location is not known.
-     * @param arg1      The resources used to localize the root object, or null if the root object was not localized.
+     * @param arg0 The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param arg1 The resources used to localize the root object, or null if the root object was not localized.
      */
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1){
-        if(rootItem.getChildren().isEmpty()) {
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        if (rootItem.getChildren().isEmpty()) {
             rootItem.getChildren().addAll(eventOneItems, eventTwoItems);
-        }else if(rootItem.getChildren().size() != 2){
+        } else if (rootItem.getChildren().size() != 2) {
             System.out.println("Duplicating");
         }
         treeView.setShowRoot(false);
@@ -92,40 +92,37 @@ public class MainEditDisplayController implements Initializable {
         allCards = getAllCardButtons();
         resetFlowPane();
         initFilterList();
-        if (LessonPlan.getLessonPlanTitle() != null){
+        if (LessonPlan.getLessonPlanTitle() != null) {
             courseTitle.setText(LessonPlan.getLessonPlanTitle());
         }
     }
 
 
-
-    public static void addTreeCardItem(List<Card> eventOneCards,List<Card> eventTwoCards){
+    public static void addTreeCardItem(List<Card> eventOneCards, List<Card> eventTwoCards) {
         //for(Card card : eventOneCards){
         //    System.out.println(card.getTitle());
         //}
         rootItem.getChildren().clear();
         eventOneItems.getChildren().clear();
         eventTwoItems.getChildren().clear();
-        for(Card card : eventOneCards){
+        for (Card card : eventOneCards) {
             TreeItem<String> newCard = new TreeItem<String>(card.getTitle());
             //System.out.println(card.getTitle());
             eventOneItems.getChildren().add(newCard);
         }
-        for(Card card : eventTwoCards){
+        for (Card card : eventTwoCards) {
             TreeItem<String> newCard = new TreeItem<String>(card.getTitle());
             eventTwoItems.getChildren().add(newCard);
         }
         rootItem.getChildren().addAll(eventOneItems, eventTwoItems);
     }
 
-    public static void clearTreeCardItems(){
+    public static void clearTreeCardItems() {
         rootItem.getChildren().clear();
         eventOneItems.getChildren().clear();
         eventTwoItems.getChildren().clear();
 
     }
-
-
 
 
     /**
@@ -159,7 +156,7 @@ public class MainEditDisplayController implements Initializable {
      */
     @FXML
     void previewButtonHandle(ActionEvent event) {
-        if(courseTitle.getText() == "") {
+        if (courseTitle.getText() == "") {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("LessonPlan title can't be blank.");
@@ -171,9 +168,15 @@ public class MainEditDisplayController implements Initializable {
             LessonPlan.setEventTwoName("Event 2 Test");
             GymnasticsAppBeta.switchToPreviewPage();
             LessonPlan.printEverything();
+            /*
+            if(!(Course.containsLessonPlan(LessonPlan.getLessonPlanTitle()))){
+                Course.addPlanToCourse(LessonPlan);
+            }
+             */
         }
-
     }
+
+
 
     /**
      * Handles the action when the "Go" button is clicked to filter cards based on the search bar input.
