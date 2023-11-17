@@ -280,7 +280,6 @@ public class MainEditDisplayController implements Initializable {
             ButtonType yesButton = new ButtonType("Yes");
             ButtonType noButton = new ButtonType("No");
             alert.getButtonTypes().setAll(yesButton, noButton);
-
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == yesButton) {
@@ -306,6 +305,17 @@ public class MainEditDisplayController implements Initializable {
         alert.setTitle("Add Card to Event");
         alert.setHeaderText("Select the event to add the card to");
 
+        try {
+            Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
+                    card.getPackFolder().toUpperCase() + "Pack/" +
+                    card.getImage()));
+            ImageView iv = new ImageView(image);
+            iv.setFitHeight(400.0);
+            iv.setFitWidth(400.0);
+            alert.setGraphic(iv);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         ButtonType eventOneButton = new ButtonType(cardParentEvent[0]);
         ButtonType eventTwoButton = new ButtonType(cardParentEvent[1]);
         ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
