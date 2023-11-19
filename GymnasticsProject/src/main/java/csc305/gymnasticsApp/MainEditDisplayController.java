@@ -59,6 +59,34 @@ public class MainEditDisplayController implements Initializable {
     @FXML
     private TreeView treeView;
 
+    @FXML public VBox filterVBox;
+
+    @FXML private TextField equipmentTextfield;
+    @FXML public CheckBox modelCheckboxMale;
+
+    @FXML public CheckBox checkBoxFloor;
+    @FXML public CheckBox checkBoxUnevenBars;
+    @FXML public CheckBox checkBoxBeam;
+    @FXML public CheckBox checkBoxVault;
+    @FXML public CheckBox checkBoxTramp;
+    @FXML public CheckBox checkBoxStrength;
+    @FXML public CheckBox checkBoxMale;
+    @FXML public CheckBox checkBoxFemale;
+    @FXML public CheckBox levelABCheckBox;
+
+    @FXML public CheckBox levelAdvancedCheckBox;
+
+    @FXML public CheckBox levelBeginnerCheckBox;
+
+    @FXML public CheckBox levelIntermediateCheckBox;
+    private GenderFilter genderFilter = new GenderFilter();
+    private ModelGenderFilter  modelGenderFilter = new ModelGenderFilter();
+    private EventFilter eventFilter = new EventFilter();
+    private LevelFilter levelFilter = new LevelFilter();
+    private EquipmentFilter equipmentFilter = new EquipmentFilter();
+    private List<CardFilter> filterList = new ArrayList<>();
+
+
     public static TreeItem<String> rootItem = new TreeItem<>("Root");
     @FXML
     public static TreeItem<String> eventOneItems = new TreeItem<>("Event 1");
@@ -81,13 +109,7 @@ public class MainEditDisplayController implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        if (rootItem.getChildren().isEmpty()) {
-            rootItem.getChildren().addAll(eventOneItems, eventTwoItems);
-        } else if (rootItem.getChildren().size() != 2) {
-            System.out.println("Duplicating");
-        }
-        treeView.setShowRoot(false);
-        treeView.setRoot(rootItem);
+        initializeTreeView();
         addCardsToFlowPane();
         allCards = getAllCardButtons();
         resetFlowPane();
@@ -95,6 +117,65 @@ public class MainEditDisplayController implements Initializable {
         if (LessonPlan.getLessonPlanTitle() != null) {
             courseTitle.setText(LessonPlan.getLessonPlanTitle());
         }
+    }
+
+    private void initializeTreeView(){
+        if (rootItem.getChildren().isEmpty()) {
+            rootItem.getChildren().addAll(eventOneItems, eventTwoItems);
+        } else if (rootItem.getChildren().size() != 2) {
+            System.out.println("Duplicating");
+        }
+        treeView.setShowRoot(false);
+        treeView.setRoot(rootItem);
+    }
+
+    //Need to reset currentFilteredCards at some point
+    /**
+     * Adds cards to the FlowPane for display.
+     */
+    private void addCardsToFlowPane(){
+        if(!isInitialized) {
+            try {
+                cardFlowPane.getChildren().clear();
+                allCards.clear();
+                for (Card card : CardDatabase.getAllCards()) {
+                    Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
+                            card.getPackFolder().toUpperCase() + "Pack/" +
+                            card.getImage()));
+                    Button cardButton = createCardButton(card, image);
+                    cardFlowPane.getChildren().add(cardButton);
+                    allCards.add(cardButton);
+                }
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            isInitialized = true;
+        }else{
+            cardFlowPane.getChildren().clear();
+            cardFlowPane.getChildren().addAll(allCards);
+        }
+    }
+
+    public void resetFlowPane(){
+        cardFlowPane.getChildren().clear();
+        initFilterList();
+        filterCardsByCheckbox();
+        equipmentTextfield.clear();
+        equipmentTextfield.setPromptText("Equipment Keyword");
+
+    }
+
+    private void initFilterList(){
+        genderFilter.getDesiredGenders().clear();
+        filterList.add(genderFilter);
+        modelGenderFilter.getSelectedModelGender().clear();
+        filterList.add(modelGenderFilter);
+        eventFilter.reset();
+        filterList.add(eventFilter);
+        levelFilter.reset();
+        filterList.add(levelFilter);
+        equipmentFilter.reset();
+        filterList.add(equipmentFilter);
     }
 
 
@@ -207,33 +288,6 @@ public class MainEditDisplayController implements Initializable {
     }
 
 
-
-    //Need to reset currentFilteredCards at some point
-    /**
-     * Adds cards to the FlowPane for display.
-     */
-    private void addCardsToFlowPane(){
-        if(!isInitialized) {
-            try {
-                cardFlowPane.getChildren().clear();
-                allCards.clear();
-                for (Card card : CardDatabase.getAllCards()) {
-                    Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
-                            card.getPackFolder().toUpperCase() + "Pack/" +
-                            card.getImage()));
-                    Button cardButton = createCardButton(card, image);
-                    cardFlowPane.getChildren().add(cardButton);
-                    allCards.add(cardButton);
-                }
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-            isInitialized = true;
-        }else{
-            cardFlowPane.getChildren().clear();
-            cardFlowPane.getChildren().addAll(allCards);
-        }
-    }
     private Button createCardButton(Card card, Image image) {
         ImageView iv = new ImageView(image);
         iv.setFitHeight(198.0);
@@ -370,35 +424,6 @@ public class MainEditDisplayController implements Initializable {
         List<Button> cardButtons = getAllCardButtons();
     }
 
-    public void resetFlowPane(){
-        cardFlowPane.getChildren().clear();
-        initFilterList();
-        filterCardsByCheckbox();
-        equipmentTextfield.clear();
-        equipmentTextfield.setPromptText("Equipment Keyword");
-
-    }
-
-    private GenderFilter genderFilter = new GenderFilter();
-    private ModelGenderFilter  modelGenderFilter = new ModelGenderFilter();
-    private EventFilter eventFilter = new EventFilter();
-    private LevelFilter levelFilter = new LevelFilter();
-    private EquipmentFilter equipmentFilter = new EquipmentFilter();
-    private List<CardFilter> filterList = new ArrayList<>();
-
-    private void initFilterList(){
-        genderFilter.getDesiredGenders().clear();
-        filterList.add(genderFilter);
-        modelGenderFilter.getSelectedModelGender().clear();
-        filterList.add(modelGenderFilter);
-        eventFilter.reset();
-        filterList.add(eventFilter);
-        levelFilter.reset();
-        filterList.add(levelFilter);
-        equipmentFilter.reset();
-        filterList.add(equipmentFilter);
-    }
-
 
     private void filterCardsFromSearch(String inputText) {
         List<Button> visibleButtons = new ArrayList<>();
@@ -448,8 +473,7 @@ public class MainEditDisplayController implements Initializable {
     //*************
     //GENDER FILTER
     //*************
-    @FXML public CheckBox checkBoxMale;
-    @FXML public CheckBox checkBoxFemale;
+
 
     @FXML
     void setChangedGenderBox(ActionEvent event){
@@ -475,12 +499,6 @@ public class MainEditDisplayController implements Initializable {
     //************
     //EVENT FILTER
     //************
-    @FXML public CheckBox checkBoxFloor;
-    @FXML public CheckBox checkBoxUnevenBars;
-    @FXML public CheckBox checkBoxBeam;
-    @FXML public CheckBox checkBoxVault;
-    @FXML public CheckBox checkBoxTramp;
-    @FXML public CheckBox checkBoxStrength;
 
     @FXML
     void eventCheckBoxHandle(ActionEvent event){
@@ -506,7 +524,6 @@ public class MainEditDisplayController implements Initializable {
     //****************
     //MODEL SEX FILTER
     //****************
-    @FXML public CheckBox modelCheckboxMale;
     @FXML
     void modelGenderCheckBoxHandle(ActionEvent event){
         if(event.getSource() == modelCheckboxMale){
@@ -518,17 +535,9 @@ public class MainEditDisplayController implements Initializable {
     }
 
 
-
     //************
     //LEVEL FILTER
     //************
-    @FXML public CheckBox levelABCheckBox;
-
-    @FXML public CheckBox levelAdvancedCheckBox;
-
-    @FXML public CheckBox levelBeginnerCheckBox;
-
-    @FXML public CheckBox levelIntermediateCheckBox;
 
 
     @FXML
@@ -551,8 +560,6 @@ public class MainEditDisplayController implements Initializable {
     //Equipment Filter
     //****************
 
-    @FXML private TextField equipmentTextfield;
-
     @FXML
     void setEquipmentTextField(KeyEvent event) {
         String desiredEquipment = equipmentTextfield.getText();
@@ -567,7 +574,6 @@ public class MainEditDisplayController implements Initializable {
         filterMenu.setVisible(false);
     }
 
-    @FXML public VBox filterVBox;
     @FXML
     void resetButton(ActionEvent event) {
         for(Node nodeOut : filterVBox.getChildren()){

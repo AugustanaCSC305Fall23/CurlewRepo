@@ -55,36 +55,9 @@ public class PreviewPageController {
 
     public void initialize() {
         LessonPlan.loadPlanFromFile();
-        if (LessonPlan.getLessonPlanTitle() != null) {
-            lessonPlanTitle.setText(LessonPlan.getLessonPlanTitle());
-        }
-        if (LessonPlan.getEventOneName() != null) {
-            eventOneTitle.setText(LessonPlan.getEventOneName());
-        } else{
-            eventOneTitle.setText("Event 1");
-            LessonPlan.setEventOneName("Event 1");
-        }
-        if (LessonPlan.getEventTwoName() != null) {
-            eventTwoTitle.setText(LessonPlan.getEventTwoName());
-        } else{
-            eventTwoTitle.setText("Event 2");
-            LessonPlan.setEventTwoName("Event 2");
-        }
+        setLessonPlanTitles();
         displayEventCards(LessonPlan.getEventOneCards().size(), LessonPlan.getEventTwoCards().size());
-        equipmentBox.setText("Equipment: ");
-        for(int i = 0; i < LessonPlan.getEventOneCards().size(); i++){
-            if(i == 0){
-                equipmentBox.setText(equipmentBox.getText() + LessonPlan.getEventOneCards().get(i).getEquipment());
-            }
-            if(!(equipmentBox.getText().contains(LessonPlan.getEventOneCards().get(i).getEquipment()))){
-                equipmentBox.setText(equipmentBox.getText() +", " + LessonPlan.getEventOneCards().get(i).getEquipment());
-            }
-        }
-        for(int i = 0; i<LessonPlan.getEventTwoCards().size(); i++){
-            if(!(equipmentBox.getText().contains(LessonPlan.getEventTwoCards().get(i).getEquipment()))){
-                equipmentBox.setText(equipmentBox.getText() + ", " + LessonPlan.getEventTwoCards().get(i).getEquipment());
-            }
-        }
+        fillEquipmentBox();
     }
 
 
@@ -178,8 +151,6 @@ public class PreviewPageController {
         List<Card> cardList2 = new ArrayList<Card>();
         cardList2.addAll(LessonPlan.getEventTwoCards());
 
-
-
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save File");
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Gym Plan Files (*.GymPlanFile)", "*.GymPlanFile");
@@ -202,6 +173,39 @@ public class PreviewPageController {
             } catch (IOException e) {
                 // Handle the exception appropriately (e.g., show an error message).
                 e.printStackTrace();
+            }
+        }
+    }
+
+    private void setLessonPlanTitles(){
+        lessonPlanTitle.setText(LessonPlan.getLessonPlanTitle());
+        if (LessonPlan.getEventOneName() != null) {
+            eventOneTitle.setText(LessonPlan.getEventOneName());
+        } else{
+            eventOneTitle.setText("Event 1");
+            LessonPlan.setEventOneName("Event 1");
+        }
+        if (LessonPlan.getEventTwoName() != null) {
+            eventTwoTitle.setText(LessonPlan.getEventTwoName());
+        } else{
+            eventTwoTitle.setText("Event 2");
+            LessonPlan.setEventTwoName("Event 2");
+        }
+    }
+
+    private void fillEquipmentBox(){
+        equipmentBox.setText("Equipment: ");
+        for(int i = 0; i < LessonPlan.getEventOneCards().size(); i++){
+            if(i == 0){
+                equipmentBox.setText(equipmentBox.getText() + LessonPlan.getEventOneCards().get(i).getEquipment());
+            }
+            if(!(equipmentBox.getText().contains(LessonPlan.getEventOneCards().get(i).getEquipment()))){
+                equipmentBox.setText(equipmentBox.getText() +", " + LessonPlan.getEventOneCards().get(i).getEquipment());
+            }
+        }
+        for(int i = 0; i<LessonPlan.getEventTwoCards().size(); i++){
+            if(!(equipmentBox.getText().contains(LessonPlan.getEventTwoCards().get(i).getEquipment()))){
+                equipmentBox.setText(equipmentBox.getText() + ", " + LessonPlan.getEventTwoCards().get(i).getEquipment());
             }
         }
     }
