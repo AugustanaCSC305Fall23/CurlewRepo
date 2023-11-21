@@ -53,7 +53,5 @@ public class EquipmentFilter implements CardFilter {
             }
         }
         return match;
-
-
     }
 }

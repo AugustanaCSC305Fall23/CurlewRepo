@@ -30,12 +30,12 @@
                               <Insets top="2.0" />
                            </HBox.margin>
                         </Button>
-                        <TextField fx:id="drillSearchBar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="162.4" promptText="Search Cards" style="-fx-prompt-text-fill: EEF8FF; -fx-background-color: A2AE98; -fx-background-radius: 2.0em;" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="drillSearchBar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#filterCardsFromSearch" prefHeight="37.0" prefWidth="162.4" promptText="Search Cards" style="-fx-prompt-text-fill: EEF8FF; -fx-background-color: A2AE98; -fx-background-radius: 2.0em;" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="drillSearchButton" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goButtonHandle" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.3em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Search" textFill="#eef8ff" HBox.hgrow="ALWAYS">
+                        <Button fx:id="drillSearchButton" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.3em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Search" textFill="#eef8ff" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>

@@ -9,7 +9,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
@@ -85,6 +84,8 @@ public class MainEditDisplayController implements Initializable {
     private LevelFilter levelFilter = new LevelFilter();
     private EquipmentFilter equipmentFilter = new EquipmentFilter();
     private List<CardFilter> filterList = new ArrayList<>();
+
+    private SearchBarFilter searchBarFilter = new SearchBarFilter();
 
 
     public static TreeItem<String> rootItem = new TreeItem<>("Root");
@@ -176,6 +177,8 @@ public class MainEditDisplayController implements Initializable {
         filterList.add(levelFilter);
         equipmentFilter.reset();
         filterList.add(equipmentFilter);
+        searchBarFilter.reset();
+        filterList.add(searchBarFilter);
     }
 
 
@@ -263,10 +266,10 @@ public class MainEditDisplayController implements Initializable {
      *
      * @param event - The ActionEvent triggered by clicking the "Go" button.
      */
-    @FXML
-    void goButtonHandle(ActionEvent event) {
-        filterCardsFromSearch(drillSearchBar.getText().toLowerCase());
-    }
+//    @FXML
+//    void goButtonHandle(ActionEvent event) {
+//        filterCardsFromSearch(drillSearchBar.getText().toLowerCase());
+//    }
 
     /**
      * Handles the action when the filter menu is opened.
@@ -425,22 +428,11 @@ public class MainEditDisplayController implements Initializable {
     }
 
 
-    private void filterCardsFromSearch(String inputText) {
-        List<Button> visibleButtons = new ArrayList<>();
-        List<Button> hiddenButtons = new ArrayList<>();
-        for (Button cardButton : allCards) {
-            String buttonText = cardButton.getId().toLowerCase();
-            if (buttonText.contains(inputText.toLowerCase()) && currentFilteredCards.contains(cardButton)) {
-                visibleButtons.add(cardButton);
-                cardButton.setVisible(true);
-            } else {
-                hiddenButtons.add(cardButton);
-                cardButton.setVisible(false);
-            }
-        }
-        cardFlowPane.getChildren().clear(); // Clear the cardFlowPane before adding visible buttons
-        cardFlowPane.getChildren().addAll(visibleButtons);
-        currentFilteredCards.addAll(visibleButtons);
+    @FXML
+    void filterCardsFromSearch(KeyEvent event) {
+        String keyword = drillSearchBar.getText();
+        searchBarFilter.add(keyword);
+        filterCardsByCheckbox();
     }
 
     public void filterCardsByCheckbox() {
@@ -470,6 +462,8 @@ public class MainEditDisplayController implements Initializable {
         currentFilteredCards.clear();
         currentFilteredCards.addAll(visibleButtons);
     }
+
+
     //*************
     //GENDER FILTER
     //*************
