@@ -22,7 +22,7 @@
                <children>
                   <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="444.0" spacing="20.0" style="-fx-background-color: EEF8FF;" VBox.vgrow="NEVER">
                      <children>
-                        <Button fx:id="filterButton" alignment="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openFilterMenu" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: #3A5069;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Filters" textFill="#eef8ff" HBox.hgrow="ALWAYS">
+                        <Button fx:id="filterButton" alignment="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openFilterMenu" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #3A5069;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Filters" textFill="#eef8ff" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -35,14 +35,6 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="drillSearchButton" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.3em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Search" textFill="#eef8ff" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets top="2.0" />
-                           </HBox.margin>
-                        </Button>
                      </children>
                      <padding>
                         <Insets left="10.0" right="5.0" top="5.0" />

@@ -429,14 +429,6 @@ public class MainEditDisplayController implements Initializable {
         List<Button> cardButtons = getAllCardButtons();
     }
 
-
-    @FXML
-    void filterCardsFromSearch(KeyEvent event) {
-        String keyword = drillSearchBar.getText();
-        searchBarFilter.add(keyword);
-        filterCardsByCheckbox();
-    }
-
     public void filterCardsByCheckbox() {
         List<Button> visibleButtons = new ArrayList<>();
         List<Button> hiddenButtons = new ArrayList<>();
@@ -463,6 +455,13 @@ public class MainEditDisplayController implements Initializable {
         cardFlowPane.getChildren().addAll(visibleButtons);
         currentFilteredCards.clear();
         currentFilteredCards.addAll(visibleButtons);
+    }
+
+    @FXML
+    void filterCardsFromSearch(KeyEvent event) {
+        String keyword = drillSearchBar.getText();
+        searchBarFilter.add(keyword);
+        filterCardsByCheckbox();
     }
 
 
