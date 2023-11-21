@@ -98,7 +98,7 @@ public class MainEditDisplayController implements Initializable {
     private static final List<Button> currentFilteredCards = new ArrayList<>();
     private static List<Button> allCards = new ArrayList<>();
 
-    public String[] cardParentEvent = {"Event 1", "Event 2"};
+    public String[] cardParentEvents = {"Event 1", "Event 2"};
 
     public static boolean isInitialized = false;
 
@@ -342,7 +342,7 @@ public class MainEditDisplayController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == yesButton) {
-                if(parent.getValue().equals(cardParentEvent[0])){
+                if(parent.getValue().equals(cardParentEvents[0])){
                     Card card = LessonPlan.getCardFromTreeItem(selectedItem.getValue(), 1);
                     LessonPlan.deleteFromEventOne(card);
                 } else{
@@ -361,8 +361,10 @@ public class MainEditDisplayController implements Initializable {
             result.ifPresent(newName -> {
                 if(selectedItem.equals(eventOneItems)){
                     LessonPlan.setEventOneName(newName);
+                    cardParentEvents[0] = newName;
                 } else{
                     LessonPlan.setEventTwoName(newName);
+                    cardParentEvents[1] = newName;
                 }
                 selectedItem.setValue(newName);
             });
@@ -390,8 +392,8 @@ public class MainEditDisplayController implements Initializable {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        ButtonType eventOneButton = new ButtonType(cardParentEvent[0]);
-        ButtonType eventTwoButton = new ButtonType(cardParentEvent[1]);
+        ButtonType eventOneButton = new ButtonType(cardParentEvents[0]);
+        ButtonType eventTwoButton = new ButtonType(cardParentEvents[1]);
         ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(eventOneButton, eventTwoButton, cancelButton);
 
