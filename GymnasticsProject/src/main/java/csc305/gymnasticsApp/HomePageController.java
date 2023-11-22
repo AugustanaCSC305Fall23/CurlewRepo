@@ -24,6 +24,10 @@ public class HomePageController {
     private void handleNewLessonButton(ActionEvent event){
         GymnasticsAppBeta.switchToMainEditDisplay();
     }
+    @FXML
+    private void handleTemplateButton(ActionEvent event) {
+        GymnasticsAppBeta.switchToTemplatePage();
+    }
 
     /**
      * Handles the action when the "Load Lesson" button is clicked.

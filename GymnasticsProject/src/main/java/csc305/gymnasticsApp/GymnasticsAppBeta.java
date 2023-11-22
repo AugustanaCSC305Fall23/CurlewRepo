@@ -90,6 +90,9 @@ public class GymnasticsAppBeta extends Application {
         switchToView("/csc305.gymnasticsApp/previewPage.fxml");
     }
 
+    public static void switchToTemplatePage() {
+        switchToView("/csc305.gymnasticsApp/templatePage.fxml");
+    }
     /**
      * Opens a file chooser dialog for selecting the Gymnastics Picture files
      */

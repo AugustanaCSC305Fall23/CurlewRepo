@@ -98,7 +98,7 @@ public class MainEditDisplayController implements Initializable {
     private static final List<Button> currentFilteredCards = new ArrayList<>();
     private static List<Button> allCards = new ArrayList<>();
 
-    public String[] cardParentEvents = {"Event 1", "Event 2"};
+    public static String[] cardParentEvents = {"Event 1", "Event 2"};
 
     public static boolean isInitialized = false;
 
