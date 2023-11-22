@@ -13,7 +13,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 /**
  * The GymnasticsAppBeta class is the main application for the Gymnastics App.
@@ -41,7 +43,8 @@ public class GymnasticsAppBeta extends Application {
         scene = new Scene(new BorderPane(), 1000, 700);
         stage.setScene(scene);
         stage.setResizable(true);
-
+        MainEditDisplayController start = new MainEditDisplayController();
+        start.createCardButtons();
         // Handles window close event by toggling maximized state.
         stage.setOnCloseRequest(event -> {
             if(stage.isMaximized()) {

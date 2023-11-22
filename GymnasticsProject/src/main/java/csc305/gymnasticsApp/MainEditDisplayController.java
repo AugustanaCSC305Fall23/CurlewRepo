@@ -130,12 +130,32 @@ public class MainEditDisplayController implements Initializable {
         treeView.setRoot(rootItem);
     }
 
+    public void createCardButtons(){
+        if(!isInitialized) {
+            allCards.clear();
+            for (Card card : CardDatabase.getAllCards()) {
+                Image image = null;
+                try {
+                    image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
+                            card.getPackFolder().toUpperCase() + "Pack/" +
+                            card.getImage()));
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+                Button cardButton = createCardButton(card, image);
+                allCards.add(cardButton);
+            }
+            isInitialized = true;
+        }
+    }
+
+
     //Need to reset currentFilteredCards at some point
     /**
      * Adds cards to the FlowPane for display.
      */
-    private void addCardsToFlowPane(){
-        if(!isInitialized) {
+    public void addCardsToFlowPane(){
+        /*if(!isInitialized) {
             try {
                 cardFlowPane.getChildren().clear();
                 allCards.clear();
@@ -152,9 +172,10 @@ public class MainEditDisplayController implements Initializable {
             }
             isInitialized = true;
         }else{
+
+         */
             cardFlowPane.getChildren().clear();
             cardFlowPane.getChildren().addAll(allCards);
-        }
     }
 
     public void resetFlowPane(){
@@ -183,9 +204,6 @@ public class MainEditDisplayController implements Initializable {
 
 
     public static void addTreeCardItem(List<Card> eventOneCards, List<Card> eventTwoCards) {
-        //for(Card card : eventOneCards){
-        //    System.out.println(card.getTitle());
-        //}
         rootItem.getChildren().clear();
         eventOneItems.getChildren().clear();
         eventTwoItems.getChildren().clear();
