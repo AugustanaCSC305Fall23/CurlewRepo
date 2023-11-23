@@ -25,7 +25,7 @@
       </VBox>
    </left>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -36,7 +36,7 @@
                   </Text>
                </children>
             </HBox>
-            <ScrollPane hbarPolicy="ALWAYS" prefHeight="667.0" prefWidth="848.0" style="-fx-background-color: EEF8FF;" vbarPolicy="ALWAYS">
+            <ScrollPane fitToWidth="true" hbarPolicy="ALWAYS" prefHeight="667.0" prefWidth="848.0" style="-fx-background-color: EEF8FF;" vbarPolicy="ALWAYS">
                <content>
                   <VBox alignment="TOP_CENTER" prefHeight="628.0" prefWidth="848.0">
                      <children>

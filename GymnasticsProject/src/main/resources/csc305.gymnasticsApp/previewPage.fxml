@@ -12,19 +12,9 @@
    <left>
       <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="184.0" spacing="30.0" style="-fx-border-color: black; -fx-border-width: 0 2 0 0; -fx-background-color: #eef8ff;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="printButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#printButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" text="Print" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
+            <Button fx:id="editButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 23; -fx-font-weight: bold; -fx-background-radius: 30;" text="Edit Plan" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
                <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Button>
-            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" text="Home" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Button>
-            <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" text="Back" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
-               <font>
-                  <Font name="System Bold" size="25.0" />
+                  <Font name="System Bold" size="10.0" />
                </font>
             </Button>
             <Button fx:id="saveButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#saveController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" text="Save" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
@@ -32,9 +22,24 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
+            <Button fx:id="printButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#printButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" text="Print" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Button>
             <Button fx:id="hideEquipment" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleEquipmentBar" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 20; -fx-font-weight: bold; -fx-background-radius: 30;" text="Hide Equipment" textAlignment="CENTER" textFill="#eef8ff" wrapText="true">
                <font>
                   <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="templateButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleTemplateButton" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 20; -fx-font-weight: bold; -fx-background-radius: 30;" text="Templates" textAlignment="CENTER" textFill="#eef8ff">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Button>
+            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" text="Home" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="25.0" />
                </font>
             </Button>
          </children>

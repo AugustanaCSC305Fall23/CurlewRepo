@@ -24,7 +24,7 @@ public class PreviewPageController {
     @FXML
     private VBox eventPreviewVBox;
     @FXML
-    private Button backButton;
+    private Button editButton;
 
     @FXML
     private Button homeButton;
@@ -34,6 +34,8 @@ public class PreviewPageController {
 
     @FXML
     private Button saveButton;
+    @FXML
+    private Button templateButton;
 
     @FXML
     private TextField lessonPlanTitle;
@@ -103,7 +105,7 @@ public class PreviewPageController {
 
     }
     @FXML
-    void backButtonController(ActionEvent event) {
+    void editButtonController(ActionEvent event) {
         GymnasticsAppBeta.switchToMainEditDisplay();
     }
 
@@ -146,6 +148,10 @@ public class PreviewPageController {
         PrintLessonPlan.printPlan(lessonPlanNode, eventPreviewVBox);
     }
 
+    @FXML
+    void handleTemplateButton(ActionEvent event){
+        GymnasticsAppBeta.switchToTemplatePage();
+    }
     @FXML
     void saveController(ActionEvent event) throws IOException {
         List<Card> cardList1 = new ArrayList<Card>();

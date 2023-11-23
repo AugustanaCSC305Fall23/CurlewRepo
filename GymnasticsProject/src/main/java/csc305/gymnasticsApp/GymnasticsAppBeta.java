@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 /**
  * The GymnasticsAppBeta class is the main application for the Gymnastics App.
- * It extends the JavaFX Application class and provides functionality to switch between
+ * It extends the JavaFX Application class and provides functionality to sxwitch between
  * different views and handle file operations.
  */
 public class GymnasticsAppBeta extends Application {
