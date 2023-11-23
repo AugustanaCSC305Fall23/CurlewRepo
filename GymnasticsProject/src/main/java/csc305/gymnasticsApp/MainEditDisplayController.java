@@ -248,6 +248,8 @@ public class MainEditDisplayController implements Initializable {
             MainEditDisplayController.clearTreeCardItems();
             MainEditDisplayController.eventOneItems.setValue("Event 1");
             MainEditDisplayController.eventTwoItems.setValue("Event 2");
+            MainEditDisplayController.cardParentEvents[0] = "Event 1";
+            MainEditDisplayController.cardParentEvents[1] = "Event 2";
             GymnasticsAppBeta.switchToHomePage();
         }
     }

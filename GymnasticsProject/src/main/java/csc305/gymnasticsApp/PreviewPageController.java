@@ -132,6 +132,8 @@ public class PreviewPageController {
             MainEditDisplayController.clearTreeCardItems();
             MainEditDisplayController.eventOneItems.setValue("Event 1");
             MainEditDisplayController.eventTwoItems.setValue("Event 2");
+            MainEditDisplayController.cardParentEvents[0] = "Event 1";
+            MainEditDisplayController.cardParentEvents[1] = "Event 2";
             GymnasticsAppBeta.switchToHomePage();
         }
 
@@ -197,6 +199,9 @@ public class PreviewPageController {
         equipmentBox.setText("Equipment: ");
         for(int i = 0; i < LessonPlan.getEventOneCards().size(); i++){
             if(i == 0){
+                while(LessonPlan.getEventOneCards().get(i).getEquipment().equals("None")){
+                    i = i + 1;
+                }
                 equipmentBox.setText(equipmentBox.getText() + LessonPlan.getEventOneCards().get(i).getEquipment());
             }
             if(!(equipmentBox.getText().contains(LessonPlan.getEventOneCards().get(i).getEquipment()))){

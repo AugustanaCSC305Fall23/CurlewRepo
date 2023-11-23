@@ -109,6 +109,11 @@ public class GymnasticsAppBeta extends Application {
         }
 
     }
+
+    public static void callFileChooser(File file){
+        selectedFile = file;
+        fileLoaded = true;
+    }
     /**
      * Retrieves the currently selected file
      * @return - The selected file, or null if no file is selected is return.

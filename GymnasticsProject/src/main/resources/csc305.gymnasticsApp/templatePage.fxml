@@ -4,13 +4,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: EEF8FF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.templatePageController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: EEF8FF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.TemplatePageController">
    <left>
       <VBox alignment="CENTER" prefHeight="700.0" prefWidth="152.0" style="-fx-border-color: black; -fx-border-width: 0 2 0 0;" BorderPane.alignment="CENTER">
          <opaqueInsets>
@@ -30,16 +29,64 @@
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Text fill="#3a5069" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 4.5em;" text="Welcome To Gym Coach Hero">
+                  <Text fill="#3a5069" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 4.5em;" text="Choose a Template">
                      <font>
                         <Font size="55.0" />
                      </font>
                   </Text>
                </children>
             </HBox>
-            <ScrollPane prefHeight="667.0" prefWidth="848.0" style="-fx-background-color: EEF8FF;">
+            <ScrollPane hbarPolicy="ALWAYS" prefHeight="667.0" prefWidth="848.0" style="-fx-background-color: EEF8FF;" vbarPolicy="ALWAYS">
                <content>
-                  <FlowPane fx:id="templateFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="848.0" style="-fx-background-color: #3A5069;" vgap="10.0" />
+                  <VBox alignment="TOP_CENTER" prefHeight="628.0" prefWidth="848.0">
+                     <children>
+                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="848.0" spacing="10.0">
+                           <children>
+                              <Text fill="#3a5069" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Male Only Plans">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <HBox alignment="CENTER" prefHeight="250.0" prefWidth="848.0" spacing="60.0">
+                                 <children>
+                                    <Button fx:id="maleOnlyButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMaleOnlyButtonOne" prefHeight="250.0" prefWidth="350.0" />
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="250.0" prefWidth="350.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="848.0" spacing="10.0">
+                           <children>
+                              <Text fill="#3a5069" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Beginner Only Plans">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <HBox alignment="CENTER" prefHeight="250.0" prefWidth="848.0" spacing="60.0">
+                                 <children>
+                                    <Button fx:id="beginnerOnlyButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBeginnerOnlyButtonOne" prefHeight="250.0" prefWidth="350.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;" />
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="250.0" prefWidth="350.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="848.0" spacing="10.0">
+                           <children>
+                              <Text fill="#3a5069" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="All Floor Exercise Plans">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <HBox alignment="CENTER" prefHeight="250.0" prefWidth="848.0" spacing="60.0">
+                                 <children>
+                                    <Button fx:id="allFloorExercisesButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAllFloorExercisesButtonOne" prefHeight="250.0" prefWidth="350.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;" />
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="250.0" prefWidth="350.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
                </content>
             </ScrollPane>
          </children>
