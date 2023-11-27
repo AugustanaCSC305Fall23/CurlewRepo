@@ -56,7 +56,8 @@ public class PreviewPageController {
     private Button hideEquipment;
 
     public void initialize() {
-        LessonPlan.loadPlanFromFile();
+        LessonPlan lessonPlan = new LessonPlan();
+        lessonPlan.loadPlanFromFile();
         setLessonPlanTitles();
         displayEventCards(LessonPlan.getEventOneCards().size(), LessonPlan.getEventTwoCards().size());
         fillEquipmentBox();
