@@ -65,7 +65,7 @@
             </VBox>
             <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="450.0" spacing="25.0" style="-fx-background-color: EEF8FF;" HBox.hgrow="ALWAYS">
                <children>
-                  <TextField fx:id="lessonTitle" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#setLessonTitle" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Plan Title" style="-fx-prompt-text-fill: EEF8FF; -fx-background-color: A2AE98; -fx-background-radius: 2.0em; -fx-text-fill: white;" VBox.vgrow="ALWAYS">
+                  <TextField fx:id="lessonTitle" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#setLessonTitle" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Plan Title" style="-fx-prompt-text-fill: EEF8FF; -fx-background-color: A2AE98; -fx-background-radius: 2.0em; -fx-text-fill: white;" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

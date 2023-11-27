@@ -249,7 +249,7 @@ public class MainEditDisplayController implements Initializable {
     }
 
     @FXML
-    void setLessonTitle(ActionEvent event) {
+    void setLessonTitle(KeyEvent event) {
         String title = lessonTitle.getText();
         lessonPlan.setLessonPlanTitle(title);
     }
