@@ -55,18 +55,20 @@ public class PreviewPageController {
     @FXML
     private Button hideEquipment;
 
+    private LessonPlan lessonPlan;
+
     public void initialize() {
-        LessonPlan lessonPlan = new LessonPlan();
-        lessonPlan.loadPlanFromFile();
+        lessonPlan = MainEditDisplayController.getLessonPlan();
+//        lessonPlan.loadPlanFromFile();
         setLessonPlanTitles();
-        displayEventCards(LessonPlan.getEventOneCards().size(), LessonPlan.getEventTwoCards().size());
+        displayEventCards(lessonPlan.getEventOneCards().size(), lessonPlan.getEventTwoCards().size());
         fillEquipmentBox();
     }
 
 
     public void displayEventCards(int numCardsEventOne, int numCardsEventTwo) {
         try {
-            for (Card card : LessonPlan.getEventOneCards()) {
+            for (Card card : lessonPlan.getEventOneCards()) {
                 Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
@@ -83,7 +85,7 @@ public class PreviewPageController {
                 }
                 eventOneCardHBox.getChildren().add(imageView);
             }
-            for (Card card : LessonPlan.getEventTwoCards()) {
+            for (Card card : lessonPlan.getEventTwoCards()) {
                 Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
@@ -131,7 +133,7 @@ public class PreviewPageController {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.get() == yesButton) {
-            LessonPlan.resetLessonPlan();
+            lessonPlan.resetLessonPlan();
             MainEditDisplayController.clearTreeCardItems();
             MainEditDisplayController.eventOneItems.setValue("Event 1");
             MainEditDisplayController.eventTwoItems.setValue("Event 2");
@@ -156,9 +158,9 @@ public class PreviewPageController {
     @FXML
     void saveController(ActionEvent event) throws IOException {
         List<Card> cardList1 = new ArrayList<Card>();
-        cardList1.addAll(LessonPlan.getEventOneCards());
+        cardList1.addAll(lessonPlan.getEventOneCards());
         List<Card> cardList2 = new ArrayList<Card>();
-        cardList2.addAll(LessonPlan.getEventTwoCards());
+        cardList2.addAll(lessonPlan.getEventTwoCards());
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save File");
@@ -187,7 +189,7 @@ public class PreviewPageController {
     }
 
     private void setLessonPlanTitles(){
-        lessonPlanTitle.setText(LessonPlan.getLessonPlanTitle());
+        lessonPlanTitle.setText(lessonPlan.getLessonPlanTitle());
         if (LessonPlan.getEventOneName() != null) {
             eventOneTitle.setText(LessonPlan.getEventOneName());
         } else{
@@ -204,20 +206,20 @@ public class PreviewPageController {
 
     private void fillEquipmentBox(){
         equipmentBox.setText("Equipment: ");
-        for(int i = 0; i < LessonPlan.getEventOneCards().size(); i++){
+        for(int i = 0; i < lessonPlan.getEventOneCards().size(); i++){
             if(i == 0){
-                while(LessonPlan.getEventOneCards().get(i).getEquipment().equals("None")){
+                while(lessonPlan.getEventOneCards().get(i).getEquipment().equals("None")){
                     i = i + 1;
                 }
-                equipmentBox.setText(equipmentBox.getText() + LessonPlan.getEventOneCards().get(i).getEquipment());
+                equipmentBox.setText(equipmentBox.getText() + lessonPlan.getEventOneCards().get(i).getEquipment());
             }
-            if(!(equipmentBox.getText().contains(LessonPlan.getEventOneCards().get(i).getEquipment()))){
-                equipmentBox.setText(equipmentBox.getText() +", " + LessonPlan.getEventOneCards().get(i).getEquipment());
+            if(!(equipmentBox.getText().contains(lessonPlan.getEventOneCards().get(i).getEquipment()))){
+                equipmentBox.setText(equipmentBox.getText() +", " + lessonPlan.getEventOneCards().get(i).getEquipment());
             }
         }
-        for(int i = 0; i<LessonPlan.getEventTwoCards().size(); i++){
-            if(!(equipmentBox.getText().contains(LessonPlan.getEventTwoCards().get(i).getEquipment()))){
-                equipmentBox.setText(equipmentBox.getText() + ", " + LessonPlan.getEventTwoCards().get(i).getEquipment());
+        for(int i = 0; i < lessonPlan.getEventTwoCards().size(); i++){
+            if(!(equipmentBox.getText().contains(lessonPlan.getEventTwoCards().get(i).getEquipment()))){
+                equipmentBox.setText(equipmentBox.getText() + ", " + lessonPlan.getEventTwoCards().get(i).getEquipment());
             }
         }
     }

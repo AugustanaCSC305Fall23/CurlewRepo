@@ -28,7 +28,7 @@ import java.util.List;
 public class MainEditDisplayController implements Initializable {
 
     @FXML
-    private TextField courseTitle;
+    private TextField lessonTitle;
     @FXML
     private Button backButton;
     @FXML
@@ -102,6 +102,8 @@ public class MainEditDisplayController implements Initializable {
 
     public static boolean isInitialized = false;
 
+    public static LessonPlan lessonPlan;
+
     /**
      * Initializes the tree view on the main edit display screen.
      *
@@ -110,14 +112,12 @@ public class MainEditDisplayController implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        lessonPlan = new LessonPlan();
         initializeTreeView();
         addCardsToFlowPane();
         allCards = getAllCardButtons();
         resetFlowPane();
         initFilterList();
-        if (LessonPlan.getLessonPlanTitle() != null) {
-            courseTitle.setText(LessonPlan.getLessonPlanTitle());
-        }
     }
 
     private void initializeTreeView(){
@@ -244,7 +244,7 @@ public class MainEditDisplayController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.get() == yesButton) {
-            LessonPlan.resetLessonPlan();
+            lessonPlan.resetLessonPlan();
             MainEditDisplayController.clearTreeCardItems();
             MainEditDisplayController.eventOneItems.setValue("Event 1");
             MainEditDisplayController.eventTwoItems.setValue("Event 2");
@@ -261,23 +261,25 @@ public class MainEditDisplayController implements Initializable {
      */
     @FXML
     void previewButtonHandle(ActionEvent event) {
-        if (courseTitle.getText().isEmpty()) {
+        if (lessonPlan.getLessonPlanTitle() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("LessonPlan title can't be blank.");
-            alert.setContentText("Please enter a course title name.");
+            alert.setTitle("Warning");
+            alert.setHeaderText("Please add a Title before proceeding.");
+            ButtonType ok = new ButtonType("Ok");
+            alert.getButtonTypes().setAll(ok);
             alert.showAndWait();
         } else {
-            LessonPlan.setLessonPlanTitle(courseTitle.getText());
             GymnasticsAppBeta.switchToPreviewPage();
-            LessonPlan.printEverything();
-            /*
-            if(!(Course.containsLessonPlan(LessonPlan.getLessonPlanTitle()))){
-                Course.addPlanToCourse(LessonPlan);
-            }
-             */
+            lessonPlan.printEverything();
         }
     }
+
+    @FXML
+    void setLessonTitle(ActionEvent event) {
+        String title = lessonTitle.getText();
+        lessonPlan.setLessonPlanTitle(title);
+    }
+
 
 
 
@@ -363,11 +365,11 @@ public class MainEditDisplayController implements Initializable {
 
             if (result.get() == yesButton) {
                 if(parent.getValue().equals(cardParentEvents[0])){
-                    Card card = LessonPlan.getCardFromTreeItem(selectedItem.getValue(), 1);
-                    LessonPlan.deleteFromEventOne(card);
+                    Card card = lessonPlan.getCardFromTreeItem(selectedItem.getValue(), 1);
+                    lessonPlan.deleteFromEventOne(card);
                 } else{
-                    Card card = LessonPlan.getCardFromTreeItem(selectedItem.getValue(), 2);
-                    LessonPlan.deleteFromEventTwo(card);
+                    Card card = lessonPlan.getCardFromTreeItem(selectedItem.getValue(), 2);
+                    lessonPlan.deleteFromEventTwo(card);
                 }
                 deleteCardFromTreeView(event);
             }
@@ -429,24 +431,28 @@ public class MainEditDisplayController implements Initializable {
             if (buttonType == eventOneButton) {
                 TreeItem<String> newCard = new TreeItem<>(card.getCode() + " " + card.getTitle());
                 eventOneItems.getChildren().add(newCard);
-                LessonPlan.addToEventOne(card);
+                lessonPlan.addToEventOne(card);
             } else if (buttonType == eventTwoButton) {
                 TreeItem<String> newCard = new TreeItem<>(card.getCode() + " " + card.getTitle());
                 eventTwoItems.getChildren().add(newCard);
-                LessonPlan.addToEventTwo(card);
+                lessonPlan.addToEventTwo(card);
             }
         });
         eventOneItems.setExpanded(true);
         eventTwoItems.setExpanded(true);
     }
-    /**
-     * Filters the displayed cards based on the input text in the search bar.
-     *
-     * @param inputText - The text to filter cards by.
-     */
-    private void filterCards(String inputText, CardFilter filter) {
-        inputText = inputText.replaceAll("\\s+", "");
-        List<Button> cardButtons = getAllCardButtons();
+//    /**
+//     * Filters the displayed cards based on the input text in the search bar.
+//     *
+//     * @param inputText - The text to filter cards by.
+//     */
+//    private void filterCards(String inputText, CardFilter filter) {
+//        inputText = inputText.replaceAll("\\s+", "");
+//        List<Button> cardButtons = getAllCardButtons();
+//    }
+
+    public static LessonPlan getLessonPlan() {
+        return lessonPlan;
     }
 
     public void filterCardsByCheckbox() {

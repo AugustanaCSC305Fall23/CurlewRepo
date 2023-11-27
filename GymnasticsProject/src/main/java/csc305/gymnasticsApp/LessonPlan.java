@@ -6,22 +6,27 @@ import java.util.List;
 
 public class LessonPlan {
     //private List<Course> plan;
-    private static String lessonPlanTitle;
+    private String lessonPlanTitle;
     private static String eventOneName;
     private static String eventTwoName;
-    private static List<Card> eventOneCards = new ArrayList<>();
-    private static List<Card> eventTwoCards = new ArrayList<>();
+    private List<Card> eventOneCards;
+    private List<Card> eventTwoCards;
+
+    public LessonPlan() {
+        eventOneCards = new ArrayList<>();
+        eventTwoCards = new ArrayList<>();
+    }
 
 
-    public static void setEventOneCards(List<Card> cardList){
+    public void setEventOneCards(List<Card> cardList){
         eventOneCards = cardList;
     }
 
-    public static void setEventTwoCards(List<Card> cardList){
+    public void setEventTwoCards(List<Card> cardList){
         eventTwoCards = cardList;
     }
 
-    public static void setLessonPlanTitle(String title){
+    public void setLessonPlanTitle(String title){
         lessonPlanTitle = title;
     }
 
@@ -34,7 +39,7 @@ public class LessonPlan {
     }
     public static void save(File saveFile) {
     }
-    public static String getLessonPlanTitle(){
+    public String getLessonPlanTitle(){
         return lessonPlanTitle;
     }
     public static String getEventOneName(){
@@ -43,29 +48,29 @@ public class LessonPlan {
     public static String getEventTwoName(){
         return eventTwoName;
     }
-    public static List<Card> getEventOneCards(){
+    public List<Card> getEventOneCards(){
         return eventOneCards;
     }
-    public static List<Card> getEventTwoCards(){
+    public List<Card> getEventTwoCards(){
         return eventTwoCards;
     }
 
     private static boolean hasBeenLoaded = false;
 
-    public static void addToEventOne(Card card){
+    public void addToEventOne(Card card){
         eventOneCards.add(card);
     }
-    public static void addToEventTwo(Card card){
+    public void addToEventTwo(Card card){
         eventTwoCards.add(card);
     }
-    public static void deleteFromEventOne(Card card){
+    public void deleteFromEventOne(Card card){
         eventOneCards.remove(card);
     }
-    public static void deleteFromEventTwo(Card card){
+    public void deleteFromEventTwo(Card card){
         eventTwoCards.remove(card);
     }
 
-    public static void printEverything(){
+    public void printEverything(){
         System.out.println(lessonPlanTitle + " " + eventOneName + " " + eventTwoName);
         if (!(eventOneCards.isEmpty())) {
             System.out.println(eventOneCards.get(0).toString());
@@ -80,7 +85,7 @@ public class LessonPlan {
     }
 
 
-    public static void loadPlanFromFile() {
+    public void loadPlanFromFile() {
         if (GymnasticsAppBeta.getLoaded() && !hasBeenLoaded) {
             System.out.println("LOADING FROM FILE");
             CardDatabase.getAllCards();
@@ -128,7 +133,7 @@ public class LessonPlan {
         }
     }
 
-    public static Card getCardFromTreeItem(String value, int treeNum) {
+    public Card getCardFromTreeItem(String value, int treeNum) {
         if (treeNum == 1){
             for(int i = 0; i < eventOneCards.size(); i++){
                 if (eventOneCards.get(i).getTitle().equals(value)){
@@ -149,7 +154,7 @@ public class LessonPlan {
         hasBeenLoaded = false;
     }
 
-    public static void resetLessonPlan(){
+    public void resetLessonPlan(){
         lessonPlanTitle = "";
         eventOneName = "Event 1";
         eventTwoName = "Event 2";
