@@ -2,9 +2,7 @@ package csc305.gymnasticsApp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.print.PrinterJob;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -13,9 +11,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 /**
  * The GymnasticsAppBeta class is the main application for the Gymnastics App.
@@ -123,7 +119,7 @@ public class GymnasticsAppBeta extends Application {
     }
 
     public static boolean getLoaded() {return fileLoaded; }
-    public static ArrayList<String> setPreviewPage(){
+    public static ArrayList<String> readLessonPlan(){
         ArrayList<String> arrayList = new ArrayList<String>();
         if(selectedFile != null) {
             fileLoaded = true;

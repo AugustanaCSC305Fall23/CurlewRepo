@@ -1,19 +1,19 @@
 package csc305.gymnasticsApp;
 
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.text.Font;
-import javafx.stage.FileChooser;
+
+import java.util.ArrayList;
+
 /**
  * The HomePageController class is responsible for handling user interactions and events on the home page of the application.
  */
 public class HomePageController {
     @FXML private Button NewLessonButton;
     @FXML private Button LoadLessonButton;
+
+    static LessonPlan loadPlan;
 
     /**
      * Handles the action when the "New Lesson" button is clicked.
@@ -36,12 +36,17 @@ public class HomePageController {
      */
     @FXML
     private void handleLoadLessonButton(ActionEvent event) {
-        LessonPlan.resetBoolean();
+        loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser();
-        GymnasticsAppBeta.setPreviewPage();
+        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+        loadPlan.loadPlanFromFile(loadedLessonPlan);
         if(GymnasticsAppBeta.getLoaded() == true) {
             GymnasticsAppBeta.switchToPreviewPage();
         }
+    }
+
+    public static LessonPlan getloadPlan() {
+        return loadPlan;
     }
 
 }

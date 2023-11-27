@@ -53,7 +53,7 @@
          <children>
             <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="760.0" VBox.vgrow="ALWAYS">
                <children>
-                  <TextField fx:id="lessonPlanTitle" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="402.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;">
+                  <TextField fx:id="lessonPlanTextField" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="402.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

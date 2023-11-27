@@ -38,7 +38,7 @@ public class PreviewPageController {
     private Button templateButton;
 
     @FXML
-    private TextField lessonPlanTitle;
+    private TextField lessonPlanTextField;
 
     @FXML
     private TextField eventOneTitle;
@@ -59,6 +59,9 @@ public class PreviewPageController {
 
     public void initialize() {
         lessonPlan = MainEditDisplayController.getLessonPlan();
+        if(HomePageController.getloadPlan() != null) {
+            lessonPlan = HomePageController.getloadPlan();
+        }
 //        lessonPlan.loadPlanFromFile();
         setLessonPlanTitles();
         displayEventCards(lessonPlan.getEventOneCards().size(), lessonPlan.getEventTwoCards().size());
@@ -173,7 +176,7 @@ public class PreviewPageController {
         if (selectedFile != null) {
             // Create a FileWriter for the selected file and write the data.
             try (FileWriter fileWriter = new FileWriter(selectedFile)) {
-                fileWriter.write(lessonPlanTitle.getText() + "\n" + eventOneTitle.getText() + "\n" + eventTwoTitle.getText() + "\n");
+                fileWriter.write(lessonPlanTextField.getText() + "\n" + eventOneTitle.getText() + "\n" + eventTwoTitle.getText() + "\n");
                 for (int i = 0; i < cardList1.size(); i++) {
                     fileWriter.write(cardList1.get(i).getUniqueID() + "\n");
                 }
@@ -188,8 +191,8 @@ public class PreviewPageController {
         }
     }
 
-    private void setLessonPlanTitles(){
-        lessonPlanTitle.setText(lessonPlan.getLessonPlanTitle());
+    private void setLessonPlanTitles() {
+        lessonPlanTextField.setText(lessonPlan.getLessonPlanTitle());
         if (LessonPlan.getEventOneName() != null) {
             eventOneTitle.setText(LessonPlan.getEventOneName());
         } else{

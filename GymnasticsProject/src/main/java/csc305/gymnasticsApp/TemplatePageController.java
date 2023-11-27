@@ -4,8 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.layout.*;
-import javafx.geometry.Pos;
 
 import java.io.File;
 
@@ -23,7 +21,7 @@ public class TemplatePageController {
     void handleBeginnerOnlyButtonOne(ActionEvent event) {
         LessonPlan.resetBoolean();
         GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/beginnerFloorAndTrampolinePlan.GymPlanFile"));
-        GymnasticsAppBeta.setPreviewPage();
+        GymnasticsAppBeta.readLessonPlan();
         if (GymnasticsAppBeta.getLoaded()) {
             GymnasticsAppBeta.switchToPreviewPage();
         }
@@ -33,7 +31,7 @@ public class TemplatePageController {
     void handleMaleOnlyButtonOne(ActionEvent event) {
         LessonPlan.resetBoolean();
         GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/maleOnlyLessonPlan.GymPlanFile"));
-        GymnasticsAppBeta.setPreviewPage();
+        GymnasticsAppBeta.readLessonPlan();
         if (GymnasticsAppBeta.getLoaded()) {
             GymnasticsAppBeta.switchToPreviewPage();
         }
@@ -42,7 +40,7 @@ public class TemplatePageController {
     void handleAllFloorExercisesButtonOne(ActionEvent event) {
         LessonPlan.resetBoolean();
         GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/allFloorExercisesPlan.GymPlanFile"));
-        GymnasticsAppBeta.setPreviewPage();
+        GymnasticsAppBeta.readLessonPlan();
         if (GymnasticsAppBeta.getLoaded()) {
             GymnasticsAppBeta.switchToPreviewPage();
         }

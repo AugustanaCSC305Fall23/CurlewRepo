@@ -30,39 +30,16 @@ public class MainEditDisplayController implements Initializable {
     @FXML
     private TextField lessonTitle;
     @FXML
-    private Button backButton;
-    @FXML
-    private Button testButton;
-
-    @FXML
     private VBox filterMenu;
-
-    @FXML
-    private Button previewButton;
-
     @FXML
     private TextField drillSearchBar;
-
-    @FXML
-    private ScrollBar scrollBar;
-
-    @FXML
-    private Button drillSearchButton;
-
-    @FXML
-    private ScrollPane cardScrollPane;
-
     @FXML
     private FlowPane cardFlowPane;
-
     @FXML
     private TreeView treeView;
-
     @FXML public VBox filterVBox;
-
     @FXML private TextField equipmentTextfield;
     @FXML public CheckBox modelCheckboxMale;
-
     @FXML public CheckBox checkBoxFloor;
     @FXML public CheckBox checkBoxUnevenBars;
     @FXML public CheckBox checkBoxBeam;
@@ -72,11 +49,8 @@ public class MainEditDisplayController implements Initializable {
     @FXML public CheckBox checkBoxMale;
     @FXML public CheckBox checkBoxFemale;
     @FXML public CheckBox levelABCheckBox;
-
     @FXML public CheckBox levelAdvancedCheckBox;
-
     @FXML public CheckBox levelBeginnerCheckBox;
-
     @FXML public CheckBox levelIntermediateCheckBox;
     private GenderFilter genderFilter = new GenderFilter();
     private ModelGenderFilter  modelGenderFilter = new ModelGenderFilter();

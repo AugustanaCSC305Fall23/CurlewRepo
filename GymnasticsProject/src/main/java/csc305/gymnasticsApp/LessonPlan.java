@@ -85,7 +85,7 @@ public class LessonPlan {
     }
 
 
-    public void loadPlanFromFile() {
+    public void loadPlanFromFile(ArrayList<String> loadedLessonPlan) {
         if (GymnasticsAppBeta.getLoaded() && !hasBeenLoaded) {
             System.out.println("LOADING FROM FILE");
             CardDatabase.getAllCards();
@@ -97,30 +97,27 @@ public class LessonPlan {
                     System.out.println(card.getTitle());
                 }
             }
-            ArrayList<String> arrayList = GymnasticsAppBeta.setPreviewPage();
-            String loadTitle = arrayList.remove(0);
-            String loadEventOneTitle = arrayList.remove(0);
-            String loadEventTwoTitle = arrayList.remove(0);
-            setLessonPlanTitle(loadTitle);
-            setEventOneName(loadEventOneTitle);
-            setEventTwoName(loadEventTwoTitle);
-            MainEditDisplayController.eventOneItems.setValue(loadEventOneTitle);
-            MainEditDisplayController.eventTwoItems.setValue(loadEventTwoTitle);
+            lessonPlanTitle = loadedLessonPlan.remove(0);
 
-            for(int i = 0; i < arrayList.size(); i++) {
-                if(arrayList.get(i).equals("end")) {
-                    arrayList.remove(i);
+            eventOneName = loadedLessonPlan.remove(0);
+            eventTwoName = loadedLessonPlan.remove(0);
+            MainEditDisplayController.eventOneItems.setValue(eventOneName);
+            MainEditDisplayController.eventTwoItems.setValue(eventTwoName);
+
+            for(int i = 0; i < loadedLessonPlan.size(); i++) {
+                if(loadedLessonPlan.get(i).equals("end")) {
+                    loadedLessonPlan.remove(i);
                     break;
                 } else {
-                    Card card = CardDatabase.getCardByID(arrayList.remove(i));
+                    Card card = CardDatabase.getCardByID(loadedLessonPlan.remove(i));
                     eventOneCards.add(card);
                     System.out.println(card.getTitle());
                     i--;
                 }
             }
             System.out.println("");
-            for(int j = 0; j < arrayList.size(); j++){
-                Card card = CardDatabase.getCardByID(arrayList.remove(j));
+            for(int j = 0; j < loadedLessonPlan.size(); j++){
+                Card card = CardDatabase.getCardByID(loadedLessonPlan.remove(j));
                 eventTwoCards.add(card);
                 System.out.println(card.getTitle());
                 j--;
@@ -165,4 +162,5 @@ public class LessonPlan {
     public static LessonPlan loadCourseFile(File courseFile) {
         return null;
     }
+
 }
