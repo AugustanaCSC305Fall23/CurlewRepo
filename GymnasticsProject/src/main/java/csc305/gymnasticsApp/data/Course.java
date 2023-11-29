@@ -1,9 +1,7 @@
-package csc305.gymnasticsApp;
+package csc305.gymnasticsApp.data;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeMap;
 
 public class Course {
     private static List<LessonPlan> lessonPlanList = new ArrayList<>();

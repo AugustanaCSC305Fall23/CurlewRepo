@@ -1,13 +1,12 @@
-package csc305.gymnasticsApp.CardFilter;
+package csc305.gymnasticsApp.filters;
 
-import csc305.gymnasticsApp.Card;
-import csc305.gymnasticsApp.MainEditDisplayController;
+import csc305.gymnasticsApp.data.Card;
 
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * The CombineAndFilter class is an implementation of the CardFilter interface
+ * The CombineAndFilter class is an implementation of the filters interface
  * designed to combine and filter Card objects based on multiple criteria.
  * This class is intended to be used to combine and filter Card objects based on
  * the criteria defined in different filters such as GenderFilter and EventFilter.

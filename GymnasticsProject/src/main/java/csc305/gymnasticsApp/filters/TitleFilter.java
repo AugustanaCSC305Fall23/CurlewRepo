@@ -1,8 +1,8 @@
-package csc305.gymnasticsApp.CardFilter;
+package csc305.gymnasticsApp.filters;
 
-import csc305.gymnasticsApp.Card;
+import csc305.gymnasticsApp.data.Card;
 /**
- * The TitleFilter class is an implementation of the CardFilter interface
+ * The TitleFilter class is an implementation of the filters interface
  * designed to filter Card objects based on a desired title.
  */
 public class TitleFilter implements CardFilter{

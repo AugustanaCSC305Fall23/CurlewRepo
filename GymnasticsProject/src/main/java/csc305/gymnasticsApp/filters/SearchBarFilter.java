@@ -1,6 +1,6 @@
-package csc305.gymnasticsApp.CardFilter;
+package csc305.gymnasticsApp.filters;
 
-import csc305.gymnasticsApp.Card;
+import csc305.gymnasticsApp.data.Card;
 
 public class SearchBarFilter implements CardFilter{
 

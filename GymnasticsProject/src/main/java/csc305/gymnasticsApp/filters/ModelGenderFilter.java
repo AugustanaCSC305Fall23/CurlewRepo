@@ -1,10 +1,10 @@
-package csc305.gymnasticsApp.CardFilter;
+package csc305.gymnasticsApp.filters;
 
-import csc305.gymnasticsApp.Card;
+import csc305.gymnasticsApp.data.Card;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * The ModelGenderFilter class is an implementation of the CardFilter interface
+ * The ModelGenderFilter class is an implementation of the filters interface
  * designed to filter Card objects based on a desired model gender.
  */
 

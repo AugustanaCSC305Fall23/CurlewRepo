@@ -1,12 +1,9 @@
-package csc305.gymnasticsApp.CardFilter;
+package csc305.gymnasticsApp.filters;
 
-import csc305.gymnasticsApp.Card;
-
-import java.util.ArrayList;
-import java.util.List;
+import csc305.gymnasticsApp.data.Card;
 
 /**
- * The EquipmentFilter class is an implementation of the CardFilter interface
+ * The EquipmentFilter class is an implementation of the filters interface
  * designed to filter Card objects based on a desired equipment keyword.
  */
 public class EquipmentFilter implements CardFilter {

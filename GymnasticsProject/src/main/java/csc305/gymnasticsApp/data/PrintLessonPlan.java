@@ -1,4 +1,4 @@
-package csc305.gymnasticsApp;
+package csc305.gymnasticsApp.data;
 
 import javafx.print.Printer;
 import javafx.print.PrinterJob;

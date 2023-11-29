@@ -1,6 +1,9 @@
-package csc305.gymnasticsApp;
+package csc305.gymnasticsApp.ui;
 
-import csc305.gymnasticsApp.CardFilter.*;
+import csc305.gymnasticsApp.data.Card;
+import csc305.gymnasticsApp.data.CardDatabase;
+import csc305.gymnasticsApp.data.LessonPlan;
+import csc305.gymnasticsApp.filters.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -420,7 +423,7 @@ public class MainEditDisplayController implements Initializable {
 //     *
 //     * @param inputText - The text to filter cards by.
 //     */
-//    private void filterCards(String inputText, CardFilter filter) {
+//    private void filterCards(String inputText, filters filter) {
 //        inputText = inputText.replaceAll("\\s+", "");
 //        List<Button> cardButtons = getAllCardButtons();
 //    }

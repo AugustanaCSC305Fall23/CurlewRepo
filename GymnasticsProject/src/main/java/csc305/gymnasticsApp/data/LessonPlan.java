@@ -1,4 +1,7 @@
-package csc305.gymnasticsApp;
+package csc305.gymnasticsApp.data;
+
+import csc305.gymnasticsApp.ui.GymnasticsAppBeta;
+import csc305.gymnasticsApp.ui.MainEditDisplayController;
 
 import java.io.File;
 import java.util.ArrayList;

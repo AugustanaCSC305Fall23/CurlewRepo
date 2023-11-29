@@ -1,4 +1,4 @@
-package csc305.gymnasticsApp;
+package csc305.gymnasticsApp.data;
 
 
 import java.io.File;

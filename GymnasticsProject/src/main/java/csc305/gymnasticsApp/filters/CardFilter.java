@@ -1,15 +1,15 @@
-package csc305.gymnasticsApp.CardFilter;
+package csc305.gymnasticsApp.filters;
 
-import csc305.gymnasticsApp.Card;
+import csc305.gymnasticsApp.data.Card;
 
 /**
- * The CardFilter interface defines the contract for filtering Card object.
+ * The filters interface defines the contract for filtering Card object.
  * Classes implementing this interface can provide custom filtering logic to detect
  * whether a given Card matches specific criteria.
  */
 public interface CardFilter {
     /**
-     * Default implementation of the CardFilter that always returns true.
+     * Default implementation of the filters that always returns true.
      * Subclasses should override this method to provide specific filtering logic.
      *
      * @param canidateCard - The Card to be evaluated for a match.

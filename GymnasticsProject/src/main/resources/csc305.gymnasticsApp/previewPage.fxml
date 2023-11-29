@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #eef8ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.PreviewPageController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #eef8ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.PreviewPageController">
    <left>
       <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="184.0" spacing="30.0" style="-fx-border-color: black; -fx-border-width: 0 2 0 0; -fx-background-color: #eef8ff;" BorderPane.alignment="CENTER">
          <children>

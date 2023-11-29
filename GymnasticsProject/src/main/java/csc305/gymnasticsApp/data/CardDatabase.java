@@ -1,14 +1,10 @@
-package csc305.gymnasticsApp;
+package csc305.gymnasticsApp.data;
 
 import com.opencsv.bean.CsvToBeanBuilder;
-import csc305.gymnasticsApp.CardFilter.CardFilter;
-import csc305.gymnasticsApp.CardFilter.CodeFilter;
-import csc305.gymnasticsApp.CardFilter.GenderFilter;
+import csc305.gymnasticsApp.filters.CardFilter;
 
 import java.io.File;
 import java.io.FileReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,7 +48,7 @@ public class CardDatabase {
 //        setUniqueIDs();
 //        addCardsToMap();
 //        printAllCards(allCards);
-//        CardFilter male = new CodeFilter("S1");
+//        filters male = new CodeFilter("S1");
 //        List<Card> filteredCards = filter(male);
 //        System.out.println();
 //        System.out.println();

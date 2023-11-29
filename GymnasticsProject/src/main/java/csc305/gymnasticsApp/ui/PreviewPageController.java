@@ -1,6 +1,9 @@
-package csc305.gymnasticsApp;
+package csc305.gymnasticsApp.ui;
 
 
+import csc305.gymnasticsApp.data.Card;
+import csc305.gymnasticsApp.data.LessonPlan;
+import csc305.gymnasticsApp.data.PrintLessonPlan;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;

@@ -1,4 +1,4 @@
-package csc305.gymnasticsApp;
+package csc305.gymnasticsApp.ui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
