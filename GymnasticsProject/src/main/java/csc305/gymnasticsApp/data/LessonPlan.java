@@ -128,6 +128,7 @@ public class LessonPlan {
             for(Card card: eventOneCards){
                 System.out.println(card.getTitle());
             }
+            GymnasticsAppBeta.setLessonPlan(this);
             MainEditDisplayController.addTreeCardItem(eventOneCards,eventTwoCards);
             hasBeenLoaded = true;
         }
@@ -155,7 +156,7 @@ public class LessonPlan {
     }
 
     public void resetLessonPlan(){
-        lessonPlanTitle = "";
+        lessonPlanTitle = null;
         eventOneName = "Event 1";
         eventTwoName = "Event 2";
         eventOneCards.clear();

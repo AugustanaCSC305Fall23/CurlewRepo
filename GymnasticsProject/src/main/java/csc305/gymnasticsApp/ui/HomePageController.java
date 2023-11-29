@@ -41,6 +41,8 @@ public class HomePageController {
         GymnasticsAppBeta.callFileChooser();
         ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
         loadPlan.loadPlanFromFile(loadedLessonPlan);
+        GymnasticsAppBeta.setLessonPlan(loadPlan);
+        GymnasticsAppBeta.getLessonPlan().printEverything();
         if(GymnasticsAppBeta.getLoaded() == true) {
             GymnasticsAppBeta.switchToPreviewPage();
         }

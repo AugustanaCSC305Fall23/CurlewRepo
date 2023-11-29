@@ -1,6 +1,7 @@
 package csc305.gymnasticsApp.ui;
 
 import csc305.gymnasticsApp.data.Card;
+import csc305.gymnasticsApp.data.CardButton;
 import csc305.gymnasticsApp.data.CardDatabase;
 import csc305.gymnasticsApp.data.LessonPlan;
 import csc305.gymnasticsApp.filters.*;
@@ -72,8 +73,8 @@ public class MainEditDisplayController implements Initializable {
     @FXML
     public static TreeItem<String> eventTwoItems = new TreeItem<>("Event 2");
 
-    private static final List<Button> currentFilteredCards = new ArrayList<>();
-    private static List<Button> allCards = new ArrayList<>();
+    private static final List<CardButton> currentFilteredCards = new ArrayList<>();
+    private static List<CardButton> allCards = new ArrayList<>();
 
     public static String[] cardParentEvents = {"Event 1", "Event 2"};
 
@@ -89,12 +90,14 @@ public class MainEditDisplayController implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        lessonPlan = new LessonPlan();
+        lessonPlan = GymnasticsAppBeta.getLessonPlan();
+        lessonPlan.printEverything();
         initializeTreeView();
         addCardsToFlowPane();
         allCards = getAllCardButtons();
         resetFlowPane();
         initFilterList();
+        System.out.println("initializing");
     }
 
     private void initializeTreeView(){
@@ -103,6 +106,7 @@ public class MainEditDisplayController implements Initializable {
         } else if (rootItem.getChildren().size() != 2) {
             System.out.println("Duplicating");
         }
+        lessonTitle.setText(GymnasticsAppBeta.getLessonPlan().getLessonPlanTitle());
         treeView.setShowRoot(false);
         treeView.setRoot(rootItem);
     }
@@ -113,13 +117,13 @@ public class MainEditDisplayController implements Initializable {
             for (Card card : CardDatabase.getAllCards()) {
                 Image image = null;
                 try {
-                    image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
+                    image = new Image(new FileInputStream("GymSoftwarePics/" +
                             card.getPackFolder().toUpperCase() + "Pack/" +
                             card.getImage()));
                 } catch (FileNotFoundException e) {
                     throw new RuntimeException(e);
                 }
-                Button cardButton = createCardButton(card, image);
+                CardButton cardButton = createCardButton(card, image);
                 allCards.add(cardButton);
             }
             isInitialized = true;
@@ -290,11 +294,11 @@ public class MainEditDisplayController implements Initializable {
     }
 
 
-    private Button createCardButton(Card card, Image image) {
+    private CardButton createCardButton(Card card, Image image) {
         ImageView iv = new ImageView(image);
         iv.setFitHeight(198.0);
         iv.setFitWidth(198.0);
-        Button cardButton = new Button("", iv);
+        CardButton cardButton = new CardButton("", iv, card);
         cardButton.setMinHeight(Double.MIN_VALUE);
         cardButton.setMinWidth(Double.MIN_VALUE);
         cardButton.setPrefHeight(200.0);
@@ -302,7 +306,7 @@ public class MainEditDisplayController implements Initializable {
         cardButton.setMnemonicParsing(false);
         cardButton.setStyle("-fx-border-color: black;");
         cardButton.setId(card.getUniqueID());
-        cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton, card));
+        cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton));
         return cardButton;
     }
 
@@ -311,11 +315,11 @@ public class MainEditDisplayController implements Initializable {
      *
      * @return A list of all card buttons in the FlowPane.
      */
-    private List<Button> getAllCardButtons() {
-        List<Button> cardButtons = new ArrayList<>();
+    private List<CardButton> getAllCardButtons() {
+        List<CardButton> cardButtons = new ArrayList<>();
         for (int i = 0; i < cardFlowPane.getChildren().size(); i++) {
-            if (cardFlowPane.getChildren().get(i) instanceof Button) {
-                cardButtons.add((Button) cardFlowPane.getChildren().get(i));
+            if (cardFlowPane.getChildren().get(i) instanceof CardButton) {
+                cardButtons.add((CardButton) cardFlowPane.getChildren().get(i));
             }
         }
         return cardButtons;
@@ -375,13 +379,13 @@ public class MainEditDisplayController implements Initializable {
         parent.getChildren().remove(selectedItem);
     }
 
-    public void addCardToTreeView(Button cardButton, Card card) {
+    public void addCardToTreeView(CardButton cardButton) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Add Card to Event");
         alert.setHeaderText("Select the event to add the card to");
-
+        Card card = cardButton.getAssociatedCard();
         try {
-            Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
+            Image image = new Image(new FileInputStream("GymSoftwarePics/" +
                     card.getPackFolder().toUpperCase() + "Pack/" +
                     card.getImage()));
             ImageView iv = new ImageView(image);
@@ -433,12 +437,12 @@ public class MainEditDisplayController implements Initializable {
     }
 
     public void filterCardsByCheckbox() {
-        List<Button> visibleButtons = new ArrayList<>();
-        List<Button> hiddenButtons = new ArrayList<>();
-        for (Button cardButton : allCards) {
+        List<CardButton> visibleButtons = new ArrayList<>();
+        List<CardButton> hiddenButtons = new ArrayList<>();
+        for (CardButton cardButton : allCards) {
             boolean isVisible = true;
             for(CardFilter filter : filterList) {
-                if (!filter.matches(CardDatabase.getCardByID(cardButton.getId()))) {
+                if (!filter.matches(cardButton.getAssociatedCard())) {
                     isVisible = false;
                     break;
                 }

@@ -3,6 +3,7 @@ package csc305.gymnasticsApp.data;
 import com.opencsv.bean.CsvToBeanBuilder;
 import csc305.gymnasticsApp.filters.CardFilter;
 
+
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class CardDatabase {
 
     public CardDatabase() {
         List<Card> cardsFromCSV = null;
-        File[] csvFileList = addAllCSVFilesFromFolder(new File("src/main/resources/GymSoftwarePics/CSVFiles"));
+        File[] csvFileList = addAllCSVFilesFromFolder(new File("GymSoftwarePics/CSVFiles"));
 
         for(File csvFile: csvFileList){
             try {
@@ -77,7 +78,7 @@ public class CardDatabase {
      */
     public static void addCardsFromCSVFile() {
         List<Card> cardsFromCSV = null;
-        File[] csvFileList = addAllCSVFilesFromFolder(new File("src/main/resources/GymSoftwarePics/CSVFiles"));
+        File[] csvFileList = addAllCSVFilesFromFolder(new File("GymSoftwarePics/CSVFiles"));
 
         for(File csvFile: csvFileList){
             try {

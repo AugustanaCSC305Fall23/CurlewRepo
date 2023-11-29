@@ -61,10 +61,7 @@ public class PreviewPageController {
     private LessonPlan lessonPlan;
 
     public void initialize() {
-        lessonPlan = MainEditDisplayController.getLessonPlan();
-        if(HomePageController.getloadPlan() != null) {
-            lessonPlan = HomePageController.getloadPlan();
-        }
+        lessonPlan = GymnasticsAppBeta.getLessonPlan();
 //        lessonPlan.loadPlanFromFile();
         setLessonPlanTitles();
         displayEventCards(lessonPlan.getEventOneCards().size(), lessonPlan.getEventTwoCards().size());
@@ -75,7 +72,7 @@ public class PreviewPageController {
     public void displayEventCards(int numCardsEventOne, int numCardsEventTwo) {
         try {
             for (Card card : lessonPlan.getEventOneCards()) {
-                Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
+                Image image = new Image(new FileInputStream("GymSoftwarePics/" +
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
                 ImageView imageView = new ImageView(image);
@@ -92,7 +89,7 @@ public class PreviewPageController {
                 eventOneCardHBox.getChildren().add(imageView);
             }
             for (Card card : lessonPlan.getEventTwoCards()) {
-                Image image = new Image(new FileInputStream("src/main/resources/GymSoftwarePics" + "/" +
+                Image image = new Image(new FileInputStream("GymSoftwarePics/" +
                         card.getPackFolder().toUpperCase() + "Pack/" +
                         card.getImage()));
                 ImageView imageView = new ImageView(image);

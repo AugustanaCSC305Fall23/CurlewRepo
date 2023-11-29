@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import csc305.gymnasticsApp.data.*;
 
 /**
  * The GymnasticsAppBeta class is the main application for the Gymnastics App.
@@ -24,6 +25,9 @@ public class GymnasticsAppBeta extends Application {
     private static Scene scene;
     private static Stage stage;
 
+    private static LessonPlan lessonPlan;
+
+
     private static boolean fileLoaded = false;
 
     /**
@@ -35,6 +39,7 @@ public class GymnasticsAppBeta extends Application {
      */
     @Override
     public void start(Stage primaryStage){
+        lessonPlan = new LessonPlan();
         stage = primaryStage;
         scene = new Scene(new BorderPane(), 1000, 700);
         stage.setScene(scene);
@@ -77,7 +82,11 @@ public class GymnasticsAppBeta extends Application {
     /**
      * Switches the view to the home page display
      */
-    public static void switchToHomePage(){switchToView("/csc305.gymnasticsApp/homePage.fxml");}
+    public static void switchToHomePage(){
+        switchToView("/csc305.gymnasticsApp/homePage.fxml");
+        lessonPlan.resetLessonPlan();
+        LessonPlan.resetBoolean();
+    }
 
     /**
      * Switches the view to the preview page display.
@@ -133,5 +142,13 @@ public class GymnasticsAppBeta extends Application {
             }
         }
         return arrayList;
+    }
+
+    public static LessonPlan getLessonPlan() {
+        return lessonPlan;
+    }
+
+    public static void setLessonPlan(LessonPlan newLessonPlan) {
+        lessonPlan = newLessonPlan;
     }
 }
