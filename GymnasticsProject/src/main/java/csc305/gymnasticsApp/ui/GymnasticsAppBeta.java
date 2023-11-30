@@ -127,6 +127,9 @@ public class GymnasticsAppBeta extends Application {
         return selectedFile;
     }
 
+    /**
+        Checks if the user imports a file on the home page
+     */
     public static boolean getLoaded() {return fileLoaded; }
     public static ArrayList<String> readLessonPlan(){
         ArrayList<String> arrayList = new ArrayList<String>();
