@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 
 import java.io.File;
+import java.util.ArrayList;
 
 
 public class TemplatePageController {
@@ -21,8 +22,11 @@ public class TemplatePageController {
     @FXML
     void handleBeginnerOnlyButtonOne(ActionEvent event) {
         LessonPlan.resetBoolean();
+        HomePageController.loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/beginnerFloorAndTrampolinePlan.GymPlanFile"));
-        GymnasticsAppBeta.readLessonPlan();
+        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+        HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
+        GymnasticsAppBeta.setLessonPlan(HomePageController.loadPlan);
         if (GymnasticsAppBeta.getLoaded()) {
             GymnasticsAppBeta.switchToPreviewPage();
         }
@@ -31,8 +35,11 @@ public class TemplatePageController {
     @FXML
     void handleMaleOnlyButtonOne(ActionEvent event) {
         LessonPlan.resetBoolean();
+        HomePageController.loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/maleOnlyLessonPlan.GymPlanFile"));
-        GymnasticsAppBeta.readLessonPlan();
+        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+        HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
+        GymnasticsAppBeta.setLessonPlan(HomePageController.loadPlan);
         if (GymnasticsAppBeta.getLoaded()) {
             GymnasticsAppBeta.switchToPreviewPage();
         }
@@ -40,8 +47,12 @@ public class TemplatePageController {
     @FXML
     void handleAllFloorExercisesButtonOne(ActionEvent event) {
         LessonPlan.resetBoolean();
+        HomePageController.loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/allFloorExercisesPlan.GymPlanFile"));
         GymnasticsAppBeta.readLessonPlan();
+        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+        HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
+        GymnasticsAppBeta.setLessonPlan(HomePageController.loadPlan);
         if (GymnasticsAppBeta.getLoaded()) {
             GymnasticsAppBeta.switchToPreviewPage();
         }
