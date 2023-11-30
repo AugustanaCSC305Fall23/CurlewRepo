@@ -14,6 +14,7 @@ public class HomePageController {
     @FXML private Button NewLessonButton;
     @FXML private Button LoadLessonButton;
 
+    @FXML private Button aboutButton;
     static LessonPlan loadPlan;
 
     /**
@@ -30,6 +31,8 @@ public class HomePageController {
         GymnasticsAppBeta.switchToTemplatePage();
     }
 
+    @FXML
+    private void handleAboutButton(ActionEvent event) {GymnasticsAppBeta.switchToAboutPage(); }
     /**
      * Handles the action when the "Load Lesson" button is clicked.
      *
