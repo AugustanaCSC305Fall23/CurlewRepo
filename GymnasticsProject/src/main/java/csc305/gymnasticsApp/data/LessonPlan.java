@@ -64,6 +64,11 @@ public class LessonPlan {
         this.eventNames = eventNames;
     }
 
+    public void addEventName(String name, int index){
+        
+    }
+
+
     private static boolean hasBeenLoaded = false;
 
     public void addToEvent(Card card, int num){

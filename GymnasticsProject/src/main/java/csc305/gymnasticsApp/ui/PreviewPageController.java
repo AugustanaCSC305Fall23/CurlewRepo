@@ -6,6 +6,7 @@ import csc305.gymnasticsApp.data.LessonPlan;
 import csc305.gymnasticsApp.data.PrintLessonPlan;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -34,10 +35,11 @@ public class PreviewPageController {
     private List<TextField> eventTitles = new ArrayList<>();
     @FXML
     private FlowPane mainFlowPane;
+    @FXML
     private List<VBox> VBoxes = new ArrayList<>();
 
-    @FXML
-    private FlowPane eventFlowPane;
+    //@FXML
+    //private FlowPane eventFlowPane;
 
     private LessonPlan lessonPlan;
 
@@ -57,7 +59,6 @@ public class PreviewPageController {
         vBox.setStyle("-fx-background-color: grey;");
         vBox.prefWidth(770.0);
         vBox.prefHeight(595.0);
-        vBox.s
         //vBox.maxHeight(Double.MAX_VALUE);
         //vBox.maxWidth(Double.MAX_VALUE);
         //vBox.minHeight(Double.MIN_VALUE);
@@ -67,6 +68,14 @@ public class PreviewPageController {
         vBox.setSpacing(10.0);
 
     }
+    private void setFlowPaneParams(FlowPane flowPane){
+        flowPane.setPrefHeight(200.0);
+        flowPane.setPrefWidth(749.0);
+        flowPane.setHgap(10.0);
+        flowPane.setVgap(10.0);
+        flowPane.setColumnHalignment(HPos.CENTER);
+    }
+
 
 
     public void displayEventCards() {
@@ -74,9 +83,14 @@ public class PreviewPageController {
             if(lessonPlan.getEventList().size() == 0){
                 System.out.println("nothing in da list");
             }
+            int i  = 0;
             for(List<Card> eventCards : lessonPlan.getEventList()){
                 VBox newVBox = new VBox();
                 setVBoxParams(newVBox);
+                //newVBox.getChildren().add(eventTitles.get(i));
+                FlowPane eventFlowPane = new FlowPane();
+                setFlowPaneParams(eventFlowPane);
+                newVBox.getChildren().add(eventFlowPane);
                 VBoxes.add(newVBox);
                 System.out.println(eventCards);
                 for(Card card : eventCards){
@@ -182,8 +196,10 @@ public class PreviewPageController {
 
     private void setLessonPlanTitles() {
         lessonPlanTextField.setText(lessonPlan.getLessonPlanTitle());
+        System.out.println(lessonPlan.getEventNames().size());
         for(int i = 0; i < lessonPlan.getEventNames().size(); i++ ) {
             eventTitles.get(i).setText(lessonPlan.getEventNames().get(i));
+            System.out.println("event title: " + eventTitles.get(i).getText());
         }
     }
 
