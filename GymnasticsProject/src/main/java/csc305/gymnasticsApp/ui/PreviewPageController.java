@@ -6,11 +6,11 @@ import csc305.gymnasticsApp.data.LessonPlan;
 import csc305.gymnasticsApp.data.PrintLessonPlan;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
 
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
@@ -32,8 +32,9 @@ public class PreviewPageController {
     private TextField lessonPlanTextField;
 
     private List<TextField> eventTitles = new ArrayList<>();
-
-    private List<VBox> bruh;
+    @FXML
+    private FlowPane mainFlowPane;
+    private List<VBox> VBoxes = new ArrayList<>();
 
     @FXML
     private FlowPane eventFlowPane;
@@ -43,9 +44,28 @@ public class PreviewPageController {
     public void initialize() {
         lessonPlan = GymnasticsAppBeta.getLessonPlan();
 //        lessonPlan.loadPlanFromFile();
+        VBox vBox = new VBox();
+        setVBoxParams(vBox);
+        VBoxes.add(vBox);
+        mainFlowPane.getChildren().addAll(VBoxes);
         setLessonPlanTitles();
         displayEventCards();
         fillEquipmentBox();
+    }
+
+    private void setVBoxParams(VBox vBox){
+        vBox.setStyle("-fx-background-color: grey;");
+        vBox.prefWidth(770.0);
+        vBox.prefHeight(595.0);
+        vBox.s
+        //vBox.maxHeight(Double.MAX_VALUE);
+        //vBox.maxWidth(Double.MAX_VALUE);
+        //vBox.minHeight(Double.MIN_VALUE);
+        //vBox.minWidth(Double.MIN_VALUE);
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setFillWidth(false);
+        vBox.setSpacing(10.0);
+
     }
 
 
@@ -55,6 +75,9 @@ public class PreviewPageController {
                 System.out.println("nothing in da list");
             }
             for(List<Card> eventCards : lessonPlan.getEventList()){
+                VBox newVBox = new VBox();
+                setVBoxParams(newVBox);
+                VBoxes.add(newVBox);
                 System.out.println(eventCards);
                 for(Card card : eventCards){
                     Image image = new Image(new FileInputStream("GymSoftwarePics/" +
@@ -65,6 +88,10 @@ public class PreviewPageController {
                     imageView.setFitHeight(200); // Set the height of the image view
                     eventFlowPane.getChildren().add(imageView);
                 }
+            }
+            mainFlowPane.getChildren().clear();
+            for(VBox vBoxToAdd : VBoxes){
+                mainFlowPane.getChildren().add(vBoxToAdd);
             }
         }catch (FileNotFoundException e) {
             throw new RuntimeException(e);

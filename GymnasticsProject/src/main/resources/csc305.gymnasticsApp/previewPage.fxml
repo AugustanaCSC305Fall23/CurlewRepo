@@ -51,9 +51,9 @@
       </VBox>
    </left>
    <center>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" style="-fx-background-color: blue;">
          <content>
-            <FlowPane prefHeight="200.0" prefWidth="200.0" vgap="200.0">
+            <FlowPane fx:id = "mainFlowPane" prefHeight="200.0" prefWidth="200.0" vgap="200.0" style="-fx-background-color: red;">
                <children>
                   <VBox fx:id="eventPreviewVBox" alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="770.0" spacing="10.0" style="-fx-background-color: grey;">
                      <children>
