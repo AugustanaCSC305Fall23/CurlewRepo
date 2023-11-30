@@ -101,6 +101,13 @@ public class GymnasticsAppBeta extends Application {
     public static void switchToTemplatePage() {
         switchToView("/csc305.gymnasticsApp/templatePage.fxml");
     }
+
+
+    /**
+     * Switches to the about page
+     */
+    public static void switchToAboutPage() {switchToView("/csc305.gymnasticsApp/aboutPage.fxml");}
+
     /**
      * Opens a file chooser dialog for selecting the Gymnastics Picture files
      */

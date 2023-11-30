@@ -34,6 +34,17 @@
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </Button>
+                  <Button fx:id="aboutButton" mnemonicParsing="false" onAction="#handleAboutButton" style="-fx-background-color: A2AE98; -fx-font-family: Inter; -fx-font-weight: Bold; -fx-font-size: 1em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="About?" textFill="#3a5069" translateX="30.0" translateY="40.0">
+                     <HBox.margin>
+                        <Insets top="100.0" />
+                     </HBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </HBox>
          </children>
