@@ -52,11 +52,11 @@ public class TemplatePageController {
     }
 
     public void initialize(){
-        Image beginnerFloorAndTrampolineImage = new Image("file:C:/Desktop/git/CurlewRepo/GymnasticsProject/src/main/resources/templatePlans/beginnerFloorAndTrampolinePlanImage-1.png");
+        Image beginnerFloorAndTrampolineImage = new Image("file:src/main/resources/templatePlans/beginnerFloorAndTrampolinePlanImage-1.png");
         initializeImages(beginnerFloorAndTrampolineImage, beginnerOnlyButtonOne);
-        Image maleOnlyLessonPlanImage = new Image("file:C:/Desktop/git/CurlewRepo/GymnasticsProject/src/main/resources/templatePlans/maleOnlyLessonPlanImage-1.png");
+        Image maleOnlyLessonPlanImage = new Image("file:src/main/resources/templatePlans/maleOnlyLessonPlanImage-1.png");
         initializeImages(maleOnlyLessonPlanImage, maleOnlyButtonOne);
-        Image allFloorExercisesPlanImage = new Image("file:C:/Desktop/git/CurlewRepo/GymnasticsProject/src/main/resources/templatePlans/allFloorExercisesPlanImage-1.png");
+        Image allFloorExercisesPlanImage = new Image("file:src/main/resources/templatePlans/allFloorExercisesPlanImage-1.png");
         initializeImages(allFloorExercisesPlanImage, allFloorExercisesButtonOne);
     }
 
