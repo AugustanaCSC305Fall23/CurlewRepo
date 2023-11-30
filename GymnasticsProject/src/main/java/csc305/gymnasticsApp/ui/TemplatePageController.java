@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 
 import java.io.File;
+import java.util.ArrayList;
 
 
 public class TemplatePageController {
@@ -21,8 +22,11 @@ public class TemplatePageController {
     @FXML
     void handleBeginnerOnlyButtonOne(ActionEvent event) {
         LessonPlan.resetBoolean();
+        HomePageController.loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/beginnerFloorAndTrampolinePlan.GymPlanFile"));
-        GymnasticsAppBeta.readLessonPlan();
+        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+        HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
+        GymnasticsAppBeta.setLessonPlan(HomePageController.loadPlan);
         if (GymnasticsAppBeta.getLoaded()) {
             GymnasticsAppBeta.switchToPreviewPage();
         }
@@ -31,8 +35,11 @@ public class TemplatePageController {
     @FXML
     void handleMaleOnlyButtonOne(ActionEvent event) {
         LessonPlan.resetBoolean();
+        HomePageController.loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/maleOnlyLessonPlan.GymPlanFile"));
-        GymnasticsAppBeta.readLessonPlan();
+        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+        HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
+        GymnasticsAppBeta.setLessonPlan(HomePageController.loadPlan);
         if (GymnasticsAppBeta.getLoaded()) {
             GymnasticsAppBeta.switchToPreviewPage();
         }
@@ -40,8 +47,12 @@ public class TemplatePageController {
     @FXML
     void handleAllFloorExercisesButtonOne(ActionEvent event) {
         LessonPlan.resetBoolean();
+        HomePageController.loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/allFloorExercisesPlan.GymPlanFile"));
         GymnasticsAppBeta.readLessonPlan();
+        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+        HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
+        GymnasticsAppBeta.setLessonPlan(HomePageController.loadPlan);
         if (GymnasticsAppBeta.getLoaded()) {
             GymnasticsAppBeta.switchToPreviewPage();
         }
@@ -52,11 +63,11 @@ public class TemplatePageController {
     }
 
     public void initialize(){
-        Image beginnerFloorAndTrampolineImage = new Image("file:C:/Desktop/git/CurlewRepo/GymnasticsProject/src/main/resources/templatePlans/beginnerFloorAndTrampolinePlanImage-1.png");
+        Image beginnerFloorAndTrampolineImage = new Image("file:src/main/resources/templatePlans/beginnerFloorAndTrampolinePlanImage-1.png");
         initializeImages(beginnerFloorAndTrampolineImage, beginnerOnlyButtonOne);
-        Image maleOnlyLessonPlanImage = new Image("file:C:/Desktop/git/CurlewRepo/GymnasticsProject/src/main/resources/templatePlans/maleOnlyLessonPlanImage-1.png");
+        Image maleOnlyLessonPlanImage = new Image("file:src/main/resources/templatePlans/maleOnlyLessonPlanImage-1.png");
         initializeImages(maleOnlyLessonPlanImage, maleOnlyButtonOne);
-        Image allFloorExercisesPlanImage = new Image("file:C:/Desktop/git/CurlewRepo/GymnasticsProject/src/main/resources/templatePlans/allFloorExercisesPlanImage-1.png");
+        Image allFloorExercisesPlanImage = new Image("file:src/main/resources/templatePlans/allFloorExercisesPlanImage-1.png");
         initializeImages(allFloorExercisesPlanImage, allFloorExercisesButtonOne);
     }
 

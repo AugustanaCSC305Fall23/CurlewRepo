@@ -182,6 +182,7 @@ public class PreviewPageController {
                         equipmentBox.setText(equipmentBox.getText() + ", " + card.getEquipment());
                     }
                 }
+
             }
         }
     }

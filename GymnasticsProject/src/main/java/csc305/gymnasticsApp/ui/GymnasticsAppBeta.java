@@ -16,7 +16,7 @@ import csc305.gymnasticsApp.data.*;
 
 /**
  * The GymnasticsAppBeta class is the main application for the Gymnastics App.
- * It extends the JavaFX Application class and provides functionality to sxwitch between
+ * It extends the JavaFX Application class and provides functionality to switch between
  * different views and handle file operations.
  */
 public class GymnasticsAppBeta extends Application {
@@ -95,6 +95,9 @@ public class GymnasticsAppBeta extends Application {
         switchToView("/csc305.gymnasticsApp/previewPage.fxml");
     }
 
+    /**
+     * Switches to the template page display.
+     */
     public static void switchToTemplatePage() {
         switchToView("/csc305.gymnasticsApp/templatePage.fxml");
     }
@@ -115,6 +118,10 @@ public class GymnasticsAppBeta extends Application {
 
     }
 
+    /**
+     * Selects a file and sets it to the selectedFile variable and sets the fileLoaded variable true
+     * @param file the current file that is being selected
+     */
     public static void callFileChooser(File file){
         selectedFile = file;
         fileLoaded = true;
@@ -127,7 +134,15 @@ public class GymnasticsAppBeta extends Application {
         return selectedFile;
     }
 
+    /**
+        Checks if the user imports a file on the home page
+     */
     public static boolean getLoaded() {return fileLoaded; }
+
+    /**
+     * Reads through a file and breaks the different lines of the file up into separate ArrayList indexes
+     * @return Returns an ArrayList containing all the information from the file
+     */
     public static ArrayList<String> readLessonPlan(){
         ArrayList<String> arrayList = new ArrayList<String>();
         if(selectedFile != null) {
@@ -144,10 +159,18 @@ public class GymnasticsAppBeta extends Application {
         return arrayList;
     }
 
+    /**
+     * Gets the entire lesson plan
+     * @return Returns the lesson plan
+     */
     public static LessonPlan getLessonPlan() {
         return lessonPlan;
     }
 
+    /**
+     * Sets an old lesson plan to a new lesson plan
+     * @param newLessonPlan A lesson plan that is being set
+     */
     public static void setLessonPlan(LessonPlan newLessonPlan) {
         lessonPlan = newLessonPlan;
     }
