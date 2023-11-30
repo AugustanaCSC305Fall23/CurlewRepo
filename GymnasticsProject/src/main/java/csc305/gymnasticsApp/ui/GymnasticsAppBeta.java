@@ -16,7 +16,7 @@ import csc305.gymnasticsApp.data.*;
 
 /**
  * The GymnasticsAppBeta class is the main application for the Gymnastics App.
- * It extends the JavaFX Application class and provides functionality to sxwitch between
+ * It extends the JavaFX Application class and provides functionality to switch between
  * different views and handle file operations.
  */
 public class GymnasticsAppBeta extends Application {
