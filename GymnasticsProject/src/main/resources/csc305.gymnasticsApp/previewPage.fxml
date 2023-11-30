@@ -75,7 +75,7 @@
                               </TextField>
                            </children>
                         </HBox>
-                        <FlowPane prefHeight="200.0" prefWidth="754.0" />
+                        <FlowPane fx:id = "eventFlowPane" prefHeight="200.0" prefWidth="754.0" />
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="760.0" spacing="50.0">
                            <children>
                               <TextField fx:id="eventTwoTitle" alignment="CENTER" prefHeight="40.0" prefWidth="250.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;">

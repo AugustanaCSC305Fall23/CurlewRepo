@@ -27,33 +27,16 @@ public class PreviewPageController {
     private TextField equipmentBox;
     @FXML
     private VBox eventPreviewVBox;
-    @FXML
-    private Button editButton;
-
-    @FXML
-    private Button homeButton;
-
-    @FXML
-    private Button printButton;
-
-    @FXML
-    private Button saveButton;
-    @FXML
-    private Button templateButton;
 
     @FXML
     private TextField lessonPlanTextField;
 
     private List<TextField> eventTitles = new ArrayList<>();
 
+    private List<VBox> bruh;
+
     @FXML
     private FlowPane eventFlowPane;
-
-    @FXML
-    private HBox eventTwoCardHBox1;
-
-    @FXML
-    private Button hideEquipment;
 
     private LessonPlan lessonPlan;
 
@@ -68,7 +51,11 @@ public class PreviewPageController {
 
     public void displayEventCards() {
         try {
+            if(lessonPlan.getEventList().size() == 0){
+                System.out.println("nothing in da list");
+            }
             for(List<Card> eventCards : lessonPlan.getEventList()){
+                System.out.println(eventCards);
                 for(Card card : eventCards){
                     Image image = new Image(new FileInputStream("GymSoftwarePics/" +
                             card.getPackFolder().toUpperCase() + "Pack/" +
@@ -168,8 +155,8 @@ public class PreviewPageController {
 
     private void setLessonPlanTitles() {
         lessonPlanTextField.setText(lessonPlan.getLessonPlanTitle());
-        for(int i = 0; i < LessonPlan.getEventNames().size(); i++ ) {
-            eventTitles.get(i).setText(LessonPlan.getEventNames().get(i));
+        for(int i = 0; i < lessonPlan.getEventNames().size(); i++ ) {
+            eventTitles.get(i).setText(lessonPlan.getEventNames().get(i));
         }
     }
 

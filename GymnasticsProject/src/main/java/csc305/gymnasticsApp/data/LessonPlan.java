@@ -11,7 +11,7 @@ public class LessonPlan {
     //private List<Course> plan;
     private String lessonPlanTitle;
 
-    private static List<String> eventNames = new ArrayList<>();
+    private List<String> eventNames = new ArrayList<>();
 
     private List<List<Card>> eventList;
 
@@ -28,12 +28,24 @@ public class LessonPlan {
     public void setEventList(List<List<Card>> eventList) {
         this.eventList = eventList;
     }
+    public void addToEventList(List<Card> event){
+        eventList.add(event);
+    }
+
+    public void addAllToEventList(List<List<Card>> newEventList){
+        eventList.addAll(newEventList);
+    }
+
+    public void clearEventList(){
+        eventList.clear();
+    }
+
 
     public void setLessonPlanTitle(String title){
         lessonPlanTitle = title;
     }
 
-    public static void setEventName(String name, int index){
+    public void setEventName(String name, int index){
         eventNames.set(index, name);
     }
 
@@ -44,12 +56,12 @@ public class LessonPlan {
     }
 
 
-    public static List<String> getEventNames() {
+    public List<String> getEventNames() {
         return eventNames;
     }
 
-    public static void setEventNames(List<String> eventNames) {
-        LessonPlan.eventNames = eventNames;
+    public void setEventNames(List<String> eventNames) {
+        this.eventNames = eventNames;
     }
 
     private static boolean hasBeenLoaded = false;

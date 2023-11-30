@@ -95,6 +95,9 @@ public class MainEditDisplayController implements Initializable {
         allCards = getAllCardButtons();
         resetFlowPane();
         initFilterList();
+        lessonPlan.clearEventList();
+        List<Card> eventCards = new ArrayList<>();
+        lessonPlan.addToEventList(eventCards);
         System.out.println("initializing");
     }
 
@@ -195,8 +198,11 @@ public class MainEditDisplayController implements Initializable {
         events.add(new TreeItem<>("Event" + eventNum));
         rootItem.getChildren().clear();
         rootItem.getChildren().addAll(events);
+        List<Card> eventCards = new ArrayList<>();
+        lessonPlan.addToEventList(eventCards);
         ButtonType eventButton = createEventButton(eventNum);
         eventButtonList.add(eventButton);
+
         cardParentEvents.add("Event" + eventNum);
     }
 
@@ -358,7 +364,7 @@ public class MainEditDisplayController implements Initializable {
                 for(int i = 0; i < events.size();i++){
                     TreeItem<String> eventItem = events.get(i);
                     if(selectedItem.equals(eventItem)) {
-                        LessonPlan.setEventName(newName, i);
+                        lessonPlan.setEventName(newName, i);
                         cardParentEvents.set(i, newName);
                     }
                 }
