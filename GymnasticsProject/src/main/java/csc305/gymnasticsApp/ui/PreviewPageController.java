@@ -209,20 +209,23 @@ public class PreviewPageController {
 
     private void fillEquipmentBox(){
         equipmentBox.setText("Equipment: ");
-        for(int i = 0; i < lessonPlan.getEventOneCards().size(); i++){
-            if(i == 0){
-                while(lessonPlan.getEventOneCards().get(i).getEquipment().equals("None")){
-                    i = i + 1;
-                }
-                equipmentBox.setText(equipmentBox.getText() + lessonPlan.getEventOneCards().get(i).getEquipment());
-            }
-            if(!(equipmentBox.getText().contains(lessonPlan.getEventOneCards().get(i).getEquipment()))){
-                equipmentBox.setText(equipmentBox.getText() +", " + lessonPlan.getEventOneCards().get(i).getEquipment());
+        //check event one cards
+        int i = 0;
+        while (i < lessonPlan.getEventOneCards().size() && lessonPlan.getEventOneCards().get(i).getEquipment().equals("None")) {
+            i = i + 1;
+        }
+        if (i < lessonPlan.getEventOneCards().size()) {
+            equipmentBox.setText(equipmentBox.getText() + lessonPlan.getEventOneCards().get(i).getEquipment());
+        }
+        for (int j = 0; j < lessonPlan.getEventOneCards().size(); j++) {
+            if (i != j && !(equipmentBox.getText().contains(lessonPlan.getEventOneCards().get(j).getEquipment()))) {
+                equipmentBox.setText(equipmentBox.getText() + ", " + lessonPlan.getEventOneCards().get(j).getEquipment());
             }
         }
-        for(int i = 0; i < lessonPlan.getEventTwoCards().size(); i++){
-            if(!(equipmentBox.getText().contains(lessonPlan.getEventTwoCards().get(i).getEquipment()))){
-                equipmentBox.setText(equipmentBox.getText() + ", " + lessonPlan.getEventTwoCards().get(i).getEquipment());
+        //check event two cards
+        for(int j = 0; j < lessonPlan.getEventTwoCards().size(); j++){
+            if(!(equipmentBox.getText().contains(lessonPlan.getEventTwoCards().get(j).getEquipment()))){
+                equipmentBox.setText(equipmentBox.getText() + ", " + lessonPlan.getEventTwoCards().get(j).getEquipment());
             }
         }
     }
