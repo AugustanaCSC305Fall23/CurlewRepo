@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 
 import javafx.scene.Node;
@@ -43,14 +44,10 @@ public class PreviewPageController {
     @FXML
     private TextField lessonPlanTextField;
 
-    @FXML
-    private TextField eventOneTitle;
+    private List<TextField> eventTitles = new ArrayList<>();
 
     @FXML
-    private TextField eventTwoTitle;
-
-    @FXML
-    private HBox eventOneCardHBox;
+    private FlowPane eventFlowPane;
 
     @FXML
     private HBox eventTwoCardHBox1;
@@ -64,46 +61,23 @@ public class PreviewPageController {
         lessonPlan = GymnasticsAppBeta.getLessonPlan();
 //        lessonPlan.loadPlanFromFile();
         setLessonPlanTitles();
-        displayEventCards(lessonPlan.getEventOneCards().size(), lessonPlan.getEventTwoCards().size());
+        displayEventCards();
         fillEquipmentBox();
     }
 
 
-    public void displayEventCards(int numCardsEventOne, int numCardsEventTwo) {
+    public void displayEventCards() {
         try {
-            for (Card card : lessonPlan.getEventOneCards()) {
-                Image image = new Image(new FileInputStream("GymSoftwarePics/" +
-                        card.getPackFolder().toUpperCase() + "Pack/" +
-                        card.getImage()));
-                ImageView imageView = new ImageView(image);
-                if (numCardsEventOne <= 3) {
+            for(List<Card> eventCards : lessonPlan.getEventList()){
+                for(Card card : eventCards){
+                    Image image = new Image(new FileInputStream("GymSoftwarePics/" +
+                            card.getPackFolder().toUpperCase() + "Pack/" +
+                            card.getImage()));
+                    ImageView imageView = new ImageView(image);
                     imageView.setFitWidth(200); // Set the width of the image view
                     imageView.setFitHeight(200); // Set the height of the image view
-                } else if(numCardsEventOne == 4){
-                    imageView.setFitWidth(180);
-                    imageView.setFitHeight(180);
-                } else if(numCardsEventOne == 5){
-                    imageView.setFitWidth(140);
-                    imageView.setFitHeight(140);
+                    eventFlowPane.getChildren().add(imageView);
                 }
-                eventOneCardHBox.getChildren().add(imageView);
-            }
-            for (Card card : lessonPlan.getEventTwoCards()) {
-                Image image = new Image(new FileInputStream("GymSoftwarePics/" +
-                        card.getPackFolder().toUpperCase() + "Pack/" +
-                        card.getImage()));
-                ImageView imageView = new ImageView(image);
-                if(numCardsEventTwo <= 3) {
-                    imageView.setFitWidth(200); // Set the width of the image view
-                    imageView.setFitHeight(200); // Set the height of the image view
-                } else if(numCardsEventTwo == 4){
-                    imageView.setFitWidth(180);
-                    imageView.setFitHeight(180);
-                } else if(numCardsEventTwo == 5){
-                    imageView.setFitWidth(140);
-                    imageView.setFitHeight(140);
-                }
-                eventTwoCardHBox1.getChildren().add(imageView);
             }
         }catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -138,10 +112,8 @@ public class PreviewPageController {
         if (result.get() == yesButton) {
             lessonPlan.resetLessonPlan();
             MainEditDisplayController.clearTreeCardItems();
-            MainEditDisplayController.eventOneItems.setValue("Event 1");
-            MainEditDisplayController.eventTwoItems.setValue("Event 2");
-            MainEditDisplayController.cardParentEvents[0] = "Event 1";
-            MainEditDisplayController.cardParentEvents[1] = "Event 2";
+            MainEditDisplayController.events.clear();
+            MainEditDisplayController.cardParentEvents.clear();
             GymnasticsAppBeta.switchToHomePage();
         }
 
@@ -160,11 +132,12 @@ public class PreviewPageController {
     }
     @FXML
     void saveController(ActionEvent event) throws IOException {
-        List<Card> cardList1 = new ArrayList<Card>();
-        cardList1.addAll(lessonPlan.getEventOneCards());
-        List<Card> cardList2 = new ArrayList<Card>();
-        cardList2.addAll(lessonPlan.getEventTwoCards());
-
+        List<List<Card>> eventCardList = new ArrayList<>();
+        for(int i =0; i < lessonPlan.getEventList().size(); i++){
+            List<Card> cardList = new ArrayList<>();
+            cardList.addAll(lessonPlan.getEventCards(i));
+            eventCardList.add(cardList);
+        }
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save File");
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Gym Plan Files (*.GymPlanFile)", "*.GymPlanFile");
@@ -176,13 +149,15 @@ public class PreviewPageController {
         if (selectedFile != null) {
             // Create a FileWriter for the selected file and write the data.
             try (FileWriter fileWriter = new FileWriter(selectedFile)) {
-                fileWriter.write(lessonPlanTextField.getText() + "\n" + eventOneTitle.getText() + "\n" + eventTwoTitle.getText() + "\n");
-                for (int i = 0; i < cardList1.size(); i++) {
-                    fileWriter.write(cardList1.get(i).getUniqueID() + "\n");
-                }
-                fileWriter.write("end\n");
-                for(int i = 0; i < cardList2.size(); i++) {
-                    fileWriter.write(cardList2.get(i).getUniqueID() + "\n");
+                fileWriter.write(lessonPlanTextField.getText() + "\n");
+
+                //NEED A FOR LOOP FOR EVENT TITLES
+
+                for(List<Card> cardList : eventCardList) {
+                    for (int i = 0; i < cardList.size(); i++) {
+                        fileWriter.write(cardList.get(i).getUniqueID() + "\n");
+                    }
+                    fileWriter.write("end\n");
                 }
             } catch (IOException e) {
                 // Handle the exception appropriately (e.g., show an error message).
@@ -193,36 +168,20 @@ public class PreviewPageController {
 
     private void setLessonPlanTitles() {
         lessonPlanTextField.setText(lessonPlan.getLessonPlanTitle());
-        if (LessonPlan.getEventOneName() != null) {
-            eventOneTitle.setText(LessonPlan.getEventOneName());
-        } else{
-            eventOneTitle.setText("Event 1");
-            LessonPlan.setEventOneName("Event 1");
-        }
-        if (LessonPlan.getEventTwoName() != null) {
-            eventTwoTitle.setText(LessonPlan.getEventTwoName());
-        } else{
-            eventTwoTitle.setText("Event 2");
-            LessonPlan.setEventTwoName("Event 2");
+        for(int i = 0; i < LessonPlan.getEventNames().size(); i++ ) {
+            eventTitles.get(i).setText(LessonPlan.getEventNames().get(i));
         }
     }
 
     private void fillEquipmentBox(){
         equipmentBox.setText("Equipment: ");
-        for(int i = 0; i < lessonPlan.getEventOneCards().size(); i++){
-            if(i == 0){
-                while(lessonPlan.getEventOneCards().get(i).getEquipment().equals("None")){
-                    i = i + 1;
+        for(List<Card> eventCards : lessonPlan.getEventList()){
+            for(Card card : eventCards){
+                if(!card.getEquipment().equals("None")) {
+                    if (!(equipmentBox.getText().contains(card.getEquipment()))) {
+                        equipmentBox.setText(equipmentBox.getText() + ", " + card.getEquipment());
+                    }
                 }
-                equipmentBox.setText(equipmentBox.getText() + lessonPlan.getEventOneCards().get(i).getEquipment());
-            }
-            if(!(equipmentBox.getText().contains(lessonPlan.getEventOneCards().get(i).getEquipment()))){
-                equipmentBox.setText(equipmentBox.getText() +", " + lessonPlan.getEventOneCards().get(i).getEquipment());
-            }
-        }
-        for(int i = 0; i < lessonPlan.getEventTwoCards().size(); i++){
-            if(!(equipmentBox.getText().contains(lessonPlan.getEventTwoCards().get(i).getEquipment()))){
-                equipmentBox.setText(equipmentBox.getText() + ", " + lessonPlan.getEventTwoCards().get(i).getEquipment());
             }
         }
     }

@@ -10,80 +10,75 @@ import java.util.List;
 public class LessonPlan {
     //private List<Course> plan;
     private String lessonPlanTitle;
-    private static String eventOneName;
-    private static String eventTwoName;
-    private List<Card> eventOneCards;
-    private List<Card> eventTwoCards;
+
+    private static List<String> eventNames = new ArrayList<>();
+
+    private List<List<Card>> eventList;
 
     public LessonPlan() {
-        eventOneCards = new ArrayList<>();
-        eventTwoCards = new ArrayList<>();
+        eventList = new ArrayList<>();
     }
 
 
-    public void setEventOneCards(List<Card> cardList){
-        eventOneCards = cardList;
+
+    public List<List<Card>> getEventList() {
+        return eventList;
     }
 
-    public void setEventTwoCards(List<Card> cardList){
-        eventTwoCards = cardList;
+    public void setEventList(List<List<Card>> eventList) {
+        this.eventList = eventList;
     }
 
     public void setLessonPlanTitle(String title){
         lessonPlanTitle = title;
     }
 
-    public static void setEventOneName(String name){
-        eventOneName = name;
+    public static void setEventName(String name, int index){
+        eventNames.set(index, name);
     }
 
-    public static void setEventTwoName(String name){
-        eventTwoName = name;
-    }
     public static void save(File saveFile) {
     }
     public String getLessonPlanTitle(){
         return lessonPlanTitle;
     }
-    public static String getEventOneName(){
-        return eventOneName;
+
+
+    public static List<String> getEventNames() {
+        return eventNames;
     }
-    public static String getEventTwoName(){
-        return eventTwoName;
-    }
-    public List<Card> getEventOneCards(){
-        return eventOneCards;
-    }
-    public List<Card> getEventTwoCards(){
-        return eventTwoCards;
+
+    public static void setEventNames(List<String> eventNames) {
+        LessonPlan.eventNames = eventNames;
     }
 
     private static boolean hasBeenLoaded = false;
 
-    public void addToEventOne(Card card){
-        eventOneCards.add(card);
+    public void addToEvent(Card card, int num){
+        List<Card> eventCards = eventList.get(num);
+        eventCards.add(card);
     }
-    public void addToEventTwo(Card card){
-        eventTwoCards.add(card);
+    public void deleteFromEvent(Card card, int num){
+        List<Card> eventCards = eventList.get(num-1);
+        eventCards.remove(card);
     }
-    public void deleteFromEventOne(Card card){
-        eventOneCards.remove(card);
-    }
-    public void deleteFromEventTwo(Card card){
-        eventTwoCards.remove(card);
+
+    public List<Card> getEventCards(int index){
+        return eventList.get(index);
     }
 
     public void printEverything(){
-        System.out.println(lessonPlanTitle + " " + eventOneName + " " + eventTwoName);
-        if (!(eventOneCards.isEmpty())) {
-            System.out.println(eventOneCards.get(0).toString());
-        } else{
-            System.out.println("Event one cards is empty");
+        String eventsName = null;
+        for(String name : eventNames){
+            eventsName += name + " ";
         }
-        if(!(eventTwoCards.isEmpty())) {
-            System.out.println(eventTwoCards.get(0).toString());
-        } else{
-            System.out.println("Event two cards is empty");
+        System.out.println(lessonPlanTitle + " " + eventsName);
+        for(List<Card> eventCards : eventList){
+            if (!(eventCards.isEmpty())) {
+                System.out.println(eventCards.get(0).toString());
+            } else{
+                System.out.println("event is empty");
+            }
         }
     }
 
@@ -93,61 +88,47 @@ public class LessonPlan {
             System.out.println("LOADING FROM FILE");
             CardDatabase.getAllCards();
             resetLessonPlan();
-            if(eventOneCards.isEmpty()){
+            if(eventList.isEmpty()){
                 System.out.println("clear");
             }else {
-                for (Card card : eventOneCards) {
-                    System.out.println(card.getTitle());
+                for(List<Card> event : eventList) {
+                    for (Card card : event) {
+                        System.out.println(card.getTitle());
+                    }
                 }
             }
             lessonPlanTitle = loadedLessonPlan.remove(0);
 
-            eventOneName = loadedLessonPlan.remove(0);
-            eventTwoName = loadedLessonPlan.remove(0);
-            MainEditDisplayController.eventOneItems.setValue(eventOneName);
-            MainEditDisplayController.eventTwoItems.setValue(eventTwoName);
-
-            for(int i = 0; i < loadedLessonPlan.size(); i++) {
+            for(int i = 0; i < loadedLessonPlan.size(); i++){
+                int eventNumber = 0;
                 if(loadedLessonPlan.get(i).equals("end")) {
                     loadedLessonPlan.remove(i);
-                    break;
-                } else {
+                    eventNumber++;
+                }else{
                     Card card = CardDatabase.getCardByID(loadedLessonPlan.remove(i));
-                    eventOneCards.add(card);
+                    if(eventList.size() < eventNumber){
+                        eventList.add(new ArrayList<Card>());
+                    }
+                    eventList.get(eventNumber).add(card);
                     System.out.println(card.getTitle());
                     i--;
                 }
             }
             System.out.println("");
-            for(int j = 0; j < loadedLessonPlan.size(); j++){
-                Card card = CardDatabase.getCardByID(loadedLessonPlan.remove(j));
-                eventTwoCards.add(card);
-                System.out.println(card.getTitle());
-                j--;
-            }
-            for(Card card: eventOneCards){
-                System.out.println(card.getTitle());
-            }
             GymnasticsAppBeta.setLessonPlan(this);
-            MainEditDisplayController.addTreeCardItem(eventOneCards,eventTwoCards);
+            MainEditDisplayController.addTreeCardItem(eventList);
             hasBeenLoaded = true;
         }
     }
 
     public Card getCardFromTreeItem(String value, int treeNum) {
-        if (treeNum == 1){
-            for(int i = 0; i < eventOneCards.size(); i++){
-                if (eventOneCards.get(i).getTitle().equals(value)){
-                    return eventOneCards.get(i);
-                }
-            }
-        }else {
-            for (int i = 0; i < eventTwoCards.size(); i++) {
-                if (eventTwoCards.get(i).getTitle().equals(value)) {
-                    return eventTwoCards.get(i);
-                }
+        List<Card> event = eventList.get(treeNum);
+        for(Card card : event){
+            if(card.getTitle().equals(value)){
+                return card;
             }
         }
+
         //return eventOneTreeCards.get(0);
         return null;
     }
@@ -157,10 +138,8 @@ public class LessonPlan {
 
     public void resetLessonPlan(){
         lessonPlanTitle = null;
-        eventOneName = "Event 1";
-        eventTwoName = "Event 2";
-        eventOneCards.clear();
-        eventTwoCards.clear();
+        eventList.clear();
+        eventNames.clear();
     }
 
     public static LessonPlan loadCourseFile(File courseFile) {
