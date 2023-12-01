@@ -139,8 +139,6 @@ public class PreviewPageController {
     }
 
 
-
-
     private TextField createEventTitleTextField(int eventIndex){
         TextField eventTitleTextField = new TextField();
         eventTitleTextField.setAlignment(Pos.CENTER);
@@ -164,10 +162,10 @@ public class PreviewPageController {
         FlowPane eventFlowPane = new FlowPane();
         eventFlowPane.setPrefHeight(200.0);
         eventFlowPane.setPrefWidth(749.0);
-        eventFlowPane.setHgap(10.0);
-        eventFlowPane.setVgap(10.0);
+        eventFlowPane.setHgap(40.0);
+        eventFlowPane.setVgap(20.0);
+        eventFlowPane.setAlignment(Pos.CENTER);
         eventFlowPane.setColumnHalignment(HPos.CENTER);
-
         return eventFlowPane;
     }
 

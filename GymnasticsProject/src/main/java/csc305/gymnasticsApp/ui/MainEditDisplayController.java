@@ -109,7 +109,7 @@ public class MainEditDisplayController implements Initializable {
                 events.add(new TreeItem<String>("Event 1"));
                 eventButtonList.add(createEventButton(1));
                 System.out.println(eventButtonList.size());
-                //cardParentEvents.add("Event 1");
+                cardParentEvents.add("Event 1");
             }
             for(TreeItem<String> event: events){
                 rootItem.getChildren().add(event);
@@ -339,7 +339,7 @@ public class MainEditDisplayController implements Initializable {
         TreeItem<String> parent = selectedItem.getParent();
 
         //checks if not parent (event)
-        if(events.contains(parent)) {
+        if(rootItem.getChildren().contains(parent)) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Caution");
             alert.setHeaderText("Are you sure you want to delete this card?");
@@ -363,13 +363,9 @@ public class MainEditDisplayController implements Initializable {
 
             Optional<String> result = renameDialog.showAndWait();
             result.ifPresent(newName -> {
-                for(int i = 0; i < events.size();i++){
-                    TreeItem<String> eventItem = events.get(i);
-                    if(selectedItem.equals(eventItem)) {
-                        lessonPlan.setEventName(newName, i);
-                        cardParentEvents.set(i, newName);
-                    }
-                }
+                int index = rootItem.getChildren().indexOf(selectedItem);
+                lessonPlan.setEventName(newName, index);
+                cardParentEvents.set(index, newName);
                 selectedItem.setValue(newName);
             });
         }

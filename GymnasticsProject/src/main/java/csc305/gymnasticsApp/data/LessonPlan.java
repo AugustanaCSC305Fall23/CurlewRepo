@@ -47,6 +47,7 @@ public class LessonPlan {
     }
 
     public void setEventName(String name, int index){
+        System.out.println("This is the index in setEventName" + index);
         eventNames.set(index, name);
     }
 
