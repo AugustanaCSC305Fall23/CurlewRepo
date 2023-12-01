@@ -89,6 +89,7 @@ public class MainEditDisplayController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         lessonPlan = GymnasticsAppBeta.getLessonPlan();
+        lessonPlan.addEventName("Event 1");
         lessonPlan.printEverything();
         initializeTreeView();
         addCardsToFlowPane();
@@ -103,7 +104,7 @@ public class MainEditDisplayController implements Initializable {
 
     private void initializeTreeView(){
         if (rootItem.getChildren().isEmpty()) {
-            if(events.size() == 0){
+            if(events.isEmpty()){
                 events.add(new TreeItem<String>("Event 1"));
                 eventButtonList.add(createEventButton(1));
                 System.out.println(eventButtonList.size());
@@ -202,8 +203,8 @@ public class MainEditDisplayController implements Initializable {
         lessonPlan.addToEventList(eventCards);
         ButtonType eventButton = createEventButton(eventNum);
         eventButtonList.add(eventButton);
-
         cardParentEvents.add("Event" + eventNum);
+        lessonPlan.addEventName("Event" + events.size());
     }
 
     private ButtonType createEventButton(int eventNum){

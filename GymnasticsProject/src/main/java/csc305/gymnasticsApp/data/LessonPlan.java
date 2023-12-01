@@ -28,6 +28,7 @@ public class LessonPlan {
     public void setEventList(List<List<Card>> eventList) {
         this.eventList = eventList;
     }
+
     public void addToEventList(List<Card> event){
         eventList.add(event);
     }
@@ -47,6 +48,9 @@ public class LessonPlan {
 
     public void setEventName(String name, int index){
         eventNames.set(index, name);
+    }
+    public void addEventName(String name){
+        eventNames.add(name);
     }
 
     public static void save(File saveFile) {
@@ -80,7 +84,7 @@ public class LessonPlan {
     }
 
     public void printEverything(){
-        String eventsName = null;
+        String eventsName = "";
         for(String name : eventNames){
             eventsName += name + " ";
         }

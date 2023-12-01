@@ -27,23 +27,4 @@ public class Course {
         return false;
     }
 
-
-    /*
-    JACKS WORK BELOW, COMMENTED OUT
-
-    private List<Card> cards;
-    private String title;
-
-    public TreeMap<String, Card> getCardsGroupedByEvent() {
-        return null;
-    }
-
-    public void addCard(Card newCard) {
-
-    }
-
-    public void save(File saveFile) {
-
-    }
-    */
 }
