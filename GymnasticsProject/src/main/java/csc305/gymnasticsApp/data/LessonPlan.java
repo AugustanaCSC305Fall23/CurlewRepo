@@ -75,8 +75,7 @@ public class LessonPlan {
         eventCards.add(card);
     }
     public void deleteFromEvent(Card card, int num){
-        List<Card> eventCards = eventList.get(num-1);
-        eventCards.remove(card);
+        eventList.get(num - 1).remove(card);
     }
 
     public List<Card> getEventCards(int index){
@@ -138,14 +137,12 @@ public class LessonPlan {
     }
 
     public Card getCardFromTreeItem(String value, int treeNum) {
-        List<Card> event = eventList.get(treeNum);
-        for(Card card : event){
-            if(card.getTitle().equals(value)){
+        for(Card card : eventList.get(treeNum - 1)){
+            if(card.getCode().equals(value)){
                 return card;
             }
         }
-
-        //return eventOneTreeCards.get(0);
+        System.out.println("Didnt get card from tree item");
         return null;
     }
     public static void resetBoolean(){

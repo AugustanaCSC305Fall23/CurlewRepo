@@ -47,7 +47,7 @@ public class PreviewPageController {
 
     private LessonPlan lessonPlan;
 
-    public void initialize() {
+    public void initialize() throws FileNotFoundException {
         System.out.println("Initializing preview page");
         lessonPlan = GymnasticsAppBeta.getLessonPlan();
         lessonPlan.printEverything();
@@ -100,7 +100,8 @@ public class PreviewPageController {
         return returnVBox;
     }
 
-    private void fillTitleVBox(VBox vbox, int eventIndex){
+    private void fillTitleVBox(VBox vbox, int eventIndex) throws FileNotFoundException {
+        //Title Box stuff
         HBox eventTitleHBox = new HBox();
         eventTitleHBox.setAlignment(Pos.CENTER_LEFT);
         eventTitleHBox.setPrefSize(760.0, 40.0);
@@ -112,9 +113,28 @@ public class PreviewPageController {
         eventTitleTextField.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;");
         eventTitleTextField.setFont(Font.font("System Bold", 16.0));
         eventTitleTextField.setText(lessonPlan.getEventNames().get(eventIndex));
-
         eventTitleHBox.getChildren().add(eventTitleTextField);
+
+        //FlowPane Card Stuff
+        FlowPane cardFlowPane = new FlowPane();
+        cardFlowPane.setPrefSize(754.0, 500.0);
+        cardFlowPane.setPrefWrapLength(650);
+        cardFlowPane.setVgap(20);
+        cardFlowPane.setHgap(20);
+        int i = 0;
+        while (i < 6 && i < lessonPlan.getEventCards(0).size()){
+            Card card = lessonPlan.getEventCards(0).get(i);
+            Image image = new Image(new FileInputStream("GymSoftwarePics/" +
+                    card.getPackFolder().toUpperCase() + "Pack/" +
+                    card.getImage()));
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(200); // Set the width of the image view
+            imageView.setFitHeight(200); // Set the height of the image view
+            cardFlowPane.getChildren().add(imageView);
+            i = i + 1;
+        }
         vbox.getChildren().add(eventTitleHBox);
+        vbox.getChildren().add(cardFlowPane);
     }
 
     private void fillVBox(VBox vbox, int eventIndex){
