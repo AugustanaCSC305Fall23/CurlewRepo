@@ -121,6 +121,8 @@ public class PreviewPageController {
         cardFlowPane.setPrefWrapLength(650);
         cardFlowPane.setVgap(20);
         cardFlowPane.setHgap(20);
+        cardFlowPane.setAlignment(Pos.CENTER);
+
         int i = 0;
         while (i < 6 && i < lessonPlan.getEventCards(0).size()){
             Card card = lessonPlan.getEventCards(0).get(i);
@@ -137,7 +139,7 @@ public class PreviewPageController {
         vbox.getChildren().add(cardFlowPane);
     }
 
-    private void fillVBox(VBox vbox, int eventIndex){
+    private void fillVBox(VBox vbox, int eventIndex) throws FileNotFoundException {
         HBox eventTitleHBox = new HBox();
         eventTitleHBox.setAlignment(Pos.CENTER_LEFT);
         eventTitleHBox.setPrefSize(760.0, 40.0);
@@ -150,8 +152,29 @@ public class PreviewPageController {
         eventTitleTextField.setFont(Font.font("System Bold", 16.0));
         eventTitleTextField.setText(lessonPlan.getEventNames().get(eventIndex));
 
+        //FlowPane Card Stuff
+        FlowPane cardFlowPane = new FlowPane();
+        cardFlowPane.setPrefSize(754.0, 500.0);
+        cardFlowPane.setPrefWrapLength(650);
+        cardFlowPane.setVgap(20);
+        cardFlowPane.setHgap(20);
+        cardFlowPane.setAlignment(Pos.CENTER);
+        int i = 0;
+        while (i < 6 && i < lessonPlan.getEventCards(eventIndex).size()){
+            Card card = lessonPlan.getEventCards(eventIndex).get(i);
+            Image image = new Image(new FileInputStream("GymSoftwarePics/" +
+                    card.getPackFolder().toUpperCase() + "Pack/" +
+                    card.getImage()));
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(200); // Set the width of the image view
+            imageView.setFitHeight(200); // Set the height of the image view
+            cardFlowPane.getChildren().add(imageView);
+            i = i + 1;
+        }
         eventTitleHBox.getChildren().add(eventTitleTextField);
         vbox.getChildren().add(eventTitleHBox);
+        vbox.getChildren().add(cardFlowPane);
+
     }
 
 
