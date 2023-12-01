@@ -120,27 +120,26 @@ public class LessonPlan {
                 }
             }
             lessonPlanTitle = loadedLessonPlan.remove(0);
-
+            int eventNumber = 0;
+            //i is the line in the textFile
             for(int i = 0; i < loadedLessonPlan.size(); i++){
-                int eventNumber = 0;
-                if(loadedLessonPlan.get(i).equals("end")) {
+                //checks if the next line is a card or still an event
+                if(!(CardDatabase.getAllCards().contains(CardDatabase.getCardByID(loadedLessonPlan.get(i))))){
+                    eventList.add(new ArrayList<Card>());
+                    eventNames.add(loadedLessonPlan.remove(i));
+                } else if(loadedLessonPlan.get(i).equals("end")) {
                     loadedLessonPlan.remove(i);
-                    eventNumber++;
+                    eventNumber = eventNumber + 1;
                 }else{
                     Card card = CardDatabase.getCardByID(loadedLessonPlan.remove(i));
-                    if(eventList.size() < eventNumber){
-                        eventList.add(new ArrayList<Card>());
-                    }
                     eventList.get(eventNumber).add(card);
-                    System.out.println(card.getTitle());
-                    i--;
                 }
             }
-            System.out.println("");
             GymnasticsAppBeta.setLessonPlan(this);
             MainEditDisplayController.addTreeCardItem(eventList);
             hasBeenLoaded = true;
         }
+        printEverything();
     }
 
     public Card getCardFromTreeItem(String value, int treeNum) {

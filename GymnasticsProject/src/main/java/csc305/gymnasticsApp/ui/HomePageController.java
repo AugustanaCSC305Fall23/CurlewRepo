@@ -15,7 +15,7 @@ public class HomePageController {
     @FXML private Button LoadLessonButton;
 
     @FXML private Button aboutButton;
-    static LessonPlan loadPlan;
+    public static LessonPlan loadPlan;
 
     /**
      * Handles the action when the "New Lesson" button is clicked.
