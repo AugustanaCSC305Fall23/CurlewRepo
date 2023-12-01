@@ -98,7 +98,6 @@ public class MainEditDisplayController implements Initializable {
         allCards = getAllCardButtons();
         resetFlowPane();
         initFilterList();
-        lessonPlan.clearEventList();
         List<Card> eventCards = new ArrayList<>();
         lessonPlan.addToEventList(eventCards);
         System.out.println("initializing");
@@ -351,10 +350,9 @@ public class MainEditDisplayController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == yesButton) {
-                for(int i =0; i < cardParentEvents.size();i++){
-                    Card card = lessonPlan.getCardFromTreeItem(selectedItem.getValue(), i+1);
-                    lessonPlan.deleteFromEvent(card, i);
-                }
+                int index = rootItem.getChildren().indexOf(parent);
+                int cardNum = parent.getChildren().indexOf(selectedItem);
+                lessonPlan.deleteFromEvent(lessonPlan.getEventCards(index).get(cardNum), cardNum);
                 deleteCardFromTreeView(event);
             }
         } else{ //is event, so shows text box

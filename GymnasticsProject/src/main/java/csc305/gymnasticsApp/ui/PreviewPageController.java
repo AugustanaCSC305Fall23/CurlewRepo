@@ -50,7 +50,7 @@ public class PreviewPageController {
 
     private LessonPlan lessonPlan;
 
-    public void initialize() {
+    public void initialize() throws FileNotFoundException {
         System.out.println("Initializing preview page");
         lessonPlan = GymnasticsAppBeta.getLessonPlan();
         lessonPlan.printEverything();
@@ -106,15 +106,6 @@ public class PreviewPageController {
         return returnVBox;
     }
 
-    private void fillTitleVBox(VBox vbox, int eventIndex){
-        HBox eventTitleHBox = createEventTitleHBox();
-        TextField eventTitleTextField = createEventTitleTextField(eventIndex);
-        FlowPane eventCards = createEventCardFlowPane();
-        eventCards.getChildren().addAll(addCards(eventIndex));
-
-        eventTitleHBox.getChildren().addAll(eventTitleTextField, eventCards);
-        vbox.getChildren().add(eventTitleHBox);
-    }
 
     private void fillVBox(VBox vbox, int eventIndex){
         HBox eventTitleHBox = createEventTitleHBox();
