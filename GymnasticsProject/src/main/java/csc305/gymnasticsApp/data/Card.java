@@ -35,6 +35,9 @@ public class Card {
 
     private String uniqueID;
 
+    /**
+     * Creates a card object and assigns all the correlating values
+     */
     public Card() {
         this.code = getCode();
         this.event = getEvent();

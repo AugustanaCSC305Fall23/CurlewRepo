@@ -7,6 +7,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The LessonPlan class represents a collection of gymnastics lesson plans.
+ * It includes methods for managing lesson plans, such as adding events, setting title, and loading from files.
+ */
 public class LessonPlan {
     //private List<Course> plan;
     private String lessonPlanTitle;
@@ -15,6 +19,9 @@ public class LessonPlan {
 
     private List<List<Card>> eventList;
 
+    /**
+     * Constructs a new LessonPlan with an empty list of events
+     */
     public LessonPlan() {
         eventList = new ArrayList<>();
     }
@@ -77,18 +84,40 @@ public class LessonPlan {
 
     private static boolean hasBeenLoaded = false;
 
+    /**
+     * Adds a card to a specific event in the lesson plan
+     *
+     * @param card The card to add to the event
+     * @param num The index of the event in the lesson plan
+     */
     public void addToEvent(Card card, int num){
         List<Card> eventCards = eventList.get(num);
         eventCards.add(card);
     }
+
+    /**
+     * Deletes a card from a specific event in the lesson plan
+     *
+     * @param index The index of the card to delete in the event
+     * @param num The index of the event in the lesson plan
+     */
     public void deleteFromEvent(int index, int num){
         eventList.get(index).remove(num);
     }
 
+    /**
+     * Retrieves the list of cards for a specific event in the lesson plan
+     *
+     * @param index The index of the event in the lesson plan
+     * @return A list of cards for the specified event
+     */
     public List<Card> getEventCards(int index){
         return eventList.get(index);
     }
 
+    /**
+     * Prints information about the lesson plan and its events to the console
+     */
     public void printEverything(){
         String eventsName = "";
         for(String name : eventNames){
@@ -104,7 +133,11 @@ public class LessonPlan {
         }
     }
 
-
+    /**
+     * Loads a lesson plan from a file
+     *
+     * @param loadedLessonPlan The loaded lesson plan data
+     */
     public void loadPlanFromFile(ArrayList<String> loadedLessonPlan) {
         if (GymnasticsAppBeta.getLoaded() && !hasBeenLoaded) {
             System.out.println("LOADING FROM FILE");
@@ -143,6 +176,13 @@ public class LessonPlan {
         }
     }
 
+    /**
+     * Retrieves a card from a specific event based on its value and event index
+     *
+     * @param value The value to match
+     * @param treeNum The index of the event in the lesson plan
+     * @return The card with the specified value in the specified event
+     */
     public Card getCardFromTreeItem(String value, int treeNum) {
         for(Card card : eventList.get(treeNum - 1)){
             if(card.getCode().equals(value)){
@@ -152,16 +192,29 @@ public class LessonPlan {
         System.out.println("Didnt get card from tree item");
         return null;
     }
+
+    /**
+     * Resets the boolean flag indicating whether the lesson plan has been loaded
+     */
     public static void resetBoolean(){
         hasBeenLoaded = false;
     }
 
+    /**
+     * Resets the lesson plan by clearing its title, event list, and event names
+     */
     public void resetLessonPlan(){
         lessonPlanTitle = null;
         eventList.clear();
         eventNames.clear();
     }
 
+    /**
+     * Loads a lesson plan from a file
+     *
+     * @param courseFile courseFile The file containing the lesson plan data
+     * @return The loaded lesson plan
+     */
     public static LessonPlan loadCourseFile(File courseFile) {
         return null;
     }
