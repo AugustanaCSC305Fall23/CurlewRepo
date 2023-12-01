@@ -236,6 +236,7 @@ public class MainEditDisplayController implements Initializable {
             MainEditDisplayController.clearTreeCardItems();
             MainEditDisplayController.events.clear();
             MainEditDisplayController.cardParentEvents.clear();
+            MainEditDisplayController.resetButtons();
             GymnasticsAppBeta.switchToHomePage();
         }
     }
@@ -379,6 +380,10 @@ public class MainEditDisplayController implements Initializable {
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
         TreeItem<String> parent = selectedItem.getParent();
         parent.getChildren().remove(selectedItem);
+    }
+
+    public static void resetButtons(){
+        eventButtonList.clear();
     }
 
 
