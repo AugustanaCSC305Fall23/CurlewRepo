@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.Flow;
 
 public class PreviewPageController {
 
@@ -76,6 +77,7 @@ public class PreviewPageController {
                 nVBox.setPadding(new javafx.geometry.Insets(30, 0, 0, 0));
                 currentVBox = nVBox;
             }
+/*  IT AUTOMATICALLY MOVES THEM DOWN
 
             //fill VBoxes with cards
             //if first box add a title and move the other attributes down
@@ -83,9 +85,11 @@ public class PreviewPageController {
                 fillTitleVBox(currentVBox, i);
                 isFirst = false;
             }//Box doesn't contain title, so implement cards normally
-            else{
-                fillVBox(currentVBox, i);
-            }
+            else{}
+
+            */
+            fillVBox(currentVBox, i);
+
             mainFlowPane.getChildren().add(currentVBox);
             VBoxes.add(currentVBox);
         }
@@ -103,28 +107,48 @@ public class PreviewPageController {
     }
 
     private void fillTitleVBox(VBox vbox, int eventIndex){
-        HBox eventTitleHBox = new HBox();
-        eventTitleHBox.setAlignment(Pos.CENTER_LEFT);
-        eventTitleHBox.setPrefSize(760.0, 40.0);
-        eventTitleHBox.setSpacing(50.0);
+        HBox eventTitleHBox = createEventTitleHBox();
+        TextField eventTitleTextField = createEventTitleTextField(eventIndex);
+        FlowPane eventCards = createEventCardFlowPane();
+        eventCards.getChildren().addAll(addCards(eventIndex));
 
-        TextField eventTitleTextField = new TextField();
-        eventTitleTextField.setAlignment(Pos.CENTER);
-        eventTitleTextField.setPrefSize(250.0, 40.0);
-        eventTitleTextField.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;");
-        eventTitleTextField.setFont(Font.font("System Bold", 16.0));
-        eventTitleTextField.setText(lessonPlan.getEventNames().get(eventIndex));
-
-        eventTitleHBox.getChildren().add(eventTitleTextField);
+        eventTitleHBox.getChildren().addAll(eventTitleTextField, eventCards);
         vbox.getChildren().add(eventTitleHBox);
     }
 
     private void fillVBox(VBox vbox, int eventIndex){
-        HBox eventTitleHBox = new HBox();
-        eventTitleHBox.setAlignment(Pos.CENTER_LEFT);
-        eventTitleHBox.setPrefSize(760.0, 40.0);
-        eventTitleHBox.setSpacing(50.0);
+        HBox eventTitleHBox = createEventTitleHBox();
+        TextField eventTitleTextField = createEventTitleTextField(eventIndex);
+        FlowPane eventCards = createEventCardFlowPane();
+        eventCards.getChildren().addAll(addCards(eventIndex));
 
+        eventTitleHBox.getChildren().add(eventTitleTextField);
+        vbox.getChildren().addAll(eventTitleHBox, eventCards);
+
+    }
+
+    private List<ImageView> addCards(int eventIndex){
+        List<Card> eventCards = lessonPlan.getEventCards(eventIndex);
+        List<ImageView> cardView = new ArrayList<>();
+        for(Card card : eventCards){
+            Image image = null;
+            try {
+                image = new Image(new FileInputStream("GymSoftwarePics/" +
+                        card.getPackFolder().toUpperCase() + "Pack/" +
+                        card.getImage()));
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(200); // Set the width of the image view
+            imageView.setFitHeight(200); // Set the height of the image view
+            cardView.add(imageView);
+        }
+        return cardView;
+    }
+
+
+    private TextField createEventTitleTextField(int eventIndex){
         TextField eventTitleTextField = new TextField();
         eventTitleTextField.setAlignment(Pos.CENTER);
         eventTitleTextField.setPrefSize(250.0, 40.0);
@@ -132,15 +156,26 @@ public class PreviewPageController {
         eventTitleTextField.setFont(Font.font("System Bold", 16.0));
         eventTitleTextField.setText(lessonPlan.getEventNames().get(eventIndex));
 
-        eventTitleHBox.getChildren().add(eventTitleTextField);
-        vbox.getChildren().add(eventTitleHBox);
+        return eventTitleTextField;
     }
-    private void setFlowPaneParams(FlowPane flowPane){
-        flowPane.setPrefHeight(200.0);
-        flowPane.setPrefWidth(749.0);
-        flowPane.setHgap(10.0);
-        flowPane.setVgap(10.0);
-        flowPane.setColumnHalignment(HPos.CENTER);
+
+
+    private HBox createEventTitleHBox(){
+        HBox eventTitleHBox = new HBox();
+        eventTitleHBox.setAlignment(Pos.CENTER_LEFT);
+        eventTitleHBox.setPrefSize(760.0, 40.0);
+        eventTitleHBox.setSpacing(50.0);
+        return eventTitleHBox;
+    }
+    private FlowPane createEventCardFlowPane(){
+        FlowPane eventFlowPane = new FlowPane();
+        eventFlowPane.setPrefHeight(200.0);
+        eventFlowPane.setPrefWidth(749.0);
+        eventFlowPane.setHgap(10.0);
+        eventFlowPane.setVgap(10.0);
+        eventFlowPane.setColumnHalignment(HPos.CENTER);
+
+        return eventFlowPane;
     }
 
 
@@ -174,11 +209,6 @@ public class PreviewPageController {
         nVBox.getChildren().add(lessonPlanTextField);
     }
 
-    private FlowPane createEventFlowPane() {
-        FlowPane eventFlowPane = new FlowPane();
-        eventFlowPane.setPrefSize(754.0, 200.0);
-        return eventFlowPane;
-    }
 
     private TextField createEquipmentBox() {
         TextField equipmentBox = new TextField();

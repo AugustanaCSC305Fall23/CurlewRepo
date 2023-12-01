@@ -101,7 +101,6 @@ public class MainEditDisplayController implements Initializable {
         lessonPlan.clearEventList();
         List<Card> eventCards = new ArrayList<>();
         lessonPlan.addToEventList(eventCards);
-        lessonPlan.addEventName("Event 1");
         System.out.println("initializing");
     }
 
@@ -208,7 +207,6 @@ public class MainEditDisplayController implements Initializable {
         ButtonType eventButton = createEventButton(eventNum);
         eventButtonList.add(eventButton);
         cardParentEvents.add("Event" + eventNum);
-        lessonPlan.addEventName("Event" + events.size());
     }
 
     private ButtonType createEventButton(int eventNum){

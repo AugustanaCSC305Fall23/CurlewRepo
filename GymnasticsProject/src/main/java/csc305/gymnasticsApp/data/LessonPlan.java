@@ -49,9 +49,6 @@ public class LessonPlan {
     public void setEventName(String name, int index){
         eventNames.set(index, name);
     }
-    public void addEventName(String name){
-        eventNames.add(name);
-    }
 
     public static void save(File saveFile) {
     }
