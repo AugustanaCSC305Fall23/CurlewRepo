@@ -87,12 +87,14 @@ public class PreviewPageController {
             }//Box doesn't contain title, so implement cards normally
             else{}
 
-            */
+*/
             fillVBox(currentVBox, i);
 
             mainFlowPane.getChildren().add(currentVBox);
             VBoxes.add(currentVBox);
+
         }
+        mainFlowPane.setAlignment(Pos.CENTER);
     }
 
     private VBox getNewVBox(){

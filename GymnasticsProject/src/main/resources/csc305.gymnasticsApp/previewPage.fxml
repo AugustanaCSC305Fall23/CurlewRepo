@@ -51,7 +51,7 @@
       </VBox>
    </left>
    <center>
-      <ScrollPane fx:id="mainScrollPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: blue;" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="mainScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: blue;" BorderPane.alignment="CENTER">
          <content>
             <FlowPane fx:id="mainFlowPane" alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" vgap="50.0">
                <children>
@@ -97,6 +97,9 @@
                      </padding>
                   </VBox>
                </children>
+               <padding>
+                  <Insets bottom="30.0" top="30.0" />
+               </padding>
             </FlowPane>
          </content>
       </ScrollPane>
