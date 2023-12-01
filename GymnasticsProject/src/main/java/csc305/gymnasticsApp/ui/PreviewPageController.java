@@ -139,6 +139,8 @@ public class PreviewPageController {
     }
 
 
+
+
     private TextField createEventTitleTextField(int eventIndex){
         TextField eventTitleTextField = new TextField();
         eventTitleTextField.setAlignment(Pos.CENTER);
