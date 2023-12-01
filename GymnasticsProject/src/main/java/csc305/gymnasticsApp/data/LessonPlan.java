@@ -110,36 +110,29 @@ public class LessonPlan {
             System.out.println("LOADING FROM FILE");
             CardDatabase.getAllCards();
             resetLessonPlan();
-            if(eventList.isEmpty()){
-                System.out.println("clear");
-            }else {
-                for(List<Card> event : eventList) {
-                    for (Card card : event) {
-                        System.out.println(card.getTitle());
-                    }
-                }
-            }
             lessonPlanTitle = loadedLessonPlan.remove(0);
+
             int eventNumber = 0;
+            int sizeOfLoadedLessonPlan = loadedLessonPlan.size();
             //i is the line in the textFile
-            for(int i = 0; i < loadedLessonPlan.size(); i++){
+            for(int i = 0; i < sizeOfLoadedLessonPlan; i++){
                 //checks if the next line is a card or still an event
-                if(!(CardDatabase.getAllCards().contains(CardDatabase.getCardByID(loadedLessonPlan.get(i))))){
-                    eventList.add(new ArrayList<Card>());
-                    eventNames.add(loadedLessonPlan.remove(i));
-                } else if(loadedLessonPlan.get(i).equals("end")) {
-                    loadedLessonPlan.remove(i);
+                if(loadedLessonPlan.get(i).equals("end")) {
+                    loadedLessonPlan.get(i);
                     eventNumber = eventNumber + 1;
-                }else{
-                    Card card = CardDatabase.getCardByID(loadedLessonPlan.remove(i));
-                    eventList.get(eventNumber).add(card);
+                }else if(!(CardDatabase.getAllCards().contains(CardDatabase.getCardByID(loadedLessonPlan.get(i))))){
+                    List<Card> eventCards = new ArrayList<>();
+                    addToEventList(eventCards);
+                    eventNames.add(loadedLessonPlan.get(i));
+                } else{
+                    Card card = CardDatabase.getCardByID(loadedLessonPlan.get(i));
+                    addToEvent(card, eventNumber);
                 }
             }
             GymnasticsAppBeta.setLessonPlan(this);
             MainEditDisplayController.addTreeCardItem(eventList);
             hasBeenLoaded = true;
         }
-        printEverything();
     }
 
     public Card getCardFromTreeItem(String value, int treeNum) {
