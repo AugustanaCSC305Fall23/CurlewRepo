@@ -15,11 +15,19 @@ import java.util.Map;
  * The CardDatabase class manages a collection of gymnastics cards and provides methods for filtering and organizing them.
  */
 public class CardDatabase {
+    /**
+     * A list containing all gymnastics cards in the database
+     */
     private static List<Card> allCards = new ArrayList<>();
 
+    /**
+     * A mapping of unique card IDs to their respective cards for efficient retrieval
+     */
     private static Map<String, Card> IDToCard= new HashMap<String, Card>();
 
-
+    /**
+     * Constructs a new CardDatabase and initializes it by reading gymnastics cards from CSV files.
+     */
     public CardDatabase() {
         List<Card> cardsFromCSV = null;
         File[] csvFileList = addAllCSVFilesFromFolder(new File("GymSoftwarePics/CSVFiles"));
@@ -57,12 +65,21 @@ public class CardDatabase {
 //
 //    }
 
+    /**
+     * Adds cards to the mapping of unique IDs to cards for efficient retrieval
+     */
     private static void addCardsToMap(){
         for(Card card:allCards){
             IDToCard.put(card.getUniqueID(),card);
         }
     }
 
+    /**
+     * Filters the cards based on the provided filter criteria
+     *
+     * @param specificFilter The filter criteria to apply
+     * @return A list of cards that match the filter criteria
+     */
     public static List<Card> filter(CardFilter specificFilter) {
         List<Card> filteredCards = new ArrayList<>();
         for(Card card : allCards){
@@ -137,7 +154,12 @@ public class CardDatabase {
         }
     }
 
-
+    /**
+     * Retrieves a card from the database based on its unique ID
+     *
+     * @param id The unique ID of the card to retrieve
+     * @return The card with the specified unique ID
+     */
     public static Card getCardByID(String id){
         Card card = IDToCard.get(id);
         return card;
