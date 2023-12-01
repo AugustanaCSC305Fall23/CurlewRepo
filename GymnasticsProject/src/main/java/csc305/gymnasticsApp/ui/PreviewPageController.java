@@ -196,8 +196,9 @@ public class PreviewPageController {
 
     private void setLessonPlanTitles() {
         lessonPlanTextField.setText(lessonPlan.getLessonPlanTitle());
-        System.out.println(lessonPlan.getEventNames().size());
+        System.out.println("size of event names" + lessonPlan.getEventNames().size());
         for(int i = 0; i < lessonPlan.getEventNames().size(); i++ ) {
+            eventTitles.add(new TextField());
             eventTitles.get(i).setText(lessonPlan.getEventNames().get(i));
             System.out.println("event title: " + eventTitles.get(i).getText());
         }

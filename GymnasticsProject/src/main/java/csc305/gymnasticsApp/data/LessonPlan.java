@@ -64,8 +64,12 @@ public class LessonPlan {
         this.eventNames = eventNames;
     }
 
-    public void addEventName(String name, int index){
-        
+    public void changeEventName(String name, int index){
+        eventNames.set(index, name);
+    }
+
+    public void addEventName(String name){
+        eventNames.add(name);
     }
 
 
