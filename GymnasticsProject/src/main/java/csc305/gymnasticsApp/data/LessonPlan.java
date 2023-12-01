@@ -80,8 +80,8 @@ public class LessonPlan {
         List<Card> eventCards = eventList.get(num);
         eventCards.add(card);
     }
-    public void deleteFromEvent(Card card, int num){
-        eventList.get(num - 1).remove(card);
+    public void deleteFromEvent(int index, int num){
+        eventList.get(index).remove(num);
     }
 
     public List<Card> getEventCards(int index){

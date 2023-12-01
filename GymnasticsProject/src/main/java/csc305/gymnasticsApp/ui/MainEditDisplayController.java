@@ -352,7 +352,7 @@ public class MainEditDisplayController implements Initializable {
             if (result.get() == yesButton) {
                 int index = rootItem.getChildren().indexOf(parent);
                 int cardNum = parent.getChildren().indexOf(selectedItem);
-                lessonPlan.deleteFromEvent(lessonPlan.getEventCards(index).get(cardNum), cardNum);
+                lessonPlan.deleteFromEvent(index, cardNum);
                 deleteCardFromTreeView(event);
             }
         } else{ //is event, so shows text box
