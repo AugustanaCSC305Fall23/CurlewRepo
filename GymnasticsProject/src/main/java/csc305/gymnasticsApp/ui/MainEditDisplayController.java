@@ -89,6 +89,9 @@ public class MainEditDisplayController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         lessonPlan = GymnasticsAppBeta.getLessonPlan();
+        if(lessonPlan.getEventNames().isEmpty()){
+            lessonPlan.addEventName("Event 1");
+        }
         lessonPlan.printEverything();
         initializeTreeView();
         addCardsToFlowPane();
@@ -104,11 +107,11 @@ public class MainEditDisplayController implements Initializable {
 
     private void initializeTreeView(){
         if (rootItem.getChildren().isEmpty()) {
-            if(events.size() == 0){
+            if(events.isEmpty()){
                 events.add(new TreeItem<String>("Event 1"));
                 eventButtonList.add(createEventButton(1));
                 System.out.println(eventButtonList.size());
-                cardParentEvents.add("Event 1");
+                //cardParentEvents.add("Event 1");
             }
             for(TreeItem<String> event: events){
                 rootItem.getChildren().add(event);
@@ -204,8 +207,8 @@ public class MainEditDisplayController implements Initializable {
         lessonPlan.addEventName("Event" + eventNum);
         ButtonType eventButton = createEventButton(eventNum);
         eventButtonList.add(eventButton);
-
         cardParentEvents.add("Event" + eventNum);
+        lessonPlan.addEventName("Event" + events.size());
     }
 
     private ButtonType createEventButton(int eventNum){
@@ -235,6 +238,7 @@ public class MainEditDisplayController implements Initializable {
             MainEditDisplayController.clearTreeCardItems();
             MainEditDisplayController.events.clear();
             MainEditDisplayController.cardParentEvents.clear();
+            MainEditDisplayController.resetButtons();
             GymnasticsAppBeta.switchToHomePage();
         }
     }
@@ -378,6 +382,10 @@ public class MainEditDisplayController implements Initializable {
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
         TreeItem<String> parent = selectedItem.getParent();
         parent.getChildren().remove(selectedItem);
+    }
+
+    public static void resetButtons(){
+        eventButtonList.clear();
     }
 
 
