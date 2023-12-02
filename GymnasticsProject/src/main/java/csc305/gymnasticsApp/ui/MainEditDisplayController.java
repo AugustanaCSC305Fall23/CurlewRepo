@@ -91,6 +91,10 @@ public class MainEditDisplayController implements Initializable {
             lessonPlan.addEventName("Event 1");
         }
         lessonPlan.printEverything();
+        eventButtonList.clear();
+        for(int i = 0; i < lessonPlan.getEventNames().size(); i++){
+            eventButtonList.add(new ButtonType(lessonPlan.getEventNames().get(i)));
+        }
         initializeTreeView();
         addCardsToFlowPane();
         allCards = getAllCardButtons();
@@ -358,6 +362,7 @@ public class MainEditDisplayController implements Initializable {
                     int index = rootItem.getChildren().indexOf(selectedItem);
                     lessonPlan.setEventName(newName, index);
                     selectedItem.setValue(newName);
+                    eventButtonList.set(index, new ButtonType(newName));
                 });
             }
         }
