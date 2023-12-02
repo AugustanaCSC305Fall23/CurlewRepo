@@ -24,6 +24,7 @@ public class TemplatePageController {
         LessonPlan.resetBoolean();
         HomePageController.loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/beginnerFloorAndTrampolinePlan.GymPlanFile"));
+        GymnasticsAppBeta.readLessonPlan();
         ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
         HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
         GymnasticsAppBeta.setLessonPlan(HomePageController.loadPlan);
@@ -37,6 +38,7 @@ public class TemplatePageController {
         LessonPlan.resetBoolean();
         HomePageController.loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/maleOnlyLessonPlan.GymPlanFile"));
+        GymnasticsAppBeta.readLessonPlan();
         ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
         HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
         GymnasticsAppBeta.setLessonPlan(HomePageController.loadPlan);

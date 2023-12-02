@@ -274,7 +274,6 @@ public class PreviewPageController {
             lessonPlan.resetLessonPlan();
             MainEditDisplayController.clearTreeCardItems();
             MainEditDisplayController.events.clear();
-            MainEditDisplayController.cardParentEvents.clear();
             MainEditDisplayController.resetButtons();
             GymnasticsAppBeta.switchToHomePage();
         }

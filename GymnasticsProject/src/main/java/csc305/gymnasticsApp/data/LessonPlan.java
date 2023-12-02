@@ -163,7 +163,7 @@ public class LessonPlan {
                 }
             }
             GymnasticsAppBeta.setLessonPlan(this);
-            MainEditDisplayController.addTreeCardItem(eventList);
+            MainEditDisplayController.addTreeCardItems(this);
             hasBeenLoaded = true;
         }
     }

@@ -73,8 +73,6 @@ public class MainEditDisplayController implements Initializable {
     private static final List<CardButton> currentFilteredCards = new ArrayList<>();
     private static List<CardButton> allCards = new ArrayList<>();
 
-    public static List<String> cardParentEvents = new ArrayList<>();
-
     public static boolean isInitialized = false;
 
     public static LessonPlan lessonPlan;
@@ -109,7 +107,6 @@ public class MainEditDisplayController implements Initializable {
                 events.add(new TreeItem<String>("Event 1"));
                 eventButtonList.add(createEventButton(1));
                 System.out.println(eventButtonList.size());
-                cardParentEvents.add("Event 1");
             }
             for(TreeItem<String> event: events){
                 rootItem.getChildren().add(event);
@@ -174,17 +171,25 @@ public class MainEditDisplayController implements Initializable {
     }
 
 
-    public static void addTreeCardItem(List<List<Card>> listOfEvents) {
+    public static void addTreeCardItems(LessonPlan lessonPlan) {
         rootItem.getChildren().clear();
-        for(int i = 0; i <events.size(); i++){
-            TreeItem<String> event = events.get(i);
-            List<Card> eventCards = listOfEvents.get(i);
-            event.getChildren().clear();
-            for (Card card : eventCards) {
-                TreeItem<String> newCard = new TreeItem<String>(card.getTitle());
-                event.getChildren().add(newCard);
+        List<TreeItem<String>> listOfNewEvents = new ArrayList<>();
+        for(int i = 0; i < lessonPlan.getEventNames().size(); i++){
+            String eventName = lessonPlan.getEventNames().get(i);
+            TreeItem<String> newEvent = new TreeItem<String>();
+            for (int j = 0; j < lessonPlan.getEventCards(i).size(); j++) {
+                TreeItem<String> newCard = new TreeItem<String>(lessonPlan.getEventList().get(i).get(j).getTitle());
+                newEvent.getChildren().add(newCard);
+                newEvent.setValue(eventName);
             }
+            listOfNewEvents.add(newEvent);
         }
+        System.out.println("ISSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
+        events.clear();
+        events.addAll(listOfNewEvents);
+
+        System.out.println(events);
+
         rootItem.getChildren().addAll(events);
     }
 
@@ -205,7 +210,6 @@ public class MainEditDisplayController implements Initializable {
         lessonPlan.addEventName("Event" + eventNum);
         ButtonType eventButton = createEventButton(eventNum);
         eventButtonList.add(eventButton);
-        cardParentEvents.add("Event" + eventNum);
     }
 
     private ButtonType createEventButton(int eventNum){
@@ -234,7 +238,6 @@ public class MainEditDisplayController implements Initializable {
             lessonPlan.resetLessonPlan();
             MainEditDisplayController.clearTreeCardItems();
             MainEditDisplayController.events.clear();
-            MainEditDisplayController.cardParentEvents.clear();
             MainEditDisplayController.resetButtons();
             GymnasticsAppBeta.switchToHomePage();
         }
@@ -266,18 +269,6 @@ public class MainEditDisplayController implements Initializable {
         lessonPlan.setLessonPlanTitle(title);
     }
 
-
-
-
-    /**
-     * Handles the action when the "Go" button is clicked to filter cards based on the search bar input.
-     *
-     * @param event - The ActionEvent triggered by clicking the "Go" button.
-     */
-//    @FXML
-//    void goButtonHandle(ActionEvent event) {
-//        filterCardsFromSearch(drillSearchBar.getText().toLowerCase());
-//    }
 
     /**
      * Handles the action when the filter menu is opened.
@@ -336,39 +327,41 @@ public class MainEditDisplayController implements Initializable {
 
     public void selectItem(MouseEvent event){
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
-        TreeItem<String> parent = selectedItem.getParent();
+        if(selectedItem != null) {
+            TreeItem<String> parent = selectedItem.getParent();
 
-        //checks if not parent (event)
-        if(rootItem.getChildren().contains(parent)) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Caution");
-            alert.setHeaderText("Are you sure you want to delete this card?");
-            alert.setContentText("Please select an option.");
-            ButtonType yesButton = new ButtonType("Yes");
-            ButtonType noButton = new ButtonType("No");
-            alert.getButtonTypes().setAll(yesButton, noButton);
-            Optional<ButtonType> result = alert.showAndWait();
+            //checks if not parent (event)
+            if (rootItem.getChildren().contains(parent)) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Caution");
+                alert.setHeaderText("Are you sure you want to delete this card?");
+                alert.setContentText("Please select an option.");
+                ButtonType yesButton = new ButtonType("Yes");
+                ButtonType noButton = new ButtonType("No");
+                alert.getButtonTypes().setAll(yesButton, noButton);
+                Optional<ButtonType> result = alert.showAndWait();
 
-            if (result.get() == yesButton) {
-                int index = rootItem.getChildren().indexOf(parent);
-                int cardNum = parent.getChildren().indexOf(selectedItem);
-                lessonPlan.deleteFromEvent(index, cardNum);
-                deleteCardFromTreeView(event);
+                if (result.get() == yesButton) {
+                    int index = rootItem.getChildren().indexOf(parent);
+                    int cardNum = parent.getChildren().indexOf(selectedItem);
+                    lessonPlan.deleteFromEvent(index, cardNum);
+                    deleteCardFromTreeView(event);
+                }
+            } else { //is event, so shows text box
+                TextInputDialog renameDialog = new TextInputDialog();
+                renameDialog.setTitle("Rename " + selectedItem.getValue());
+                renameDialog.setHeaderText("What do you want to rename this event to?");
+                renameDialog.setContentText("New Event Name: ");
+
+                Optional<String> result = renameDialog.showAndWait();
+                result.ifPresent(newName -> {
+                    int index = rootItem.getChildren().indexOf(selectedItem);
+                    lessonPlan.setEventName(newName, index);
+                    selectedItem.setValue(newName);
+                });
             }
-        } else{ //is event, so shows text box
-            TextInputDialog renameDialog= new TextInputDialog();
-            renameDialog.setTitle("Rename " + selectedItem.getValue());
-            renameDialog.setHeaderText("What do you want to rename this event to?");
-            renameDialog.setContentText("New Event Name: ");
-
-            Optional<String> result = renameDialog.showAndWait();
-            result.ifPresent(newName -> {
-                int index = rootItem.getChildren().indexOf(selectedItem);
-                lessonPlan.setEventName(newName, index);
-                cardParentEvents.set(index, newName);
-                selectedItem.setValue(newName);
-            });
         }
+        treeView.getSelectionModel().clearSelection();
     }
     public void deleteCardFromTreeView(MouseEvent event){
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
