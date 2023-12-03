@@ -24,7 +24,7 @@
             </Button>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                <children>
-                  <Button fx:id="loadLessonButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLoadLessonButton" prefHeight="130.0" prefWidth="350.0" style="-fx-background-color: A2AE98; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Load Existing Lesson Plan" textFill="#3a5069">
+                  <Button fx:id="loadLessonButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLoadLessonButton" prefHeight="130.0" prefWidth="350.0" style="-fx-background-color: A2AE98; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Load Existing Course" textFill="#3a5069">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
