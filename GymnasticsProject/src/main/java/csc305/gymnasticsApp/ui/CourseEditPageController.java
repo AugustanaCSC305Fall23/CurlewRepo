@@ -29,6 +29,8 @@ public class CourseEditPageController {
     private Button homePageButton;
     @FXML
     private Button saveCourseButton;
+    @FXML
+    private Button loadCourseButton;
 
     public TreeItem<String> rootItem = new TreeItem<>("Root");
 
@@ -41,6 +43,7 @@ public class CourseEditPageController {
     }
 
     public void initializeTreeView(){
+        rootItem.getChildren().clear();
         if (rootItem.getChildren().isEmpty()) {
             if(Course.getLessonPlanList().isEmpty()){
                 System.out.println("COURSE DOESNT HAVE LESSON PLANS");
@@ -60,20 +63,45 @@ public class CourseEditPageController {
     public void selectItem(MouseEvent event){
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
         if(selectedItem != null) {
-            MainEditDisplayController.clearTreeCardItems();
-            MainEditDisplayController.events.clear();
-            MainEditDisplayController.resetButtons();
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Caution");
+            alert.setHeaderText("Would you like to edit or delete this LessonPlan?");
+            alert.setContentText("Please select an option.");
+            ButtonType editButton = new ButtonType("Edit");
+            ButtonType deleteButton = new ButtonType("Delete");
+            alert.getButtonTypes().setAll(editButton, deleteButton);
 
-            for(int i = 0; i < Course.getLessonPlanList().size(); i++) {
-                if(Course.getLessonPlanList().get(i).getLessonPlanTitle().equals(selectedItem.getValue())) {
-                    LessonPlan selectedLessonPlan = Course.getLessonPlanList().get(i);
-                    GymnasticsAppBeta.setLessonPlan(selectedLessonPlan);
-                    GymnasticsAppBeta.switchToMainEditDisplay();
-                    MainEditDisplayController.addTreeCardItems(selectedLessonPlan);
+            Optional<ButtonType> result = alert.showAndWait();
 
-                } else {
-                    System.out.println("Could not find LessonPlan in the Course");
+            if (result.get() == editButton) {
+
+                MainEditDisplayController.clearTreeCardItems();
+                MainEditDisplayController.events.clear();
+                MainEditDisplayController.resetButtons();
+
+                for (int i = 0; i < Course.getLessonPlanList().size(); i++) {
+                    if (Course.getLessonPlanList().get(i).getLessonPlanTitle().equals(selectedItem.getValue())) {
+                        LessonPlan selectedLessonPlan = Course.getLessonPlanList().get(i);
+                        GymnasticsAppBeta.setLessonPlan(selectedLessonPlan);
+                        GymnasticsAppBeta.switchToMainEditDisplay();
+                        MainEditDisplayController.addTreeCardItems(selectedLessonPlan);
+
+                    } else {
+                        System.out.println("Could not find LessonPlan in the Course");
+                    }
                 }
+            }
+            if(result.get() == deleteButton){
+                for (int i = 0; i < Course.getLessonPlanList().size(); i++) {
+                    if (Course.getLessonPlanList().get(i).getLessonPlanTitle().equals(selectedItem.getValue())) {
+                        LessonPlan selectedLessonPlan = Course.getLessonPlanList().get(i);
+                        Course.removePlanFromCourse(selectedLessonPlan);
+                        TreeItem<String> removeTree = new TreeItem<>();
+                        removeTree.setValue(selectedLessonPlan.getLessonPlanTitle());
+                        rootItem.getChildren().remove(removeTree);
+                    }
+                }
+                initializeTreeView();
             }
         }
         treeView.getSelectionModel().clearSelection();
@@ -143,6 +171,15 @@ public class CourseEditPageController {
                 e.printStackTrace();
             }
         }
+    }
+
+    @FXML
+    public void loadCourseButtonHandle(ActionEvent event){
+        Course.clearLessonPlanList();
+        GymnasticsAppBeta.callFileChooser();
+        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+        Course.loadEverythingFromFile(loadedLessonPlan);
+        GymnasticsAppBeta.switchToCourseEditPage();
     }
 }
 

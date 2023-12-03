@@ -24,7 +24,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="106.0" prefWidth="167.0" style="-fx-background-radius: 30; -fx-background-color: #3A5069;" text="Delete and Load Other Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="loadCourseButton" mnemonicParsing="false" onAction="#loadCourseButtonHandle" prefHeight="106.0" prefWidth="167.0" style="-fx-background-radius: 30; -fx-background-color: #3A5069;" text="Load Different Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
