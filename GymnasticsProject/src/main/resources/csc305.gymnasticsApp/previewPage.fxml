@@ -12,7 +12,7 @@
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #eef8ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.PreviewPageController">
    <left>
-      <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="142.0" spacing="30.0" style="-fx-background-color: #eef8ff;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="154.0" spacing="30.0" style="-fx-background-color: #eef8ff;" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="editButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 23; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Edit Plan" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
                <font>
