@@ -6,7 +6,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class CourseEditPageController {
@@ -20,6 +23,8 @@ public class CourseEditPageController {
     private Button preMadeLessonButton;
     @FXML
     private Button resetCourseButton;
+    @FXML
+    private Button homePageButton;
 
     public TreeItem<String> rootItem = new TreeItem<>("Root");
 
@@ -91,5 +96,12 @@ public class CourseEditPageController {
         rootItem.getChildren().clear();
         initializeTreeView();
     }
+    @FXML
+    private void homePageButtonHandle(ActionEvent event){
+        MainEditDisplayController.clearTreeCardItems();
+        MainEditDisplayController.events.clear();
+        MainEditDisplayController.resetButtons();
+        GymnasticsAppBeta.setLessonPlan(new LessonPlan());
+        GymnasticsAppBeta.switchToHomePage();    }
 }
 

@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  */
 public class HomePageController {
     @FXML private Button NewLessonButton;
-    @FXML private Button LoadCourseButton;
+    @FXML private Button loadLessonPlanButton;
 
     @FXML private Button aboutButton;
     public static LessonPlan loadPlan;
@@ -39,7 +40,8 @@ public class HomePageController {
      * @param event The ActionEvent triggered by clicking the "Load Lesson" button.
      */
     @FXML
-    private void handleLoadCourseButton(ActionEvent event) {
+    public void loadLessonPlanButtonHandle(ActionEvent event) {
+        //DOESNT CURRENTLY WORK CORRECTLY, THIS IMPORTS A LESSONPLAN, WE WANT TO IMPORT A WHOLE COURSE
         loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser();
         ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
@@ -50,6 +52,7 @@ public class HomePageController {
             GymnasticsAppBeta.switchToPreviewPage();
         }
     }
+
 
     public static LessonPlan getloadPlan() {
         return loadPlan;

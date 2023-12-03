@@ -103,6 +103,8 @@ public class MainEditDisplayController implements Initializable {
         List<Card> eventCards = new ArrayList<>();
         lessonPlan.addToEventList(eventCards);
         System.out.println("initializing");
+        lessonTitle.setText(GymnasticsAppBeta.getLessonPlan().getLessonPlanTitle());
+
     }
 
     private void initializeTreeView(){
@@ -118,7 +120,6 @@ public class MainEditDisplayController implements Initializable {
                 rootItem.getChildren().add(event);
             }
         }
-        lessonTitle.setText(GymnasticsAppBeta.getLessonPlan().getLessonPlanTitle());
         treeView.setShowRoot(false);
         treeView.setRoot(rootItem);
     }

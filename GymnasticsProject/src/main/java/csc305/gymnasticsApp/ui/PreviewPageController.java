@@ -249,7 +249,6 @@ public class PreviewPageController {
 
     @FXML
     void editButtonController(ActionEvent event) {
-        GymnasticsAppBeta.setLessonPlan(new LessonPlan());
         GymnasticsAppBeta.switchToMainEditDisplay();
     }
 
