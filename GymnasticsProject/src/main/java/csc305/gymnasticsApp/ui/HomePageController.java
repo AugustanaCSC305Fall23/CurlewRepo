@@ -1,5 +1,6 @@
 package csc305.gymnasticsApp.ui;
 
+import csc305.gymnasticsApp.data.Course;
 import csc305.gymnasticsApp.data.LessonPlan;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +17,8 @@ public class HomePageController {
     @FXML private Button loadLessonPlanButton;
 
     @FXML private Button aboutButton;
+    @FXML
+    private Button loadCourseButton;
     public static LessonPlan loadPlan;
 
     /**
@@ -51,6 +54,14 @@ public class HomePageController {
         if(GymnasticsAppBeta.getLoaded() == true) {
             GymnasticsAppBeta.switchToPreviewPage();
         }
+    }
+
+    @FXML
+    public void loadCourseButtonHandle(ActionEvent event){
+        GymnasticsAppBeta.callFileChooser();
+        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+        Course.loadEverythingFromFile(loadedLessonPlan);
+        GymnasticsAppBeta.switchToCourseEditPage();
     }
 
 
