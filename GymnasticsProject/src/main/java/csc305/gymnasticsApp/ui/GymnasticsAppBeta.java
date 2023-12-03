@@ -79,12 +79,15 @@ public class GymnasticsAppBeta extends Application {
      */
     public static void switchToMainEditDisplay(){switchToView("/csc305.gymnasticsApp/mainEditDisplay.fxml");}
 
+
+    public static void switchToCourseEditPage(){
+        switchToView("/csc305.gymnasticsApp/courseEditPage.fxml");
+    }
     /**
      * Switches the view to the home page display
      */
     public static void switchToHomePage(){
         switchToView("/csc305.gymnasticsApp/homePage.fxml");
-        lessonPlan.resetLessonPlan();
         LessonPlan.resetBoolean();
     }
 
@@ -181,4 +184,5 @@ public class GymnasticsAppBeta extends Application {
     public static void setLessonPlan(LessonPlan newLessonPlan) {
         lessonPlan = newLessonPlan;
     }
+
 }

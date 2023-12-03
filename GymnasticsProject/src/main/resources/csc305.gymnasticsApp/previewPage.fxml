@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #eef8ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.PreviewPageController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #eef8ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.PreviewPageController">
    <left>
-      <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="184.0" spacing="30.0" style="-fx-border-color: black; -fx-border-width: 0 2 0 0; -fx-background-color: #eef8ff;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="142.0" spacing="30.0" style="-fx-background-color: #eef8ff;" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="editButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 23; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Edit Plan" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
                <font>
@@ -34,11 +34,6 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="templateButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleTemplateButton" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 20; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Templates" textAlignment="CENTER" textFill="#eef8ff">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Button>
             <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Home" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="25.0" />
@@ -51,9 +46,9 @@
       </VBox>
    </left>
    <center>
-      <ScrollPane fx:id="mainScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: blue;" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="mainScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="858.0" style="-fx-background-color: #eef8ff;" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
          <content>
-            <FlowPane fx:id="mainFlowPane" alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" vgap="50.0">
+            <FlowPane fx:id="mainFlowPane" alignment="CENTER" columnHalignment="CENTER" prefHeight="635.0" prefWidth="857.0" style="-fx-background-color: #eef8ff;" vgap="50.0">
                <children>
                   <VBox fx:id="eventPreviewVBox" alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="770.0" spacing="10.0" style="-fx-background-color: grey;">
                      <children>
@@ -104,4 +99,18 @@
          </content>
       </ScrollPane>
    </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1000.0" spacing="50.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="addPlanToCurrentCourseButton" mnemonicParsing="false" onAction="#addPlanToCurrentCourseButtonHandle" prefHeight="86.0" prefWidth="291.0" style="-fx-background-color: #3A5069; -fx-background-radius: 30;" text="Add Plan To Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
 </BorderPane>

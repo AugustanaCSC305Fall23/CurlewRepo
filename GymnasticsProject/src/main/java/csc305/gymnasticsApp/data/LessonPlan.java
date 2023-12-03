@@ -12,7 +12,6 @@ import java.util.List;
  * It includes methods for managing lesson plans, such as adding events, setting title, and loading from files.
  */
 public class LessonPlan {
-    //private List<Course> plan;
     private String lessonPlanTitle;
 
     private List<String> eventNames = new ArrayList<>();
@@ -25,7 +24,6 @@ public class LessonPlan {
     public LessonPlan() {
         eventList = new ArrayList<>();
     }
-
 
 
     public List<List<Card>> getEventList() {

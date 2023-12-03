@@ -109,7 +109,9 @@ public class MainEditDisplayController implements Initializable {
         if (rootItem.getChildren().isEmpty()) {
             if(events.isEmpty()){
                 events.add(new TreeItem<String>("Event 1"));
-                eventButtonList.add(createEventButton(1));
+                if(eventButtonList.isEmpty()) {
+                    eventButtonList.add(createEventButton(1));
+                }
                 System.out.println(eventButtonList.size());
             }
             for(TreeItem<String> event: events){
@@ -239,10 +241,10 @@ public class MainEditDisplayController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.get() == yesButton) {
-            lessonPlan.resetLessonPlan();
             MainEditDisplayController.clearTreeCardItems();
             MainEditDisplayController.events.clear();
             MainEditDisplayController.resetButtons();
+            GymnasticsAppBeta.setLessonPlan(new LessonPlan());
             GymnasticsAppBeta.switchToHomePage();
         }
     }

@@ -8,10 +8,13 @@ import java.util.List;
  * It provides methods to manage lesson plans within a course.
  */
 public class Course {
+
     /**
      * A list containing all lesson plans in the course
      */
     private static List<LessonPlan> lessonPlanList = new ArrayList<>();
+
+    private static String courseName = "First Course";
 
     /**
      * Adds a lesson plan to the course
@@ -61,5 +64,10 @@ public class Course {
         }
         return false;
     }
+
+    public static String getCourseName(){
+        return courseName;
+    }
+
 
 }

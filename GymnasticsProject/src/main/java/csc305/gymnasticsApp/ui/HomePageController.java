@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class HomePageController {
     @FXML private Button NewLessonButton;
-    @FXML private Button LoadLessonButton;
+    @FXML private Button LoadCourseButton;
 
     @FXML private Button aboutButton;
     public static LessonPlan loadPlan;
@@ -39,7 +39,7 @@ public class HomePageController {
      * @param event The ActionEvent triggered by clicking the "Load Lesson" button.
      */
     @FXML
-    private void handleLoadLessonButton(ActionEvent event) {
+    private void handleLoadCourseButton(ActionEvent event) {
         loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser();
         ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();

@@ -2,6 +2,7 @@ package csc305.gymnasticsApp.ui;
 
 
 import csc305.gymnasticsApp.data.Card;
+import csc305.gymnasticsApp.data.Course;
 import csc305.gymnasticsApp.data.LessonPlan;
 import csc305.gymnasticsApp.data.PrintLessonPlan;
 import javafx.event.ActionEvent;
@@ -44,7 +45,8 @@ public class PreviewPageController {
     private VBox titleVBox;
     @FXML
     private ScrollPane mainScrollPane;
-
+    @FXML
+    private Button addPlanToCurrentCourseButton;
     //@FXML
     //private FlowPane eventFlowPane;
 
@@ -247,6 +249,7 @@ public class PreviewPageController {
 
     @FXML
     void editButtonController(ActionEvent event) {
+        GymnasticsAppBeta.setLessonPlan(new LessonPlan());
         GymnasticsAppBeta.switchToMainEditDisplay();
     }
 
@@ -271,7 +274,6 @@ public class PreviewPageController {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.get() == yesButton) {
-            lessonPlan.resetLessonPlan();
             MainEditDisplayController.clearTreeCardItems();
             MainEditDisplayController.events.clear();
             MainEditDisplayController.resetButtons();
@@ -349,5 +351,13 @@ public class PreviewPageController {
 
             }
         }
+    }
+
+    @FXML
+    private void addPlanToCurrentCourseButtonHandle(ActionEvent event){
+        if(!(Course.getLessonPlanList().contains(GymnasticsAppBeta.getLessonPlan()))) {
+            Course.addPlanToCourse(GymnasticsAppBeta.getLessonPlan());
+        }
+        GymnasticsAppBeta.switchToCourseEditPage();
     }
 }
