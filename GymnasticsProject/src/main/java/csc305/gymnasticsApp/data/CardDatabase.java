@@ -5,6 +5,7 @@ import csc305.gymnasticsApp.filters.CardFilter;
 
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,61 +19,51 @@ public class CardDatabase {
     /**
      * A list containing all gymnastics cards in the database
      */
-    private static List<Card> allCards = new ArrayList<>();
+    private List<Card> allCards;
+
+    private List<Card> newCards;
+
+    private static CardDatabase theDB = new CardDatabase();
 
     /**
      * A mapping of unique card IDs to their respective cards for efficient retrieval
      */
-    private static Map<String, Card> IDToCard= new HashMap<String, Card>();
+    private Map<String, Card> allCardMap;
 
     /**
      * Constructs a new CardDatabase and initializes it by reading gymnastics cards from CSV files.
      */
     public CardDatabase() {
-        List<Card> cardsFromCSV = null;
-        File[] csvFileList = addAllCSVFilesFromFolder(new File("GymSoftwarePics/CSVFiles"));
-
-        for(File csvFile: csvFileList){
-            try {
-                if (csvFile != null) {
-                    cardsFromCSV = new CsvToBeanBuilder(new FileReader(csvFile))
-                            .withType(Card.class).build().parse();
-                } else {
-                    System.err.println("CSV file not found in the classpath.");
-                }
-            } catch (Exception e) {
-                throw new RuntimeException("An error occurred while parsing the CSV file: " + e.getMessage(), e);
-            }
-            allCards.addAll(cardsFromCSV);
-        }
     }
 
-//    /**
-//     * Main method for testing and demonstrating the functionality of the CardDatabase class.
-//     *
-//     * @param args - Command-line arguments (not used).
-//     */
-//    public static void main(String[] args){
-//        addCardsFromCSVFile();
-//        setUniqueIDs();
-//        addCardsToMap();
-//        printAllCards(allCards);
-//        filters male = new CodeFilter("S1");
-//        List<Card> filteredCards = filter(male);
-//        System.out.println();
-//        System.out.println();
-//        printAllCards(filteredCards);
-//
-//    }
+    public static CardDatabase getDB() {
+        return theDB;
+    }
+
+    public List<Card> getAllCards() {
+        return new ArrayList<>(allCards);
+    }
+
+    public void loadCardFromCSVFile(String filename) throws FileNotFoundException {
+        allCards = new CsvToBeanBuilder<Card>(new FileReader(filename)).withType(Card.class).build().parse();
+        allCardMap = new HashMap<>();
+        for (Card card : allCards) {
+            allCardMap.put(card.getUniqueID(), card);
+        }
+    }
 
     /**
-     * Adds cards to the mapping of unique IDs to cards for efficient retrieval
+     * Reads and adds gymnastics cards from CSV files to the collection of cards.
      */
-    private static void addCardsToMap(){
-        for(Card card:allCards){
-            IDToCard.put(card.getUniqueID(),card);
+    public void addCardsFromCSVFile(String filename) throws FileNotFoundException {
+        newCards = new CsvToBeanBuilder<Card>(new FileReader(filename)).withType(Card.class).build().parse();
+        for (Card card : newCards) {
+            allCards.add(card);
+            allCardMap.put(card.getUniqueID(), card);
         }
+
     }
+
 
     /**
      * Filters the cards based on the provided filter criteria
@@ -80,7 +71,7 @@ public class CardDatabase {
      * @param specificFilter The filter criteria to apply
      * @return A list of cards that match the filter criteria
      */
-    public static List<Card> filter(CardFilter specificFilter) {
+    public List<Card> filter(CardFilter specificFilter) {
         List<Card> filteredCards = new ArrayList<>();
         for(Card card : allCards){
             if(specificFilter.matches(card)){
@@ -90,45 +81,12 @@ public class CardDatabase {
         }
         return filteredCards;
     }
-    /**
-     * Reads and adds gymnastics cards from CSV files to the collection of cards.
-     */
-    public static void addCardsFromCSVFile() {
-        List<Card> cardsFromCSV = null;
-        File[] csvFileList = addAllCSVFilesFromFolder(new File("GymSoftwarePics/CSVFiles"));
 
-        for(File csvFile: csvFileList){
-            try {
-                if (csvFile != null) {
-                    cardsFromCSV = new CsvToBeanBuilder(new FileReader(csvFile))
-                            .withType(Card.class).build().parse();
-                } else {
-                    System.err.println("CSV file not found in the classpath.");
-                }
-            } catch (Exception e) {
-                throw new RuntimeException("An error occurred while parsing the CSV file: " + e.getMessage(), e);
-            }
-            allCards.addAll(cardsFromCSV);
-        }
 
-    }
-    /**
-     * Retrieves all gymnastics cards in the database.
-     *
-     * @return A list of all gymnastics cards in the database.
-     */
-    public static List<Card> getAllCards() {
-        allCards.clear();
-        IDToCard.clear();
-        addCardsFromCSVFile();
-        setUniqueIDs();
-        addCardsToMap();
-        return allCards;
-    }
     /**
      * Sets unique IDs for all cards in the database based on specific criteria.
      */
-    private static void setUniqueIDs(){
+    private void setUniqueIDs(){
         for(Card card : allCards){
             card.setUniqueID();
         }
@@ -143,26 +101,16 @@ public class CardDatabase {
         File[] csvArray = folderName.listFiles();
         return csvArray;
     }
-    /**
-     * Prints a list of cards to the console.
-     *
-     * @param cardList The list of cards to be printed.
-     */
-    public static void printAllCards(List<Card> cardList){
-        for(Card card : cardList){
-            System.out.println(card.toString());
-        }
-    }
+
 
     /**
      * Retrieves a card from the database based on its unique ID
      *
-     * @param id The unique ID of the card to retrieve
+     * @param cardID The unique ID of the card to retrieve
      * @return The card with the specified unique ID
      */
-    public static Card getCardByID(String id){
-        Card card = IDToCard.get(id);
-        return card;
+    public Card getCardByID(String cardID){
+        return allCardMap.get(cardID);
     }
 
 }

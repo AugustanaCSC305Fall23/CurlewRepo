@@ -5,6 +5,7 @@ import csc305.gymnasticsApp.data.CardButton;
 import csc305.gymnasticsApp.data.CardDatabase;
 import csc305.gymnasticsApp.data.LessonPlan;
 import csc305.gymnasticsApp.filters.*;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -56,6 +57,9 @@ public class MainEditDisplayController implements Initializable {
     @FXML public CheckBox levelAdvancedCheckBox;
     @FXML public CheckBox levelBeginnerCheckBox;
     @FXML public CheckBox levelIntermediateCheckBox;
+
+
+
     private GenderFilter genderFilter = new GenderFilter();
     private ModelGenderFilter  modelGenderFilter = new ModelGenderFilter();
     private EventFilter eventFilter = new EventFilter();
@@ -64,6 +68,9 @@ public class MainEditDisplayController implements Initializable {
     private List<CardFilter> filterList = new ArrayList<>();
 
     private SearchBarFilter searchBarFilter = new SearchBarFilter();
+
+
+
 
 
     public static TreeItem<String> rootItem = new TreeItem<>("Root");
@@ -77,6 +84,9 @@ public class MainEditDisplayController implements Initializable {
 
     public static LessonPlan lessonPlan;
     private static List<ButtonType> eventButtonList = new ArrayList<>();
+
+    private List<exerciseCard> allExerciseCards = new ArrayList<>();
+
 
     /**
      * Initializes the tree view on the main edit display screen.
@@ -96,7 +106,6 @@ public class MainEditDisplayController implements Initializable {
             eventButtonList.add(new ButtonType(lessonPlan.getEventNames().get(i)));
         }
         initializeTreeView();
-        addCardsToFlowPane();
         allCards = getAllCardButtons();
         resetFlowPane();
         initFilterList();
@@ -105,7 +114,23 @@ public class MainEditDisplayController implements Initializable {
         System.out.println("initializing");
         lessonTitle.setText(GymnasticsAppBeta.getLessonPlan().getLessonPlanTitle());
 
+        new Thread(() -> {
+            try { Thread.sleep(20); } catch (InterruptedException ex) { }
+            Platform.runLater(() -> loadExerciseCards());
+        }).start();
+
     }
+
+    void loadExerciseCards() {
+        for (Card card : CardDatabase.getDB().getAllCards()) {
+            exerciseCard exerciseCard = new exerciseCard(card);
+            allExerciseCards.add(exerciseCard);
+        }
+        cardFlowPane.getChildren().clear();
+        cardFlowPane.getChildren().addAll(allExerciseCards);
+    }
+
+
 
     private void initializeTreeView(){
         if (rootItem.getChildren().isEmpty()) {
@@ -124,34 +149,34 @@ public class MainEditDisplayController implements Initializable {
         treeView.setRoot(rootItem);
     }
 
-    public void createCardButtons(){
-        if(!isInitialized) {
-            allCards.clear();
-            for (Card card : CardDatabase.getAllCards()) {
-                Image image = null;
-                try {
-                    image = new Image(new FileInputStream("GymSoftwarePics/" +
-                            card.getPackFolder().toUpperCase() + "Pack/" +
-                            card.getImage()));
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-                CardButton cardButton = createCardButton(card, image);
-                allCards.add(cardButton);
-            }
-            isInitialized = true;
-        }
-    }
+//    public void createCardButtons(){
+//        if(!isInitialized) {
+//            allCards.clear();
+//            for (Card card : CardDatabase.getAllCards()) {
+//                Image image = null;
+//                try {
+//                    image = new Image(new FileInputStream("GymSoftwarePics/" +
+//                            card.getPackFolder().toUpperCase() + "Pack/" +
+//                            card.getImage()));
+//                } catch (FileNotFoundException e) {
+//                    throw new RuntimeException(e);
+//                }
+//                CardButton cardButton = createCardButton(card, image);
+//                allCards.add(cardButton);
+//            }
+//            isInitialized = true;
+//        }
+//    }
 
 
     //Need to reset currentFilteredCards at some point
-    /**
-     * Adds cards to the FlowPane for display.
-     */
-    public void addCardsToFlowPane(){
-        cardFlowPane.getChildren().clear();
-        cardFlowPane.getChildren().addAll(allCards);
-    }
+//    /**
+//     * Adds cards to the FlowPane for display.
+//     */
+//    public void addCardsToFlowPane(){
+//        cardFlowPane.getChildren().clear();
+//        cardFlowPane.getChildren().addAll(allCards);
+//    }
 
     public void resetFlowPane(){
         cardFlowPane.getChildren().clear();

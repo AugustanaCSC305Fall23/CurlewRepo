@@ -70,7 +70,7 @@ public class Course {
     }
 
     public static void loadEverythingFromFile(ArrayList<String> file){
-        CardDatabase.getAllCards();
+        CardDatabase.getDB().getAllCards();
         courseName = file.get(0);
         file.remove(0);
         while((!(file.get(0).equals("done with event"))) || (!(file.get(1).equals("done with lessonplan"))) || (!(file.get(2).equals("done with course")))){
@@ -91,7 +91,7 @@ public class Course {
                 //gets most recent event in this plan
                 List<Card> curEvent = curPlan.getEventList().get(curPlan.getEventList().size() - 1);
                 while(!(file.get(0).equals("done with event"))){
-                    curEvent.add(CardDatabase.getCardByID(file.get(0)));
+                    curEvent.add(CardDatabase.getDB().getCardByID(file.get(0)));
                     file.remove(0);
                 }
                 curPlan.addToEventList(curEvent);

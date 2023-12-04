@@ -7,10 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import csc305.gymnasticsApp.data.*;
 
@@ -38,22 +35,17 @@ public class GymnasticsAppBeta extends Application {
      * primary stages.
      */
     @Override
-    public void start(Stage primaryStage){
+    public void start(Stage primaryStage) throws FileNotFoundException {
+        CardDatabase.getDB().loadCardFromCSVFile("GymSoftwarePics/CSVFiles/DEMO1.csv");
+        CardDatabase.getDB().addCardsFromCSVFile("GymSoftwarePics/CSVFiles/DEMO2.csv");
+
         lessonPlan = new LessonPlan();
         stage = primaryStage;
         scene = new Scene(new BorderPane(), 1000, 700);
         stage.setScene(scene);
-        stage.setResizable(true);
-        MainEditDisplayController start = new MainEditDisplayController();
-        start.createCardButtons();
+
         // Handles window close event by toggling maximized state.
-        stage.setOnCloseRequest(event -> {
-            if(stage.isMaximized()) {
-                stage.setMaximized(false);
-            } else {
-                stage.setMaximized(true);
-            }
-        });
+
 
         switchToHomePage();
         stage.show();
