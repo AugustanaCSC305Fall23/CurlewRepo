@@ -37,7 +37,7 @@ public class MainEditDisplayController implements Initializable {
     @FXML
     private VBox filterMenu;
     @FXML
-    private TextField drillSearchBar;
+    private TextField searchBar;
     @FXML
     private FlowPane cardFlowPane;
     @FXML
@@ -51,8 +51,8 @@ public class MainEditDisplayController implements Initializable {
     @FXML public CheckBox checkBoxVault;
     @FXML public CheckBox checkBoxTramp;
     @FXML public CheckBox checkBoxStrength;
-    @FXML public CheckBox checkBoxMale;
-    @FXML public CheckBox checkBoxFemale;
+    @FXML
+    private ChoiceBox<String> genderCB;
     @FXML public CheckBox levelABCheckBox;
     @FXML public CheckBox levelAdvancedCheckBox;
     @FXML public CheckBox levelBeginnerCheckBox;
@@ -60,7 +60,6 @@ public class MainEditDisplayController implements Initializable {
 
 
 
-    private GenderFilter genderFilter = new GenderFilter();
     private ModelGenderFilter  modelGenderFilter = new ModelGenderFilter();
     private EventFilter eventFilter = new EventFilter();
     private LevelFilter levelFilter = new LevelFilter();
@@ -106,7 +105,6 @@ public class MainEditDisplayController implements Initializable {
             eventButtonList.add(new ButtonType(lessonPlan.getEventNames().get(i)));
         }
         initializeTreeView();
-        allCards = getAllCardButtons();
         resetFlowPane();
         initFilterList();
         List<Card> eventCards = new ArrayList<>();
@@ -188,18 +186,38 @@ public class MainEditDisplayController implements Initializable {
     }
 
     private void initFilterList(){
-        genderFilter.getDesiredGenders().clear();
-        filterList.add(genderFilter);
-        modelGenderFilter.getSelectedModelGender().clear();
-        filterList.add(modelGenderFilter);
-        eventFilter.reset();
-        filterList.add(eventFilter);
-        levelFilter.reset();
-        filterList.add(levelFilter);
-        equipmentFilter.reset();
-        filterList.add(equipmentFilter);
-        searchBarFilter.reset();
-        filterList.add(searchBarFilter);
+//        genderFilter.getDesiredGenders().clear();
+//        filterList.add(genderFilter);
+//        modelGenderFilter.getSelectedModelGender().clear();
+//        filterList.add(modelGenderFilter);
+//        eventFilter.reset();
+//        filterList.add(eventFilter);
+//        levelFilter.reset();
+//        filterList.add(levelFilter);
+//        equipmentFilter.reset();
+//        filterList.add(equipmentFilter);
+//        searchBarFilter.reset();
+//        filterList.add(searchBarFilter);
+        genderCB.getItems().addAll(CardDatabase.getDB().getGenderList());
+        genderCB.setValue("N");
+
+        genderCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
+
+        searchBar.textProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
+
+    }
+
+    void updateFilteredVisibleCards() {
+        CardFilter genderFilter = new GenderFilter(genderCB.getValue());
+
+        CardFilter keywordFilter = new KeywordFilter(searchBar.getText());
+
+        CardFilter combinedFilter = new CombineAndFilter(keywordFilter, genderFilter);
+        for (exerciseCard exerciseCard : allExerciseCards) {
+            boolean includeThisCard = combinedFilter.matches(exerciseCard.getCard());
+            exerciseCard.setVisible(includeThisCard);
+            exerciseCard.setManaged(includeThisCard);
+        }
     }
 
 
@@ -216,7 +234,6 @@ public class MainEditDisplayController implements Initializable {
             }
             listOfNewEvents.add(newEvent);
         }
-        System.out.println("ISSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
         events.clear();
         events.addAll(listOfNewEvents);
 
@@ -322,35 +339,29 @@ public class MainEditDisplayController implements Initializable {
     }
 
 
-    private CardButton createCardButton(Card card, Image image) {
-        ImageView iv = new ImageView(image);
-        iv.setFitHeight(198.0);
-        iv.setFitWidth(198.0);
-        CardButton cardButton = new CardButton("", iv, card);
-        cardButton.setMinHeight(Double.MIN_VALUE);
-        cardButton.setMinWidth(Double.MIN_VALUE);
-        cardButton.setPrefHeight(200.0);
-        cardButton.setPrefWidth(200.0);
-        cardButton.setMnemonicParsing(false);
-        cardButton.setStyle("-fx-border-color: black;");
-        cardButton.setId(card.getUniqueID());
-        cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton));
-        return cardButton;
-    }
+//    private CardButton createCardButton(Card card, Image image) {
+//        ImageView iv = new ImageView(image);
+//        iv.setFitHeight(198.0);
+//        iv.setFitWidth(198.0);
+//        CardButton cardButton = new CardButton("", iv, card);
+//        cardButton.setMinHeight(Double.MIN_VALUE);
+//        cardButton.setMinWidth(Double.MIN_VALUE);
+//        cardButton.setPrefHeight(200.0);
+//        cardButton.setPrefWidth(200.0);
+//        cardButton.setMnemonicParsing(false);
+//        cardButton.setStyle("-fx-border-color: black;");
+//        cardButton.setId(card.getUniqueID());
+//        cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton));
+//        return cardButton;
+//    }
 
     /**
      * Retrieves all card buttons from the FlowPane.
      *
      * @return A list of all card buttons in the FlowPane.
      */
-    private List<CardButton> getAllCardButtons() {
-        List<CardButton> cardButtons = new ArrayList<>();
-        for (int i = 0; i < cardFlowPane.getChildren().size(); i++) {
-            if (cardFlowPane.getChildren().get(i) instanceof CardButton) {
-                cardButtons.add((CardButton) cardFlowPane.getChildren().get(i));
-            }
-        }
-        return cardButtons;
+    private List<exerciseCard> getAllCardButtons() {
+        return allExerciseCards;
     }
 
 
@@ -494,12 +505,12 @@ public class MainEditDisplayController implements Initializable {
         currentFilteredCards.addAll(visibleButtons);
     }
 
-    @FXML
-    void filterCardsFromSearch(KeyEvent event) {
-        String keyword = drillSearchBar.getText();
-        searchBarFilter.add(keyword);
-        filterCardsByCheckbox();
-    }
+//    @FXML
+//    void filterCardsFromSearch(KeyEvent event) {
+//        String keyword = drillSearchBar.getText();
+//        searchBarFilter.add(keyword);
+//        filterCardsByCheckbox();
+//    }
 
 
     //*************
@@ -507,26 +518,26 @@ public class MainEditDisplayController implements Initializable {
     //*************
 
 
-    @FXML
-    void setChangedGenderBox(ActionEvent event){
-        if(event.getSource() == checkBoxMale){
-            genderFilter.add("M");
-        }else if(event.getSource() == checkBoxFemale){
-            genderFilter.add("F");
-        }else{
-            genderFilter.add("N");
-        }
-        if(!genderFilter.getDesiredGenders().isEmpty()) {
-            if (!filterList.contains(genderFilter)) {
-                filterList.add(genderFilter);
-            }
-        }else{
-            if (filterList.contains(genderFilter)) {
-                filterList.remove(genderFilter);
-            }
-        }
-        filterCardsByCheckbox();
-    }
+//    @FXML
+//    void setChangedGenderBox(ActionEvent event){
+//        if(event.getSource() == checkBoxMale){
+//            genderFilter.add("M");
+//        }else if(event.getSource() == checkBoxFemale){
+//            genderFilter.add("F");
+//        }else{
+//            genderFilter.add("N");
+//        }
+//        if(!genderFilter.getDesiredGenders().isEmpty()) {
+//            if (!filterList.contains(genderFilter)) {
+//                filterList.add(genderFilter);
+//            }
+//        }else{
+//            if (filterList.contains(genderFilter)) {
+//                filterList.remove(genderFilter);
+//            }
+//        }
+//        filterCardsByCheckbox();
+//    }
 
     //************
     //EVENT FILTER
@@ -599,12 +610,6 @@ public class MainEditDisplayController implements Initializable {
         filterCardsByCheckbox();
     }
 
-
-    @FXML
-    void setFilterController(ActionEvent event) {
-        new CombineAndFilter();
-        filterMenu.setVisible(false);
-    }
 
     @FXML
     void resetButton(ActionEvent event) {

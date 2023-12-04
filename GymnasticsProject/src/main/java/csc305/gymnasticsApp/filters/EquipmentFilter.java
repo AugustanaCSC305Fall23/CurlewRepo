@@ -17,10 +17,6 @@ public class EquipmentFilter implements CardFilter {
             desiredEquipments = "";
         }
     }
-    @Override
-    public void reset() {
-        desiredEquipments = "";
-    }
 
     public void add(String equipment) {
         desiredEquipments = equipment;

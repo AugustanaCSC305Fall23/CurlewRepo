@@ -7,36 +7,14 @@ import csc305.gymnasticsApp.data.Card;
  *  * designed to filter Card objects based on a desired keyword.
  */
 public class KeywordFilter implements CardFilter{
-    private String desiredKeyword;
+    private final String searchText;
 
-    /**
-     * Constructs a new KeywordFilter with the desired keyword to match.
-     *
-     * @param desiredKeyword - The keyword that Card objects should match.
-     */
-    public KeywordFilter(String desiredKeyword) {
-        this.desiredKeyword = desiredKeyword;
+    public KeywordFilter(String searchText) {
+        this.searchText = searchText;
     }
-    /**
-     * Determines whether a given Card matches the desired keyword.
-     *
-     * @param canidateCard -  The Card to be evaluated for a keyword match.
-     * @return true if the candidateCard's keywords contain the desired keyword; otherwise, false.
-     */
     @Override
-    public boolean matches(Card canidateCard) {
-        //Splits the keywords of the candidateCard into an array.
-        String[] keywords = canidateCard.getKeywords().split(",");
-        boolean match = false;
-        //Checks if the desired keyword is present in the list of keywords.
-        for(String keyword : keywords){
-            if(keyword.equalsIgnoreCase(desiredKeyword)){
-                match = true;
-            }
-        }
-        return match;
+    public boolean matches(Card card) {
+        return card.getTitle().toUpperCase().contains(searchText.toUpperCase()) || card.getCode().toUpperCase().contains(searchText.toUpperCase())
+                || card.getKeywords().toUpperCase().contains(searchText.toUpperCase()) || card.getCategory().toUpperCase().contains(searchText.toUpperCase());
     }
-
-    @Override
-    public void reset() {}
 }

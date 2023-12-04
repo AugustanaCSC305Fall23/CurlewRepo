@@ -7,10 +7,7 @@ import csc305.gymnasticsApp.filters.CardFilter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * The CardDatabase class manages a collection of gymnastics cards and provides methods for filtering and organizing them.
@@ -20,8 +17,6 @@ public class CardDatabase {
      * A list containing all gymnastics cards in the database
      */
     private List<Card> allCards;
-
-    private List<Card> newCards;
 
     private static CardDatabase theDB = new CardDatabase();
 
@@ -56,7 +51,7 @@ public class CardDatabase {
      * Reads and adds gymnastics cards from CSV files to the collection of cards.
      */
     public void addCardsFromCSVFile(String filename) throws FileNotFoundException {
-        newCards = new CsvToBeanBuilder<Card>(new FileReader(filename)).withType(Card.class).build().parse();
+        List<Card> newCards = new CsvToBeanBuilder<Card>(new FileReader(filename)).withType(Card.class).build().parse();
         for (Card card : newCards) {
             allCards.add(card);
             allCardMap.put(card.getUniqueID(), card);
@@ -82,15 +77,6 @@ public class CardDatabase {
         return filteredCards;
     }
 
-
-    /**
-     * Sets unique IDs for all cards in the database based on specific criteria.
-     */
-    private void setUniqueIDs(){
-        for(Card card : allCards){
-            card.setUniqueID();
-        }
-    }
     /**
      * Lists all CSV files in a specified folder.
      *
@@ -112,6 +98,15 @@ public class CardDatabase {
     public Card getCardByID(String cardID){
         return allCardMap.get(cardID);
     }
+
+    public List<String> getGenderList() {
+        Set<String> genderSet = new TreeSet<>();
+        for (Card card : allCards) {
+            genderSet.add(card.getGender());
+        }
+        return new ArrayList<>(genderSet);
+    }
+
 
 }
 

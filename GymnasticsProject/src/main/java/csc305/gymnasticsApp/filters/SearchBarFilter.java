@@ -12,10 +12,6 @@ public class SearchBarFilter implements CardFilter{
         }
     }
 
-    @Override
-    public void reset() {
-        keyword = "";
-    }
 
     public void add(String word) {
         keyword = word;

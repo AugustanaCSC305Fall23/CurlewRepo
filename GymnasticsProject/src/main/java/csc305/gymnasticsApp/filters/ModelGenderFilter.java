@@ -28,10 +28,6 @@ public class ModelGenderFilter implements CardFilter {
         return selectedModelGender;
     }
 
-    @Override
-    public void reset() {
-        selectedModelGender.clear();
-    }
 
     /**
      * Determines whether a given Card matches the desired model gender.

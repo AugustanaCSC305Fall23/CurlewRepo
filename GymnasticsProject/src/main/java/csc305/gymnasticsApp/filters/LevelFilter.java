@@ -32,10 +32,6 @@ public class LevelFilter implements CardFilter{
         return desiredLevels;
     }
 
-    public void reset(){
-        desiredLevels.clear();
-        desiredLevels.add("ALL");
-    }
 
 
     /**
