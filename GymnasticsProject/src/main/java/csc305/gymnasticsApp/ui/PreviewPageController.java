@@ -284,8 +284,8 @@ public class PreviewPageController {
 
     @FXML
     void printButtonController(ActionEvent event) {
-        Node lessonPlanNode = eventPreviewVBox;
-        PrintLessonPlan.printPlan(lessonPlanNode, eventPreviewVBox);
+        Node lessonPlanNode = mainScrollPane;
+        PrintLessonPlan.printPlan(lessonPlanNode, mainScrollPane);
     }
 
     @FXML
