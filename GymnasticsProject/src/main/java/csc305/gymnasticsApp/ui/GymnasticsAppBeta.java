@@ -1,6 +1,7 @@
 package csc305.gymnasticsApp.ui;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -45,7 +46,12 @@ public class GymnasticsAppBeta extends Application {
         stage.setScene(scene);
         stage.setResizable(true);
         MainEditDisplayController start = new MainEditDisplayController();
-        start.createCardButtons();
+        new Thread(() -> {
+            try{Thread.sleep(1); } catch (InterruptedException e) { }
+            Platform.runLater(() -> start.createCardButtons());
+            }).start();
+
+        //start.createCardButtons();
         // Handles window close event by toggling maximized state.
         stage.setOnCloseRequest(event -> {
             if(stage.isMaximized()) {
@@ -77,17 +83,17 @@ public class GymnasticsAppBeta extends Application {
     /**
      * Switches the view to the main edit display
      */
-    public static void switchToMainEditDisplay(){switchToView("/csc305.gymnasticsApp/mainEditDisplay.fxml");}
+    public static void switchToMainEditDisplay(){switchToView("/csc305/gymnasticsApp/mainEditDisplay.fxml");}
 
 
     public static void switchToCourseEditPage(){
-        switchToView("/csc305.gymnasticsApp/courseEditPage.fxml");
+        switchToView("/csc305/gymnasticsApp/courseEditPage.fxml");
     }
     /**
      * Switches the view to the home page display
      */
     public static void switchToHomePage(){
-        switchToView("/csc305.gymnasticsApp/homePage.fxml");
+        switchToView("/csc305/gymnasticsApp/homePage.fxml");
         LessonPlan.resetBoolean();
     }
 
@@ -95,21 +101,21 @@ public class GymnasticsAppBeta extends Application {
      * Switches the view to the preview page display.
      */
     public static void switchToPreviewPage(){
-        switchToView("/csc305.gymnasticsApp/previewPage.fxml");
+        switchToView("/csc305/gymnasticsApp/previewPage.fxml");
     }
 
     /**
      * Switches to the template page display.
      */
     public static void switchToTemplatePage() {
-        switchToView("/csc305.gymnasticsApp/templatePage.fxml");
+        switchToView("/csc305/gymnasticsApp/templatePage.fxml");
     }
 
 
     /**
      * Switches to the about page
      */
-    public static void switchToAboutPage() {switchToView("/csc305.gymnasticsApp/aboutPage.fxml");}
+    public static void switchToAboutPage() {switchToView("/csc305/gymnasticsApp/aboutPage.fxml");}
 
     /**
      * Opens a file chooser dialog for selecting the Gymnastics Picture files

@@ -1,10 +1,9 @@
 package csc305.gymnasticsApp.ui;
 
+import csc305.gymnasticsApp.filters.*;
 import csc305.gymnasticsApp.data.Card;
-import csc305.gymnasticsApp.data.CardButton;
 import csc305.gymnasticsApp.data.CardDatabase;
 import csc305.gymnasticsApp.data.LessonPlan;
-import csc305.gymnasticsApp.filters.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -128,15 +127,8 @@ public class MainEditDisplayController implements Initializable {
         if(!isInitialized) {
             allCards.clear();
             for (Card card : CardDatabase.getAllCards()) {
-                Image image = null;
-                try {
-                    image = new Image(new FileInputStream("GymSoftwarePics/" +
-                            card.getPackFolder().toUpperCase() + "Pack/" +
-                            card.getImage()));
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-                CardButton cardButton = createCardButton(card, image);
+                CardButton cardButton = new CardButton(card);
+                cardButton.setOnAction(event -> addCardToTreeView(cardButton));
                 allCards.add(cardButton);
             }
             isInitialized = true;
@@ -296,6 +288,7 @@ public class MainEditDisplayController implements Initializable {
         filterMenu.setVisible(false);
     }
 
+    /* DELETE EVENTUALLY IF NOT NEEDED
 
     private CardButton createCardButton(Card card, Image image) {
         ImageView iv = new ImageView(image);
@@ -312,6 +305,8 @@ public class MainEditDisplayController implements Initializable {
         cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton));
         return cardButton;
     }
+
+     */
 
     /**
      * Retrieves all card buttons from the FlowPane.
@@ -386,7 +381,7 @@ public class MainEditDisplayController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Add Card to Event");
         alert.setHeaderText("Select the event to add the card to");
-        Card card = cardButton.getAssociatedCard();
+        Card card = cardButton.getCard();
         try {
             Image image = new Image(new FileInputStream("GymSoftwarePics/" +
                     card.getPackFolder().toUpperCase() + "Pack/" +
@@ -447,7 +442,7 @@ public class MainEditDisplayController implements Initializable {
         for (CardButton cardButton : allCards) {
             boolean isVisible = true;
             for(CardFilter filter : filterList) {
-                if (!filter.matches(cardButton.getAssociatedCard())) {
+                if (!filter.matches(cardButton.getCard())) {
                     isVisible = false;
                     break;
                 }
@@ -509,21 +504,21 @@ public class MainEditDisplayController implements Initializable {
 
     @FXML
     void eventCheckBoxHandle(ActionEvent event){
-       if(event.getSource() == checkBoxFloor){
-           eventFilter.add("floor");
-       }else if(event.getSource() == checkBoxUnevenBars){
-           eventFilter.add("Uneven Bars");
-       }else if(event.getSource() == checkBoxBeam){
-           eventFilter.add("beam");
-       }else if(event.getSource() == checkBoxVault){
-           eventFilter.add("vault");
-       }else if(event.getSource() == checkBoxTramp){
-           eventFilter.add("tramp");
-       }else if(event.getSource() == checkBoxStrength){
-           eventFilter.add("strength");
-       }else{
+        if(event.getSource() == checkBoxFloor){
+            eventFilter.add("floor");
+        }else if(event.getSource() == checkBoxUnevenBars){
+            eventFilter.add("Uneven Bars");
+        }else if(event.getSource() == checkBoxBeam){
+            eventFilter.add("beam");
+        }else if(event.getSource() == checkBoxVault){
+            eventFilter.add("vault");
+        }else if(event.getSource() == checkBoxTramp){
+            eventFilter.add("tramp");
+        }else if(event.getSource() == checkBoxStrength){
+            eventFilter.add("strength");
+        }else{
         }
-       filterCardsByCheckbox();
+        filterCardsByCheckbox();
     }
 
 
@@ -589,7 +584,7 @@ public class MainEditDisplayController implements Initializable {
                     if(nodeIn instanceof CheckBox){
                         ((CheckBox) nodeIn).setSelected(false);
                     }
-            }
+                }
             }
         }
         resetFlowPane();
