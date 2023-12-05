@@ -29,7 +29,7 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="hideEquipment" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleEquipmentBar" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 20; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Hide Equipment" textAlignment="CENTER" textFill="#eef8ff" wrapText="true">
+            <Button fx:id="hideEquipment" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleEquipmentBar" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 20; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Show Equipment" textAlignment="CENTER" textFill="#eef8ff" wrapText="true">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -81,7 +81,7 @@
                            </children>
                         </HBox>
                         <FlowPane prefHeight="186.0" prefWidth="749.0" />
-                        <TextField fx:id="equipmentBox" prefHeight="20.0" prefWidth="770.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;" text="Equipment:" VBox.vgrow="NEVER">
+                        <TextField prefHeight="20.0" prefWidth="770.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;" text="Equipment:" VBox.vgrow="NEVER">
                            <font>
                               <Font name="System Bold" size="10.0" />
                            </font>
