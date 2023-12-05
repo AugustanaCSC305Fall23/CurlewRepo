@@ -47,7 +47,7 @@ public class GymnasticsAppBeta extends Application {
         stage.setResizable(true);
         MainEditDisplayController start = new MainEditDisplayController();
         new Thread(() -> {
-            try{Thread.sleep(1); } catch (InterruptedException e) { }
+            try{Thread.sleep(20); } catch (InterruptedException e) { }
             Platform.runLater(() -> start.createCardButtons());
             }).start();
 
