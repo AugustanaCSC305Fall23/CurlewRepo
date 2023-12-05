@@ -59,8 +59,8 @@ public class HomePageController {
     @FXML
     public void loadCourseButtonHandle(ActionEvent event){
         GymnasticsAppBeta.callFileChooser();
-        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
-        Course.loadEverythingFromFile(loadedLessonPlan);
+        ArrayList<String> loadedCoursePlan = GymnasticsAppBeta.readLessonPlan();
+        Course.loadEverythingFromFile(loadedCoursePlan);
         GymnasticsAppBeta.switchToCourseEditPage();
     }
 

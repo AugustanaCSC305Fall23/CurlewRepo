@@ -155,7 +155,7 @@ public class CourseEditPageController {
                 for(int i = 0; i < Course.getLessonPlanList().size(); i++){
                     LessonPlan curPlan = Course.getLessonPlanList().get(i);
                     fileWriter.write(curPlan.getLessonPlanTitle() + "\n");
-                    for(int j = 0; j < curPlan.getEventList().size(); j++){
+                    for(int j = 0; j < curPlan.getEventNames().size(); j++){
                         //writes event's name
                         fileWriter.write(curPlan.getEventNames().get(j) + "\n");
                         for(int cardIndex = 0; cardIndex < curPlan.getEventList().get(j).size(); cardIndex++){
@@ -173,6 +173,8 @@ public class CourseEditPageController {
         }
     }
 
+
+    //MAKE AN ALERT
     @FXML
     public void loadCourseButtonHandle(ActionEvent event){
         Course.clearLessonPlanList();
