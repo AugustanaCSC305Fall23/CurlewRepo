@@ -1,5 +1,6 @@
 package csc305.gymnasticsApp.data;
 
+import javafx.print.PageOrientation;
 import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import javafx.print.PageLayout;
@@ -21,7 +22,6 @@ public class PrintLessonPlan {
 
         if (job != null && job.showPrintDialog(mainScrollPane.getScene().getWindow())) {
             PageLayout pageLayout = job.getJobSettings().getPageLayout();
-
             // Assuming that the FlowPane is the first child of the ScrollPane
             FlowPane mainFlowPane = (FlowPane) mainScrollPane.getContent();
 
@@ -33,6 +33,7 @@ public class PrintLessonPlan {
                     double scaleX = pageLayout.getPrintableWidth() / eventPreviewVBox.getBoundsInParent().getWidth();
                     double scaleY = pageLayout.getPrintableHeight() / eventPreviewVBox.getBoundsInParent().getHeight();
                     double scale = Math.min(scaleX, scaleY);
+                    eventPreviewVBox.setRotate(90);
 
                     eventPreviewVBox.getTransforms().add(new javafx.scene.transform.Scale(scale, scale));
 
