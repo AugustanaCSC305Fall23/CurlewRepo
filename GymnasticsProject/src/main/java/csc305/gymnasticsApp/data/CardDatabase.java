@@ -179,6 +179,22 @@ public class CardDatabase {
         return card;
     }
 
+    public static List<String> getGenderList() {
+        Set<String> genderSet = new TreeSet<>();
+        for (Card card : allCards) {
+            genderSet.add(card.getGender());
+        }
+        return new ArrayList<>(genderSet);
+    }
+
+    public static List<String> getModelGenderList() {
+        Set<String> modelGenderSet = new TreeSet<>();
+        for (Card card : allCards) {
+            modelGenderSet.add(card.getModelGender());
+        }
+        return new ArrayList<>(modelGenderSet);
+    }
+
 }
 
 //get card by id

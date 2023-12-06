@@ -188,16 +188,7 @@
                         <VBox prefHeight="100.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
                               <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-family: Inter; -fx-font-size: 2.1em; -fx-font-weight: bold;" text="Model Gender" textFill="#eef8ff" />
-                              <CheckBox fx:id="modelCheckboxMale" mnemonicParsing="false" onAction="#modelGenderCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Male">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox fx:id="modelCheckboxFemale" mnemonicParsing="false" onAction="#modelGenderCheckBoxHandle" prefHeight="26.0" prefWidth="154.0" style="-fx-font-family: inter; -fx-font-size: 1.7em;" text="Female">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </CheckBox>
+                              <ChoiceBox fx:id="modelGenderCB" prefWidth="150.0" />
                            </children>
                            <VBox.margin>
                               <Insets top="5.0" />
