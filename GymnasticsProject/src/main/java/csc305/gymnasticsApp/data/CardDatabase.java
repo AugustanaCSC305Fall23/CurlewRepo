@@ -6,10 +6,7 @@ import csc305.gymnasticsApp.filters.CardFilter;
 
 import java.io.File;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * The CardDatabase class manages a collection of gymnastics cards and provides methods for filtering and organizing them.
@@ -30,7 +27,7 @@ public class CardDatabase {
      */
     public CardDatabase() {
         List<Card> cardsFromCSV = null;
-        File[] csvFileList = addAllCSVFilesFromFolder(new File("GymSoftwarePics/CSVFiles"));
+        List<File> csvFileList = addAllCSVFilesFromFolder(new File("GymSoftwarePics/CSVFiles"));
 
         for(File csvFile: csvFileList){
             try {
@@ -95,7 +92,7 @@ public class CardDatabase {
      */
     public static void addCardsFromCSVFile() {
         List<Card> cardsFromCSV = null;
-        File[] csvFileList = addAllCSVFilesFromFolder(new File("GymSoftwarePics/CSVFiles"));
+        List<File> csvFileList = addAllCSVFilesFromFolder(new File("GymSoftwarePics"));
 
         for(File csvFile: csvFileList){
             try {
@@ -139,9 +136,26 @@ public class CardDatabase {
      * @param folderName The folder containing CSV files.
      * @return An array of CSV files found in the folder.
      */
-    public static File[] addAllCSVFilesFromFolder(File folderName) {
-        File[] csvArray = folderName.listFiles();
-        return csvArray;
+    public static List<File> addAllCSVFilesFromFolder(File folderName) {
+        List<File> csvFiles = new ArrayList<>();
+        File[] subFolders = folderName.listFiles();
+        for(File subFolder : subFolders){
+            File[] packFiles = subFolder.listFiles();
+            for(File packFile : packFiles){
+                String fileName = packFile.getName();
+                String extension = "";
+                int i = fileName.lastIndexOf('.');
+                if (i >= 0) { extension = fileName.substring(i+1); }
+                if(extension.equals("csv")){
+                    csvFiles.add(packFile);
+                    break;
+                }
+            }
+        }
+        for(File file : csvFiles) {
+            System.out.println(file.getName());
+        }
+        return csvFiles;
     }
     /**
      * Prints a list of cards to the console.

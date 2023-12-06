@@ -134,7 +134,7 @@ public class PreviewPageController {
             Image image = null;
             try {
                 image = new Image(new FileInputStream("GymSoftwarePics/" +
-                        card.getPackFolder().toUpperCase() + "Pack/" +
+                        card.getPackFolder() + "/" +
                         card.getImage()));
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);

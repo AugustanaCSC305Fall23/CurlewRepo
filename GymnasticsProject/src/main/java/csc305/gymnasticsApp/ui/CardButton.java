@@ -44,9 +44,10 @@ public class CardButton extends Button {
 
     @FXML
     private void initialize() throws FileNotFoundException{
+        int dotIndex = associatedCard.getImage().indexOf(".");
         Image image = new Image(new FileInputStream("GymSoftwarePics/" +
-                associatedCard.getPackFolder().toUpperCase() + "Pack/" +
-                associatedCard.getImage()));
+                associatedCard.getPackFolder() + "/thumbs/" +
+                associatedCard.getImage().substring(0,dotIndex) + ".jpg"));
         iv.setImage(image);
     }
 

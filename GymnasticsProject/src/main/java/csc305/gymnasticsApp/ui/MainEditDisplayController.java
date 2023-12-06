@@ -200,7 +200,7 @@ public class MainEditDisplayController implements Initializable {
 
     public void eventAdderHandle(){
         int eventNum = events.size() + 1;
-        events.add(new TreeItem<>("Event" + eventNum));
+        events.add(new TreeItem<>("Event " + eventNum));
         rootItem.getChildren().clear();
         rootItem.getChildren().addAll(events);
         List<Card> eventCards = new ArrayList<>();
@@ -407,7 +407,7 @@ public class MainEditDisplayController implements Initializable {
         Card card = cardButton.getCard();
         try {
             Image image = new Image(new FileInputStream("GymSoftwarePics/" +
-                    card.getPackFolder().toUpperCase() + "Pack/" +
+                    card.getPackFolder() + "/" +
                     card.getImage()));
             ImageView iv = new ImageView(image);
             iv.setFitHeight(400.0);
