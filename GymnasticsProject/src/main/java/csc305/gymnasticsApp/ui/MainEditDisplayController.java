@@ -51,7 +51,6 @@ public class MainEditDisplayController implements Initializable {
     private ChoiceBox<String> eventCB;
     @FXML
     private ChoiceBox<String> levelCB;
-    private EquipmentFilter equipmentFilter = new EquipmentFilter();
     private List<CardFilter> filterList = new ArrayList<>();
     public static TreeItem<String> rootItem = new TreeItem<>("Root");
 
@@ -170,6 +169,7 @@ public class MainEditDisplayController implements Initializable {
         levelCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
 
         searchBar.textProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
+        equipmentTextfield.textProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
 
     }
 
@@ -180,9 +180,10 @@ public class MainEditDisplayController implements Initializable {
         CardFilter levelFilter = new LevelFilter(levelCB.getValue());
 
         CardFilter searchBarFilter = new SearchBarFilter(searchBar.getText());
+        CardFilter equipmentFilter = new EquipmentFilter(equipmentTextfield.getText());
 
         CardFilter combineAndFilter = new CombineAndFilter(genderFilter, modelGenderFilter, eventFilter, searchBarFilter,
-                                                            levelFilter);
+                                                            levelFilter, equipmentFilter);
 
         for (CardButton card : allCards) {
             boolean includeThisCard = combineAndFilter.matches(card.getCard());
@@ -519,18 +520,6 @@ public class MainEditDisplayController implements Initializable {
         cardFlowPane.getChildren().addAll(visibleButtons);
         currentFilteredCards.clear();
         currentFilteredCards.addAll(visibleButtons);
-    }
-
-
-    //****************
-    //Equipment Filter
-    //****************
-
-    @FXML
-    void setEquipmentTextField(KeyEvent event) {
-        String desiredEquipment = equipmentTextfield.getText();
-        equipmentFilter.add(desiredEquipment);
-        filterCardsByCheckbox();
     }
 
     @FXML
