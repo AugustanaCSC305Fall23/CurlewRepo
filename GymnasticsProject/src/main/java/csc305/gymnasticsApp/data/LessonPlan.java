@@ -11,7 +11,7 @@ import java.util.List;
  * The LessonPlan class represents a collection of gymnastics lesson plans.
  * It includes methods for managing lesson plans, such as adding events, setting title, and loading from files.
  */
-public class LessonPlan {
+public class LessonPlan implements Cloneable{
     private String lessonPlanTitle;
 
     private List<String> eventNames = new ArrayList<>();
@@ -207,6 +207,26 @@ public class LessonPlan {
      */
     public static LessonPlan loadCourseFile(File courseFile) {
         return null;
+    }
+
+    public LessonPlan clone() {
+        try {
+            LessonPlan clone = (LessonPlan) super.clone();
+            clone.lessonPlanTitle = lessonPlanTitle;
+            clone.eventNames = new ArrayList<String>();
+            clone.eventList = new ArrayList<List<Card>>();
+            for (String name : eventNames) {
+                clone.eventNames.add(name);
+            }
+            for(List<Card> cardList : eventList){
+                clone.eventList.add(cardList);
+            }
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            // should never happen
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

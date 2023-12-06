@@ -7,21 +7,28 @@ import java.util.List;
  * The Course class represents a collection of lesson plans for gymnastics courses.
  * It provides methods to manage lesson plans within a course.
  */
-public class Course {
+public class Course implements Cloneable{
 
     /**
      * A list containing all lesson plans in the course
      */
-    private static List<LessonPlan> lessonPlanList = new ArrayList<>();
+    private List<LessonPlan> lessonPlanList;
 
-    private static String courseName = "First Course";
+    private String courseName = "First Course";
+    private static Course course = new Course();
+
+    public Course(){
+        lessonPlanList = new ArrayList<>();
+        courseName = "First Course";
+        course = this;
+    }
 
     /**
      * Adds a lesson plan to the course
      *
      * @param plan The lesson plan to be added
      */
-    public static void addPlanToCourse(LessonPlan plan){
+    public void addPlanToCourse(LessonPlan plan){
         lessonPlanList.add(plan);
     }
 
@@ -30,7 +37,7 @@ public class Course {
      *
      * @param plan The lesson plan to be removed
      */
-    public static void removePlanFromCourse(LessonPlan plan){
+    public void removePlanFromCourse(LessonPlan plan){
         lessonPlanList.remove(plan);
     }
 
@@ -39,14 +46,14 @@ public class Course {
      *
      * @return A list of lesson plans in the course
      */
-    public static List<LessonPlan> getLessonPlanList(){
+    public List<LessonPlan> getLessonPlanList(){
         return lessonPlanList;
     }
 
     /**
      * Clears the list of lesson plans in the course
      */
-    public static void clearLessonPlanList(){
+    public void clearLessonPlanList(){
         lessonPlanList = new ArrayList<>();
     }
 
@@ -56,7 +63,7 @@ public class Course {
      * @param lessonPlanName The name of the lesson plan to check for
      * @return true if the course contains a lesson plan with the specified name otherwise returns false
      */
-    public static boolean containsLessonPlan(String lessonPlanName){
+    public boolean containsLessonPlan(String lessonPlanName){
         for(LessonPlan Plan:lessonPlanList){
             if(Plan.getLessonPlanTitle().equals(lessonPlanName)){
                 return true;
@@ -65,17 +72,16 @@ public class Course {
         return false;
     }
 
-    public static String getCourseName(){
+    public String getCourseName(){
         return courseName;
     }
 
-    public static void loadEverythingFromFile(ArrayList<String> file){
+    public void loadEverythingFromFile(ArrayList<String> file){
         CardDatabase.getAllCards();
         courseName = file.get(0);
         file.remove(0);
         while (!(((file.get(0).equals("done with event"))) && ((file.get(1).equals("done with lessonplan"))) && ((file.get(2).equals("done with course"))))){
             if(file.get(0).equals("done with event") && file.get(1).equals("done with lessonplan")){
-                System.out.println("done w/ LP");
                 file.remove(0);
                 file.remove(0);
             }
@@ -84,7 +90,6 @@ public class Course {
             file.remove(0);
             while(!(((file.get(0).equals("done with event"))) && ((file.get(1).equals("done with lessonplan"))))){
                 if(file.get(0).equals("done with event")){
-                    System.out.println("done w/ event");
                     file.remove(0);
                 }
                 curPlan.addEventName(file.get(0));
@@ -97,7 +102,45 @@ public class Course {
                 }
                 curPlan.addToEventList(curEvent);
             }
-            Course.addPlanToCourse(curPlan);
+            addPlanToCourse(curPlan);
+        }
+    }
+
+    public Course clone() {
+        try {
+            Course clone = (Course) super.clone();
+            clone.lessonPlanList = new ArrayList<LessonPlan>();
+            clone.courseName = courseName;
+            for (LessonPlan plan : lessonPlanList) {
+                clone.lessonPlanList.add(plan.clone());
+            }
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            // should never happen
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+    public State createMemento() {
+        return new State();
+    }
+
+    public void restoreState(State canvasState) {
+        canvasState.restore();
+        repaint();
+    }
+
+    public class State {
+        private Course course;
+
+        public State() {
+            course = (Course) Course.this.clone();
+        }
+
+        public void restore() {
+            Course.this = (Course) course.clone();
         }
     }
 

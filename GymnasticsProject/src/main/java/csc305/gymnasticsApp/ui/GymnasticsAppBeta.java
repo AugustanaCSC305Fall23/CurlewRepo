@@ -28,6 +28,7 @@ public class GymnasticsAppBeta extends Application {
 
     private static LessonPlan lessonPlan;
 
+    private static Course course;
 
     private static boolean fileLoaded = false;
     private static boolean userClickedCancel = false;
@@ -42,6 +43,7 @@ public class GymnasticsAppBeta extends Application {
     @Override
     public void start(Stage primaryStage){
         lessonPlan = new LessonPlan();
+        course = new Course();
         stage = primaryStage;
         scene = new Scene(new BorderPane(), 1000, 700);
         stage.setScene(scene);
@@ -192,6 +194,14 @@ public class GymnasticsAppBeta extends Application {
      */
     public static void setLessonPlan(LessonPlan newLessonPlan) {
         lessonPlan = newLessonPlan;
+    }
+
+    public static Course getCourse() {
+        return course;
+    }
+
+    public static void setCourse(Course course) {
+        GymnasticsAppBeta.course = course;
     }
 
     public static boolean getUserClickedCancel(){

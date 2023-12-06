@@ -51,6 +51,7 @@ public class PreviewPageController {
     //private FlowPane eventFlowPane;
 
     private LessonPlan lessonPlan;
+    private Course course;
 
     public void initialize() throws FileNotFoundException {
         showEquipment = false;
@@ -58,6 +59,7 @@ public class PreviewPageController {
         lessonPlan = GymnasticsAppBeta.getLessonPlan();
         lessonPlan.printEverything();
         System.out.println("^^^^should have printed everything");
+        course = GymnasticsAppBeta.getCourse();
         //clear and reset panes
         mainFlowPane.getChildren().clear();
         VBoxes.clear();
@@ -429,8 +431,8 @@ public class PreviewPageController {
 
     @FXML
     private void addPlanToCurrentCourseButtonHandle(ActionEvent event){
-        if(!(Course.getLessonPlanList().contains(GymnasticsAppBeta.getLessonPlan()))) {
-            Course.addPlanToCourse(GymnasticsAppBeta.getLessonPlan());
+        if(!(course.getLessonPlanList().contains(GymnasticsAppBeta.getLessonPlan()))) {
+            course.addPlanToCourse(GymnasticsAppBeta.getLessonPlan());
         }
         GymnasticsAppBeta.switchToCourseEditPage();
     }

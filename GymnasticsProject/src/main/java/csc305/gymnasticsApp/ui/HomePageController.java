@@ -20,6 +20,7 @@ public class HomePageController {
     @FXML
     private Button loadCourseButton;
     public static LessonPlan loadPlan;
+    private Course course;
 
     /**
      * Handles the action when the "New Lesson" button is clicked.
@@ -60,10 +61,12 @@ public class HomePageController {
 
     @FXML
     public void loadCourseButtonHandle(ActionEvent event){
+        course = new Course();
         GymnasticsAppBeta.callFileChooser();
         if(GymnasticsAppBeta.getUserClickedCancel() == false) {
             ArrayList<String> loadedCoursePlan = GymnasticsAppBeta.readLessonPlan();
-            Course.loadEverythingFromFile(loadedCoursePlan);
+            course.loadEverythingFromFile(loadedCoursePlan);
+            GymnasticsAppBeta.setCourse(course);
             GymnasticsAppBeta.switchToCourseEditPage();
         }
         GymnasticsAppBeta.setUserClickedCancel(false);
