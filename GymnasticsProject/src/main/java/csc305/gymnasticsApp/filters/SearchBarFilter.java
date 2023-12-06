@@ -4,24 +4,17 @@ import csc305.gymnasticsApp.data.Card;
 
 public class SearchBarFilter implements CardFilter{
 
-    public static String keyword;
+    private final String searchText;
 
-    public SearchBarFilter() {
-        if (keyword == null) {
-            keyword = "";
-        }
+    public SearchBarFilter(String searchText) {
+        this.searchText = searchText;
     }
-
-
-    public void add(String word) {
-        keyword = word;
-    }
-
     @Override
-    public boolean matches(Card canidateCard) {
-        //Splits the keywords of the candidateCard into an array.
-        String uniqueID = canidateCard.getUniqueID();
-
-        return (uniqueID.toLowerCase().contains(keyword.toLowerCase()));
+    public boolean matches(Card card) {
+        return card.getTitle().toUpperCase().contains(searchText.toUpperCase())
+                || card.getCategory().toUpperCase().contains(searchText.toUpperCase())
+                || card.getKeywords().toUpperCase().contains(searchText.toUpperCase())
+                || card.getCode().toUpperCase().contains(searchText.toUpperCase())
+                || card.getEvent().toUpperCase().contains(searchText.toUpperCase());
     }
 }

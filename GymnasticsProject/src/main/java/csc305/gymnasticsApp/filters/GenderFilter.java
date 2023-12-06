@@ -17,6 +17,6 @@ public class GenderFilter implements CardFilter {
     }
 
     public boolean matches(Card card) {
-        return desiredGender == null || card.getGender().equalsIgnoreCase("N") || desiredGender.equalsIgnoreCase(card.getGender());
+        return desiredGender.equalsIgnoreCase(card.getGender()) || card.getGender().equalsIgnoreCase("N");
     }
 }

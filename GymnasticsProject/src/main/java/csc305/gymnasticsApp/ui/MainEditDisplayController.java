@@ -35,7 +35,7 @@ public class MainEditDisplayController implements Initializable {
     @FXML
     private VBox filterMenu;
     @FXML
-    private TextField drillSearchBar;
+    private TextField searchBar;
     @FXML
     private FlowPane cardFlowPane;
     @FXML
@@ -47,7 +47,6 @@ public class MainEditDisplayController implements Initializable {
     private ChoiceBox<String> genderCB;
     @FXML
     private ChoiceBox<String> modelGenderCB;
-    @FXML public CheckBox modelCheckboxMale;
     @FXML public CheckBox checkBoxFloor;
     @FXML public CheckBox checkBoxUnevenBars;
     @FXML public CheckBox checkBoxBeam;
@@ -62,10 +61,6 @@ public class MainEditDisplayController implements Initializable {
     private LevelFilter levelFilter = new LevelFilter();
     private EquipmentFilter equipmentFilter = new EquipmentFilter();
     private List<CardFilter> filterList = new ArrayList<>();
-
-    private SearchBarFilter searchBarFilter = new SearchBarFilter();
-
-
     public static TreeItem<String> rootItem = new TreeItem<>("Root");
 
 
@@ -175,13 +170,17 @@ public class MainEditDisplayController implements Initializable {
 
         genderCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
         modelGenderCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
+        searchBar.textProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
+
+
     }
 
     void updateFilteredVisibleCards() {
         CardFilter genderFilter = new GenderFilter(genderCB.getValue());
         CardFilter modelGenderFilter = new ModelGenderFilter(modelGenderCB.getValue());
+        CardFilter searchBarFilter = new SearchBarFilter(searchBar.getText());
 
-        CardFilter combineAndFilter = new CombineAndFilter(genderFilter, modelGenderFilter);
+        CardFilter combineAndFilter = new CombineAndFilter(genderFilter, modelGenderFilter, searchBarFilter);
 
         for (CardButton card : allCards) {
             boolean includeThisCard = combineAndFilter.matches(card.getCard());
@@ -520,12 +519,6 @@ public class MainEditDisplayController implements Initializable {
         currentFilteredCards.addAll(visibleButtons);
     }
 
-    @FXML
-    void filterCardsFromSearch(KeyEvent event) {
-        String keyword = drillSearchBar.getText();
-        searchBarFilter.add(keyword);
-        filterCardsByCheckbox();
-    }
 
     //************
     //EVENT FILTER
