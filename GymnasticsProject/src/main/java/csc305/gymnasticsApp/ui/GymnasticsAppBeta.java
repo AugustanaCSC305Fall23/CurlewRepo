@@ -30,6 +30,7 @@ public class GymnasticsAppBeta extends Application {
 
 
     private static boolean fileLoaded = false;
+    private static boolean userClickedCancel = false;
 
     /**
      *
@@ -130,6 +131,8 @@ public class GymnasticsAppBeta extends Application {
         if(gymPlanFile != null) {
             selectedFile = gymPlanFile;
             fileLoaded = true;
+        } else{
+            userClickedCancel = true;
         }
 
     }
@@ -191,4 +194,10 @@ public class GymnasticsAppBeta extends Application {
         lessonPlan = newLessonPlan;
     }
 
+    public static boolean getUserClickedCancel(){
+        return userClickedCancel;
+    }
+    public static void setUserClickedCancel(Boolean setBoolean){
+        userClickedCancel = setBoolean;
+    }
 }

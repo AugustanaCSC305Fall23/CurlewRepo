@@ -44,24 +44,29 @@ public class HomePageController {
      */
     @FXML
     public void loadLessonPlanButtonHandle(ActionEvent event) {
-        //DOESNT CURRENTLY WORK CORRECTLY, THIS IMPORTS A LESSONPLAN, WE WANT TO IMPORT A WHOLE COURSE
         loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser();
-        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
-        loadPlan.loadPlanFromFile(loadedLessonPlan);
-        GymnasticsAppBeta.setLessonPlan(loadPlan);
-        GymnasticsAppBeta.getLessonPlan().printEverything();
-        if(GymnasticsAppBeta.getLoaded() == true) {
-            GymnasticsAppBeta.switchToPreviewPage();
+        if(GymnasticsAppBeta.getUserClickedCancel() == false) {
+            ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+            loadPlan.loadPlanFromFile(loadedLessonPlan);
+            GymnasticsAppBeta.setLessonPlan(loadPlan);
+            GymnasticsAppBeta.getLessonPlan().printEverything();
+            if (GymnasticsAppBeta.getLoaded() == true) {
+                GymnasticsAppBeta.switchToPreviewPage();
+            }
         }
+        GymnasticsAppBeta.setUserClickedCancel(true);
     }
 
     @FXML
     public void loadCourseButtonHandle(ActionEvent event){
         GymnasticsAppBeta.callFileChooser();
-        ArrayList<String> loadedCoursePlan = GymnasticsAppBeta.readLessonPlan();
-        Course.loadEverythingFromFile(loadedCoursePlan);
-        GymnasticsAppBeta.switchToCourseEditPage();
+        if(GymnasticsAppBeta.getUserClickedCancel() == false) {
+            ArrayList<String> loadedCoursePlan = GymnasticsAppBeta.readLessonPlan();
+            Course.loadEverythingFromFile(loadedCoursePlan);
+            GymnasticsAppBeta.switchToCourseEditPage();
+        }
+        GymnasticsAppBeta.setUserClickedCancel(false);
     }
 
 

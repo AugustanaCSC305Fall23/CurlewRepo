@@ -233,12 +233,14 @@ public class MainEditDisplayController implements Initializable {
 
         Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.get() == yesButton) {
-            MainEditDisplayController.clearTreeCardItems();
-            MainEditDisplayController.events.clear();
-            MainEditDisplayController.resetButtons();
-            GymnasticsAppBeta.setLessonPlan(new LessonPlan());
-            GymnasticsAppBeta.switchToHomePage();
+        if (result.isPresent()) {
+            if(result.get() == yesButton) {
+                MainEditDisplayController.clearTreeCardItems();
+                MainEditDisplayController.events.clear();
+                MainEditDisplayController.resetButtons();
+                GymnasticsAppBeta.setLessonPlan(new LessonPlan());
+                GymnasticsAppBeta.switchToHomePage();
+            }
         }
     }
 
