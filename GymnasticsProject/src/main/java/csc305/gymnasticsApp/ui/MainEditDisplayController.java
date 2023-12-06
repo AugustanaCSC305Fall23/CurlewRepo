@@ -49,11 +49,8 @@ public class MainEditDisplayController implements Initializable {
     private ChoiceBox<String> modelGenderCB;
     @FXML
     private ChoiceBox<String> eventCB;
-    @FXML public CheckBox levelABCheckBox;
-    @FXML public CheckBox levelAdvancedCheckBox;
-    @FXML public CheckBox levelBeginnerCheckBox;
-    @FXML public CheckBox levelIntermediateCheckBox;
-    private LevelFilter levelFilter = new LevelFilter();
+    @FXML
+    private ChoiceBox<String> levelCB;
     private EquipmentFilter equipmentFilter = new EquipmentFilter();
     private List<CardFilter> filterList = new ArrayList<>();
     public static TreeItem<String> rootItem = new TreeItem<>("Root");
@@ -164,10 +161,13 @@ public class MainEditDisplayController implements Initializable {
         modelGenderCB.setValue("ALL");
         eventCB.setValue("ALL");
         eventCB.getItems().addAll(CardDatabase.getEventList());
+        levelCB.setValue("ALL");
+        levelCB.getItems().addAll(CardDatabase.getLevelList());
 
         genderCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
         modelGenderCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
         eventCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
+        levelCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
 
         searchBar.textProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
 
@@ -177,10 +177,12 @@ public class MainEditDisplayController implements Initializable {
         CardFilter genderFilter = new GenderFilter(genderCB.getValue());
         CardFilter modelGenderFilter = new ModelGenderFilter(modelGenderCB.getValue());
         CardFilter eventFilter = new EventFilter(eventCB.getValue());
+        CardFilter levelFilter = new LevelFilter(levelCB.getValue());
 
         CardFilter searchBarFilter = new SearchBarFilter(searchBar.getText());
 
-        CardFilter combineAndFilter = new CombineAndFilter(genderFilter, modelGenderFilter, eventFilter, searchBarFilter);
+        CardFilter combineAndFilter = new CombineAndFilter(genderFilter, modelGenderFilter, eventFilter, searchBarFilter,
+                                                            levelFilter);
 
         for (CardButton card : allCards) {
             boolean includeThisCard = combineAndFilter.matches(card.getCard());
@@ -517,27 +519,6 @@ public class MainEditDisplayController implements Initializable {
         cardFlowPane.getChildren().addAll(visibleButtons);
         currentFilteredCards.clear();
         currentFilteredCards.addAll(visibleButtons);
-    }
-
-
-    //************
-    //LEVEL FILTER
-    //************
-
-
-    @FXML
-    void levelCheckBoxHandle(ActionEvent event) {
-        if (event.getSource() == levelABCheckBox) {
-            levelFilter.add("AB");
-        } else if (event.getSource() == levelAdvancedCheckBox) {
-            levelFilter.add("A");
-        } else if (event.getSource() == levelIntermediateCheckBox) {
-            levelFilter.add("I");
-        } else if (event.getSource() == levelBeginnerCheckBox) {
-            levelFilter.add("B");
-        } else {
-        }
-        filterCardsByCheckbox();
     }
 
 

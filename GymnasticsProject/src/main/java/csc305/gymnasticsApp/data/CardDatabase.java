@@ -203,6 +203,14 @@ public class CardDatabase {
         return new ArrayList<>(eventSet);
     }
 
+    public static List<String> getLevelList() {
+        Set<String> levelSet = new TreeSet<>();
+        for (Card card : allCards) {
+            levelSet.add(card.getLevel());
+        }
+        return new ArrayList<>(levelSet);
+    }
+
 }
 
 //get card by id
