@@ -116,14 +116,18 @@ public class PreviewPageController {
         HBox eventTitleHBox = createEventTitleHBox();
         TextField eventTitleTextField = createEventTitleTextField(eventIndex);
         FlowPane eventCards = createEventCardFlowPane();
-        eventCards.getChildren().addAll(addCards(eventIndex));
+        eventCards.getChildren().addAll(addCards(eventIndex, flowGap == 10));
         eventCards.setHgap(flowGap);
+        if(eventCards.getChildren().size() > 6){
+            eventCards.setVgap(50);
+            eventCards.setHgap(10);
+        }
         eventTitleHBox.getChildren().add(eventTitleTextField);
         vbox.getChildren().addAll(eventTitleHBox, eventCards);
 
     }
 
-    private List<ImageView> addCards(int eventIndex){
+    private List<ImageView> addCards(int eventIndex, boolean isEquipment){
         List<Card> eventCards = lessonPlan.getEventCards(eventIndex);
         List<ImageView> cardView = new ArrayList<>();
         for(Card card : eventCards){
@@ -136,8 +140,18 @@ public class PreviewPageController {
                 throw new RuntimeException(e);
             }
             ImageView imageView = new ImageView(image);
-            imageView.setFitWidth(200); // Set the width of the image view
-            imageView.setFitHeight(200); // Set the height of the image view
+            if(eventCards.size() > 6){
+                if(isEquipment) {
+                    imageView.setFitWidth(150); // Set the width of the image view
+                    imageView.setFitHeight(150); // Set the height of the image view
+                } else{
+                    imageView.setFitWidth(175); // Set the width of the image view
+                    imageView.setFitHeight(175); // Set the height of the image view
+                }
+            } else {
+                imageView.setFitWidth(200); // Set the width of the image view
+                imageView.setFitHeight(200); // Set the height of the image view
+            }
             cardView.add(imageView);
         }
         return cardView;

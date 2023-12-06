@@ -412,9 +412,21 @@ public class MainEditDisplayController implements Initializable {
             for(int i =0; i<eventButtonList.size(); i++){
                 ButtonType eventButton = eventButtonList.get(i);
                 if(buttonType == eventButton){
-                    TreeItem<String> newCard = new TreeItem<>(card.getCode() + " " + card.getTitle());
-                    events.get(i).getChildren().add(newCard);
-                    lessonPlan.addToEvent(card,i);
+                    if(!(lessonPlan.getEventList().get(i).size() >= 8)) {//checks to make sure no more than 8 cards are added to an event
+                        TreeItem<String> newCard = new TreeItem<>(card.getCode() + " " + card.getTitle());
+                        events.get(i).getChildren().add(newCard);
+                        lessonPlan.addToEvent(card, i);
+                    } else {
+                        Alert maxCardAlert = new Alert(Alert.AlertType.WARNING);
+                        maxCardAlert.setTitle("Caution");
+                        maxCardAlert.setHeaderText("You cannot add any more cards to this event");
+                        ButtonType yesButton = new ButtonType("Ok");
+                        maxCardAlert.getButtonTypes().setAll(yesButton);
+                        Optional<ButtonType> newResult = maxCardAlert.showAndWait();
+                        if (newResult.isPresent()) {
+                            maxCardAlert.close();
+                        }
+                    }
                 }
             }
         });
