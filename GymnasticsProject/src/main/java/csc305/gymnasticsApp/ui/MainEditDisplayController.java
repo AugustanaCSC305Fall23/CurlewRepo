@@ -1,11 +1,9 @@
 package csc305.gymnasticsApp.ui;
 
+import csc305.gymnasticsApp.filters.*;
 import csc305.gymnasticsApp.data.Card;
-import csc305.gymnasticsApp.data.CardButton;
 import csc305.gymnasticsApp.data.CardDatabase;
 import csc305.gymnasticsApp.data.LessonPlan;
-import csc305.gymnasticsApp.filters.*;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,7 +35,7 @@ public class MainEditDisplayController implements Initializable {
     @FXML
     private VBox filterMenu;
     @FXML
-    private TextField searchBar;
+    private TextField drillSearchBar;
     @FXML
     private FlowPane cardFlowPane;
     @FXML
@@ -51,15 +49,12 @@ public class MainEditDisplayController implements Initializable {
     @FXML public CheckBox checkBoxVault;
     @FXML public CheckBox checkBoxTramp;
     @FXML public CheckBox checkBoxStrength;
-    @FXML
-    private ChoiceBox<String> genderCB;
+    @FXML public CheckBox checkBoxMale;
+    @FXML public CheckBox checkBoxFemale;
     @FXML public CheckBox levelABCheckBox;
     @FXML public CheckBox levelAdvancedCheckBox;
     @FXML public CheckBox levelBeginnerCheckBox;
     @FXML public CheckBox levelIntermediateCheckBox;
-
-
-
     private ModelGenderFilter  modelGenderFilter = new ModelGenderFilter();
     private EventFilter eventFilter = new EventFilter();
     private LevelFilter levelFilter = new LevelFilter();
@@ -67,9 +62,6 @@ public class MainEditDisplayController implements Initializable {
     private List<CardFilter> filterList = new ArrayList<>();
 
     private SearchBarFilter searchBarFilter = new SearchBarFilter();
-
-
-
 
 
     public static TreeItem<String> rootItem = new TreeItem<>("Root");
@@ -83,9 +75,6 @@ public class MainEditDisplayController implements Initializable {
 
     public static LessonPlan lessonPlan;
     private static List<ButtonType> eventButtonList = new ArrayList<>();
-
-    private List<exerciseCard> allExerciseCards = new ArrayList<>();
-
 
     /**
      * Initializes the tree view on the main edit display screen.
@@ -105,6 +94,8 @@ public class MainEditDisplayController implements Initializable {
             eventButtonList.add(new ButtonType(lessonPlan.getEventNames().get(i)));
         }
         initializeTreeView();
+        addCardsToFlowPane();
+        allCards = getAllCardButtons();
         resetFlowPane();
         initFilterList();
         List<Card> eventCards = new ArrayList<>();
@@ -112,23 +103,7 @@ public class MainEditDisplayController implements Initializable {
         System.out.println("initializing");
         lessonTitle.setText(GymnasticsAppBeta.getLessonPlan().getLessonPlanTitle());
 
-        new Thread(() -> {
-            try { Thread.sleep(20); } catch (InterruptedException ex) { }
-            Platform.runLater(() -> loadExerciseCards());
-        }).start();
-
     }
-
-    void loadExerciseCards() {
-        for (Card card : CardDatabase.getDB().getAllCards()) {
-            exerciseCard exerciseCard = new exerciseCard(card);
-            allExerciseCards.add(exerciseCard);
-        }
-        cardFlowPane.getChildren().clear();
-        cardFlowPane.getChildren().addAll(allExerciseCards);
-    }
-
-
 
     private void initializeTreeView(){
         if (rootItem.getChildren().isEmpty()) {
@@ -147,34 +122,27 @@ public class MainEditDisplayController implements Initializable {
         treeView.setRoot(rootItem);
     }
 
-//    public void createCardButtons(){
-//        if(!isInitialized) {
-//            allCards.clear();
-//            for (Card card : CardDatabase.getAllCards()) {
-//                Image image = null;
-//                try {
-//                    image = new Image(new FileInputStream("GymSoftwarePics/" +
-//                            card.getPackFolder().toUpperCase() + "Pack/" +
-//                            card.getImage()));
-//                } catch (FileNotFoundException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                CardButton cardButton = createCardButton(card, image);
-//                allCards.add(cardButton);
-//            }
-//            isInitialized = true;
-//        }
-//    }
+    public void createCardButtons(){
+        if(!isInitialized) {
+            allCards.clear();
+            for (Card card : CardDatabase.getAllCards()) {
+                CardButton cardButton = new CardButton(card);
+                cardButton.setOnAction(event -> addCardToTreeView(cardButton));
+                allCards.add(cardButton);
+            }
+            isInitialized = true;
+        }
+    }
 
 
     //Need to reset currentFilteredCards at some point
-//    /**
-//     * Adds cards to the FlowPane for display.
-//     */
-//    public void addCardsToFlowPane(){
-//        cardFlowPane.getChildren().clear();
-//        cardFlowPane.getChildren().addAll(allCards);
-//    }
+    /**
+     * Adds cards to the FlowPane for display.
+     */
+    public void addCardsToFlowPane(){
+        cardFlowPane.getChildren().clear();
+        cardFlowPane.getChildren().addAll(allCards);
+    }
 
     public void resetFlowPane(){
         cardFlowPane.getChildren().clear();
@@ -198,26 +166,6 @@ public class MainEditDisplayController implements Initializable {
 //        filterList.add(equipmentFilter);
 //        searchBarFilter.reset();
 //        filterList.add(searchBarFilter);
-        genderCB.getItems().addAll(CardDatabase.getDB().getGenderList());
-        genderCB.setValue("N");
-
-        genderCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
-
-        searchBar.textProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
-
-    }
-
-    void updateFilteredVisibleCards() {
-        CardFilter genderFilter = new GenderFilter(genderCB.getValue());
-
-        CardFilter keywordFilter = new KeywordFilter(searchBar.getText());
-
-        CardFilter combinedFilter = new CombineAndFilter(keywordFilter, genderFilter);
-        for (exerciseCard exerciseCard : allExerciseCards) {
-            boolean includeThisCard = combinedFilter.matches(exerciseCard.getCard());
-            exerciseCard.setVisible(includeThisCard);
-            exerciseCard.setManaged(includeThisCard);
-        }
     }
 
 
@@ -251,7 +199,7 @@ public class MainEditDisplayController implements Initializable {
 
     public void eventAdderHandle(){
         int eventNum = events.size() + 1;
-        events.add(new TreeItem<>("Event" + eventNum));
+        events.add(new TreeItem<>("Event " + eventNum));
         rootItem.getChildren().clear();
         rootItem.getChildren().addAll(events);
         List<Card> eventCards = new ArrayList<>();
@@ -283,12 +231,14 @@ public class MainEditDisplayController implements Initializable {
 
         Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.get() == yesButton) {
-            MainEditDisplayController.clearTreeCardItems();
-            MainEditDisplayController.events.clear();
-            MainEditDisplayController.resetButtons();
-            GymnasticsAppBeta.setLessonPlan(new LessonPlan());
-            GymnasticsAppBeta.switchToHomePage();
+        if (result.isPresent()) {
+            if(result.get() == yesButton) {
+                MainEditDisplayController.clearTreeCardItems();
+                MainEditDisplayController.events.clear();
+                MainEditDisplayController.resetButtons();
+                GymnasticsAppBeta.setLessonPlan(new LessonPlan());
+                GymnasticsAppBeta.switchToHomePage();
+            }
         }
     }
 
@@ -338,30 +288,39 @@ public class MainEditDisplayController implements Initializable {
         filterMenu.setVisible(false);
     }
 
+    /* DELETE EVENTUALLY IF NOT NEEDED
 
-//    private CardButton createCardButton(Card card, Image image) {
-//        ImageView iv = new ImageView(image);
-//        iv.setFitHeight(198.0);
-//        iv.setFitWidth(198.0);
-//        CardButton cardButton = new CardButton("", iv, card);
-//        cardButton.setMinHeight(Double.MIN_VALUE);
-//        cardButton.setMinWidth(Double.MIN_VALUE);
-//        cardButton.setPrefHeight(200.0);
-//        cardButton.setPrefWidth(200.0);
-//        cardButton.setMnemonicParsing(false);
-//        cardButton.setStyle("-fx-border-color: black;");
-//        cardButton.setId(card.getUniqueID());
-//        cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton));
-//        return cardButton;
-//    }
+    private CardButton createCardButton(Card card, Image image) {
+        ImageView iv = new ImageView(image);
+        iv.setFitHeight(198.0);
+        iv.setFitWidth(198.0);
+        CardButton cardButton = new CardButton("", iv, card);
+        cardButton.setMinHeight(Double.MIN_VALUE);
+        cardButton.setMinWidth(Double.MIN_VALUE);
+        cardButton.setPrefHeight(200.0);
+        cardButton.setPrefWidth(200.0);
+        cardButton.setMnemonicParsing(false);
+        cardButton.setStyle("-fx-border-color: black;");
+        cardButton.setId(card.getUniqueID());
+        cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton));
+        return cardButton;
+    }
+
+     */
 
     /**
      * Retrieves all card buttons from the FlowPane.
      *
      * @return A list of all card buttons in the FlowPane.
      */
-    private List<exerciseCard> getAllCardButtons() {
-        return allExerciseCards;
+    private List<CardButton> getAllCardButtons() {
+        List<CardButton> cardButtons = new ArrayList<>();
+        for (int i = 0; i < cardFlowPane.getChildren().size(); i++) {
+            if (cardFlowPane.getChildren().get(i) instanceof CardButton) {
+                cardButtons.add((CardButton) cardFlowPane.getChildren().get(i));
+            }
+        }
+        return cardButtons;
     }
 
 
@@ -391,18 +350,40 @@ public class MainEditDisplayController implements Initializable {
                     deleteCardFromTreeView(event);
                 }
             } else { //is event, so shows text box
-                TextInputDialog renameDialog = new TextInputDialog();
-                renameDialog.setTitle("Rename " + selectedItem.getValue());
-                renameDialog.setHeaderText("What do you want to rename this event to?");
-                renameDialog.setContentText("New Event Name: ");
+                Alert choose = new Alert(Alert.AlertType.WARNING);
+                choose.setTitle("Caution");
+                choose.setHeaderText("Are you sure you want to delete this card?");
+                choose.setContentText("Please select an option.");
+                ButtonType renameButton = new ButtonType("Rename Event");
+                ButtonType deleteButton = new ButtonType("Delete Event");
+                ButtonType cancelButton = new ButtonType("Cancel");
+                choose.getButtonTypes().setAll(renameButton, deleteButton, cancelButton);
+                Optional<ButtonType> initialResult = choose.showAndWait();
+                if(initialResult.isPresent()) {
+                    if (initialResult.get() == renameButton) {
+                        TextInputDialog renameDialog = new TextInputDialog();
+                        renameDialog.setTitle("Rename " + selectedItem.getValue());
+                        renameDialog.setHeaderText("What do you want to rename this event to?");
+                        renameDialog.setContentText("New Event Name: ");
 
-                Optional<String> result = renameDialog.showAndWait();
-                result.ifPresent(newName -> {
-                    int index = rootItem.getChildren().indexOf(selectedItem);
-                    lessonPlan.setEventName(newName, index);
-                    selectedItem.setValue(newName);
-                    eventButtonList.set(index, new ButtonType(newName));
-                });
+                        Optional<String> result = renameDialog.showAndWait();
+                        result.ifPresent(newName -> {
+                            int index = rootItem.getChildren().indexOf(selectedItem);
+                            lessonPlan.setEventName(newName, index);
+                            selectedItem.setValue(newName);
+                            eventButtonList.set(index, new ButtonType(newName));
+                        });
+                    } else if(initialResult.get() == deleteButton){//deletes event
+                        int index = rootItem.getChildren().indexOf(selectedItem);
+                        lessonPlan.getEventList().remove(index);
+                        lessonPlan.getEventNames().remove(index);
+                        eventButtonList.remove(index);
+                        events.remove(index);
+                        rootItem.getChildren().remove(index);
+                    } else{
+                        choose.close();
+                    }
+                }
             }
         }
         treeView.getSelectionModel().clearSelection();
@@ -422,10 +403,10 @@ public class MainEditDisplayController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Add Card to Event");
         alert.setHeaderText("Select the event to add the card to");
-        Card card = cardButton.getAssociatedCard();
+        Card card = cardButton.getCard();
         try {
             Image image = new Image(new FileInputStream("GymSoftwarePics/" +
-                    card.getPackFolder().toUpperCase() + "Pack/" +
+                    card.getPackFolder() + "/" +
                     card.getImage()));
             ImageView iv = new ImageView(image);
             iv.setFitHeight(400.0);
@@ -453,9 +434,21 @@ public class MainEditDisplayController implements Initializable {
             for(int i =0; i<eventButtonList.size(); i++){
                 ButtonType eventButton = eventButtonList.get(i);
                 if(buttonType == eventButton){
-                    TreeItem<String> newCard = new TreeItem<>(card.getCode() + " " + card.getTitle());
-                    events.get(i).getChildren().add(newCard);
-                    lessonPlan.addToEvent(card,i);
+                    if(!(lessonPlan.getEventList().get(i).size() >= 8)) {//checks to make sure no more than 8 cards are added to an event
+                        TreeItem<String> newCard = new TreeItem<>(card.getCode() + " " + card.getTitle());
+                        events.get(i).getChildren().add(newCard);
+                        lessonPlan.addToEvent(card, i);
+                    } else {
+                        Alert maxCardAlert = new Alert(Alert.AlertType.WARNING);
+                        maxCardAlert.setTitle("Caution");
+                        maxCardAlert.setHeaderText("You cannot add any more cards to this event");
+                        ButtonType yesButton = new ButtonType("Ok");
+                        maxCardAlert.getButtonTypes().setAll(yesButton);
+                        Optional<ButtonType> newResult = maxCardAlert.showAndWait();
+                        if (newResult.isPresent()) {
+                            maxCardAlert.close();
+                        }
+                    }
                 }
             }
         });
@@ -483,7 +476,7 @@ public class MainEditDisplayController implements Initializable {
         for (CardButton cardButton : allCards) {
             boolean isVisible = true;
             for(CardFilter filter : filterList) {
-                if (!filter.matches(cardButton.getAssociatedCard())) {
+                if (!filter.matches(cardButton.getCard())) {
                     isVisible = false;
                     break;
                 }
@@ -505,12 +498,12 @@ public class MainEditDisplayController implements Initializable {
         currentFilteredCards.addAll(visibleButtons);
     }
 
-//    @FXML
-//    void filterCardsFromSearch(KeyEvent event) {
-//        String keyword = drillSearchBar.getText();
-//        searchBarFilter.add(keyword);
-//        filterCardsByCheckbox();
-//    }
+    @FXML
+    void filterCardsFromSearch(KeyEvent event) {
+        String keyword = drillSearchBar.getText();
+        searchBarFilter.add(keyword);
+        filterCardsByCheckbox();
+    }
 
 
     //*************
@@ -545,21 +538,21 @@ public class MainEditDisplayController implements Initializable {
 
     @FXML
     void eventCheckBoxHandle(ActionEvent event){
-       if(event.getSource() == checkBoxFloor){
-           eventFilter.add("floor");
-       }else if(event.getSource() == checkBoxUnevenBars){
-           eventFilter.add("Uneven Bars");
-       }else if(event.getSource() == checkBoxBeam){
-           eventFilter.add("beam");
-       }else if(event.getSource() == checkBoxVault){
-           eventFilter.add("vault");
-       }else if(event.getSource() == checkBoxTramp){
-           eventFilter.add("tramp");
-       }else if(event.getSource() == checkBoxStrength){
-           eventFilter.add("strength");
-       }else{
+        if(event.getSource() == checkBoxFloor){
+            eventFilter.add("floor");
+        }else if(event.getSource() == checkBoxUnevenBars){
+            eventFilter.add("Uneven Bars");
+        }else if(event.getSource() == checkBoxBeam){
+            eventFilter.add("beam");
+        }else if(event.getSource() == checkBoxVault){
+            eventFilter.add("vault");
+        }else if(event.getSource() == checkBoxTramp){
+            eventFilter.add("tramp");
+        }else if(event.getSource() == checkBoxStrength){
+            eventFilter.add("strength");
+        }else{
         }
-       filterCardsByCheckbox();
+        filterCardsByCheckbox();
     }
 
 
@@ -612,6 +605,12 @@ public class MainEditDisplayController implements Initializable {
 
 
     @FXML
+    void setFilterController(ActionEvent event) {
+        new CombineAndFilter();
+        filterMenu.setVisible(false);
+    }
+
+    @FXML
     void resetButton(ActionEvent event) {
         for(Node nodeOut : filterVBox.getChildren()){
             if(nodeOut instanceof VBox) {
@@ -619,7 +618,7 @@ public class MainEditDisplayController implements Initializable {
                     if(nodeIn instanceof CheckBox){
                         ((CheckBox) nodeIn).setSelected(false);
                     }
-            }
+                }
             }
         }
         resetFlowPane();

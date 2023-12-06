@@ -1,13 +1,17 @@
 package csc305.gymnasticsApp.ui;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import csc305.gymnasticsApp.data.*;
 
@@ -26,6 +30,7 @@ public class GymnasticsAppBeta extends Application {
 
 
     private static boolean fileLoaded = false;
+    private static boolean userClickedCancel = false;
 
     /**
      *
@@ -35,17 +40,27 @@ public class GymnasticsAppBeta extends Application {
      * primary stages.
      */
     @Override
-    public void start(Stage primaryStage) throws FileNotFoundException {
-        CardDatabase.getDB().loadCardFromCSVFile("GymSoftwarePics/CSVFiles/DEMO1.csv");
-        CardDatabase.getDB().addCardsFromCSVFile("GymSoftwarePics/CSVFiles/DEMO2.csv");
-
+    public void start(Stage primaryStage){
         lessonPlan = new LessonPlan();
         stage = primaryStage;
         scene = new Scene(new BorderPane(), 1000, 700);
         stage.setScene(scene);
+        stage.setResizable(true);
+        MainEditDisplayController start = new MainEditDisplayController();
+        new Thread(() -> {
+            try{Thread.sleep(20); } catch (InterruptedException e) { }
+            Platform.runLater(() -> start.createCardButtons());
+        }).start();
 
+        //start.createCardButtons();
         // Handles window close event by toggling maximized state.
-
+        stage.setOnCloseRequest(event -> {
+            if(stage.isMaximized()) {
+                stage.setMaximized(false);
+            } else {
+                stage.setMaximized(true);
+            }
+        });
 
         switchToHomePage();
         stage.show();
@@ -69,17 +84,17 @@ public class GymnasticsAppBeta extends Application {
     /**
      * Switches the view to the main edit display
      */
-    public static void switchToMainEditDisplay(){switchToView("/csc305.gymnasticsApp/mainEditDisplay.fxml");}
+    public static void switchToMainEditDisplay(){switchToView("/csc305/gymnasticsApp/mainEditDisplay.fxml");}
 
 
     public static void switchToCourseEditPage(){
-        switchToView("/csc305.gymnasticsApp/courseEditPage.fxml");
+        switchToView("/csc305/gymnasticsApp/courseEditPage.fxml");
     }
     /**
      * Switches the view to the home page display
      */
     public static void switchToHomePage(){
-        switchToView("/csc305.gymnasticsApp/homePage.fxml");
+        switchToView("/csc305/gymnasticsApp/homePage.fxml");
         LessonPlan.resetBoolean();
     }
 
@@ -87,21 +102,21 @@ public class GymnasticsAppBeta extends Application {
      * Switches the view to the preview page display.
      */
     public static void switchToPreviewPage(){
-        switchToView("/csc305.gymnasticsApp/previewPage.fxml");
+        switchToView("/csc305/gymnasticsApp/previewPage.fxml");
     }
 
     /**
      * Switches to the template page display.
      */
     public static void switchToTemplatePage() {
-        switchToView("/csc305.gymnasticsApp/templatePage.fxml");
+        switchToView("/csc305/gymnasticsApp/templatePage.fxml");
     }
 
 
     /**
      * Switches to the about page
      */
-    public static void switchToAboutPage() {switchToView("/csc305.gymnasticsApp/aboutPage.fxml");}
+    public static void switchToAboutPage() {switchToView("/csc305/gymnasticsApp/aboutPage.fxml");}
 
     /**
      * Opens a file chooser dialog for selecting the Gymnastics Picture files
@@ -116,6 +131,8 @@ public class GymnasticsAppBeta extends Application {
         if(gymPlanFile != null) {
             selectedFile = gymPlanFile;
             fileLoaded = true;
+        } else{
+            userClickedCancel = true;
         }
 
     }
@@ -137,7 +154,7 @@ public class GymnasticsAppBeta extends Application {
     }
 
     /**
-        Checks if the user imports a file on the home page
+     Checks if the user imports a file on the home page
      */
     public static boolean getLoaded() {return fileLoaded; }
 
@@ -177,4 +194,10 @@ public class GymnasticsAppBeta extends Application {
         lessonPlan = newLessonPlan;
     }
 
+    public static boolean getUserClickedCancel(){
+        return userClickedCancel;
+    }
+    public static void setUserClickedCancel(Boolean setBoolean){
+        userClickedCancel = setBoolean;
+    }
 }

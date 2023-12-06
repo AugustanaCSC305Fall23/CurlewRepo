@@ -70,28 +70,29 @@ public class Course {
     }
 
     public static void loadEverythingFromFile(ArrayList<String> file){
-        CardDatabase.getDB().getAllCards();
+        CardDatabase.getAllCards();
         courseName = file.get(0);
         file.remove(0);
-        while((!(file.get(0).equals("done with event"))) || (!(file.get(1).equals("done with lessonplan"))) || (!(file.get(2).equals("done with course")))){
+        while (!(((file.get(0).equals("done with event"))) && ((file.get(1).equals("done with lessonplan"))) && ((file.get(2).equals("done with course"))))){
             if(file.get(0).equals("done with event") && file.get(1).equals("done with lessonplan")){
+                System.out.println("done w/ LP");
                 file.remove(0);
                 file.remove(0);
             }
             LessonPlan curPlan = new LessonPlan();
             curPlan.setLessonPlanTitle(file.get(0));
             file.remove(0);
-            while((!(file.get(0).equals("done with event"))) || (!(file.get(1).equals("done with lessonplan")))){
+            while(!(((file.get(0).equals("done with event"))) && ((file.get(1).equals("done with lessonplan"))))){
                 if(file.get(0).equals("done with event")){
+                    System.out.println("done w/ event");
                     file.remove(0);
                 }
                 curPlan.addEventName(file.get(0));
                 file.remove(0);
-                curPlan.addToEventList(new ArrayList<Card>());
                 //gets most recent event in this plan
-                List<Card> curEvent = curPlan.getEventList().get(curPlan.getEventList().size() - 1);
+                List<Card> curEvent = new ArrayList<>();
                 while(!(file.get(0).equals("done with event"))){
-                    curEvent.add(CardDatabase.getDB().getCardByID(file.get(0)));
+                    curEvent.add(CardDatabase.getCardByID(file.get(0)));
                     file.remove(0);
                 }
                 curPlan.addToEventList(curEvent);

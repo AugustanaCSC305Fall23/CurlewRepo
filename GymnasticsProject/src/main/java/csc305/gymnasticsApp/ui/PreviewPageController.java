@@ -8,6 +8,7 @@ import csc305.gymnasticsApp.data.PrintLessonPlan;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -29,8 +30,7 @@ import java.util.concurrent.Flow;
 
 public class PreviewPageController {
 
-    @FXML
-    private TextField equipmentBox;
+    private boolean showEquipment;
     @FXML
     private VBox eventPreviewVBox;
 
@@ -53,6 +53,7 @@ public class PreviewPageController {
     private LessonPlan lessonPlan;
 
     public void initialize() throws FileNotFoundException {
+        showEquipment = false;
         System.out.println("Initializing preview page");
         lessonPlan = GymnasticsAppBeta.getLessonPlan();
         lessonPlan.printEverything();
@@ -90,7 +91,7 @@ public class PreviewPageController {
             else{}
 
 */
-            fillVBox(currentVBox, i);
+            fillVBox(currentVBox, i, 30);
 
             mainFlowPane.getChildren().add(currentVBox);
             VBoxes.add(currentVBox);
@@ -111,32 +112,46 @@ public class PreviewPageController {
     }
 
 
-    private void fillVBox(VBox vbox, int eventIndex){
+    private void fillVBox(VBox vbox, int eventIndex, double flowGap){
         HBox eventTitleHBox = createEventTitleHBox();
         TextField eventTitleTextField = createEventTitleTextField(eventIndex);
         FlowPane eventCards = createEventCardFlowPane();
-        eventCards.getChildren().addAll(addCards(eventIndex));
-
+        eventCards.getChildren().addAll(addCards(eventIndex, flowGap == 10));
+        eventCards.setHgap(flowGap);
+        if(eventCards.getChildren().size() > 6){
+            eventCards.setVgap(50);
+            eventCards.setHgap(10);
+        }
         eventTitleHBox.getChildren().add(eventTitleTextField);
         vbox.getChildren().addAll(eventTitleHBox, eventCards);
 
     }
 
-    private List<ImageView> addCards(int eventIndex){
+    private List<ImageView> addCards(int eventIndex, boolean isEquipment){
         List<Card> eventCards = lessonPlan.getEventCards(eventIndex);
         List<ImageView> cardView = new ArrayList<>();
         for(Card card : eventCards){
             Image image = null;
             try {
                 image = new Image(new FileInputStream("GymSoftwarePics/" +
-                        card.getPackFolder().toUpperCase() + "Pack/" +
+                        card.getPackFolder() + "/" +
                         card.getImage()));
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
             ImageView imageView = new ImageView(image);
-            imageView.setFitWidth(200); // Set the width of the image view
-            imageView.setFitHeight(200); // Set the height of the image view
+            if(eventCards.size() > 6){
+                if(isEquipment) {
+                    imageView.setFitWidth(150); // Set the width of the image view
+                    imageView.setFitHeight(150); // Set the height of the image view
+                } else{
+                    imageView.setFitWidth(175); // Set the width of the image view
+                    imageView.setFitHeight(175); // Set the height of the image view
+                }
+            } else {
+                imageView.setFitWidth(200); // Set the width of the image view
+                imageView.setFitHeight(200); // Set the height of the image view
+            }
             cardView.add(imageView);
         }
         return cardView;
@@ -205,15 +220,6 @@ public class PreviewPageController {
     }
 
 
-    private TextField createEquipmentBox() {
-        TextField equipmentBox = new TextField();
-        equipmentBox.setPrefSize(770.0, 20.0);
-        equipmentBox.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;");
-        equipmentBox.setFont(Font.font("System Bold", 10.0));
-        equipmentBox.setText("Equipment:");
-        return equipmentBox;
-    }
-
 /*
     public void displayEventCards() {
         try {
@@ -253,12 +259,8 @@ public class PreviewPageController {
     }
 
     @FXML
-    void handleEquipmentBar(ActionEvent event){
-        if(equipmentBox.isVisible()){
-            equipmentBox.setVisible(false);
-        } else{
-            equipmentBox.setVisible(true);
-        }
+    void handleEquipmentBar(ActionEvent event) throws FileNotFoundException {
+        fillEquipmentBox();
     }
     @FXML
     void homeButtonController(ActionEvent event) {
@@ -338,19 +340,92 @@ public class PreviewPageController {
         }
     }
 
-    private void fillEquipmentBox(){
-        equipmentBox.setText("Equipment: ");
-        for(List<Card> eventCards : lessonPlan.getEventList()){
-            for(Card card : eventCards){
-                if(!card.getEquipment().equals("None")) {
-                    if (!(equipmentBox.getText().contains(card.getEquipment()))) {
-                        equipmentBox.setText(equipmentBox.getText() + ", " + card.getEquipment());
-                    }
-                }
-
-            }
+    private void fillEquipmentBox() throws FileNotFoundException {
+        //if equipment isnt shown, add equipment. If equipment is shown, remove it
+        if(showEquipment == false){
+            showEquipment = true;
+            initializeWithEquipment();
+        }else {
+            initialize();
         }
     }
+    public void initializeWithEquipment() {
+        System.out.println("Initializing preview page");
+        lessonPlan = GymnasticsAppBeta.getLessonPlan();
+        lessonPlan.printEverything();
+        System.out.println("^^^^should have printed everything");
+        //clear and reset panes
+        mainFlowPane.getChildren().clear();
+        VBoxes.clear();
+        boolean isFirst = true;
+        boolean createdTitle = false;
+
+        //iterates through each event and adds subsequent cards
+        for(int i = 0; i < lessonPlan.getEventNames().size(); i++){
+            //Checks if this is first event
+            VBox currentVBox;
+            if(!createdTitle) {
+                VBox nVBox = getNewVBox();
+                addTitleToVBox(nVBox, lessonPlan.getLessonPlanTitle());
+                createdTitle = true;
+                titleVBox = nVBox;
+                nVBox.setPadding(new javafx.geometry.Insets(20, 0, 0, 0));
+                currentVBox = nVBox;
+            } else{
+                VBox nVBox = getNewVBox();
+                nVBox.setPadding(new javafx.geometry.Insets(30, 0, 0, 0));
+                currentVBox = nVBox;
+            }
+            HBox nHBox = new HBox();
+            nHBox.setAlignment(Pos.CENTER_LEFT);
+            nHBox.setPrefSize(760.0, 535.0);
+            nHBox.setSpacing(5);
+            VBox eventVBox = new VBox();
+            eventVBox.setAlignment(Pos.TOP_CENTER);
+            eventVBox.setPrefSize(700, 535);
+            eventVBox.setSpacing(10);
+            fillVBox(eventVBox, i, 10);
+
+            nHBox.getChildren().add(eventVBox);
+
+
+            String finalEquipmentString = "";
+            for(int j = 0; j < lessonPlan.getEventList().get(i).size(); j++){
+                String[] equipmentList = lessonPlan.getEventList().get(i).get(j).getEquipment().split(", "); //gets each equipment item
+
+                for(int h = 0; h < equipmentList.length; h++) {
+                    if(!(equipmentList[h].equalsIgnoreCase("none"))) {//checks if the equipment is none
+                        if (!(finalEquipmentString.contains(equipmentList[h]))) {
+                                finalEquipmentString = finalEquipmentString + "- " + equipmentList[h] + "\n";
+                        }
+                    }
+                }
+            }
+            System.out.println(finalEquipmentString);
+            finalEquipmentString = "Equipment:\n" + finalEquipmentString;
+            TextArea equipmentBox = new TextArea();
+            equipmentBox.setText(finalEquipmentString);
+            equipmentBox.setPrefWidth(150);
+            equipmentBox.setPrefHeight(300);
+            equipmentBox.setWrapText(true);
+            equipmentBox.setText(finalEquipmentString);
+            equipmentBox.setStyle("-fx-font-size: 14;");
+            equipmentBox.setStyle("-fx-font-weight: bold;");
+            nHBox.getChildren().add(equipmentBox);
+            nHBox.setFillHeight(false);
+
+            currentVBox.getChildren().add(nHBox);
+            mainFlowPane.getChildren().add(currentVBox);
+            VBoxes.add(currentVBox);
+
+        }
+        mainFlowPane.setAlignment(Pos.CENTER);
+    }
+
+
+
+
+
 
     @FXML
     private void addPlanToCurrentCourseButtonHandle(ActionEvent event){

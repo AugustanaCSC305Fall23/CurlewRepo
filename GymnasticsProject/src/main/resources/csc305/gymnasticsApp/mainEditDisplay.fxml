@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
@@ -74,7 +75,10 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TreeView fx:id="treeView" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="387.0" prefWidth="410.0" style="-fx-border-color: black; -fx-font-size: 28px;" VBox.vgrow="ALWAYS" />
+                  <TreeView fx:id="treeView" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="387.0" prefWidth="410.0" style="-fx-border-color: black; -fx-font-size: 28px;" VBox.vgrow="ALWAYS">
+                     <tooltip>
+                        <Tooltip maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-font-size: 12;" text="Click these!" />
+                     </tooltip></TreeView>
                   <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="422.0" spacing="50.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="53.0" prefWidth="94.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER" textFill="#eef8ff">

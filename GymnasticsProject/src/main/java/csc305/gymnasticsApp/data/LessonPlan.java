@@ -139,6 +139,7 @@ public class LessonPlan {
     public void loadPlanFromFile(ArrayList<String> loadedLessonPlan) {
         if (GymnasticsAppBeta.getLoaded() && !hasBeenLoaded) {
             System.out.println("LOADING FROM FILE");
+            CardDatabase.getAllCards();
             resetLessonPlan();
             lessonPlanTitle = loadedLessonPlan.remove(0);
 
@@ -147,14 +148,15 @@ public class LessonPlan {
             //i is the line in the textFile
             for(int i = 0; i < sizeOfLoadedLessonPlan; i++){
                 //checks if the next line is a card or still an event
-                if (loadedLessonPlan.get(i).equals("end")) {
+                if(loadedLessonPlan.get(i).equals("end")) {
+                    loadedLessonPlan.get(i);
                     eventNumber = eventNumber + 1;
-                } else if (!(CardDatabase.getDB().getAllCards().contains(CardDatabase.getDB().getCardByID(loadedLessonPlan.get(i))))) {
+                }else if(!(CardDatabase.getAllCards().contains(CardDatabase.getCardByID(loadedLessonPlan.get(i))))){
                     List<Card> eventCards = new ArrayList<>();
                     addToEventList(eventCards);
                     eventNames.add(loadedLessonPlan.get(i));
-                } else {
-                    Card card = CardDatabase.getDB().getCardByID(loadedLessonPlan.get(i));
+                } else{
+                    Card card = CardDatabase.getCardByID(loadedLessonPlan.get(i));
                     addToEvent(card, eventNumber);
                 }
             }

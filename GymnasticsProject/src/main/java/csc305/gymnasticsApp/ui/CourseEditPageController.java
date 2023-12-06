@@ -155,7 +155,7 @@ public class CourseEditPageController {
                 for(int i = 0; i < Course.getLessonPlanList().size(); i++){
                     LessonPlan curPlan = Course.getLessonPlanList().get(i);
                     fileWriter.write(curPlan.getLessonPlanTitle() + "\n");
-                    for(int j = 0; j < curPlan.getEventList().size(); j++){
+                    for(int j = 0; j < curPlan.getEventNames().size(); j++){
                         //writes event's name
                         fileWriter.write(curPlan.getEventNames().get(j) + "\n");
                         for(int cardIndex = 0; cardIndex < curPlan.getEventList().get(j).size(); cardIndex++){
@@ -173,13 +173,31 @@ public class CourseEditPageController {
         }
     }
 
+
+    //MAKE AN ALERT
     @FXML
     public void loadCourseButtonHandle(ActionEvent event){
-        Course.clearLessonPlanList();
-        GymnasticsAppBeta.callFileChooser();
-        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
-        Course.loadEverythingFromFile(loadedLessonPlan);
-        GymnasticsAppBeta.switchToCourseEditPage();
+        Alert maxCardAlert = new Alert(Alert.AlertType.WARNING);
+        maxCardAlert.setTitle("Caution");
+        maxCardAlert.setHeaderText("This will FULLY DELETE the course you are currently working on! ");
+        ButtonType yesButton = new ButtonType("Load New Course and delete current one");
+        ButtonType noButton = new ButtonType("Cancel");
+        maxCardAlert.getButtonTypes().setAll(yesButton, noButton);
+        Optional<ButtonType> newResult = maxCardAlert.showAndWait();
+        if(newResult.isPresent()) {
+            if (newResult.get() == noButton) {
+                maxCardAlert.close();
+            } else if (newResult.get() == yesButton) {
+                GymnasticsAppBeta.callFileChooser();
+                if(GymnasticsAppBeta.getUserClickedCancel() == false) {
+                    Course.clearLessonPlanList();
+                    ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+                    Course.loadEverythingFromFile(loadedLessonPlan);
+                    GymnasticsAppBeta.switchToCourseEditPage();
+                }
+                GymnasticsAppBeta.setUserClickedCancel(false);
+            }
+        }
     }
 }
 
