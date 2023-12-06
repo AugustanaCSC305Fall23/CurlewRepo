@@ -6,6 +6,6 @@
 
 <fx:root mnemonicParsing="false" type="Button" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <graphic>
-        <ImageView fx:id="img" fitHeight="198.0" fitWidth="198.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="iv" fitHeight="198.0" fitWidth="198.0" pickOnBounds="true" preserveRatio="true" />
     </graphic>
 </fx:root>
