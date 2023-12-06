@@ -47,17 +47,12 @@ public class MainEditDisplayController implements Initializable {
     private ChoiceBox<String> genderCB;
     @FXML
     private ChoiceBox<String> modelGenderCB;
-    @FXML public CheckBox checkBoxFloor;
-    @FXML public CheckBox checkBoxUnevenBars;
-    @FXML public CheckBox checkBoxBeam;
-    @FXML public CheckBox checkBoxVault;
-    @FXML public CheckBox checkBoxTramp;
-    @FXML public CheckBox checkBoxStrength;
+    @FXML
+    private ChoiceBox<String> eventCB;
     @FXML public CheckBox levelABCheckBox;
     @FXML public CheckBox levelAdvancedCheckBox;
     @FXML public CheckBox levelBeginnerCheckBox;
     @FXML public CheckBox levelIntermediateCheckBox;
-    private EventFilter eventFilter = new EventFilter();
     private LevelFilter levelFilter = new LevelFilter();
     private EquipmentFilter equipmentFilter = new EquipmentFilter();
     private List<CardFilter> filterList = new ArrayList<>();
@@ -164,23 +159,28 @@ public class MainEditDisplayController implements Initializable {
 //        filterList.add(searchBarFilter);
         genderCB.getItems().addAll(CardDatabase.getGenderList());
         genderCB.setValue("N");
-        modelGenderCB.getItems().add("All");
+        modelGenderCB.getItems().add("ALL");
         modelGenderCB.getItems().addAll(CardDatabase.getModelGenderList());
-        modelGenderCB.setValue("All");
+        modelGenderCB.setValue("ALL");
+        eventCB.setValue("ALL");
+        eventCB.getItems().addAll(CardDatabase.getEventList());
 
         genderCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
         modelGenderCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
-        searchBar.textProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
+        eventCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
 
+        searchBar.textProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
 
     }
 
     void updateFilteredVisibleCards() {
         CardFilter genderFilter = new GenderFilter(genderCB.getValue());
         CardFilter modelGenderFilter = new ModelGenderFilter(modelGenderCB.getValue());
+        CardFilter eventFilter = new EventFilter(eventCB.getValue());
+
         CardFilter searchBarFilter = new SearchBarFilter(searchBar.getText());
 
-        CardFilter combineAndFilter = new CombineAndFilter(genderFilter, modelGenderFilter, searchBarFilter);
+        CardFilter combineAndFilter = new CombineAndFilter(genderFilter, modelGenderFilter, eventFilter, searchBarFilter);
 
         for (CardButton card : allCards) {
             boolean includeThisCard = combineAndFilter.matches(card.getCard());
@@ -517,30 +517,6 @@ public class MainEditDisplayController implements Initializable {
         cardFlowPane.getChildren().addAll(visibleButtons);
         currentFilteredCards.clear();
         currentFilteredCards.addAll(visibleButtons);
-    }
-
-
-    //************
-    //EVENT FILTER
-    //************
-
-    @FXML
-    void eventCheckBoxHandle(ActionEvent event){
-        if(event.getSource() == checkBoxFloor){
-            eventFilter.add("floor");
-        }else if(event.getSource() == checkBoxUnevenBars){
-            eventFilter.add("Uneven Bars");
-        }else if(event.getSource() == checkBoxBeam){
-            eventFilter.add("beam");
-        }else if(event.getSource() == checkBoxVault){
-            eventFilter.add("vault");
-        }else if(event.getSource() == checkBoxTramp){
-            eventFilter.add("tramp");
-        }else if(event.getSource() == checkBoxStrength){
-            eventFilter.add("strength");
-        }else{
-        }
-        filterCardsByCheckbox();
     }
 
 

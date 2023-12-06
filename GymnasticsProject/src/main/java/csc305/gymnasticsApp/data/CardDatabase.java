@@ -195,6 +195,14 @@ public class CardDatabase {
         return new ArrayList<>(modelGenderSet);
     }
 
+    public static List<String> getEventList() {
+        Set<String> eventSet = new TreeSet<>();
+        for (Card card : allCards) {
+            eventSet.add(card.getEvent());
+        }
+        return new ArrayList<>(eventSet);
+    }
+
 }
 
 //get card by id
