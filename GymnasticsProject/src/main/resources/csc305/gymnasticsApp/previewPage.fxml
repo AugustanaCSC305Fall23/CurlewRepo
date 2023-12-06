@@ -21,7 +21,7 @@
                   <Font name="System Bold" size="10.0" />
                </font>
                <tooltip>
-                  <Tooltip text="Back to the edit screen" />
+                  <Tooltip style="-fx-font-size: 12;" text="Back to the edit screen" />
                </tooltip>
             </Button>
             <Button fx:id="saveButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#saveController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Save" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
@@ -34,7 +34,7 @@
                   <Font name="System Bold" size="25.0" />
                </font>
                <tooltip>
-                  <Tooltip text="Prints every page you see! Landscape mode by default!" />
+                  <Tooltip style="-fx-font-size: 12;" text="Prints every page you see! Landscape mode by default!" />
                </tooltip>
             </Button>
             <Button fx:id="hideEquipment" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleEquipmentBar" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 20; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Show Equipment" textAlignment="CENTER" textFill="#eef8ff" wrapText="true">
@@ -47,7 +47,7 @@
                   <Font name="System Bold" size="25.0" />
                </font>
                <tooltip>
-                  <Tooltip text="Go back home but delete the current Lesson Plan" />
+                  <Tooltip style="-fx-font-size: 12;" text="Go back home but delete the current Lesson Plan" />
                </tooltip>
             </Button>
          </children>

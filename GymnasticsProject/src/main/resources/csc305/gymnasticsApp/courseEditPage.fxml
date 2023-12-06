@@ -30,7 +30,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
                <tooltip>
-                  <Tooltip text="Opens another course but deletes this one!" />
+                  <Tooltip style="-fx-font-size: 12;" text="Opens another course but deletes this one!" />
                </tooltip>
             </Button>
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="167.0" style="-fx-background-radius: 30; -fx-background-color: #3A5069;" text="Preview Entire Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
@@ -43,7 +43,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
                <tooltip>
-                  <Tooltip text="Deletes this entire course" />
+                  <Tooltip style="-fx-font-size: 12;" text="Deletes this entire course" />
                </tooltip>
             </Button>
          </children>
@@ -84,7 +84,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                      <tooltip>
-                        <Tooltip text="Check out the template Lesson Plans" />
+                        <Tooltip style="-fx-font-size: 12;" text="Check out the template Lesson Plans" />
                      </tooltip>
                   </Button>
                </children>

@@ -183,7 +183,6 @@ public class MainEditDisplayController implements Initializable {
             }
             listOfNewEvents.add(newEvent);
         }
-        System.out.println("ISSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
         events.clear();
         events.addAll(listOfNewEvents);
 
@@ -352,18 +351,40 @@ public class MainEditDisplayController implements Initializable {
                     deleteCardFromTreeView(event);
                 }
             } else { //is event, so shows text box
-                TextInputDialog renameDialog = new TextInputDialog();
-                renameDialog.setTitle("Rename " + selectedItem.getValue());
-                renameDialog.setHeaderText("What do you want to rename this event to?");
-                renameDialog.setContentText("New Event Name: ");
+                Alert choose = new Alert(Alert.AlertType.WARNING);
+                choose.setTitle("Caution");
+                choose.setHeaderText("Are you sure you want to delete this card?");
+                choose.setContentText("Please select an option.");
+                ButtonType renameButton = new ButtonType("Rename Event");
+                ButtonType deleteButton = new ButtonType("Delete Event");
+                ButtonType cancelButton = new ButtonType("Cancel");
+                choose.getButtonTypes().setAll(renameButton, deleteButton, cancelButton);
+                Optional<ButtonType> initialResult = choose.showAndWait();
+                if(initialResult.isPresent()) {
+                    if (initialResult.get() == renameButton) {
+                        TextInputDialog renameDialog = new TextInputDialog();
+                        renameDialog.setTitle("Rename " + selectedItem.getValue());
+                        renameDialog.setHeaderText("What do you want to rename this event to?");
+                        renameDialog.setContentText("New Event Name: ");
 
-                Optional<String> result = renameDialog.showAndWait();
-                result.ifPresent(newName -> {
-                    int index = rootItem.getChildren().indexOf(selectedItem);
-                    lessonPlan.setEventName(newName, index);
-                    selectedItem.setValue(newName);
-                    eventButtonList.set(index, new ButtonType(newName));
-                });
+                        Optional<String> result = renameDialog.showAndWait();
+                        result.ifPresent(newName -> {
+                            int index = rootItem.getChildren().indexOf(selectedItem);
+                            lessonPlan.setEventName(newName, index);
+                            selectedItem.setValue(newName);
+                            eventButtonList.set(index, new ButtonType(newName));
+                        });
+                    } else if(initialResult.get() == deleteButton){//deletes event
+                       int index = rootItem.getChildren().indexOf(selectedItem);
+                       lessonPlan.getEventList().remove(index);
+                       lessonPlan.getEventNames().remove(index);
+                       eventButtonList.remove(index);
+                       events.remove(index);
+                       rootItem.getChildren().remove(index);
+                    } else{
+                        choose.close();
+                    }
+                }
             }
         }
         treeView.getSelectionModel().clearSelection();

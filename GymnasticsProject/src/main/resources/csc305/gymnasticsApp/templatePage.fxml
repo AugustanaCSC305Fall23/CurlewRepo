@@ -52,11 +52,11 @@
                                  <children>
                                     <Button fx:id="maleOnlyButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMaleOnlyButtonOne" prefHeight="250.0" prefWidth="350.0">
                                        <tooltip>
-                                          <Tooltip text="Click to load the pre-made Lesson Plan" />
+                                          <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
                                     <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="250.0" prefWidth="350.0">
                                        <tooltip>
-                                          <Tooltip text="Click to load the pre-made Lesson Plan" />
+                                          <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
                                  </children>
                               </HBox>
@@ -73,11 +73,11 @@
                                  <children>
                                     <Button fx:id="beginnerOnlyButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBeginnerOnlyButtonOne" prefHeight="250.0" prefWidth="350.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;">
                                        <tooltip>
-                                          <Tooltip text="Click to load the pre-made Lesson Plan" />
+                                          <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
                                     <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="250.0" prefWidth="350.0">
                                        <tooltip>
-                                          <Tooltip text="Click to load the pre-made Lesson Plan" />
+                                          <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
                                  </children>
                               </HBox>
@@ -94,11 +94,11 @@
                                  <children>
                                     <Button fx:id="allFloorExercisesButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAllFloorExercisesButtonOne" prefHeight="250.0" prefWidth="350.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;">
                                        <tooltip>
-                                          <Tooltip text="Click to load the pre-made Lesson Plan" />
+                                          <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
                                     <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="250.0" prefWidth="350.0">
                                        <tooltip>
-                                          <Tooltip text="Click to load the pre-made Lesson Plan" />
+                                          <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
                                  </children>
                               </HBox>
