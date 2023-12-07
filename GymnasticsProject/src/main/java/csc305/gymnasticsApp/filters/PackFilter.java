@@ -27,6 +27,4 @@ public class PackFilter implements CardFilter{
 
     }
 
-    @Override
-    public void reset() {}
 }

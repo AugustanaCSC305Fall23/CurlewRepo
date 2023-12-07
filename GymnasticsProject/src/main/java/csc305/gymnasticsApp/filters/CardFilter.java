@@ -19,8 +19,6 @@ public interface CardFilter {
         return true;
     }
 
-
-    abstract void reset();
 }
 
 //pass in an instance of any filter

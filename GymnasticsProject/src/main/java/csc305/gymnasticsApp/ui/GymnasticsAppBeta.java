@@ -57,7 +57,7 @@ public class GymnasticsAppBeta extends Application {
         new Thread(() -> {
             try{Thread.sleep(20); } catch (InterruptedException e) { }
             Platform.runLater(() -> start.createCardButtons());
-            }).start();
+        }).start();
 
         //start.createCardButtons();
         // Handles window close event by toggling maximized state.
@@ -161,7 +161,7 @@ public class GymnasticsAppBeta extends Application {
     }
 
     /**
-        Checks if the user imports a file on the home page
+     Checks if the user imports a file on the home page
      */
     public static boolean getLoaded() {return fileLoaded; }
 

@@ -218,6 +218,7 @@ public class LessonPlan implements Cloneable{
         return null;
     }
 
+<<<<<<< HEAD
     public LessonPlan clone() {
         try {
             LessonPlan clone = (LessonPlan) super.clone();
@@ -276,3 +277,6 @@ public class LessonPlan implements Cloneable{
     }
 
 }
+=======
+}
+>>>>>>> 5437a5664483584008d59419bfbbc21ddc9a227b

@@ -9,48 +9,13 @@ import java.util.List;
  */
 
 public class ModelGenderFilter implements CardFilter {
-    public static List<String> selectedModelGender;
-    public ModelGenderFilter() {
-        if (selectedModelGender == null) {
-            selectedModelGender = new ArrayList<>();
-        }
+    private final String desiredModelGender;
+
+    public ModelGenderFilter(String desiredModelGender) {
+        this.desiredModelGender = desiredModelGender;
     }
 
-    public void add(String desiredModelGender) {
-        if (!(selectedModelGender.contains(desiredModelGender))) {
-            selectedModelGender.add(desiredModelGender);
-        } else {
-            selectedModelGender.remove(desiredModelGender);
-        }
-    }
-
-    public List<String> getSelectedModelGender() {
-        return selectedModelGender;
-    }
-
-    @Override
-    public void reset() {
-        selectedModelGender.clear();
-    }
-
-    /**
-     * Determines whether a given Card matches the desired model gender.
-     *
-     * @param canidateCard - The Card to be evaluated for a model gender match.
-     * @return true if the candidateCard's model gender matches the desired model gender; otherwise, false.
-     */
-    @Override
-    public boolean matches(Card canidateCard) {
-        boolean match = false;
-        if (selectedModelGender.isEmpty()) {
-            match = true;
-        }
-        for (String modelGender : selectedModelGender) {
-            if (modelGender.equalsIgnoreCase(canidateCard.getModelGender())) {
-                match = true;
-            }
-        }
-        return match;
-
+    public boolean matches(Card card) {
+        return desiredModelGender.equalsIgnoreCase("All") || desiredModelGender.equalsIgnoreCase(card.getGender());
     }
 }

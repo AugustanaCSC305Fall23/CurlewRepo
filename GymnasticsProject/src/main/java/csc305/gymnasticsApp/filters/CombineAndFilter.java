@@ -13,30 +13,19 @@ import java.util.List;
  */
 public class CombineAndFilter implements CardFilter {
 
-    /**
-     * Constructs a new CombineAndFilter that combines the criteria from different filters.
-     * The specific filters used for combination are GenderFilter and EventFilter.
-     */
-    public CombineAndFilter() {
+    CardFilter[] filters;
 
-        // Creates a list of criteria from GenderFilter and EventFilter
-        List<String> filters = Arrays.asList(
-                new GenderFilter().getDesiredGenders().toString(),
-                new EventFilter().getDesiredEvents().toString(),
-                new ModelGenderFilter().getSelectedModelGender().toString(),
-                new LevelFilter().getDesiredLevels().toString());
-        System.out.println(filters);
+    public CombineAndFilter(CardFilter... filters) {
+        this.filters = filters;
     }
+
     @Override
-    public void reset() {}
-    /**
-     * Determines whether a given Card matches the combined criteria defined by multiple filters.
-     *
-     * @param canidateCard - The Card to be evaluated for a match.
-     * @return true if the candidateCard matches the combined criteria; otherwise returns false
-     */
-    @Override
-    public boolean matches(Card canidateCard) {
+    public boolean matches(Card card) {
+        for (CardFilter filter : filters) {
+            if (!filter.matches(card)) {
+                return false;
+            }
+        }
         return true;
     }
 }

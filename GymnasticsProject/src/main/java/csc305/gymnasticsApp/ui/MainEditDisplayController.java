@@ -36,36 +36,23 @@ public class MainEditDisplayController implements Initializable {
     @FXML
     private VBox filterMenu;
     @FXML
-    private TextField drillSearchBar;
+    private TextField searchBar;
     @FXML
     private FlowPane cardFlowPane;
     @FXML
     private TreeView treeView;
     @FXML public VBox filterVBox;
     @FXML private TextField equipmentTextfield;
-    @FXML public CheckBox modelCheckboxMale;
-    @FXML public CheckBox checkBoxFloor;
-    @FXML public CheckBox checkBoxUnevenBars;
-    @FXML public CheckBox checkBoxBeam;
-    @FXML public CheckBox checkBoxVault;
-    @FXML public CheckBox checkBoxTramp;
-    @FXML public CheckBox checkBoxStrength;
-    @FXML public CheckBox checkBoxMale;
-    @FXML public CheckBox checkBoxFemale;
-    @FXML public CheckBox levelABCheckBox;
-    @FXML public CheckBox levelAdvancedCheckBox;
-    @FXML public CheckBox levelBeginnerCheckBox;
-    @FXML public CheckBox levelIntermediateCheckBox;
-    private GenderFilter genderFilter = new GenderFilter();
-    private ModelGenderFilter  modelGenderFilter = new ModelGenderFilter();
-    private EventFilter eventFilter = new EventFilter();
-    private LevelFilter levelFilter = new LevelFilter();
-    private EquipmentFilter equipmentFilter = new EquipmentFilter();
+
+    @FXML
+    private ChoiceBox<String> genderCB;
+    @FXML
+    private ChoiceBox<String> modelGenderCB;
+    @FXML
+    private ChoiceBox<String> eventCB;
+    @FXML
+    private ChoiceBox<String> levelCB;
     private List<CardFilter> filterList = new ArrayList<>();
-
-    private SearchBarFilter searchBarFilter = new SearchBarFilter();
-
-
     public static TreeItem<String> rootItem = new TreeItem<>("Root");
 
 
@@ -157,7 +144,6 @@ public class MainEditDisplayController implements Initializable {
 
     public void resetFlowPane(){
         cardFlowPane.getChildren().clear();
-        initFilterList();
         filterCardsByCheckbox();
         equipmentTextfield.clear();
         equipmentTextfield.setPromptText("Equipment Keyword");
@@ -165,18 +151,55 @@ public class MainEditDisplayController implements Initializable {
     }
 
     private void initFilterList(){
-        genderFilter.getDesiredGenders().clear();
-        filterList.add(genderFilter);
-        modelGenderFilter.getSelectedModelGender().clear();
-        filterList.add(modelGenderFilter);
-        eventFilter.reset();
-        filterList.add(eventFilter);
-        levelFilter.reset();
-        filterList.add(levelFilter);
-        equipmentFilter.reset();
-        filterList.add(equipmentFilter);
-        searchBarFilter.reset();
-        filterList.add(searchBarFilter);
+//        genderFilter.getDesiredGenders().clear();
+//        filterList.add(genderFilter);
+//        modelGenderFilter.getSelectedModelGender().clear();
+//        filterList.add(modelGenderFilter);
+//        eventFilter.reset();
+//        filterList.add(eventFilter);
+//        levelFilter.reset();
+//        filterList.add(levelFilter);
+//        equipmentFilter.reset();
+//        filterList.add(equipmentFilter);
+//        searchBarFilter.reset();
+//        filterList.add(searchBarFilter);
+        genderCB.getItems().addAll(CardDatabase.getGenderList());
+        genderCB.setValue("N");
+        modelGenderCB.getItems().add("ALL");
+        modelGenderCB.getItems().addAll(CardDatabase.getModelGenderList());
+        modelGenderCB.setValue("ALL");
+        eventCB.setValue("ALL");
+        eventCB.getItems().addAll(CardDatabase.getEventList());
+        levelCB.setValue("ALL");
+        levelCB.getItems().addAll(CardDatabase.getLevelList());
+
+        genderCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
+        modelGenderCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
+        eventCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
+        levelCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
+
+        searchBar.textProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
+        equipmentTextfield.textProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
+
+    }
+
+    void updateFilteredVisibleCards() {
+        CardFilter genderFilter = new GenderFilter(genderCB.getValue());
+        CardFilter modelGenderFilter = new ModelGenderFilter(modelGenderCB.getValue());
+        CardFilter eventFilter = new EventFilter(eventCB.getValue());
+        CardFilter levelFilter = new LevelFilter(levelCB.getValue());
+
+        CardFilter searchBarFilter = new SearchBarFilter(searchBar.getText());
+        CardFilter equipmentFilter = new EquipmentFilter(equipmentTextfield.getText());
+
+        CardFilter combineAndFilter = new CombineAndFilter(genderFilter, modelGenderFilter, eventFilter, searchBarFilter,
+                                                            levelFilter, equipmentFilter);
+
+        for (CardButton card : allCards) {
+            boolean includeThisCard = combineAndFilter.matches(card.getCard());
+            card.setVisible(includeThisCard);
+            card.setManaged(includeThisCard);
+        }
     }
 
 
@@ -519,111 +542,6 @@ public class MainEditDisplayController implements Initializable {
         cardFlowPane.getChildren().addAll(visibleButtons);
         currentFilteredCards.clear();
         currentFilteredCards.addAll(visibleButtons);
-    }
-
-    @FXML
-    void filterCardsFromSearch(KeyEvent event) {
-        String keyword = drillSearchBar.getText();
-        searchBarFilter.add(keyword);
-        filterCardsByCheckbox();
-    }
-
-    //*************
-    //GENDER FILTER
-
-    //*************
-
-
-    @FXML
-    void setChangedGenderBox(ActionEvent event){
-        if(event.getSource() == checkBoxMale){
-            genderFilter.add("M");
-        }else if(event.getSource() == checkBoxFemale){
-            genderFilter.add("F");
-        }else{
-            genderFilter.add("N");
-        }
-        if(!genderFilter.getDesiredGenders().isEmpty()) {
-            if (!filterList.contains(genderFilter)) {
-                filterList.add(genderFilter);
-            }
-        }else{
-            if (filterList.contains(genderFilter)) {
-                filterList.remove(genderFilter);
-            }
-        }
-        filterCardsByCheckbox();
-    }
-    //************
-    //EVENT FILTER
-
-    //************
-
-    @FXML
-    void eventCheckBoxHandle(ActionEvent event){
-        if(event.getSource() == checkBoxFloor){
-            eventFilter.add("floor");
-        }else if(event.getSource() == checkBoxUnevenBars){
-            eventFilter.add("Uneven Bars");
-        }else if(event.getSource() == checkBoxBeam){
-            eventFilter.add("beam");
-        }else if(event.getSource() == checkBoxVault){
-            eventFilter.add("vault");
-        }else if(event.getSource() == checkBoxTramp){
-            eventFilter.add("tramp");
-        }else if(event.getSource() == checkBoxStrength){
-            eventFilter.add("strength");
-        }else{
-        }
-        filterCardsByCheckbox();
-    }
-
-
-    //****************
-    //MODEL SEX FILTER
-    //****************
-
-    @FXML
-    void modelGenderCheckBoxHandle(ActionEvent event){
-        if(event.getSource() == modelCheckboxMale){
-            modelGenderFilter.add("M");
-        }else{
-            modelGenderFilter.add("F");
-        }
-        filterCardsByCheckbox();
-    }
-
-    //************
-    //LEVEL FILTER
-
-    //************
-
-
-    @FXML
-    void levelCheckBoxHandle(ActionEvent event) {
-        if (event.getSource() == levelABCheckBox) {
-            levelFilter.add("AB");
-        } else if (event.getSource() == levelAdvancedCheckBox) {
-            levelFilter.add("A");
-        } else if (event.getSource() == levelIntermediateCheckBox) {
-            levelFilter.add("I");
-        } else if (event.getSource() == levelBeginnerCheckBox) {
-            levelFilter.add("B");
-        } else {
-        }
-        filterCardsByCheckbox();
-    }
-
-    //****************
-    //Equipment Filter
-
-    //****************
-
-    @FXML
-    void setEquipmentTextField(KeyEvent event) {
-        String desiredEquipment = equipmentTextfield.getText();
-        equipmentFilter.add(desiredEquipment);
-        filterCardsByCheckbox();
     }
 
 
