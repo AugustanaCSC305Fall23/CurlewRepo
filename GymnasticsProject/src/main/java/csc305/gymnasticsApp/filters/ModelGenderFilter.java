@@ -11,10 +11,21 @@ import java.util.List;
 public class ModelGenderFilter implements CardFilter {
     private final String desiredModelGender;
 
+    /**
+     * Constructs a ModelGenderFilter with the specified desired model gender criteria
+     *
+     * @param desiredModelGender The model gender criteria to fitler by
+     */
     public ModelGenderFilter(String desiredModelGender) {
         this.desiredModelGender = desiredModelGender;
     }
 
+    /**
+     * Checks if a Card object's model gender matches the desired model gender criteria
+     *
+     * @param card - The Card to be evaluated for a match.
+     * @return true if the card's model gender matches the desired criteria, false otherwise
+     */
     public boolean matches(Card card) {
         return desiredModelGender.equalsIgnoreCase("All") || desiredModelGender.equalsIgnoreCase(card.getGender());
     }
