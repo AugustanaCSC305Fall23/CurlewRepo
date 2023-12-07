@@ -34,6 +34,8 @@ public class Card implements Cloneable{
     @CsvBindByName(column ="Keywords")
     private String keywords;
 
+    private boolean favorite;
+
     private String uniqueID;
 
     /**
@@ -52,6 +54,7 @@ public class Card implements Cloneable{
         this.equipment = getEquipment();
         this.keywords = getKeywords();
         this.uniqueID = getUniqueID();
+        this.favorite = false;
     }
 
     /**
@@ -73,12 +76,21 @@ public class Card implements Cloneable{
             clone.equipment = equipment;
             clone.keywords = keywords;
             clone.uniqueID = uniqueID;
+            clone.favorite = favorite;
             return clone;
         } catch (CloneNotSupportedException e) {
             // should never happen
             e.printStackTrace();
             return null;
         }
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
     }
 
     /**

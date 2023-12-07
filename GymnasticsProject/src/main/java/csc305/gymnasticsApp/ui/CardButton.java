@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,7 +17,7 @@ import java.io.IOException;
  * The CardButton class represents a custom JavaFX button that is associated with a specific card.
  * It extends the JavaFX Button class and includes additional functionality related to cards.
  */
-public class CardButton extends Button {
+public class CardButton extends AnchorPane {
     /**
      * The card that is associated with this button
      */
@@ -26,6 +27,9 @@ public class CardButton extends Button {
      */
     @FXML 
     private ImageView iv;
+
+    @FXML
+    private Button favButton;
 
     /**
      *
@@ -57,6 +61,16 @@ public class CardButton extends Button {
                 associatedCard.getPackFolder() + "/thumbs/" +
                 associatedCard.getImage().substring(0,dotIndex) + ".jpg"));
         iv.setImage(image);
+
+        favButton.setOnAction(event -> addToFavorites(associatedCard));
+    }
+
+    void addToFavorites(Card card) {
+        if (card.isFavorite()) {
+            card.setFavorite(false);
+        } else {
+            card.setFavorite(true);
+        }
     }
 
 
