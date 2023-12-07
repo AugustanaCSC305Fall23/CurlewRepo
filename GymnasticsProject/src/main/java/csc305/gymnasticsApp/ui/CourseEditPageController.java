@@ -155,7 +155,6 @@ public class CourseEditPageController {
         MainEditDisplayController.events.clear();
         MainEditDisplayController.resetButtons();
         GymnasticsAppBeta.setLessonPlan(new LessonPlan());
-        GymnasticsAppBeta.setLessonPlan(new LessonPlan());
         GymnasticsAppBeta.switchToHomePage();
     }
 

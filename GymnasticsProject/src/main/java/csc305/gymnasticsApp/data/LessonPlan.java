@@ -142,6 +142,8 @@ public class LessonPlan implements Cloneable{
      * @param loadedLessonPlan The loaded lesson plan data
      */
     public void loadPlanFromFile(ArrayList<String> loadedLessonPlan) {
+        System.out.println("has been loaded? " + hasBeenLoaded);
+        System.out.println(GymnasticsAppBeta.getLoaded());
         if (GymnasticsAppBeta.getLoaded() && !hasBeenLoaded) {
             System.out.println("LOADING FROM FILE");
             CardDatabase.getAllCards();

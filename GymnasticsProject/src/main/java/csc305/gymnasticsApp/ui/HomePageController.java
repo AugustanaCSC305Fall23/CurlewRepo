@@ -56,7 +56,7 @@ public class HomePageController {
                 GymnasticsAppBeta.switchToPreviewPage();
             }
         }
-        GymnasticsAppBeta.setUserClickedCancel(true);
+        GymnasticsAppBeta.setUserClickedCancel(false);
     }
 
     @FXML

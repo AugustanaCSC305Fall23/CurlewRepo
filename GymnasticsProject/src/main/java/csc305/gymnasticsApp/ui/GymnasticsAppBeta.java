@@ -100,8 +100,8 @@ public class GymnasticsAppBeta extends Application {
      * Switches the view to the home page display
      */
     public static void switchToHomePage(){
-        switchToView("/csc305/gymnasticsApp/homePage.fxml");
         LessonPlan.resetBoolean();
+        switchToView("/csc305/gymnasticsApp/homePage.fxml");
     }
 
     /**
