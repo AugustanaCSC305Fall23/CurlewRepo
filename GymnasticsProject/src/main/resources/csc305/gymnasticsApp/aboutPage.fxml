@@ -2,6 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -11,7 +13,7 @@
    <children>
       <VBox alignment="CENTER" style="-fx-background-color: linear-gradient(#EEF8FF, #7B97B7);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text fill="#3a5069" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Inter; -fx-font-weight: Bold; -fx-font-size: 4.5em;" text="Gym Coach Hero Acknowledgements" textAlignment="CENTER" wrappingWidth="900.0">
+            <Text fill="#3a5069" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Inter; -fx-font-weight: Bold; -fx-font-size: 4.5em;" text="The Gym Professor Acknowledgements" textAlignment="CENTER" wrappingWidth="900.0">
                <font>
                   <Font size="55.0" />
                </font>
@@ -77,5 +79,10 @@
             </Button>
          </children>
       </VBox>
+      <ImageView fitHeight="157.0" fitWidth="140.0" preserveRatio="true" y="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <image>
+            <Image url="@gymProfLogo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

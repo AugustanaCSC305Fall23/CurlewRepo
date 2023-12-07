@@ -7,6 +7,7 @@ import csc305.gymnasticsApp.data.Card;
  */
 public class TitleFilter implements CardFilter{
     private String desiredTitle;
+
     /**
      * Constructs a new TitleFilter with the desired title to match.
      *
@@ -15,6 +16,7 @@ public class TitleFilter implements CardFilter{
     public TitleFilter(String desiredTitle) {
         this.desiredTitle = desiredTitle;
     }
+
     /**
      * Determines whether a given Card matches the desired title.
      *

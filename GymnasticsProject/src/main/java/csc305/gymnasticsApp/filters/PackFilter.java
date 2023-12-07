@@ -15,6 +15,7 @@ public class PackFilter implements CardFilter{
     public PackFilter(String desiredPack) {
         this.desiredPack = desiredPack;
     }
+
     /**
      * Determines whether a given Card matches the desired pack folder.
      *

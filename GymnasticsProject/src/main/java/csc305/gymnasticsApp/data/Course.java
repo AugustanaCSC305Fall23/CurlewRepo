@@ -79,11 +79,20 @@ public class Course implements Cloneable{
         return false;
     }
 
-
+    /**
+     * Gets the name of the course
+     *
+     * @return The name of the course
+     */
     public static String getCourseName(){
         return courseName;
     }
 
+    /**
+     * Loads course data from a file
+     *
+     * @param file The list of strings containing file data
+     */
     public void loadEverythingFromFile(ArrayList<String> file){
         CardDatabase.getAllCards();
         courseName = file.get(0);
@@ -114,6 +123,11 @@ public class Course implements Cloneable{
         }
     }
 
+    /**
+     * Clones the current course
+     *
+     * @return A cloned instance of the course
+     */
     public Course clone() {
         try {
             Course clone = (Course) super.clone();
@@ -130,30 +144,53 @@ public class Course implements Cloneable{
         }
     }
 
-
+    /**
+     * Creates a memento for the course state
+     *
+     * @return A memento representing the current state of the course
+     */
     public State createMemento() {
         return new State();
     }
 
+    /**
+     * Restores the course state from a memento
+     *
+     * @param courseState The memento containing the course state
+     */
     public void restoreState(State courseState) {
         courseState.restore();
         GymnasticsAppBeta.setCourse(this.theCourse);
         GymnasticsAppBeta.switchToCourseEditPage();
     }
 
+    /**
+     * Inner class representing the state of the course
+     */
     public class State {
         private Course course;
 
+        /**
+         * Default constructor for the State class
+         * Creates a memento for the course state
+         */
         public State() {
             course = (Course) Course.theCourse.clone();
         }
 
+        /**
+         * Restores the course state from the memento
+         */
         public void restore() {
             Course.theCourse = (Course) course.clone();
         }
     }
 
-
+    /**
+     * Sets the name of the course
+     *
+     * @param newName The new name for the course
+     */
     public static void setCourseName(String newName){
         courseName = newName;
     }

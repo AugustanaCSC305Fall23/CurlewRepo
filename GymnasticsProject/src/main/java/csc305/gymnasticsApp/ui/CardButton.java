@@ -22,6 +22,9 @@ public class CardButton extends AnchorPane {
      * The card that is associated with this button
      */
     private Card associatedCard;
+    /**
+     * The ImageView for displaying the card's image
+     */
     @FXML 
     private ImageView iv;
 
@@ -46,6 +49,11 @@ public class CardButton extends AnchorPane {
         }
     }
 
+    /**
+     * Initializes the CardButton, setting its image based on the associated card
+     *
+     * @throws FileNotFoundException If the associated card's image file is not found
+     */
     @FXML
     private void initialize() throws FileNotFoundException{
         int dotIndex = associatedCard.getImage().indexOf(".");

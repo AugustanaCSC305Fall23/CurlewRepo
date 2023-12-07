@@ -179,6 +179,10 @@ public class CardDatabase {
         return card;
     }
 
+    /**
+     * Retrieves a list of unique gender values from the set of cards
+     * @return A list containing unique gender values
+     */
     public static List<String> getGenderList() {
         Set<String> genderSet = new TreeSet<>();
         for (Card card : allCards) {
@@ -187,6 +191,11 @@ public class CardDatabase {
         return new ArrayList<>(genderSet);
     }
 
+    /**
+     * Retrieves a list of unique model gender values from the set of all cards
+     *
+     * @return A list containing unique model gender values
+     */
     public static List<String> getModelGenderList() {
         Set<String> modelGenderSet = new TreeSet<>();
         for (Card card : allCards) {
@@ -195,6 +204,11 @@ public class CardDatabase {
         return new ArrayList<>(modelGenderSet);
     }
 
+    /**
+     * Retrieves a list of unique event values from the set of cards
+     *
+     * @return A list containing unique event values
+     */
     public static List<String> getEventList() {
         Set<String> eventSet = new TreeSet<>();
         for (Card card : allCards) {
@@ -203,6 +217,11 @@ public class CardDatabase {
         return new ArrayList<>(eventSet);
     }
 
+    /**
+     * Retrieves a list of unique level values from the set of all cards
+     *
+     * @return A list containing unique level values
+     */
     public static List<String> getLevelList() {
         Set<String> levelSet = new TreeSet<>();
         for (Card card : allCards) {

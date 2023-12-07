@@ -14,8 +14,16 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+/**
+ * The PrintLessonPlan class provides functionality for printing lesson plans
+ */
 public class PrintLessonPlan {
-
+    /**
+     * Prints the specified node representing a lesson plan
+     *
+     * @param printNode The node to be printed
+     * @param mainScrollPane The ScrollPane containing the lesson plan
+     */
     public static void printPlan(Node printNode, ScrollPane mainScrollPane) {
         Printer printer = Printer.getDefaultPrinter();
         PrinterJob job = PrinterJob.createPrinterJob(printer);

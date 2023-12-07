@@ -4,6 +4,10 @@ import csc305.gymnasticsApp.data.LessonPlan;
 
 import java.util.Stack;
 
+/**
+ * The LessonPlanUndoRedoHandles class manages the undo and redo functionality for a LessonPlan object
+ * It maintains stacks of states to support undo and redo operations
+ */
 public class LessonPlanUndoRedoHandler {
     private Stack<LessonPlan.State> undoStack, redoStack;
     // invariant: The top state of the undoStack always is a copy of the
