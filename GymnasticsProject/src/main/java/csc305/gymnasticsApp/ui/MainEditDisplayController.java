@@ -90,8 +90,8 @@ public class MainEditDisplayController implements Initializable {
         lessonPlan.getThePlan().addToEventList(eventCards);
         System.out.println("initializing");
         lessonTitle.setText(lessonPlan.getThePlan().getLessonPlanTitle());
-        undoRedoHandler = GymnasticsAppBeta.lessonPlanURHandler;
-        undoRedoHandler.saveState();
+        undoRedoHandler = new LessonPlanUndoRedoHandler(lessonPlan);
+        GymnasticsAppBeta.lessonPlanURHandler = undoRedoHandler;
     }
 
     public static void clearAndResetAlertButtons(){
