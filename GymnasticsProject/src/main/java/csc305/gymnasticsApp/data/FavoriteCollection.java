@@ -40,6 +40,11 @@ public class FavoriteCollection {
         }
     }
 
+    /**
+     * Code sourced from Open AI. Using their Chat GPT
+     *
+     * saves a java set into a json file using gson
+     */
     public void saveFavorites() {
         try (Writer writer = new FileWriter("src/main/resources/FavoriteCollection")) {
             Gson gson = new Gson();
@@ -49,6 +54,11 @@ public class FavoriteCollection {
         }
     }
 
+    /**
+     * Code sourced from Open AI. Using their Chat GPT
+     *
+     *load favorites reads a json file and converts it to java type so that it can be utilized
+     */
     private void loadFavorites() {
         try (Reader reader = new FileReader("src/main/resources/FavoriteCollection")) {
             Gson gson = new Gson();
