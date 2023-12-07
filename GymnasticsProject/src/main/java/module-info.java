@@ -4,6 +4,7 @@ module GymnasticsProject {
     requires javafx.graphics;
     requires com.opencsv;
     requires java.sql;
+    requires com.google.gson;
 
     exports csc305.gymnasticsApp.filters;
     opens csc305.gymnasticsApp.filters to javafx.fxml;

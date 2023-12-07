@@ -1,6 +1,7 @@
 package csc305.gymnasticsApp.filters;
 
 import csc305.gymnasticsApp.data.Card;
+import csc305.gymnasticsApp.data.FavoriteCollection;
 
 public class FavFilter implements CardFilter {
     private final boolean desiredFavorite;
@@ -10,6 +11,6 @@ public class FavFilter implements CardFilter {
     }
 
     public boolean matches(Card card) {
-        return card.isFavorite() == desiredFavorite || (!desiredFavorite);
+        return (FavoriteCollection.getInstance().getFavoriteSet().contains(card.getUniqueID()) || (!desiredFavorite));
     }
 }

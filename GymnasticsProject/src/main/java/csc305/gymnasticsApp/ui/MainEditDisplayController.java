@@ -1,10 +1,7 @@
 package csc305.gymnasticsApp.ui;
 
-import csc305.gymnasticsApp.data.Course;
+import csc305.gymnasticsApp.data.*;
 import csc305.gymnasticsApp.filters.*;
-import csc305.gymnasticsApp.data.Card;
-import csc305.gymnasticsApp.data.CardDatabase;
-import csc305.gymnasticsApp.data.LessonPlan;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -140,6 +137,9 @@ public class MainEditDisplayController implements Initializable {
         if(!isInitialized) {
             allCards.clear();
             for (Card card : CardDatabase.getAllCards()) {
+                if(FavoriteCollection.getInstance().getFavoriteSet().contains(card.getUniqueID())){
+                    card.setFavorite(true);
+                }
                 CardButton cardButton = new CardButton(card);
 //                cardButton.setOnAction(event -> addCardToTreeView(cardButton));
                 cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton));

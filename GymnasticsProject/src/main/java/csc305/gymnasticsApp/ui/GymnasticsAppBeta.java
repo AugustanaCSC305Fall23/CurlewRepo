@@ -48,11 +48,13 @@ public class GymnasticsAppBeta extends Application {
         course = new Course();
         lessonPlan = new LessonPlan();
         courseURHandle = new CourseUndoRedoHandler(course);
+        FavoriteCollection.getInstance();
         stage = primaryStage;
         scene = new Scene(new BorderPane(), 1000, 700);
         stage.setScene(scene);
         stage.setResizable(true);
         MainEditDisplayController start = new MainEditDisplayController();
+
         new Thread(() -> {
             try{Thread.sleep(20); } catch (InterruptedException e) { }
             Platform.runLater(() -> start.createCardButtons());
@@ -70,6 +72,9 @@ public class GymnasticsAppBeta extends Application {
 
         switchToHomePage();
         stage.show();
+        Runtime.getRuntime().addShutdownHook(new Thread(()-> {
+            FavoriteCollection.getInstance().saveFavorites();
+        }));
 
     }
 

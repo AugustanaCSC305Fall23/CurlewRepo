@@ -1,6 +1,7 @@
 package csc305.gymnasticsApp.ui;
 
 
+import csc305.gymnasticsApp.data.FavoriteCollection;
 import javafx.fxml.FXML;
 import csc305.gymnasticsApp.data.Card;
 import javafx.fxml.FXMLLoader;
@@ -63,13 +64,19 @@ public class CardButton extends AnchorPane {
         iv.setImage(image);
 
         favButton.setOnAction(event -> addToFavorites(associatedCard));
+        if(associatedCard.isFavorite()) {
+            favButton.setStyle("-fx-background-color: #ffff00");
+        }else{
+            favButton.setStyle("-fx-background-color: #dfdfdf");
+        }
     }
 
     void addToFavorites(Card card) {
-        if (card.isFavorite()) {
-            card.setFavorite(false);
-        } else {
-            card.setFavorite(true);
+        FavoriteCollection.getInstance().modifyFavorites(card.getUniqueID());
+        if(associatedCard.isFavorite()) {
+            favButton.setStyle("-fx-background-color: #ffff00");
+        }else{
+            favButton.setStyle("-fx-background-color: #dfdfdf");
         }
     }
 
