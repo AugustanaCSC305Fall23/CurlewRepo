@@ -10,6 +10,6 @@ public class FavFilter implements CardFilter {
     }
 
     public boolean matches(Card card) {
-        return card.isFavorite() == desiredFavorite;
+        return card.isFavorite() == desiredFavorite || (!desiredFavorite);
     }
 }
