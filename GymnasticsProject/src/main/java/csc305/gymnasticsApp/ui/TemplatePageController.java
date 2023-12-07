@@ -19,6 +19,12 @@ public class TemplatePageController {
     private Button maleOnlyButtonOne;
     @FXML
     private Button allFloorExercisesButtonOne;
+
+    /**
+     * Handles the action event for loading the beginner-only lesson plan
+     *
+     * @param event The action event triggered by the button
+     */
     @FXML
     void handleBeginnerOnlyButtonOne(ActionEvent event) {
         LessonPlan.resetBoolean();
@@ -33,6 +39,11 @@ public class TemplatePageController {
         }
     }
 
+    /**
+     * Handles the action event for loading the male-only lesson plan
+     *
+     * @param event The action event triggered by the button
+     */
     @FXML
     void handleMaleOnlyButtonOne(ActionEvent event) {
         LessonPlan.resetBoolean();
@@ -46,6 +57,12 @@ public class TemplatePageController {
             GymnasticsAppBeta.switchToPreviewPage();
         }
     }
+
+    /**
+     * Handles the action event for loading the all floor exercises lesson plan
+     *
+     * @param event The action event triggered by the button
+     */
     @FXML
     void handleAllFloorExercisesButtonOne(ActionEvent event) {
         LessonPlan.resetBoolean();
@@ -59,11 +76,20 @@ public class TemplatePageController {
             GymnasticsAppBeta.switchToPreviewPage();
         }
     }
+
+    /**
+     * Handles the action event for switching to the home page
+     *
+     * @param event The action event triggered by the button
+     */
     @FXML
     void homeButtonController(ActionEvent event) {
         GymnasticsAppBeta.switchToHomePage();
     }
 
+    /**
+     * Initializes the controller
+     */
     public void initialize(){
         Image beginnerFloorAndTrampolineImage = new Image("file:src/main/resources/templatePlans/beginnerFloorAndTrampolinePlanImage-1.png");
         initializeImages(beginnerFloorAndTrampolineImage, beginnerOnlyButtonOne);
@@ -73,6 +99,12 @@ public class TemplatePageController {
         initializeImages(allFloorExercisesPlanImage, allFloorExercisesButtonOne);
     }
 
+    /**
+     * Initializes the background images for buttons
+     *
+     * @param image The image to be set as the background
+     * @param button The button for which the background is set
+     */
     private void initializeImages(Image image, Button button){
         button.setStyle("-fx-background-image: url('" + image.getUrl() + "'); -fx-background-size: cover; -fx-background-position: center;");
     }

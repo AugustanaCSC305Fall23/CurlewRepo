@@ -28,6 +28,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Flow;
 
+/**
+ * Controller class for the preview page, responsible for displaying lesson plans
+ */
 public class PreviewPageController {
 
     private boolean showEquipment;
@@ -53,6 +56,11 @@ public class PreviewPageController {
     private LessonPlan lessonPlan;
     private Course course;
 
+    /**
+     * Initializes the preview page
+     *
+     * @throws FileNotFoundException if files are not found
+     */
     public void initialize() throws FileNotFoundException {
         showEquipment = false;
         System.out.println("Initializing preview page");
@@ -102,6 +110,11 @@ public class PreviewPageController {
         mainFlowPane.setAlignment(Pos.CENTER);
     }
 
+    /**
+     * Creates and returns a new VBox with specific styling and dimensions.
+     *
+     * @return a new VBox with styling and dimensions.
+     */
     private VBox getNewVBox(){
         VBox returnVBox = new VBox();
         returnVBox.setStyle("-fx-background-color: grey;");
@@ -113,7 +126,13 @@ public class PreviewPageController {
         return returnVBox;
     }
 
-
+    /**
+     * Fills a given VBox with event information, including the event title and associated cards.
+     *
+     * @param vbox      the VBox to be filled.
+     * @param eventIndex the index of the event to be displayed.
+     * @param flowGap   the gap between cards in the event.
+     */
     private void fillVBox(VBox vbox, int eventIndex, double flowGap){
         HBox eventTitleHBox = createEventTitleHBox();
         TextField eventTitleTextField = createEventTitleTextField(eventIndex);
@@ -129,6 +148,13 @@ public class PreviewPageController {
 
     }
 
+    /**
+     * Adds image cards to the VBox based on the specified event index.
+     *
+     * @param eventIndex   the index of the event.
+     * @param isEquipment  a flag indicating whether the cards are equipment.
+     * @return a list of ImageViews representing the cards.
+     */
     private List<ImageView> addCards(int eventIndex, boolean isEquipment){
         List<Card> eventCards = lessonPlan.getEventCards(eventIndex);
         List<ImageView> cardView = new ArrayList<>();
@@ -159,7 +185,12 @@ public class PreviewPageController {
         return cardView;
     }
 
-
+    /**
+     * Creates and returns a TextField for the event title.
+     *
+     * @param eventIndex the index of the event.
+     * @return a TextField with specific styling and dimensions.
+     */
     private TextField createEventTitleTextField(int eventIndex){
         TextField eventTitleTextField = new TextField();
         eventTitleTextField.setAlignment(Pos.CENTER);
@@ -171,7 +202,11 @@ public class PreviewPageController {
         return eventTitleTextField;
     }
 
-
+    /**
+     * Creates and returns an HBox for the event title.
+     *
+     * @return an HBox with specific styling and dimensions.
+     */
     private HBox createEventTitleHBox(){
         HBox eventTitleHBox = new HBox();
         eventTitleHBox.setAlignment(Pos.CENTER_LEFT);
@@ -179,6 +214,12 @@ public class PreviewPageController {
         eventTitleHBox.setSpacing(50.0);
         return eventTitleHBox;
     }
+
+    /**
+     * Creates and returns a FlowPane for displaying event cards.
+     *
+     * @return a FlowPane with specific styling and dimensions.
+     */
     private FlowPane createEventCardFlowPane(){
         FlowPane eventFlowPane = new FlowPane();
         eventFlowPane.setPrefHeight(200.0);
@@ -211,6 +252,12 @@ public class PreviewPageController {
         eventTitleHBox.getChildren().add(eventTitleTextField);
     }*/
 
+    /**
+     * Adds the lesson plan title to a given VBox.
+     *
+     * @param nVBox the VBox to which the title is added.
+     * @param title the title to be added.
+     */
     private void addTitleToVBox(VBox nVBox, String title) {
         TextField lessonPlanTextField = new TextField();
         lessonPlanTextField.setAlignment(Pos.CENTER);
@@ -255,15 +302,32 @@ public class PreviewPageController {
     }
     */
 
+    /**
+     * Switches the application to the main edit display view.
+     *
+     * @param event the triggering event.
+     */
     @FXML
     void editButtonController(ActionEvent event) {
         GymnasticsAppBeta.switchToMainEditDisplay();
     }
 
+    /**
+     * Handles the action event for filling the equipment box
+     *
+     * @param event The action event triggered by the button
+     * @throws FileNotFoundException If the equipment file is not found
+     */
     @FXML
     void handleEquipmentBar(ActionEvent event) throws FileNotFoundException {
         fillEquipmentBox();
     }
+
+    /**
+     * Handles the action event for going back to the home page
+     *
+     * @param event The action event triggered by the button
+     */
     @FXML
     void homeButtonController(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -287,17 +351,33 @@ public class PreviewPageController {
 
     }
 
-
+    /**
+     * Handles the action event for printing the lesson plan
+     *
+     * @param event The action event triggered by the button
+     */
     @FXML
     void printButtonController(ActionEvent event) {
         Node lessonPlanNode = mainScrollPane;
         PrintLessonPlan.printPlan(lessonPlanNode, mainScrollPane);
     }
 
+    /**
+     * Handles the action event for switching to the template page
+     *
+     * @param event The action event triggered by the button
+     */
     @FXML
     void handleTemplateButton(ActionEvent event){
         GymnasticsAppBeta.switchToTemplatePage();
     }
+
+    /**
+     * Handles the action event for saving the lesson plan
+     *
+     * @param event The action event triggered by the button
+     * @throws IOException If an I/O error occurs during the saving process
+     */
     @FXML
     void saveController(ActionEvent event) throws IOException {
         lessonPlan.printEverything();
@@ -336,6 +416,9 @@ public class PreviewPageController {
         }
     }
 
+    /**
+     * Sets the lesson plan titles for display
+     */
     private void setLessonPlanTitles() {
         lessonPlanTextField.setText(lessonPlan.getLessonPlanTitle());
         System.out.println("size of event names" + lessonPlan.getEventNames().size());
@@ -346,6 +429,11 @@ public class PreviewPageController {
         }
     }
 
+    /**
+     * Fills the equipment box based on the current state (shown/hidden)
+     *
+     * @throws FileNotFoundException if equipment images are not found
+     */
     private void fillEquipmentBox() throws FileNotFoundException {
         //if equipment isnt shown, add equipment. If equipment is shown, remove it
         if(showEquipment == false){
@@ -355,6 +443,10 @@ public class PreviewPageController {
             initialize();
         }
     }
+
+    /**
+     * Initializes the view with equipment display
+     */
     public void initializeWithEquipment() {
         System.out.println("Initializing preview page");
         lessonPlan = GymnasticsAppBeta.getLessonPlan();
@@ -428,11 +520,11 @@ public class PreviewPageController {
         mainFlowPane.setAlignment(Pos.CENTER);
     }
 
-
-
-
-
-
+    /**
+     * Handles the action event for adding the current lesson plan to the current course
+     *
+     * @param event The action event triggered by the button
+     */
     @FXML
     private void addPlanToCurrentCourseButtonHandle(ActionEvent event){
         if(!(course.getLessonPlanList().contains(GymnasticsAppBeta.getLessonPlan()))) {

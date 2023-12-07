@@ -108,7 +108,10 @@ public class MainEditDisplayController implements Initializable {
         }
     }
 
-
+    /**
+     * Initializes the tree view on the main edit display screen. Populates the tree view with events if empty,
+     * sets the display properties, and establishes the root item for the tree view
+     */
     private void initializeTreeView(){
         System.out.println("size of root items: " + rootItem.getChildren().size());
         if (rootItem.getChildren().isEmpty()) {
@@ -127,6 +130,10 @@ public class MainEditDisplayController implements Initializable {
         treeView.setRoot(rootItem);
     }
 
+    /**
+     * Creates card button for all cards in the CardDatabase. Each card button is associated with a Card object,
+     * and an action event listener is set to add the card to the tree view when clicked
+     */
     public void createCardButtons(){
         if(!isInitialized) {
             allCards.clear();
@@ -149,6 +156,9 @@ public class MainEditDisplayController implements Initializable {
         cardFlowPane.getChildren().addAll(allCards);
     }
 
+    /**
+     * Resets the FlowPane by clearing all card buttons, filtering cards, and resetting the equipment text field
+     */
     public void resetFlowPane(){
         cardFlowPane.getChildren().clear();
         filterCardsByCheckbox();
@@ -157,6 +167,10 @@ public class MainEditDisplayController implements Initializable {
 
     }
 
+    /**
+     * Initializes the filter options including gender, model gender, event, level, and equipment filters
+     * Sets up listeners for filter changes to update the displayed cards accordingly
+     */
     private void initFilterList(){
 //        genderFilter.getDesiredGenders().clear();
 //        filterList.add(genderFilter);
@@ -190,6 +204,10 @@ public class MainEditDisplayController implements Initializable {
 
     }
 
+    /**
+     * Updates the visibility of card buttons based on selected filter criteria such as gender, model gender, event, level,
+     * search bar text, and equipment. Applies combined filtering and sets card visibility accordingly.
+     */
     void updateFilteredVisibleCards() {
         CardFilter genderFilter = new GenderFilter(genderCB.getValue());
         CardFilter modelGenderFilter = new ModelGenderFilter(modelGenderCB.getValue());
@@ -209,7 +227,11 @@ public class MainEditDisplayController implements Initializable {
         }
     }
 
-
+    /**
+     * Adds tree items representing events and associated cards to the root item in the tree view
+     *
+     * @param lessonPlan The LessonPlan object containing events and cards
+     */
     public static void addTreeCardItems(LessonPlan lessonPlan) {
         rootItem.getChildren().clear();
         List<TreeItem<String>> listOfNewEvents = new ArrayList<>();
@@ -232,6 +254,9 @@ public class MainEditDisplayController implements Initializable {
 
     }
 
+    /**
+     * Clears all tree items, both events and cards, from the root item in the tree view
+     */
     public static void clearTreeCardItems() {
         rootItem.getChildren().clear();
         for(TreeItem<String> event: events){
@@ -239,6 +264,10 @@ public class MainEditDisplayController implements Initializable {
         }
     }
 
+    /**
+     * Handles the action when the "Add Event" button is clicked. Adds a new event to the tree view,
+     * updates the lesson plan, and saves the current state for undo/redo functionality
+     */
     public void eventAdderHandle(){
         int eventNum = events.size() + 1;
         events.add(new TreeItem<>("Event " + eventNum));
@@ -252,6 +281,12 @@ public class MainEditDisplayController implements Initializable {
         undoRedoHandler.saveState();
     }
 
+    /**
+     * Creates a ButtonType object representing an event button with a specified event number.
+     *
+     * @param eventNum The event number to be included in the event button label
+     * @return The created ButtonType object
+     */
     private ButtonType createEventButton(int eventNum){
         ButtonType eventButton = new ButtonType("Event" + eventNum);
         return eventButton;
@@ -305,14 +340,28 @@ public class MainEditDisplayController implements Initializable {
         }
     }
 
+    /**
+     * Handles the action when the "Undo" button is clicked, allowing the user to undo an action
+     *
+     * @param event The ActionEvent triggered by clicking the "Undo" button
+     */
     public void undoButtonHandle(ActionEvent event){
         undoRedoHandler.undo();
     }
 
+    /**
+     * Handles the action when the "Redo" button is clicked, allowing the user to restore an action
+     *
+     * @param event The ActionEvent triggered by clicking the "Redo" button
+     */
     public void redoButtonHandle(ActionEvent event){
         undoRedoHandler.redo();
     }
 
+    /**
+     * Sets the lessonPlan title
+     * @param event the name of the lesson plan title
+     */
     @FXML
     void setLessonTitle(KeyEvent event) {
         String title = lessonTitle.getText();
@@ -375,7 +424,13 @@ public class MainEditDisplayController implements Initializable {
     }
 
 
-
+    /**
+     * Handles the selection of an item in the tree view. Depending on whether the selected item
+     * is an event or a card, it prompts the user with options to rename, delete, or cancel the action
+     * If a card is deleted, it also removes it from the tree view
+     *
+     * @param event The MouseEvent triggering the item selection
+     */
     //DELETES CARD
     public void selectItem(MouseEvent event){
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
@@ -440,16 +495,29 @@ public class MainEditDisplayController implements Initializable {
         treeView.getSelectionModel().clearSelection();
     }
 
+    /**
+     * Deletes the selected card from the tree view. Assumes the selected item is a card
+     *
+     * @param event The MouseEvent triggering the item selection
+     */
     public void deleteCardFromTreeView(MouseEvent event){
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
         TreeItem<String> parent = selectedItem.getParent();
         parent.getChildren().remove(selectedItem);
     }
 
+    /**
+     * Resets the list of event buttons
+     */
     public static void resetButtons(){
         eventButtonList.clear();
     }
 
+    /**
+     * Adds a card to the tree view based on user selection of an event
+     *
+     * @param cardButton The CardButton representing the card to be added
+     */
     public void addCardToTreeView(CardButton cardButton) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Add Card to Event");
@@ -519,10 +587,18 @@ public class MainEditDisplayController implements Initializable {
 
 //    }
 
+    /**
+     * Retrieves the current LessonPlan instance
+     *
+     * @return The LessonPlan instance
+     */
     public static LessonPlan getLessonPlan() {
         return lessonPlan.getThePlan();
     }
 
+    /**
+     * Filters the displayed cards based on the selected checkboxes in the UI
+     */
     public void filterCardsByCheckbox() {
         List<CardButton> visibleButtons = new ArrayList<>();
         List<CardButton> hiddenButtons = new ArrayList<>();
@@ -551,13 +627,22 @@ public class MainEditDisplayController implements Initializable {
         currentFilteredCards.addAll(visibleButtons);
     }
 
-
+    /**
+     * Handles the event when the user clicks the "Set Filter" button in the UI
+     *
+     * @param event The ActionEvent triggered by the button click
+     */
     @FXML
     void setFilterController(ActionEvent event) {
         new CombineAndFilter();
         filterMenu.setVisible(false);
     }
 
+    /**
+     * Resets all checkboxes in the filter UI
+     *
+     * @param event The ActionEvent triggered by the button click
+     */
     @FXML
     void resetButton(ActionEvent event) {
         for(Node nodeOut : filterVBox.getChildren()){
@@ -572,6 +657,9 @@ public class MainEditDisplayController implements Initializable {
         resetFlowPane();
     }
 
+    /**
+     * Handles the event when the user clicks the "Done" button in the filter UI
+     */
     @FXML
     void doneButtonHandle(){
         filterMenu.setVisible(false);
