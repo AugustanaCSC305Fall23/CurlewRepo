@@ -30,7 +30,8 @@ import java.util.List;
  * The MainEditDisplayController class is responsible for handling user interactions and events on the main edit display page of the application.
  */
 public class MainEditDisplayController implements Initializable {
-
+    @FXML
+    private Button doneButton;
     @FXML
     private TextField lessonTitle;
     @FXML
@@ -563,5 +564,10 @@ public class MainEditDisplayController implements Initializable {
             }
         }
         resetFlowPane();
+    }
+
+    @FXML
+    void doneButtonHandle(){
+        filterMenu.setVisible(false);
     }
 }
