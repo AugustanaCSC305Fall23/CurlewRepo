@@ -28,56 +28,119 @@ public class LessonPlan implements Cloneable{
         eventList = new ArrayList<>();
     }
 
-
+    /**
+     * Gets the list of events in the lesson plan
+     *
+     * @return The list of events in the lesson plan
+     */
     public List<List<Card>> getEventList() {
         return eventList;
     }
 
+    /**
+     * Sets the list of events in the lesson plan
+     *
+     * @param eventList The list of events to set
+     */
     public void setEventList(List<List<Card>> eventList) {
         this.eventList = eventList;
     }
 
+    /**
+     * Adds a list of cards to the event list
+     *
+     * @param event The list of cards to add to the event list
+     */
     public void addToEventList(List<Card> event){
         eventList.add(event);
     }
 
+    /**
+     * Adds all events from a new list to the event list
+     *
+     * @param newEventList The list of events to add
+     */
     public void addAllToEventList(List<List<Card>> newEventList){
         eventList.addAll(newEventList);
     }
 
+    /**
+     * Clears the event list
+     */
     public void clearEventList(){
         eventList.clear();
     }
 
-
+    /**
+     * Sets the title of the lesson plan
+     *
+     * @param title The title to set
+     */
     public void setLessonPlanTitle(String title){
         lessonPlanTitle = title;
     }
 
+    /**
+     * Sets the name of an event at a specific index
+     *
+     * @param name The name to set
+     * @param index The index of the event
+     */
     public void setEventName(String name, int index){
         System.out.println("This is the index in setEventName" + index);
         eventNames.set(index, name);
     }
 
+    /**
+     * Saves the lesson plan to a file
+     *
+     * @param saveFile The file to save the lesson plan to
+     */
     public static void save(File saveFile) {
     }
+
+    /**
+     * Gets the title of the lesson plan
+     *
+     * @return The title of the lesson plan
+     */
     public String getLessonPlanTitle(){
         return lessonPlanTitle;
     }
 
-
+    /**
+     * Gets the list of event names
+     *
+     * @return The list of event names
+     */
     public List<String> getEventNames() {
         return eventNames;
     }
 
+    /**
+     * Sets the list of event names
+     *
+     * @param eventNames The list of event names to set
+     */
     public void setEventNames(List<String> eventNames) {
         this.eventNames = eventNames;
     }
 
+    /**
+     * Changes the name of an event at a specified index
+     *
+     * @param name The new name to set
+     * @param index The index of the event
+     */
     public void changeEventName(String name, int index){
         eventNames.set(index, name);
     }
 
+    /**
+     * Adds a name to the list of event names
+     *
+     * @param name The name to add
+     */
     public void addEventName(String name){
         eventNames.add(name);
     }
@@ -204,6 +267,10 @@ public class LessonPlan implements Cloneable{
         eventNames.clear();
     }
 
+    /**
+     * Retrieves the lesson plan
+     * @return the lesson plan
+     */
     public LessonPlan getThePlan(){
         return thePlan;
     }
@@ -218,6 +285,11 @@ public class LessonPlan implements Cloneable{
         return null;
     }
 
+    /**
+     * Clones the current lesson plan
+     *
+     * @return A cloned instance of the lesson plan
+     */
     public LessonPlan clone() {
         try {
             LessonPlan clone = (LessonPlan) super.clone();
@@ -262,13 +334,23 @@ public class LessonPlan implements Cloneable{
         MainEditDisplayController.clearAndResetAlertButtons();
     }
 
+    /**
+     * The State class represents a memento for the state of a LessonPlan
+     * It is used for undo functionality to restore the lesson plan to a previous state
+     */
     public class State {
         private LessonPlan lessonPlan;
 
+        /**
+         * Constructs a new State object by creating a memento for the current LessonPlan
+         */
         public State() {
             lessonPlan = (LessonPlan) LessonPlan.this.thePlan.clone();
         }
 
+        /**
+         * Restores the LessonPlan to the state stored in this memento
+         */
         public void restore() {
             LessonPlan.this.thePlan = (LessonPlan) lessonPlan.clone();
 

@@ -54,6 +54,10 @@ public class Card implements Cloneable{
         this.uniqueID = getUniqueID();
     }
 
+    /**
+     * Clones all aspects of a card
+     * @return returns the clone of the card
+     */
     public Card clone() {
         try {
             Card clone = (Card) super.clone();
