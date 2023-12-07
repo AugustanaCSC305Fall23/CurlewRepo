@@ -164,6 +164,9 @@ public class GymnasticsAppBeta extends Application {
      */
     public static boolean getLoaded() {return fileLoaded; }
 
+    public static void setLoaded(Boolean val){
+        fileLoaded = val;
+    }
     /**
      * Reads through a file and breaks the different lines of the file up into separate ArrayList indexes
      * @return Returns an ArrayList containing all the information from the file

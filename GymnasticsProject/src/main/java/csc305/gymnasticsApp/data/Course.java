@@ -17,7 +17,7 @@ public class Course implements Cloneable{
      */
     private List<LessonPlan> lessonPlanList = new ArrayList<>();
 
-    private String courseName = "First Course";
+    public static String courseName = "First Course";
     private static Course theCourse = new Course();
 
     private static CourseEditPageController controller = new CourseEditPageController();
@@ -80,7 +80,7 @@ public class Course implements Cloneable{
     }
 
 
-    public String getCourseName(){
+    public static String getCourseName(){
         return courseName;
     }
 
@@ -153,4 +153,8 @@ public class Course implements Cloneable{
         }
     }
 
+
+    public static void setCourseName(String newName){
+        courseName = newName;
+    }
 }
