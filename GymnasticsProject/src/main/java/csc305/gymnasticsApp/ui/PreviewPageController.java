@@ -280,6 +280,8 @@ public class PreviewPageController {
             MainEditDisplayController.clearTreeCardItems();
             MainEditDisplayController.events.clear();
             MainEditDisplayController.resetButtons();
+            lessonPlan = new LessonPlan();
+            GymnasticsAppBeta.setLessonPlan(lessonPlan);
             GymnasticsAppBeta.switchToHomePage();
         }
 
@@ -298,6 +300,7 @@ public class PreviewPageController {
     }
     @FXML
     void saveController(ActionEvent event) throws IOException {
+        lessonPlan.printEverything();
         List<List<Card>> eventCardList = new ArrayList<>();
         for(int i =0; i < lessonPlan.getEventList().size(); i++){
             List<Card> cardList = new ArrayList<>();
@@ -315,13 +318,14 @@ public class PreviewPageController {
         if (selectedFile != null) {
             // Create a FileWriter for the selected file and write the data.
             try (FileWriter fileWriter = new FileWriter(selectedFile)) {
-                fileWriter.write(lessonPlanTextField.getText() + "\n");
+                fileWriter.write(lessonPlan.getLessonPlanTitle() + "\n");
 
                 //NEED A FOR LOOP FOR EVENT TITLES
 
-                for(List<Card> cardList : eventCardList) {
-                    for (int i = 0; i < cardList.size(); i++) {
-                        fileWriter.write(cardList.get(i).getUniqueID() + "\n");
+                for(int h = 0; h < lessonPlan.getEventList().size(); h++) {
+                    fileWriter.write(lessonPlan.getEventNames().get(h) + "\n");
+                    for (int i = 0; i < lessonPlan.getEventList().get(h).size(); i++) {
+                        fileWriter.write(lessonPlan.getEventList().get(h).get(i).getUniqueID() + "\n");
                     }
                     fileWriter.write("end\n");
                 }

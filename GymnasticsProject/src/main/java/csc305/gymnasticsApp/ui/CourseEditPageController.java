@@ -44,7 +44,8 @@ public class CourseEditPageController {
         initializeTreeView();
         undoRedoHandler = GymnasticsAppBeta.courseURHandle;
         undoRedoHandler.saveState();
-
+        courseName.setText(Course.getCourseName());
+        courseName.textProperty().addListener((obs, oldVal, newVal) -> changeCourseNameHandle());
 
     }
     @FXML
@@ -70,8 +71,11 @@ public class CourseEditPageController {
                 }
             }
         }
+
+
         treeView.setShowRoot(false);
         treeView.setRoot(rootItem);
+
     }
 
     public void selectItem(MouseEvent event){
@@ -217,6 +221,12 @@ public class CourseEditPageController {
                 GymnasticsAppBeta.setUserClickedCancel(false);
             }
         }
+    }
+
+    @FXML
+    private void changeCourseNameHandle(){
+        Course.setCourseName(courseName.getText());
+        System.out.println(Course.getCourseName());
     }
 }
 
