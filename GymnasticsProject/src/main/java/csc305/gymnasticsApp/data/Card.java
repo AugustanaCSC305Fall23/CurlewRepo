@@ -2,6 +2,7 @@ package csc305.gymnasticsApp.data;
 
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import com.opencsv.bean.CsvBindByName;
 
@@ -9,7 +10,7 @@ import com.opencsv.bean.CsvBindByName;
  * The Card class represents a gymnastics card with various attributes such as code, event,
  * category, title, pack folder, image, gender, model gender, level, equipment, keywords, and a unique ID.
  */
-public class Card {
+public class Card implements Cloneable{
     @CsvBindByName(column = "CODE")
     private String code;
     @CsvBindByName(column ="Event")
@@ -51,6 +52,29 @@ public class Card {
         this.equipment = getEquipment();
         this.keywords = getKeywords();
         this.uniqueID = getUniqueID();
+    }
+
+    public Card clone() {
+        try {
+            Card clone = (Card) super.clone();
+            clone.code = code;
+            clone.event = event;
+            clone.category = category;
+            clone.title = title;
+            clone.packFolder = packFolder;
+            clone.image = image;
+            clone.gender = gender;
+            clone.modelGender = modelGender;
+            clone.level = level;
+            clone.equipment = equipment;
+            clone.keywords = keywords;
+            clone.uniqueID = uniqueID;
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            // should never happen
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**

@@ -14,7 +14,7 @@ import java.util.Stack;
  * @author Dale Skrien (ported to JavaFX by Forrest Stonedahl, Copied and Modified for Gymnastics App by Jack Bigler)
  * @version 1.0 August 2005 (updated to JavaFX Oct. 2018)
  **/
-public class UndoRedoHandler {
+public class CourseUndoRedoHandler {
     private Stack<Course.State> undoStack, redoStack;
     // invariant: The top state of the undoStack always is a copy of the
     // current state of the canvas.
@@ -23,10 +23,10 @@ public class UndoRedoHandler {
     /**
      * constructor
      *
-     * @param canvas the DrawingCanvas whose changes are saved for later
+     * @param course the Course whose changes are saved for later
      *               restoration.
      */
-    public UndoRedoHandler(Course course) {
+    public CourseUndoRedoHandler(Course course) {
         undoStack = new Stack<Course.State>();
         redoStack = new Stack<Course.State>();
         this.course = course;
@@ -35,7 +35,7 @@ public class UndoRedoHandler {
     }
 
     /**
-     * saves the current state of the drawing canvas for later restoration
+     * saves the current state of the course for later restoration
      */
     public void saveState() {
         Course.State courseState = course.createMemento();
@@ -44,7 +44,7 @@ public class UndoRedoHandler {
     }
 
     /**
-     * restores the state of the drawing canvas to what it was before the last
+     * restores the state of the course to what it was before the last
      * change. Nothing happens if there is no previous state (for example, when the
      * application first starts up or when you've already undone all actions since
      * the startup state).
@@ -53,23 +53,23 @@ public class UndoRedoHandler {
         if (undoStack.size() == 1) // only the current state is on the stack
             return;
 
-        DrawingCanvas.State canvasState = undoStack.pop();
-        redoStack.push(canvasState);
-        canvas.restoreState(undoStack.peek());
+        Course.State courseState = undoStack.pop();
+        redoStack.push(courseState);
+        course.restoreState(undoStack.peek());
     }
 
     /**
-     * restores the state of the drawing canvas to what it was before the last undo
-     * action was performed. If some change was made to the state of the canvas
+     * restores the state of the course to what it was before the last undo
+     * action was performed. If some change was made to the state of the course
      * since the last undo, then this method does nothing.
      */
     public void redo() {
         if (redoStack.isEmpty())
             return;
 
-        DrawingCanvas.State canvasState = redoStack.pop();
-        undoStack.push(canvasState);
-        canvas.restoreState(canvasState);
+        Course.State courseState = redoStack.pop();
+        undoStack.push(courseState);
+        course.restoreState(courseState);
     }
 }
 

@@ -30,6 +30,9 @@ public class GymnasticsAppBeta extends Application {
 
     private static Course course;
 
+    public static LessonPlanUndoRedoHandler lessonPlanURHandler;
+    public static CourseUndoRedoHandler courseURHandle;
+
     private static boolean fileLoaded = false;
     private static boolean userClickedCancel = false;
 
@@ -42,8 +45,10 @@ public class GymnasticsAppBeta extends Application {
      */
     @Override
     public void start(Stage primaryStage){
-        lessonPlan = new LessonPlan();
         course = new Course();
+        lessonPlan = new LessonPlan();
+        lessonPlanURHandler = new LessonPlanUndoRedoHandler(lessonPlan);
+        courseURHandle = new CourseUndoRedoHandler(course);
         stage = primaryStage;
         scene = new Scene(new BorderPane(), 1000, 700);
         stage.setScene(scene);

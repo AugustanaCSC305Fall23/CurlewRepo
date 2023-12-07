@@ -1,5 +1,6 @@
 package csc305.gymnasticsApp.ui;
 
+import csc305.gymnasticsApp.data.Course;
 import csc305.gymnasticsApp.filters.*;
 import csc305.gymnasticsApp.data.Card;
 import csc305.gymnasticsApp.data.CardDatabase;
@@ -77,6 +78,8 @@ public class MainEditDisplayController implements Initializable {
     public static LessonPlan lessonPlan;
     private static List<ButtonType> eventButtonList = new ArrayList<>();
 
+    private static LessonPlanUndoRedoHandler undoRedoHandler;
+
     /**
      * Initializes the tree view on the main edit display screen.
      *
@@ -85,35 +88,42 @@ public class MainEditDisplayController implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        lessonPlan = GymnasticsAppBeta.getLessonPlan();
+        lessonPlan = GymnasticsAppBeta.getLessonPlan().getThePlan();
         if(lessonPlan.getEventNames().isEmpty()){
-            lessonPlan.addEventName("Event 1");
+            lessonPlan.getThePlan().addEventName("Event 1");
         }
-        lessonPlan.printEverything();
-        eventButtonList.clear();
-        for(int i = 0; i < lessonPlan.getEventNames().size(); i++){
-            eventButtonList.add(new ButtonType(lessonPlan.getEventNames().get(i)));
-        }
+        //lessonPlan.printEverything();
+        clearAndResetAlertButtons();
         initializeTreeView();
         addCardsToFlowPane();
         allCards = getAllCardButtons();
         resetFlowPane();
         initFilterList();
         List<Card> eventCards = new ArrayList<>();
-        lessonPlan.addToEventList(eventCards);
+        lessonPlan.getThePlan().addToEventList(eventCards);
         System.out.println("initializing");
-        lessonTitle.setText(GymnasticsAppBeta.getLessonPlan().getLessonPlanTitle());
-
+        lessonTitle.setText(lessonPlan.getThePlan().getLessonPlanTitle());
+        undoRedoHandler = GymnasticsAppBeta.lessonPlanURHandler;
+        undoRedoHandler.saveState();
     }
 
+    public static void clearAndResetAlertButtons(){
+        eventButtonList.clear();
+        for(int i = 0; i < lessonPlan.getThePlan().getEventNames().size(); i++){
+            eventButtonList.add(new ButtonType(lessonPlan.getThePlan().getEventNames().get(i)));
+        }
+    }
+
+
     private void initializeTreeView(){
+        System.out.println("size of root items: " + rootItem.getChildren().size());
         if (rootItem.getChildren().isEmpty()) {
             if(events.isEmpty()){
                 events.add(new TreeItem<String>("Event 1"));
                 if(eventButtonList.isEmpty()) {
                     eventButtonList.add(createEventButton(1));
                 }
-                System.out.println(eventButtonList.size());
+                //System.out.println(eventButtonList.size());
             }
             for(TreeItem<String> event: events){
                 rootItem.getChildren().add(event);
@@ -175,20 +185,21 @@ public class MainEditDisplayController implements Initializable {
         List<TreeItem<String>> listOfNewEvents = new ArrayList<>();
         for(int i = 0; i < lessonPlan.getEventNames().size(); i++){
             String eventName = lessonPlan.getEventNames().get(i);
-            TreeItem<String> newEvent = new TreeItem<String>();
+            TreeItem<String> newEvent = new TreeItem<String>(eventName);
+            newEvent.setExpanded(true);
             for (int j = 0; j < lessonPlan.getEventCards(i).size(); j++) {
                 TreeItem<String> newCard = new TreeItem<String>(lessonPlan.getEventList().get(i).get(j).getTitle());
                 newEvent.getChildren().add(newCard);
-                newEvent.setValue(eventName);
             }
             listOfNewEvents.add(newEvent);
         }
         events.clear();
         events.addAll(listOfNewEvents);
 
-        System.out.println(events);
+        System.out.println("Add Tree Card Items(Printing the events): " + events);
 
         rootItem.getChildren().addAll(events);
+
     }
 
     public static void clearTreeCardItems() {
@@ -204,10 +215,11 @@ public class MainEditDisplayController implements Initializable {
         rootItem.getChildren().clear();
         rootItem.getChildren().addAll(events);
         List<Card> eventCards = new ArrayList<>();
-        lessonPlan.addToEventList(eventCards);
-        lessonPlan.addEventName("Event" + eventNum);
+        lessonPlan.getThePlan().addToEventList(eventCards);
+        lessonPlan.getThePlan().addEventName("Event" + eventNum);
         ButtonType eventButton = createEventButton(eventNum);
         eventButtonList.add(eventButton);
+        undoRedoHandler.saveState();
     }
 
     private ButtonType createEventButton(int eventNum){
@@ -250,7 +262,7 @@ public class MainEditDisplayController implements Initializable {
      */
     @FXML
     void previewButtonHandle(ActionEvent event) {
-        if (lessonPlan.getLessonPlanTitle() == null) {
+        if (lessonPlan.getThePlan().getLessonPlanTitle() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Warning");
             alert.setHeaderText("Please add a Title before proceeding.");
@@ -259,16 +271,23 @@ public class MainEditDisplayController implements Initializable {
             alert.showAndWait();
         } else {
             GymnasticsAppBeta.switchToPreviewPage();
-            lessonPlan.printEverything();
+            lessonPlan.getThePlan().printEverything();
         }
+    }
+
+    public void undoButtonHandle(ActionEvent event){
+        undoRedoHandler.undo();
+    }
+
+    public void redoButtonHandle(ActionEvent event){
+        undoRedoHandler.redo();
     }
 
     @FXML
     void setLessonTitle(KeyEvent event) {
         String title = lessonTitle.getText();
-        lessonPlan.setLessonPlanTitle(title);
+        lessonPlan.getThePlan().setLessonPlanTitle(title);
     }
-
 
     /**
      * Handles the action when the filter menu is opened.
@@ -279,6 +298,7 @@ public class MainEditDisplayController implements Initializable {
     void openFilterMenu(ActionEvent event){
         filterMenu.setVisible(true);
     }
+
     /**
      * Handles the action when the filter menu is closed.
      *
@@ -327,7 +347,6 @@ public class MainEditDisplayController implements Initializable {
 
 
     //DELETES CARD
-
     public void selectItem(MouseEvent event){
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
         if(selectedItem != null) {
@@ -347,7 +366,7 @@ public class MainEditDisplayController implements Initializable {
                 if (result.get() == yesButton) {
                     int index = rootItem.getChildren().indexOf(parent);
                     int cardNum = parent.getChildren().indexOf(selectedItem);
-                    lessonPlan.deleteFromEvent(index, cardNum);
+                    lessonPlan.getThePlan().deleteFromEvent(index, cardNum);
                     deleteCardFromTreeView(event);
                 }
             } else { //is event, so shows text box
@@ -370,14 +389,14 @@ public class MainEditDisplayController implements Initializable {
                         Optional<String> result = renameDialog.showAndWait();
                         result.ifPresent(newName -> {
                             int index = rootItem.getChildren().indexOf(selectedItem);
-                            lessonPlan.setEventName(newName, index);
+                            lessonPlan.getThePlan().setEventName(newName, index);
                             selectedItem.setValue(newName);
                             eventButtonList.set(index, new ButtonType(newName));
                         });
                     } else if(initialResult.get() == deleteButton){//deletes event
                        int index = rootItem.getChildren().indexOf(selectedItem);
-                       lessonPlan.getEventList().remove(index);
-                       lessonPlan.getEventNames().remove(index);
+                       lessonPlan.getThePlan().getEventList().remove(index);
+                       lessonPlan.getThePlan().getEventNames().remove(index);
                        eventButtonList.remove(index);
                        events.remove(index);
                        rootItem.getChildren().remove(index);
@@ -387,8 +406,10 @@ public class MainEditDisplayController implements Initializable {
                 }
             }
         }
+        undoRedoHandler.saveState();
         treeView.getSelectionModel().clearSelection();
     }
+
     public void deleteCardFromTreeView(MouseEvent event){
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
         TreeItem<String> parent = selectedItem.getParent();
@@ -398,7 +419,6 @@ public class MainEditDisplayController implements Initializable {
     public static void resetButtons(){
         eventButtonList.clear();
     }
-
 
     public void addCardToTreeView(CardButton cardButton) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -435,10 +455,10 @@ public class MainEditDisplayController implements Initializable {
             for(int i =0; i<eventButtonList.size(); i++){
                 ButtonType eventButton = eventButtonList.get(i);
                 if(buttonType == eventButton){
-                    if(!(lessonPlan.getEventList().get(i).size() >= 8)) {//checks to make sure no more than 8 cards are added to an event
+                    if(!(lessonPlan.getThePlan().getEventList().get(i).size() >= 8)) {//checks to make sure no more than 8 cards are added to an event
                         TreeItem<String> newCard = new TreeItem<>(card.getCode() + " " + card.getTitle());
                         events.get(i).getChildren().add(newCard);
-                        lessonPlan.addToEvent(card, i);
+                        lessonPlan.getThePlan().addToEvent(card, i);
                     } else {
                         Alert maxCardAlert = new Alert(Alert.AlertType.WARNING);
                         maxCardAlert.setTitle("Caution");
@@ -456,6 +476,7 @@ public class MainEditDisplayController implements Initializable {
         for(TreeItem<String> event : events){
             event.setExpanded(true);
         }
+        undoRedoHandler.saveState();
     }
 //    /**
 //     * Filters the displayed cards based on the input text in the search bar.
@@ -465,10 +486,11 @@ public class MainEditDisplayController implements Initializable {
 //    private void filterCards(String inputText, filters filter) {
 //        inputText = inputText.replaceAll("\\s+", "");
 //        List<Button> cardButtons = getAllCardButtons();
+
 //    }
 
     public static LessonPlan getLessonPlan() {
-        return lessonPlan;
+        return lessonPlan.getThePlan();
     }
 
     public void filterCardsByCheckbox() {
@@ -506,9 +528,9 @@ public class MainEditDisplayController implements Initializable {
         filterCardsByCheckbox();
     }
 
-
     //*************
     //GENDER FILTER
+
     //*************
 
 
@@ -532,9 +554,9 @@ public class MainEditDisplayController implements Initializable {
         }
         filterCardsByCheckbox();
     }
-
     //************
     //EVENT FILTER
+
     //************
 
     @FXML
@@ -557,10 +579,10 @@ public class MainEditDisplayController implements Initializable {
     }
 
 
-
     //****************
     //MODEL SEX FILTER
     //****************
+
     @FXML
     void modelGenderCheckBoxHandle(ActionEvent event){
         if(event.getSource() == modelCheckboxMale){
@@ -571,9 +593,9 @@ public class MainEditDisplayController implements Initializable {
         filterCardsByCheckbox();
     }
 
-
     //************
     //LEVEL FILTER
+
     //************
 
 
@@ -592,9 +614,9 @@ public class MainEditDisplayController implements Initializable {
         filterCardsByCheckbox();
     }
 
-
     //****************
     //Equipment Filter
+
     //****************
 
     @FXML

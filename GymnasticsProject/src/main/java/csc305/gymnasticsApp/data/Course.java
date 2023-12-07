@@ -12,16 +12,19 @@ public class Course implements Cloneable{
     /**
      * A list containing all lesson plans in the course
      */
-    private List<LessonPlan> lessonPlanList;
+    private List<LessonPlan> lessonPlanList = new ArrayList<>();
 
     private String courseName = "First Course";
-    private static Course course = new Course();
+    private static Course theCourse = new Course();
 
     public Course(){
-        lessonPlanList = new ArrayList<>();
-        courseName = "First Course";
-        course = this;
+        theCourse = this;
     }
+
+    public static Course getTheCourse() {
+        return theCourse;
+    }
+
 
     /**
      * Adds a lesson plan to the course
@@ -71,6 +74,7 @@ public class Course implements Cloneable{
         }
         return false;
     }
+
 
     public String getCourseName(){
         return courseName;
@@ -127,20 +131,19 @@ public class Course implements Cloneable{
         return new State();
     }
 
-    public void restoreState(State canvasState) {
-        canvasState.restore();
-        repaint();
+    public void restoreState(State courseState) {
+        courseState.restore();
     }
 
     public class State {
         private Course course;
 
         public State() {
-            course = (Course) Course.this.clone();
+            course = (Course) Course.theCourse.clone();
         }
 
         public void restore() {
-            Course.this = (Course) course.clone();
+            Course.theCourse = (Course) course.clone();
         }
     }
 

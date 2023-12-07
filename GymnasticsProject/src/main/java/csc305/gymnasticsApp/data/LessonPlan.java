@@ -18,10 +18,13 @@ public class LessonPlan implements Cloneable{
 
     private List<List<Card>> eventList;
 
+    private LessonPlan thePlan;
+
     /**
      * Constructs a new LessonPlan with an empty list of events
      */
     public LessonPlan() {
+        thePlan = this;
         eventList = new ArrayList<>();
     }
 
@@ -124,7 +127,9 @@ public class LessonPlan implements Cloneable{
         System.out.println(lessonPlanTitle + " " + eventsName);
         for(List<Card> eventCards : eventList){
             if (!(eventCards.isEmpty())) {
-                System.out.println(eventCards.get(0).toString());
+                for(Card card : eventCards){
+                    System.out.println(card.toString());
+                }
             } else{
                 System.out.println("event is empty");
             }
@@ -199,6 +204,10 @@ public class LessonPlan implements Cloneable{
         eventNames.clear();
     }
 
+    public LessonPlan getThePlan(){
+        return thePlan;
+    }
+
     /**
      * Loads a lesson plan from a file
      *
@@ -215,17 +224,54 @@ public class LessonPlan implements Cloneable{
             clone.lessonPlanTitle = lessonPlanTitle;
             clone.eventNames = new ArrayList<String>();
             clone.eventList = new ArrayList<List<Card>>();
+            if(eventNames.isEmpty()){
+                eventNames.add("Event 1");
+            }
             for (String name : eventNames) {
                 clone.eventNames.add(name);
             }
             for(List<Card> cardList : eventList){
-                clone.eventList.add(cardList);
+                List<Card> clonedList = new ArrayList<>();
+                for(Card card : cardList){
+                    clonedList.add(card.clone());
+                }
+                clone.eventList.add(clonedList);
+
             }
             return clone;
         } catch (CloneNotSupportedException e) {
             // should never happen
             e.printStackTrace();
             return null;
+        }
+    }
+    public State createMemento() {
+        return new State();
+    }
+
+    public void restoreState(LessonPlan.State lessonPlan) {
+        lessonPlan.restore();
+        resetDisplay();
+    }
+    private void resetDisplay(){
+        System.out.println("Printing for the UNDO: ");
+        LessonPlan.this.thePlan.printEverything();
+        GymnasticsAppBeta.setLessonPlan(LessonPlan.this.thePlan);
+        MainEditDisplayController.clearTreeCardItems();
+        MainEditDisplayController.addTreeCardItems(LessonPlan.this.thePlan);
+        MainEditDisplayController.clearAndResetAlertButtons();
+    }
+
+    public class State {
+        private LessonPlan lessonPlan;
+
+        public State() {
+            lessonPlan = (LessonPlan) LessonPlan.this.thePlan.clone();
+        }
+
+        public void restore() {
+            LessonPlan.this.thePlan = (LessonPlan) lessonPlan.clone();
+
         }
     }
 
