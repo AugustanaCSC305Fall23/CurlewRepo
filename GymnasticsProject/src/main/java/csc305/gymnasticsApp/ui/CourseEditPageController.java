@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * The CourseEditPageController class handles the interactions and logic for the Course Edit Page in the application
+ */
 public class CourseEditPageController {
     @FXML
     private TreeView treeView;
@@ -36,7 +39,9 @@ public class CourseEditPageController {
     public TreeItem<String> rootItem = new TreeItem<>("Root");
     private static CourseUndoRedoHandler undoRedoHandler;
 
-
+    /**
+     * Initializes the Course Edit Page
+     */
     @FXML
     public void initialize() {
         System.out.println("Initializing Course Edit Page");
@@ -48,15 +53,26 @@ public class CourseEditPageController {
         courseName.textProperty().addListener((obs, oldVal, newVal) -> changeCourseNameHandle());
 
     }
+
+    /**
+     * Handles the undo button click
+     */
     @FXML
     public void undoButtonHandle(){
         undoRedoHandler.undo();
     }
+
+    /**
+     * Handles the redo button click
+     */
     @FXML
     public void redoButtonHandle(){
         undoRedoHandler.redo();
     }
 
+    /**
+     * Initializes the tree view with lesson plans
+     */
     public void initializeTreeView(){
         rootItem.getChildren().clear();
         if (rootItem.getChildren().isEmpty()) {
@@ -78,6 +94,11 @@ public class CourseEditPageController {
 
     }
 
+    /**
+     * Handles the selection of an item in the tree view
+     *
+     * @param event The mouse event
+     */
     public void selectItem(MouseEvent event){
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
         if(selectedItem != null) {
@@ -127,11 +148,21 @@ public class CourseEditPageController {
     }
 
 
-
+    /**
+     * Handles the "Load Template" button click
+     *
+     * @param event The action event
+     */
     @FXML
     private void preMadeLessonButtonHandle(ActionEvent event){
         GymnasticsAppBeta.switchToTemplatePage();
     }
+
+    /**
+     * Handles the "Create New Lesson Plan" button click
+     *
+     * @param event The action event
+     */
     @FXML
     private void createNewLessonPlanButtonHandle(ActionEvent event){
         MainEditDisplayController.clearTreeCardItems();
@@ -142,6 +173,11 @@ public class CourseEditPageController {
         undoRedoHandler.saveState();
     }
 
+    /**
+     * Handles the "Reset Course" button click
+     *
+     * @param event The action event
+     */
     @FXML
     private void resetCourseButtonHandle(ActionEvent event){
         course.getTheCourse().clearLessonPlanList();
@@ -158,6 +194,12 @@ public class CourseEditPageController {
         GymnasticsAppBeta.switchToHomePage();
     }
 
+    /**
+     * Handles the "Save Course" button click
+     *
+     * @param event The action event
+     * @throws IOException If an I/O error occurs during saving
+     */
     @FXML
     void saveCourseButtonHandle(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -194,8 +236,11 @@ public class CourseEditPageController {
         }
     }
 
-
-    //MAKE AN ALERT
+    /**
+     * Handles the "Load Course" button click
+     *
+     * @param event The action event
+     */
     @FXML
     public void loadCourseButtonHandle(ActionEvent event){
         Alert maxCardAlert = new Alert(Alert.AlertType.WARNING);
@@ -222,6 +267,9 @@ public class CourseEditPageController {
         }
     }
 
+    /**
+     * Handles the change in the course name
+     */
     @FXML
     private void changeCourseNameHandle(){
         Course.setCourseName(courseName.getText());

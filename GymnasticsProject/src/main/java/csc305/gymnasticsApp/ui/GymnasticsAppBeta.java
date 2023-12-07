@@ -92,7 +92,9 @@ public class GymnasticsAppBeta extends Application {
      */
     public static void switchToMainEditDisplay(){switchToView("/csc305/gymnasticsApp/mainEditDisplay.fxml");}
 
-
+    /**
+     * Switches the view to the course edit display
+     */
     public static void switchToCourseEditPage(){
         switchToView("/csc305/gymnasticsApp/courseEditPage.fxml");
     }
@@ -164,6 +166,10 @@ public class GymnasticsAppBeta extends Application {
      */
     public static boolean getLoaded() {return fileLoaded; }
 
+    /**
+     * Sets the fileLoaded boolean
+     * @param val the boolean value to set
+     */
     public static void setLoaded(Boolean val){
         fileLoaded = val;
     }
@@ -203,17 +209,38 @@ public class GymnasticsAppBeta extends Application {
         lessonPlan = newLessonPlan;
     }
 
+    /**
+     * Gets the course
+     *
+     * @return The course
+     */
     public static Course getCourse() {
         return course;
     }
 
+    /**
+     * Sets the course
+     *
+     * @param course The course to be set
+     */
     public static void setCourse(Course course) {
         GymnasticsAppBeta.course = course;
     }
 
+    /**
+     * Gets the user's cancellation status
+     *
+     * @return true if the user clicked cancel; otherwise, false
+     */
     public static boolean getUserClickedCancel(){
         return userClickedCancel;
     }
+
+    /**
+     * Sets the user's cancellation status
+     *
+     * @param setBoolean The value to set for the cancellation status
+     */
     public static void setUserClickedCancel(Boolean setBoolean){
         userClickedCancel = setBoolean;
     }

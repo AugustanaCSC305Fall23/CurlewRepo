@@ -27,7 +27,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The MainEditDisplayController class is responsible for handling user interactions and events on the main edit display page of the application.
+ * The MainEditDisplayController class is responsible for handling user interactions and events on the main edit display page of the application.\
+ * It manages the display of lesson plans, card filtering, tree view for events, and undo/redo functionality
+ *
+ * This class also facilitates the interaction between the graphical user interface (GUI) and the underlying data model
  */
 public class MainEditDisplayController implements Initializable {
     @FXML
@@ -95,6 +98,9 @@ public class MainEditDisplayController implements Initializable {
         GymnasticsAppBeta.lessonPlanURHandler = undoRedoHandler;
     }
 
+    /**
+     * Clears and resets alert buttons related to events
+     */
     public static void clearAndResetAlertButtons(){
         eventButtonList.clear();
         for(int i = 0; i < lessonPlan.getThePlan().getEventNames().size(); i++){
