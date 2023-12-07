@@ -53,6 +53,8 @@ public class MainEditDisplayController implements Initializable {
     private ChoiceBox<String> eventCB;
     @FXML
     private ChoiceBox<String> levelCB;
+    @FXML
+    private CheckBox favCheckBox;
     private List<CardFilter> filterList = new ArrayList<>();
     public static TreeItem<String> rootItem = new TreeItem<>("Root");
 
@@ -126,7 +128,8 @@ public class MainEditDisplayController implements Initializable {
             allCards.clear();
             for (Card card : CardDatabase.getAllCards()) {
                 CardButton cardButton = new CardButton(card);
-                cardButton.setOnAction(event -> addCardToTreeView(cardButton));
+//                cardButton.setOnAction(event -> addCardToTreeView(cardButton));
+                cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton));
                 allCards.add(cardButton);
             }
             isInitialized = true;
@@ -179,6 +182,8 @@ public class MainEditDisplayController implements Initializable {
         eventCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
         levelCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
 
+        favCheckBox.selectedProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
+
         searchBar.textProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
         equipmentTextfield.textProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
 
@@ -190,11 +195,13 @@ public class MainEditDisplayController implements Initializable {
         CardFilter eventFilter = new EventFilter(eventCB.getValue());
         CardFilter levelFilter = new LevelFilter(levelCB.getValue());
 
+        CardFilter favFilter = new FavFilter(favCheckBox.isSelected());
+
         CardFilter searchBarFilter = new SearchBarFilter(searchBar.getText());
         CardFilter equipmentFilter = new EquipmentFilter(equipmentTextfield.getText());
 
         CardFilter combineAndFilter = new CombineAndFilter(genderFilter, modelGenderFilter, eventFilter, searchBarFilter,
-                                                            levelFilter, equipmentFilter);
+                                                            levelFilter, equipmentFilter, favFilter);
 
         for (CardButton card : allCards) {
             boolean includeThisCard = combineAndFilter.matches(card.getCard());
