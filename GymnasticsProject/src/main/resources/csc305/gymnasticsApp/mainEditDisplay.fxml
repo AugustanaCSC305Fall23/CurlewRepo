@@ -116,7 +116,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="56.0" prefWidth="110.0" style="-fx-background-radius: 2.0em; -fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.5em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Done" textFill="#eef8ff">
+                  <Button fx:id="doneButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#doneButtonHandle" prefHeight="56.0" prefWidth="110.0" style="-fx-background-radius: 2.0em; -fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.5em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Done" textFill="#eef8ff">
                      <font>
                         <Font size="14.0" />
                      </font>

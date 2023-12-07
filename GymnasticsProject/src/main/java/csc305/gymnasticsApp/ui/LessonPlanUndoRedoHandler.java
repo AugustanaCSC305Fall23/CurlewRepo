@@ -42,6 +42,7 @@ public class LessonPlanUndoRedoHandler {
      * the startup state).
      */
     public void undo() {
+        System.out.println(undoStack.size());
         if (undoStack.size() == 1) { // only the current state is on the stack
             return;
         }

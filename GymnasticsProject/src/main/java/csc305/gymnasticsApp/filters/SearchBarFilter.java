@@ -11,10 +11,12 @@ public class SearchBarFilter implements CardFilter{
     }
     @Override
     public boolean matches(Card card) {
-        return card.getTitle().toUpperCase().contains(searchText.toUpperCase())
-                || card.getCategory().toUpperCase().contains(searchText.toUpperCase())
-                || card.getKeywords().toUpperCase().contains(searchText.toUpperCase())
-                || card.getCode().toUpperCase().contains(searchText.toUpperCase())
-                || card.getEvent().toUpperCase().contains(searchText.toUpperCase());
+        return card.getUniqueID().toUpperCase().contains(searchText.toUpperCase());
+
+//        card.getTitle().toUpperCase().contains(searchText.toUpperCase())
+//                || card.getCategory().toUpperCase().contains(searchText.toUpperCase())
+//                || card.getKeywords().toUpperCase().contains(searchText.toUpperCase())
+//                || card.getCode().toUpperCase().contains(searchText.toUpperCase())
+//                || card.getEvent().toUpperCase().contains(searchText.toUpperCase());
     }
 }
