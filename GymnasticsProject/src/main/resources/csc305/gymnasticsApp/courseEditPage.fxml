@@ -96,14 +96,20 @@
          <top>
             <HBox alignment="CENTER" prefHeight="19.0" prefWidth="758.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="courseName" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="570.0" style="-fx-background-color: EEF8FF;" text="Current Course Name">
+                  <TextField fx:id="courseName" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="491.0" style="-fx-background-color: EEF8FF;" text="Current Course Name">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="125.0" right="-15.0" />
                      </HBox.margin>
                   </TextField>
+                  <Button fx:id="undoButton" mnemonicParsing="false" onAction="#undoButtonHandle" text="UNDO">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="redoButton" mnemonicParsing="false" onAction="#redoButtonHandle" text="REDO" />
                </children>
                <BorderPane.margin>
                   <Insets bottom="20.0" top="20.0" />

@@ -1,5 +1,8 @@
 package csc305.gymnasticsApp.data;
 
+import csc305.gymnasticsApp.ui.CourseEditPageController;
+import csc305.gymnasticsApp.ui.GymnasticsAppBeta;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +20,7 @@ public class Course implements Cloneable{
     private String courseName = "First Course";
     private static Course theCourse = new Course();
 
+    private static CourseEditPageController controller = new CourseEditPageController();
     public Course(){
         theCourse = this;
     }
@@ -133,6 +137,8 @@ public class Course implements Cloneable{
 
     public void restoreState(State courseState) {
         courseState.restore();
+        GymnasticsAppBeta.setCourse(this.theCourse);
+        GymnasticsAppBeta.switchToCourseEditPage();
     }
 
     public class State {

@@ -34,6 +34,7 @@ public class CourseEditPageController {
 
     private Course course;
     public TreeItem<String> rootItem = new TreeItem<>("Root");
+    private static CourseUndoRedoHandler undoRedoHandler;
 
 
     @FXML
@@ -41,18 +42,29 @@ public class CourseEditPageController {
         System.out.println("Initializing Course Edit Page");
         course = GymnasticsAppBeta.getCourse();
         initializeTreeView();
+        undoRedoHandler = GymnasticsAppBeta.courseURHandle;
+        undoRedoHandler.saveState();
 
+
+    }
+    @FXML
+    public void undoButtonHandle(){
+        undoRedoHandler.undo();
+    }
+    @FXML
+    public void redoButtonHandle(){
+        undoRedoHandler.redo();
     }
 
     public void initializeTreeView(){
         rootItem.getChildren().clear();
         if (rootItem.getChildren().isEmpty()) {
-            if(course.getLessonPlanList().isEmpty()){
+            if(course.getTheCourse().getLessonPlanList().isEmpty()){
                 System.out.println("COURSE DOESNT HAVE LESSON PLANS");
             } else {
-                for(int i = 0; i < course.getLessonPlanList().size(); i++) {
+                for(int i = 0; i < course.getTheCourse().getLessonPlanList().size(); i++) {
                     TreeItem<String> lesson = new TreeItem<>();
-                    lesson.setValue(course.getLessonPlanList().get(i).getLessonPlanTitle());
+                    lesson.setValue(course.getTheCourse().getLessonPlanList().get(i).getLessonPlanTitle());
                     rootItem.getChildren().add(lesson);
                     System.out.println(lesson.toString());
                 }
@@ -81,9 +93,9 @@ public class CourseEditPageController {
                 MainEditDisplayController.events.clear();
                 MainEditDisplayController.resetButtons();
 
-                for (int i = 0; i < course.getLessonPlanList().size(); i++) {
-                    if (course.getLessonPlanList().get(i).getLessonPlanTitle().equals(selectedItem.getValue())) {
-                        LessonPlan selectedLessonPlan = course.getLessonPlanList().get(i);
+                for (int i = 0; i < course.getTheCourse().getLessonPlanList().size(); i++) {
+                    if (course.getTheCourse().getLessonPlanList().get(i).getLessonPlanTitle().equals(selectedItem.getValue())) {
+                        LessonPlan selectedLessonPlan = course.getTheCourse().getLessonPlanList().get(i);
                         GymnasticsAppBeta.setLessonPlan(selectedLessonPlan);
                         GymnasticsAppBeta.switchToMainEditDisplay();
                         MainEditDisplayController.addTreeCardItems(selectedLessonPlan);
@@ -94,10 +106,10 @@ public class CourseEditPageController {
                 }
             }
             if(result.get() == deleteButton){
-                for (int i = 0; i < course.getLessonPlanList().size(); i++) {
-                    if (course.getLessonPlanList().get(i).getLessonPlanTitle().equals(selectedItem.getValue())) {
-                        LessonPlan selectedLessonPlan = course.getLessonPlanList().get(i);
-                        course.removePlanFromCourse(selectedLessonPlan);
+                for (int i = 0; i < course.getTheCourse().getLessonPlanList().size(); i++) {
+                    if (course.getTheCourse().getLessonPlanList().get(i).getLessonPlanTitle().equals(selectedItem.getValue())) {
+                        LessonPlan selectedLessonPlan = course.getTheCourse().getLessonPlanList().get(i);
+                        course.getTheCourse().removePlanFromCourse(selectedLessonPlan);
                         TreeItem<String> removeTree = new TreeItem<>();
                         removeTree.setValue(selectedLessonPlan.getLessonPlanTitle());
                         rootItem.getChildren().remove(removeTree);
@@ -107,6 +119,7 @@ public class CourseEditPageController {
             }
         }
         treeView.getSelectionModel().clearSelection();
+        undoRedoHandler.saveState();
     }
 
 
@@ -122,13 +135,15 @@ public class CourseEditPageController {
         MainEditDisplayController.resetButtons();
         GymnasticsAppBeta.setLessonPlan(new LessonPlan());
         GymnasticsAppBeta.switchToMainEditDisplay();
+        undoRedoHandler.saveState();
     }
 
     @FXML
     private void resetCourseButtonHandle(ActionEvent event){
-        course.clearLessonPlanList();
+        course.getTheCourse().clearLessonPlanList();
         rootItem.getChildren().clear();
         initializeTreeView();
+        undoRedoHandler.saveState();
     }
     @FXML
     private void homePageButtonHandle(ActionEvent event){
@@ -153,10 +168,10 @@ public class CourseEditPageController {
         if (selectedFile != null) {
             // Create a FileWriter for the selected file and write the data.
             try (FileWriter fileWriter = new FileWriter(selectedFile)) {
-                fileWriter.write(course.getCourseName() + "\n");
+                fileWriter.write(course.getTheCourse().getCourseName() + "\n");
                 //iterate through each lessonPlan in the course
-                for(int i = 0; i < course.getLessonPlanList().size(); i++){
-                    LessonPlan curPlan = course.getLessonPlanList().get(i);
+                for(int i = 0; i < course.getTheCourse().getLessonPlanList().size(); i++){
+                    LessonPlan curPlan = course.getTheCourse().getLessonPlanList().get(i);
                     fileWriter.write(curPlan.getLessonPlanTitle() + "\n");
                     for(int j = 0; j < curPlan.getEventNames().size(); j++){
                         //writes event's name
@@ -193,10 +208,10 @@ public class CourseEditPageController {
             } else if (newResult.get() == yesButton) {
                 GymnasticsAppBeta.callFileChooser();
                 if(GymnasticsAppBeta.getUserClickedCancel() == false) {
-                    course.clearLessonPlanList();
+                    course.getTheCourse().clearLessonPlanList();
                     ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
-                    course.loadEverythingFromFile(loadedLessonPlan);
-                    GymnasticsAppBeta.setCourse(course);
+                    course.getTheCourse().loadEverythingFromFile(loadedLessonPlan);
+                    GymnasticsAppBeta.setCourse(course.getTheCourse());
                     GymnasticsAppBeta.switchToCourseEditPage();
                 }
                 GymnasticsAppBeta.setUserClickedCancel(false);
