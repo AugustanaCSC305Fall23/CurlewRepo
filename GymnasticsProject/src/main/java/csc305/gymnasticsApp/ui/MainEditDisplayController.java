@@ -379,7 +379,7 @@ public class MainEditDisplayController implements Initializable {
      * @param event - The ActionEvent triggered when opening the filter menu.
      */
     @FXML
-    void openFilterMenu(ActionEvent event){
+    void openFilterMenu(MouseEvent event){
         filterMenu.setVisible(true);
     }
 
@@ -592,4 +592,12 @@ public class MainEditDisplayController implements Initializable {
     void doneButtonHandle(){
         filterMenu.setVisible(false);
     }
+
+    @FXML
+    void mouseExitHandle(MouseEvent event){
+        if(filterMenu.getLayoutX()+filterMenu.getWidth() <= event.getX()) {
+            filterMenu.setVisible(false);
+        }
+    }
+
 }
