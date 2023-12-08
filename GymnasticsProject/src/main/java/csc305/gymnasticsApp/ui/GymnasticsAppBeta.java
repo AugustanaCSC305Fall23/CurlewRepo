@@ -36,6 +36,10 @@ public class GymnasticsAppBeta extends Application {
     private static boolean fileLoaded = false;
     private static boolean userClickedCancel = false;
 
+    private static PrefPlans recentPlans = new PrefPlans();
+
+
+
     /**
      *
      * @param primaryStage - The primary stage for this application, onto which
@@ -78,6 +82,14 @@ public class GymnasticsAppBeta extends Application {
 
     }
 
+    public static PrefPlans getRecentPlans() {
+        return recentPlans;
+    }
+
+    public static void setRecentPlans(PrefPlans recentPlans) {
+        GymnasticsAppBeta.recentPlans = recentPlans;
+    }
+
     /**
      * @param fxmlFileName - The name of the FXML file
      * Switches the application's view to the selected FXML view
@@ -109,6 +121,10 @@ public class GymnasticsAppBeta extends Application {
     public static void switchToHomePage(){
         LessonPlan.resetBoolean();
         switchToView("/csc305/gymnasticsApp/homePage.fxml");
+    }
+
+    public static void switchToRecentPlans() {
+        switchToView("/csc305/gymnasticsApp/recentSelector.fxml");
     }
 
     /**
@@ -184,6 +200,7 @@ public class GymnasticsAppBeta extends Application {
      */
     public static ArrayList<String> readLessonPlan(){
         ArrayList<String> arrayList = new ArrayList<String>();
+
         if(selectedFile != null) {
             fileLoaded = true;
             try (BufferedReader reader = new BufferedReader(new FileReader(selectedFile))) {
@@ -194,9 +211,13 @@ public class GymnasticsAppBeta extends Application {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else{
+            System.out.println("selected file is null");
         }
         return arrayList;
     }
+
+
 
     /**
      * Gets the entire lesson plan

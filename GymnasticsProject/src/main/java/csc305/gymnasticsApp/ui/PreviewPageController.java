@@ -1,10 +1,7 @@
 package csc305.gymnasticsApp.ui;
 
 
-import csc305.gymnasticsApp.data.Card;
-import csc305.gymnasticsApp.data.Course;
-import csc305.gymnasticsApp.data.LessonPlan;
-import csc305.gymnasticsApp.data.PrintLessonPlan;
+import csc305.gymnasticsApp.data.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
@@ -53,6 +50,8 @@ public class PreviewPageController {
 
     private LessonPlan lessonPlan;
     private Course course;
+
+    PrefPlans recents = GymnasticsAppBeta.getRecentPlans();
 
     /**
      * Initializes the preview page
@@ -329,6 +328,8 @@ public class PreviewPageController {
 
         // Show the file save dialog and get the selected file.
         File selectedFile = fileChooser.showSaveDialog(null);
+        System.out.println(selectedFile.getAbsolutePath());
+        recents.setPreference(selectedFile.getAbsolutePath());
 
         if (selectedFile != null) {
             // Create a FileWriter for the selected file and write the data.

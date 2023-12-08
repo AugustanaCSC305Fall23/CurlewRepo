@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.recentPlansController">
+   <children>
+      <GridPane layoutX="127.0" layoutY="54.0" prefHeight="278.0" prefWidth="352.0" AnchorPane.bottomAnchor="67.60000000000002" AnchorPane.leftAnchor="127.0" AnchorPane.rightAnchor="121.0" AnchorPane.topAnchor="54.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="134.59998168945313" minHeight="10.0" prefHeight="80.59998779296875" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="230.60001220703126" minHeight="10.0" prefHeight="197.40001220703124" valignment="CENTER" vgrow="ALWAYS" />
+        </rowConstraints>
+         <children>
+            <Label text="Recent Lesson Plans" />
+            <Label text="Recent Courses" GridPane.columnIndex="1" />
+            <VBox alignment="TOP_CENTER" prefHeight="183.0" prefWidth="176.0" spacing="15.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <children>
+                  <Button fx:id="recentPlan1" mnemonicParsing="false" onAction="#openRecentLessonPlan" text="Button" />
+                  <Button fx:id="recentPlan2" mnemonicParsing="false" onAction="#openRecentLessonPlan" text="Button" />
+                  <Button fx:id="recentPlan3" mnemonicParsing="false" onAction="#openRecentLessonPlan" text="Button" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="183.0" prefWidth="176.0" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Button fx:id="recentCourse1" mnemonicParsing="false" onAction="#loadRecentCourse" text="Button" />
+                  <Button fx:id="recentCourse2" mnemonicParsing="false" onAction="#loadRecentCourse" text="Button" />
+                  <Button fx:id="recentCourse3" mnemonicParsing="false" onAction="#loadRecentCourse" text="Button" />
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+      <Button fx:id="backButton" layoutX="50.0" layoutY="299.0" mnemonicParsing="false" onAction="#backToHomePage" prefHeight="65.0" prefWidth="128.0" text="Back" AnchorPane.bottomAnchor="35.400000000000006" AnchorPane.leftAnchor="50.0" />
+   </children>
+</AnchorPane>

@@ -31,6 +31,8 @@ public class HomePageController {
     private void handleNewLessonButton(ActionEvent event){
         GymnasticsAppBeta.switchToMainEditDisplay();
     }
+    @FXML
+    private void recentButtonHandle(ActionEvent event){GymnasticsAppBeta.switchToRecentPlans();}
 
     /**
      * Handles the action when "Template" button is clicked

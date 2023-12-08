@@ -23,10 +23,18 @@
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
+               <VBox.margin>
+                  <Insets bottom="12.0" top="-23.0" />
+               </VBox.margin>
             </Button>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="810.0" spacing="30.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="810.0" spacing="15.0">
                <children>
                   <Button fx:id="loadCourseButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadCourseButtonHandle" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: A2AE98; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Load Existing Course" textAlignment="CENTER" textFill="#3a5069" wrapText="true">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="recentButton" alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#recentButtonHandle" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: A2AE98; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Recent Plans and Courses" textAlignment="CENTER" textFill="#3a5069" wrapText="true">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
@@ -42,6 +50,9 @@
                      </font>
                   </Button>
                </children>
+               <VBox.margin>
+                  <Insets bottom="100.0" top="-29.0" />
+               </VBox.margin>
             </HBox>
          </children>
          <padding>
