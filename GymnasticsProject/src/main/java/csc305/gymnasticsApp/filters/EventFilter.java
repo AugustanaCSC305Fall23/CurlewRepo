@@ -28,6 +28,8 @@ public class EventFilter implements CardFilter{
      * @return true if the card's event matches the desired keyword, false otherwise
      */
     public boolean matches(Card card) {
-        return desiredEvent.equalsIgnoreCase("All") || desiredEvent.equalsIgnoreCase(card.getEvent());
+        return (desiredEvent.equalsIgnoreCase("All") ||
+                desiredEvent.equalsIgnoreCase(card.getEvent())||
+                card.getEvent().equalsIgnoreCase("All"));
     }
 }

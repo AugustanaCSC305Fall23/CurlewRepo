@@ -23,6 +23,9 @@ public class ModelGenderFilter implements CardFilter {
 
     @Override
     public boolean matches(Card card) {
-        return (desiredModelGender.equalsIgnoreCase("All") || desiredModelGender.equalsIgnoreCase(card.getModelGender()));
+        return (desiredModelGender.equalsIgnoreCase("All") ||
+                desiredModelGender.equalsIgnoreCase(card.getModelGender())||
+                card.getModelGender().equalsIgnoreCase("all"));
+
     }
 }

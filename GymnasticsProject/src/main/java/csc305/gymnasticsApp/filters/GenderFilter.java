@@ -28,6 +28,8 @@ public class GenderFilter implements CardFilter {
      * @return true if the card's gender matches the desired criteria, false otherwise
      */
     public boolean matches(Card card) {
-        return desiredGender.equalsIgnoreCase(card.getGender()) || card.getGender().equalsIgnoreCase("N");
+        return (desiredGender.equalsIgnoreCase("N") ||
+                desiredGender.equalsIgnoreCase(card.getGender()) ||
+                card.getGender().equalsIgnoreCase("N"));
     }
 }

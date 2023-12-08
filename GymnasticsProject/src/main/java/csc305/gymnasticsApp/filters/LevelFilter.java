@@ -28,6 +28,8 @@ public class LevelFilter implements CardFilter{
      * @return true if the card's level matches the desired criteria, false otherwise
      */
     public boolean matches(Card card) {
-        return desiredLevel.equalsIgnoreCase("All") || desiredLevel.toUpperCase().contains(card.getLevel().toUpperCase());
+        return (desiredLevel.equalsIgnoreCase("All") ||
+                desiredLevel.toUpperCase().contains(card.getLevel().toUpperCase()) ||
+                        card.getLevel().toUpperCase().contains("ALL"));
     }
 }
