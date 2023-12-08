@@ -247,7 +247,7 @@ public class MainEditDisplayController implements Initializable {
             TreeItem<String> newEvent = new TreeItem<String>(eventName);
             newEvent.setExpanded(true);
             for (int j = 0; j < lessonPlan.getEventCards(i).size(); j++) {
-                TreeItem<String> newCard = new TreeItem<String>(lessonPlan.getEventList().get(i).get(j).getCode() + lessonPlan.getEventList().get(i).get(j).getTitle());
+                TreeItem<String> newCard = new TreeItem<String>(lessonPlan.getEventList().get(i).get(j).getCode() + " " + lessonPlan.getEventList().get(i).get(j).getTitle());
                 newEvent.getChildren().add(newCard);
             }
             listOfNewEvents.add(newEvent);
@@ -280,7 +280,7 @@ public class MainEditDisplayController implements Initializable {
         rootItem.getChildren().addAll(events);
         List<Card> eventCards = new ArrayList<>();
         lessonPlan.getThePlan().addToEventList(eventCards);
-        lessonPlan.getThePlan().addEventName("Event" + eventNum);
+        lessonPlan.getThePlan().addEventName("Event " + eventNum);
         ButtonType eventButton = createEventButton(eventNum);
         eventButtonList.add(eventButton);
         undoRedoHandler.saveState();
@@ -293,7 +293,7 @@ public class MainEditDisplayController implements Initializable {
      * @return The created ButtonType object
      */
     private ButtonType createEventButton(int eventNum){
-        ButtonType eventButton = new ButtonType("Event" + eventNum);
+        ButtonType eventButton = new ButtonType("Event " + eventNum);
         return eventButton;
     }
 
