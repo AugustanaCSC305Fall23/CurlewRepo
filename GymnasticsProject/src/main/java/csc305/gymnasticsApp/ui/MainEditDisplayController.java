@@ -90,7 +90,6 @@ public class MainEditDisplayController implements Initializable {
         initFilterList();
         List<Card> eventCards = new ArrayList<>();
         lessonPlan.getThePlan().addToEventList(eventCards);
-        System.out.println("initializing");
         lessonTitle.setText(lessonPlan.getThePlan().getLessonPlanTitle());
         undoRedoHandler = new LessonPlanUndoRedoHandler(lessonPlan);
         GymnasticsAppBeta.lessonPlanURHandler = undoRedoHandler;
@@ -118,7 +117,6 @@ public class MainEditDisplayController implements Initializable {
                 if(eventButtonList.isEmpty()) {
                     eventButtonList.add(createEventButton(1));
                 }
-                //System.out.println(eventButtonList.size());
             }
             for(TreeItem<String> event: events){
                 rootItem.getChildren().add(event);
@@ -140,7 +138,6 @@ public class MainEditDisplayController implements Initializable {
                     card.setFavorite(true);
                 }
                 CardButton cardButton = new CardButton(card);
-//                cardButton.setOnAction(event -> addCardToTreeView(cardButton));
                 cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton));
                 allCards.add(cardButton);
             }
@@ -595,7 +592,7 @@ public class MainEditDisplayController implements Initializable {
 
     @FXML
     void mouseExitHandle(MouseEvent event){
-        if(filterMenu.getLayoutX()+filterMenu.getWidth() <= event.getX()) {
+        if(filterMenu.getLayoutX()+filterMenu.getWidth() <= event.getX() || filterMenu.getLayoutY()+filterMenu.getHeight() <= event.getY()) {
             filterMenu.setVisible(false);
         }
     }
