@@ -5,14 +5,15 @@ import csc305.gymnasticsApp.filters.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
 //import javax.swing.*;
 import java.io.FileInputStream;
@@ -22,6 +23,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * The MainEditDisplayController class is responsible for handling user interactions and events on the main edit display page of the application.\
@@ -494,8 +496,9 @@ public class MainEditDisplayController implements Initializable {
     public void addCardToTreeView(CardButton cardButton) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Add Card to Event");
-        alert.setHeaderText("Select the event to add the card to");
+        alert.setHeaderText("");
         Card card = cardButton.getCard();
+
         try {
             Image image = new Image(new FileInputStream("GymSoftwarePics/" +
                     card.getPackFolder() + "/" +
@@ -509,17 +512,37 @@ public class MainEditDisplayController implements Initializable {
         }
 
         ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-        System.out.println(eventButtonList.size());
-        alert.getButtonTypes().setAll(eventButtonList);
-        alert.getButtonTypes().add(cancelButton);
+        alert.getButtonTypes().setAll(cancelButton);
 
+        // Create an HBox to organize the layout
+        FlowPane flowpane = new FlowPane(); // Set spacing between nodes
+        flowpane.setPrefWrapLength(201);
+        flowpane.setVgap(2);
 
-        for(ButtonType buttonType:alert.getButtonTypes()){
-            Button buttonTest = (Button) alert.getDialogPane().lookupButton(buttonType);
-            buttonTest.setStyle("-fx-font-size: 30px; -fx-min-width: 150px; -fx-min-height: 40px; -fx-translate-y: -20px");
+        // Add the event buttons to the HBox
+        for (ButtonType eventButtonType : eventButtonList) {
+            Button button = new Button(eventButtonType.getText());
+            button.setOnAction(event -> alert.setResult(eventButtonType));
+            button.setStyle("-fx-font-size: 20px; -fx-min-width: 200px; -fx-min-height: 30px; -fx-max-width: 200px");
+            flowpane.getChildren().add(button);
         }
 
+        // Add the Cancel button to the HBox
+        Button cancelButtonNode = (Button) alert.getDialogPane().lookupButton(cancelButton);
+        cancelButtonNode.setStyle("-fx-font-size: 20px; -fx-min-width: 200px; -fx-min-height: 30px");
+        flowpane.getChildren().add(cancelButtonNode);
 
+        // Create a ScrollPane and add the HBox to it
+        ScrollPane scrollPane = new ScrollPane(flowpane);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setMaxHeight(300); // Set maximum width for the ViewPort of the ScrollPane
+        scrollPane.setStyle("-fx-background-color:  transparent; -fx-border-color: transparent;-fx-padding: 0px");
+
+
+        // Set the content of the dialog pane to the ScrollPane
+        alert.getDialogPane().setContent(scrollPane);
+        alert.getDialogPane().setMinHeight(450); // Set a fixed height for the DialogPane
+        alert.getDialogPane().setMaxHeight(500);
         Optional<ButtonType> result = alert.showAndWait();
         //equiv to mouse press action
         result.ifPresent(buttonType -> {
