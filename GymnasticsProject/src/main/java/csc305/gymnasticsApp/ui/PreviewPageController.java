@@ -50,8 +50,6 @@ public class PreviewPageController {
     private ScrollPane mainScrollPane;
     @FXML
     private Button addPlanToCurrentCourseButton;
-    //@FXML
-    //private FlowPane eventFlowPane;
 
     private LessonPlan lessonPlan;
     private Course course;
@@ -90,17 +88,6 @@ public class PreviewPageController {
                 nVBox.setPadding(new javafx.geometry.Insets(30, 0, 0, 0));
                 currentVBox = nVBox;
             }
-/*  IT AUTOMATICALLY MOVES THEM DOWN
-
-            //fill VBoxes with cards
-            //if first box add a title and move the other attributes down
-            if(isFirst){
-                fillTitleVBox(currentVBox, i);
-                isFirst = false;
-            }//Box doesn't contain title, so implement cards normally
-            else{}
-
-*/
             fillVBox(currentVBox, i, 30);
 
             mainFlowPane.getChildren().add(currentVBox);
@@ -232,26 +219,6 @@ public class PreviewPageController {
     }
 
 
-
-
-    /*
-    private void addTopCardHBox(VBox nVBox){
-
-        HBox eventTitleHBox = new HBox();
-        eventTitleHBox.setAlignment(Pos.CENTER_LEFT);
-        eventTitleHBox.setPrefSize(760.0, 40.0);
-        eventTitleHBox.setSpacing(50.0);
-
-        TextField eventTitleTextField = new TextField();
-        eventTitleTextField.setAlignment(Pos.CENTER);
-        eventTitleTextField.setPrefSize(250.0, 40.0);
-        eventTitleTextField.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;");
-        eventTitleTextField.setFont(Font.font("System Bold", 16.0));
-        eventTitleTextField.setText();
-
-        eventTitleHBox.getChildren().add(eventTitleTextField);
-    }*/
-
     /**
      * Adds the lesson plan title to a given VBox.
      *
@@ -269,38 +236,6 @@ public class PreviewPageController {
     }
 
 
-/*
-    public void displayEventCards() {
-        try {
-            if(lessonPlan.getEventList().size() == 0){
-                System.out.println("nothing in da list");
-            }
-            int count = 1;
-            for(List<Card> eventCards : lessonPlan.getEventList()){
-                //VBox newVBox = getNewVBoxParams();
-                //VBoxes.add(newVBox);
-                System.out.println(eventCards);
-                for(Card card : eventCards){
-                    Image image = new Image(new FileInputStream("GymSoftwarePics/" +
-                            card.getPackFolder().toUpperCase() + "Pack/" +
-                            card.getImage()));
-                    ImageView imageView = new ImageView(image);
-                    imageView.setFitWidth(200); // Set the width of the image view
-                    imageView.setFitHeight(200); // Set the height of the image view
-                    eventFlowPane.getChildren().add(imageView);
-                }
-                count = count + 1;
-            }
-            mainFlowPane.getChildren().clear();
-            for(VBox vBoxToAdd : VBoxes){
-                mainFlowPane.getChildren().add(vBoxToAdd);
-            }
-        }catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-    */
 
     /**
      * Switches the application to the main edit display view.
@@ -435,7 +370,7 @@ public class PreviewPageController {
      * @throws FileNotFoundException if equipment images are not found
      */
     private void fillEquipmentBox() throws FileNotFoundException {
-        //if equipment isnt shown, add equipment. If equipment is shown, remove it
+        //if equipment isn't shown, add equipment. If equipment is shown, remove it
         if(showEquipment == false){
             showEquipment = true;
             initializeWithEquipment();
@@ -448,10 +383,6 @@ public class PreviewPageController {
      * Initializes the view with equipment display
      */
     public void initializeWithEquipment() {
-        System.out.println("Initializing preview page");
-        lessonPlan = GymnasticsAppBeta.getLessonPlan();
-        lessonPlan.printEverything();
-        System.out.println("^^^^should have printed everything");
         //clear and reset panes
         mainFlowPane.getChildren().clear();
         VBoxes.clear();

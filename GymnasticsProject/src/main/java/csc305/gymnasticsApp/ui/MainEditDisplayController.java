@@ -247,15 +247,13 @@ public class MainEditDisplayController implements Initializable {
             TreeItem<String> newEvent = new TreeItem<String>(eventName);
             newEvent.setExpanded(true);
             for (int j = 0; j < lessonPlan.getEventCards(i).size(); j++) {
-                TreeItem<String> newCard = new TreeItem<String>(lessonPlan.getEventList().get(i).get(j).getTitle());
+                TreeItem<String> newCard = new TreeItem<String>(lessonPlan.getEventList().get(i).get(j).getCode() + lessonPlan.getEventList().get(i).get(j).getTitle());
                 newEvent.getChildren().add(newCard);
             }
             listOfNewEvents.add(newEvent);
         }
         events.clear();
         events.addAll(listOfNewEvents);
-
-        System.out.println("Add Tree Card Items(Printing the events): " + events);
 
         rootItem.getChildren().addAll(events);
 
