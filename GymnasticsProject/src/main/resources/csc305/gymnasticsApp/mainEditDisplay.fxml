@@ -128,7 +128,7 @@
             </VBox>
          </children>
       </HBox>
-      <VBox fx:id="filterMenu" alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" onMouseExited="#mouseExitHandle" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: D48973;" AnchorPane.bottomAnchor="250.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="filterMenu" alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" onMouseExited="#mouseExitHandle" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: D48973;" AnchorPane.bottomAnchor="250.0" AnchorPane.topAnchor="0.0" visible="false">
          <children>
             <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="200.0" spacing="10.0">
                <children>
