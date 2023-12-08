@@ -20,13 +20,9 @@ public class ModelGenderFilter implements CardFilter {
         this.desiredModelGender = desiredModelGender;
     }
 
-    /**
-     * Checks if a Card object's model gender matches the desired model gender criteria
-     *
-     * @param card - The Card to be evaluated for a match.
-     * @return true if the card's model gender matches the desired criteria, false otherwise
-     */
+
+    @Override
     public boolean matches(Card card) {
-        return desiredModelGender.equalsIgnoreCase("All") || desiredModelGender.equalsIgnoreCase(card.getGender());
+        return (desiredModelGender.equalsIgnoreCase("All") || desiredModelGender.equalsIgnoreCase(card.getModelGender()));
     }
 }

@@ -11,6 +11,6 @@ public class FavFilter implements CardFilter {
     }
 
     public boolean matches(Card card) {
-        return (FavoriteCollection.getInstance().getFavoriteSet().contains(card.getUniqueID()) || (!desiredFavorite));
+        return (FavoriteCollection.getInstance().getFavoriteSet().contains(card.getUniqueID()) || !desiredFavorite);
     }
 }

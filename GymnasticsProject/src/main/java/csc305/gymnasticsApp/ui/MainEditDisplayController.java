@@ -82,7 +82,6 @@ public class MainEditDisplayController implements Initializable {
         if(lessonPlan.getEventNames().isEmpty()){
             lessonPlan.getThePlan().addEventName("Event 1");
         }
-        //lessonPlan.printEverything();
         clearAndResetAlertButtons();
         initializeTreeView();
         addCardsToFlowPane();
@@ -156,6 +155,9 @@ public class MainEditDisplayController implements Initializable {
      */
     public void addCardsToFlowPane(){
         cardFlowPane.getChildren().clear();
+        for(CardButton card : allCards){
+            card.setVisible(true);
+        }
         cardFlowPane.getChildren().addAll(allCards);
     }
 
@@ -164,10 +166,9 @@ public class MainEditDisplayController implements Initializable {
      */
     public void resetFlowPane(){
         cardFlowPane.getChildren().clear();
-        filterCardsByCheckbox();
+        cardFlowPane.getChildren().addAll(allCards);
         equipmentTextfield.clear();
         equipmentTextfield.setPromptText("Equipment Keyword");
-
     }
 
     /**
@@ -175,18 +176,6 @@ public class MainEditDisplayController implements Initializable {
      * Sets up listeners for filter changes to update the displayed cards accordingly
      */
     private void initFilterList(){
-//        genderFilter.getDesiredGenders().clear();
-//        filterList.add(genderFilter);
-//        modelGenderFilter.getSelectedModelGender().clear();
-//        filterList.add(modelGenderFilter);
-//        eventFilter.reset();
-//        filterList.add(eventFilter);
-//        levelFilter.reset();
-//        filterList.add(levelFilter);
-//        equipmentFilter.reset();
-//        filterList.add(equipmentFilter);
-//        searchBarFilter.reset();
-//        filterList.add(searchBarFilter);
         genderCB.getItems().addAll(CardDatabase.getGenderList());
         genderCB.setValue("N");
         modelGenderCB.getItems().add("ALL");
@@ -196,6 +185,7 @@ public class MainEditDisplayController implements Initializable {
         eventCB.getItems().addAll(CardDatabase.getEventList());
         levelCB.setValue("ALL");
         levelCB.getItems().addAll(CardDatabase.getLevelList());
+        favCheckBox.setSelected(false);
 
         genderCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
         modelGenderCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
@@ -208,6 +198,16 @@ public class MainEditDisplayController implements Initializable {
         equipmentTextfield.textProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
 
     }
+
+    private void resetFilterList(){
+        favCheckBox.setSelected(false);
+        genderCB.setValue("N");
+        modelGenderCB.setValue("ALL");
+        levelCB.setValue("ALL");
+        eventCB.setValue("ALL");
+
+    }
+
 
     /**
      * Updates the visibility of card buttons based on selected filter criteria such as gender, model gender, event, level,
@@ -385,35 +385,6 @@ public class MainEditDisplayController implements Initializable {
         filterMenu.setVisible(true);
     }
 
-    /**
-     * Handles the action when the filter menu is closed.
-     *
-     * @param event - The ActionEvent triggered when closing the filter menu.
-     */
-    @FXML
-    void closeFilterMenu(ActionEvent event){
-        filterMenu.setVisible(false);
-    }
-
-    /* DELETE EVENTUALLY IF NOT NEEDED
-
-    private CardButton createCardButton(Card card, Image image) {
-        ImageView iv = new ImageView(image);
-        iv.setFitHeight(198.0);
-        iv.setFitWidth(198.0);
-        CardButton cardButton = new CardButton("", iv, card);
-        cardButton.setMinHeight(Double.MIN_VALUE);
-        cardButton.setMinWidth(Double.MIN_VALUE);
-        cardButton.setPrefHeight(200.0);
-        cardButton.setPrefWidth(200.0);
-        cardButton.setMnemonicParsing(false);
-        cardButton.setStyle("-fx-border-color: black;");
-        cardButton.setId(card.getUniqueID());
-        cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton));
-        return cardButton;
-    }
-
-     */
 
     /**
      * Retrieves all card buttons from the FlowPane.
@@ -583,16 +554,6 @@ public class MainEditDisplayController implements Initializable {
         }
         undoRedoHandler.saveState();
     }
-//    /**
-//     * Filters the displayed cards based on the input text in the search bar.
-//     *
-//     * @param inputText - The text to filter cards by.
-//     */
-//    private void filterCards(String inputText, filters filter) {
-//        inputText = inputText.replaceAll("\\s+", "");
-//        List<Button> cardButtons = getAllCardButtons();
-
-//    }
 
     /**
      * Retrieves the current LessonPlan instance
@@ -603,36 +564,6 @@ public class MainEditDisplayController implements Initializable {
         return lessonPlan.getThePlan();
     }
 
-    /**
-     * Filters the displayed cards based on the selected checkboxes in the UI
-     */
-    public void filterCardsByCheckbox() {
-        List<CardButton> visibleButtons = new ArrayList<>();
-        List<CardButton> hiddenButtons = new ArrayList<>();
-        for (CardButton cardButton : allCards) {
-            boolean isVisible = true;
-            for(CardFilter filter : filterList) {
-                if (!filter.matches(cardButton.getCard())) {
-                    isVisible = false;
-                    break;
-                }
-            }
-            if (isVisible) {
-                visibleButtons.add(cardButton);
-                cardButton.setVisible(true);
-            } else {
-                hiddenButtons.add(cardButton);
-                cardButton.setVisible(false);
-            }
-
-        }
-
-        //System.out.println(filterList.get(filterList.indexOf(equipmentFilter)));
-        cardFlowPane.getChildren().clear();
-        cardFlowPane.getChildren().addAll(visibleButtons);
-        currentFilteredCards.clear();
-        currentFilteredCards.addAll(visibleButtons);
-    }
 
     /**
      * Handles the event when the user clicks the "Set Filter" button in the UI
@@ -652,15 +583,7 @@ public class MainEditDisplayController implements Initializable {
      */
     @FXML
     void resetButton(ActionEvent event) {
-        for(Node nodeOut : filterVBox.getChildren()){
-            if(nodeOut instanceof VBox) {
-                for (Node nodeIn : ((VBox) nodeOut).getChildren()){
-                    if(nodeIn instanceof CheckBox){
-                        ((CheckBox) nodeIn).setSelected(false);
-                    }
-                }
-            }
-        }
+        resetFilterList();
         resetFlowPane();
     }
 
