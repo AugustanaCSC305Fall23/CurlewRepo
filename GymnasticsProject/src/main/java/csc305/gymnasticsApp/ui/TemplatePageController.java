@@ -30,8 +30,8 @@ public class TemplatePageController {
         LessonPlan.resetBoolean();
         HomePageController.loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/beginnerFloorAndTrampolinePlan.GymPlanFile"));
-        GymnasticsAppBeta.readLessonPlan();
-        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+        GymnasticsAppBeta.readFile();
+        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();
         HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
         GymnasticsAppBeta.setLessonPlan(HomePageController.loadPlan);
         if (GymnasticsAppBeta.getLoaded()) {
@@ -49,8 +49,8 @@ public class TemplatePageController {
         LessonPlan.resetBoolean();
         HomePageController.loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/maleOnlyLessonPlan.GymPlanFile"));
-        GymnasticsAppBeta.readLessonPlan();
-        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+        GymnasticsAppBeta.readFile();
+        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();
         HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
         GymnasticsAppBeta.setLessonPlan(HomePageController.loadPlan);
         if (GymnasticsAppBeta.getLoaded()) {
@@ -68,8 +68,8 @@ public class TemplatePageController {
         LessonPlan.resetBoolean();
         HomePageController.loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/allFloorExercisesPlan.GymPlanFile"));
-        GymnasticsAppBeta.readLessonPlan();
-        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+        GymnasticsAppBeta.readFile();
+        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();
         HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
         GymnasticsAppBeta.setLessonPlan(HomePageController.loadPlan);
         if (GymnasticsAppBeta.getLoaded()) {

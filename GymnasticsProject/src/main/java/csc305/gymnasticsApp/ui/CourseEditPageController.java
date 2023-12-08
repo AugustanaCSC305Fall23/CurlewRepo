@@ -2,6 +2,7 @@ package csc305.gymnasticsApp.ui;
 
 import csc305.gymnasticsApp.data.Course;
 import csc305.gymnasticsApp.data.LessonPlan;
+import csc305.gymnasticsApp.data.PrefCourses;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -38,6 +39,8 @@ public class CourseEditPageController {
     private Course course;
     public TreeItem<String> rootItem = new TreeItem<>("Root");
     private static CourseUndoRedoHandler undoRedoHandler;
+
+    private PrefCourses recentCourses = GymnasticsAppBeta.getRecentCourses();
 
     /**
      * Initializes the Course Edit Page
@@ -210,7 +213,9 @@ public class CourseEditPageController {
         // Show the file save dialog and get the selected file.
         File selectedFile = fileChooser.showSaveDialog(null);
 
+
         if (selectedFile != null) {
+            recentCourses.setCoursePreference(selectedFile.getAbsolutePath());
             // Create a FileWriter for the selected file and write the data.
             try (FileWriter fileWriter = new FileWriter(selectedFile)) {
                 fileWriter.write(course.getTheCourse().getCourseName() + "\n");
@@ -257,8 +262,8 @@ public class CourseEditPageController {
                 GymnasticsAppBeta.callFileChooser();
                 if(GymnasticsAppBeta.getUserClickedCancel() == false) {
                     course.getTheCourse().clearLessonPlanList();
-                    ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
-                    course.getTheCourse().loadEverythingFromFile(loadedLessonPlan);
+                    ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();
+                    course.getTheCourse().loadCourseFromFile(loadedLessonPlan);
                     GymnasticsAppBeta.setCourse(course.getTheCourse());
                     GymnasticsAppBeta.switchToCourseEditPage();
                 }

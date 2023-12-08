@@ -93,7 +93,7 @@ public class Course implements Cloneable{
      *
      * @param file The list of strings containing file data
      */
-    public void loadEverythingFromFile(ArrayList<String> file){
+    public void loadCourseFromFile(ArrayList<String> file){
         CardDatabase.getAllCards();
         courseName = file.get(0);
         file.remove(0);

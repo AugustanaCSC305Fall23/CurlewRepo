@@ -51,7 +51,7 @@ public class PreviewPageController {
     private LessonPlan lessonPlan;
     private Course course;
 
-    PrefPlans recents = GymnasticsAppBeta.getRecentPlans();
+    private PrefPlans recents = GymnasticsAppBeta.getRecentPlans();
 
     /**
      * Initializes the preview page
@@ -328,10 +328,9 @@ public class PreviewPageController {
 
         // Show the file save dialog and get the selected file.
         File selectedFile = fileChooser.showSaveDialog(null);
-        System.out.println(selectedFile.getAbsolutePath());
-        recents.setPreference(selectedFile.getAbsolutePath());
 
         if (selectedFile != null) {
+            recents.setPreference(selectedFile.getAbsolutePath());
             // Create a FileWriter for the selected file and write the data.
             try (FileWriter fileWriter = new FileWriter(selectedFile)) {
                 fileWriter.write(lessonPlan.getLessonPlanTitle() + "\n");

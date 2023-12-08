@@ -7,12 +7,10 @@ public class PrefPlans {
 
     public PrefPlans(){
         prefs = Preferences.userRoot().node(this.getClass().getName());
-        // Define a boolean value
-        System.out.println(prefs.get("Plan1", null));
-        // Define a string with default "Hello World
-        System.out.println(prefs.get("Plan2", null));
-        // Define a integer with default 50
-        System.out.println(prefs.get("Plan3", null));
+
+        prefs.get("Plan1", "");
+        prefs.get("Plan2", "");
+        prefs.get("Plan3", "");
     }
 
 
@@ -20,27 +18,21 @@ public class PrefPlans {
         System.out.println(filePath);
 
         // now set the values
-        prefs.put("Plan3", prefs.get("Plan2",null));
-        prefs.put("Plan2", prefs.get("Plan1",null));
+        prefs.put("Plan3", prefs.get("Plan2",""));
+        prefs.put("Plan2", prefs.get("Plan1",""));
         prefs.put("Plan1", filePath);
 
     }
 
     public String getPlan1(){
-        return prefs.get("Plan1", null);
+        return prefs.get("Plan1", "");
     }
 
     public String getPlan2(){
-        return prefs.get("Plan2", null);
+        return prefs.get("Plan2", "");
     }
     public String getPlan3(){
-        return prefs.get("Plan3", null);
+        return prefs.get("Plan3", "");
     }
 
-
-    public static void main(String[] args) {
-        PrefPlans test = new PrefPlans();
-        test.setPreference("C:\\csc\\CSC305\\Tests\\yur.GymPlanFile");
-        System.out.println("returning plan 1: " + test.getPlan1());
-    }
 }

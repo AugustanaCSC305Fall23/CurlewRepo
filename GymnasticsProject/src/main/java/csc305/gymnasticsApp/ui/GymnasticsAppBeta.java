@@ -37,6 +37,7 @@ public class GymnasticsAppBeta extends Application {
     private static boolean userClickedCancel = false;
 
     private static PrefPlans recentPlans = new PrefPlans();
+    private static PrefCourses recentCourses = new PrefCourses();
 
 
 
@@ -82,12 +83,12 @@ public class GymnasticsAppBeta extends Application {
 
     }
 
-    public static PrefPlans getRecentPlans() {
-        return recentPlans;
+    public static PrefCourses getRecentCourses() {
+        return recentCourses;
     }
 
-    public static void setRecentPlans(PrefPlans recentPlans) {
-        GymnasticsAppBeta.recentPlans = recentPlans;
+    public static PrefPlans getRecentPlans() {
+        return recentPlans;
     }
 
     /**
@@ -198,7 +199,7 @@ public class GymnasticsAppBeta extends Application {
      * Reads through a file and breaks the different lines of the file up into separate ArrayList indexes
      * @return Returns an ArrayList containing all the information from the file
      */
-    public static ArrayList<String> readLessonPlan(){
+    public static ArrayList<String> readFile(){
         ArrayList<String> arrayList = new ArrayList<String>();
 
         if(selectedFile != null) {

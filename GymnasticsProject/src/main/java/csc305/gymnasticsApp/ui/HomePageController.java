@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -60,7 +59,7 @@ public class HomePageController {
         loadPlan = new LessonPlan();
         GymnasticsAppBeta.callFileChooser();
         if(GymnasticsAppBeta.getUserClickedCancel() == false) {
-            ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readLessonPlan();
+            ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();
             loadPlan.loadPlanFromFile(loadedLessonPlan);
             GymnasticsAppBeta.setLessonPlan(loadPlan);
             GymnasticsAppBeta.getLessonPlan().printEverything();
@@ -81,8 +80,8 @@ public class HomePageController {
         course = new Course();
         GymnasticsAppBeta.callFileChooser();
         if(GymnasticsAppBeta.getUserClickedCancel() == false) {
-            ArrayList<String> loadedCoursePlan = GymnasticsAppBeta.readLessonPlan();
-            course.loadEverythingFromFile(loadedCoursePlan);
+            ArrayList<String> loadedCoursePlan = GymnasticsAppBeta.readFile();
+            course.loadCourseFromFile(loadedCoursePlan);
             GymnasticsAppBeta.setCourse(course);
             GymnasticsAppBeta.switchToCourseEditPage();
         }
