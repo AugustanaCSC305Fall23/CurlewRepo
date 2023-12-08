@@ -152,9 +152,9 @@ public class CardDatabase {
                 }
             }
         }
-        for(File file : csvFiles) {
-            System.out.println(file.getName());
-        }
+//        for(File file : csvFiles) {
+//            System.out.println(file.getName());
+//        }
         return csvFiles;
     }
     /**
