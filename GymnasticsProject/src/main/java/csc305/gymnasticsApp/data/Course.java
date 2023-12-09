@@ -1,6 +1,7 @@
 package csc305.gymnasticsApp.data;
 
 import csc305.gymnasticsApp.ui.CourseEditPageController;
+import csc305.gymnasticsApp.ui.CourseUndoRedoHandler;
 import csc305.gymnasticsApp.ui.GymnasticsAppBeta;
 
 import java.util.ArrayList;
@@ -160,8 +161,14 @@ public class Course implements Cloneable{
      */
     public void restoreState(State courseState) {
         courseState.restore();
-        GymnasticsAppBeta.setCourse(this.theCourse);
-        GymnasticsAppBeta.switchToCourseEditPage();
+        resetDisplay();
+    }
+
+    private void resetDisplay(){
+        GymnasticsAppBeta.setCourse(Course.this.theCourse);
+        CourseEditPageController.clearTreeCardItems();
+        CourseEditPageController.addItemsToTreeView(Course.this.theCourse);
+
     }
 
     /**

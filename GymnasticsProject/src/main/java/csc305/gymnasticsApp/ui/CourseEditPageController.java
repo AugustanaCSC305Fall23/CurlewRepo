@@ -37,7 +37,7 @@ public class CourseEditPageController {
     private Button loadCourseButton;
 
     private Course course;
-    public TreeItem<String> rootItem = new TreeItem<>("Root");
+    public static TreeItem<String> rootItem = new TreeItem<>("Root");
     private static CourseUndoRedoHandler undoRedoHandler;
 
     private PrefCourses recentCourses = GymnasticsAppBeta.getRecentCourses();
@@ -50,11 +50,10 @@ public class CourseEditPageController {
         System.out.println("Initializing Course Edit Page");
         course = GymnasticsAppBeta.getCourse();
         initializeTreeView();
-        undoRedoHandler = GymnasticsAppBeta.courseURHandle;
-        undoRedoHandler.saveState();
         courseName.setText(Course.getCourseName());
         courseName.textProperty().addListener((obs, oldVal, newVal) -> changeCourseNameHandle());
-
+        undoRedoHandler = new CourseUndoRedoHandler(course);
+        GymnasticsAppBeta.courseURHandle = undoRedoHandler;
     }
 
     /**
@@ -82,12 +81,7 @@ public class CourseEditPageController {
             if(course.getTheCourse().getLessonPlanList().isEmpty()){
                 System.out.println("COURSE DOESNT HAVE LESSON PLANS");
             } else {
-                for(int i = 0; i < course.getTheCourse().getLessonPlanList().size(); i++) {
-                    TreeItem<String> lesson = new TreeItem<>();
-                    lesson.setValue(course.getTheCourse().getLessonPlanList().get(i).getLessonPlanTitle());
-                    rootItem.getChildren().add(lesson);
-                    System.out.println(lesson.toString());
-                }
+                addItemsToTreeView(course);
             }
         }
 
@@ -96,6 +90,21 @@ public class CourseEditPageController {
         treeView.setRoot(rootItem);
 
     }
+
+    public static void clearTreeCardItems(){
+        rootItem.getChildren().clear();
+    }
+
+    public static void addItemsToTreeView(Course course){
+        for(int i = 0; i < course.getTheCourse().getLessonPlanList().size(); i++) {
+            TreeItem<String> lesson = new TreeItem<>();
+            lesson.setValue(course.getTheCourse().getLessonPlanList().get(i).getLessonPlanTitle());
+            rootItem.getChildren().add(lesson);
+            System.out.println(lesson.toString());
+        }
+    }
+
+
 
     /**
      * Handles the selection of an item in the tree view
@@ -143,11 +152,11 @@ public class CourseEditPageController {
                         rootItem.getChildren().remove(removeTree);
                     }
                 }
+                undoRedoHandler.saveState();
                 initializeTreeView();
             }
         }
         treeView.getSelectionModel().clearSelection();
-        undoRedoHandler.saveState();
     }
 
 
@@ -279,6 +288,7 @@ public class CourseEditPageController {
     private void changeCourseNameHandle(){
         Course.setCourseName(courseName.getText());
         System.out.println(Course.getCourseName());
+        undoRedoHandler.saveState();
     }
     @FXML
     private void printCoursePageHandle(){

@@ -52,7 +52,6 @@ public class GymnasticsAppBeta extends Application {
     public void start(Stage primaryStage){
         course = new Course();
         lessonPlan = new LessonPlan();
-        courseURHandle = new CourseUndoRedoHandler(course);
         FavoriteCollection.getInstance();
         stage = primaryStage;
         scene = new Scene(new BorderPane(), 1000, 700);
