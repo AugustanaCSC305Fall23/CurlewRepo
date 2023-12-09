@@ -31,6 +31,7 @@ import java.util.concurrent.Flow;
 public class PreviewPageController {
 
     private boolean showEquipment;
+    private boolean showNotes;
     @FXML
     private VBox eventPreviewVBox;
 
@@ -60,6 +61,7 @@ public class PreviewPageController {
      */
     public void initialize() throws FileNotFoundException {
         showEquipment = false;
+        showNotes = false;
         System.out.println("Initializing preview page");
         lessonPlan = GymnasticsAppBeta.getLessonPlan();
         lessonPlan.printEverything();
@@ -257,6 +259,10 @@ public class PreviewPageController {
         fillEquipmentBox();
     }
 
+    @FXML
+    void handleNotesBox(ActionEvent event) throws FileNotFoundException {
+        fillNotesBox();
+    }
     /**
      * Handles the action event for going back to the home page
      *
@@ -374,7 +380,21 @@ public class PreviewPageController {
         if(showEquipment == false){
             showEquipment = true;
             initializeWithEquipment();
-        }else {
+        }else if(showNotes == true) {
+            showEquipment = false;
+            initializeWithEquipment();
+        } else{
+            initialize();
+        }
+    }
+    private void fillNotesBox() throws FileNotFoundException{
+        if(showNotes == false){
+            showNotes = true;
+            initializeWithEquipment();
+        }else if(showEquipment == true) {
+            showNotes = false;
+            initializeWithEquipment();
+        } else{
             initialize();
         }
     }
@@ -418,26 +438,35 @@ public class PreviewPageController {
             nHBox.getChildren().add(eventVBox);
 
 
-            String finalEquipmentString = "";
-            for(int j = 0; j < lessonPlan.getEventList().get(i).size(); j++){
-                String[] equipmentList = lessonPlan.getEventList().get(i).get(j).getEquipment().split(", "); //gets each equipment item
+            String finalString = "";
+            if(showEquipment == true) {
+                finalString = "Equipment:\n";
+                for (int j = 0; j < lessonPlan.getEventList().get(i).size(); j++) {
+                    String[] equipmentList = lessonPlan.getEventList().get(i).get(j).getEquipment().split(", "); //gets each equipment item
 
-                for(int h = 0; h < equipmentList.length; h++) {
-                    if(!(equipmentList[h].equalsIgnoreCase("none"))) {//checks if the equipment is none
-                        if (!(finalEquipmentString.contains(equipmentList[h]))) {
-                                finalEquipmentString = finalEquipmentString + "- " + equipmentList[h] + "\n";
+                    for (int h = 0; h < equipmentList.length; h++) {
+                        if (!(equipmentList[h].equalsIgnoreCase("none"))) {//checks if the equipment is none
+                            if (!(finalString.contains(equipmentList[h]))) {
+                                finalString = finalString + "- " + equipmentList[h] + "\n";
+                            }
                         }
                     }
                 }
+                finalString = finalString + "\n";
             }
-            System.out.println(finalEquipmentString);
-            finalEquipmentString = "Equipment:\n" + finalEquipmentString;
+            if(showNotes == true){
+                finalString = finalString + "Notes:\n";
+            }
+
             TextArea equipmentBox = new TextArea();
-            equipmentBox.setText(finalEquipmentString);
             equipmentBox.setPrefWidth(150);
-            equipmentBox.setPrefHeight(300);
+            if(showNotes == true){
+                equipmentBox.setPrefHeight(500);
+            } else {
+                equipmentBox.setPrefHeight(300);
+            }
             equipmentBox.setWrapText(true);
-            equipmentBox.setText(finalEquipmentString);
+            equipmentBox.setText(finalString);
             equipmentBox.setStyle("-fx-font-size: 14;");
             equipmentBox.setStyle("-fx-font-weight: bold;");
             nHBox.getChildren().add(equipmentBox);
