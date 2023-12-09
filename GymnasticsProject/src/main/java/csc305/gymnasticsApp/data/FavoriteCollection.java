@@ -34,9 +34,6 @@ public class FavoriteCollection {
             favoriteSet.add(ID);
             CardDatabase.getCardByID(ID).setFavorite(true);
         }
-        for(String id : favoriteSet){
-            System.out.println(id);
-        }
     }
 
     /**

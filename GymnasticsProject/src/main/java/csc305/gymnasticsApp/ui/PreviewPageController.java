@@ -62,10 +62,7 @@ public class PreviewPageController {
     public void initialize() throws FileNotFoundException {
         showEquipment = false;
         showNotes = false;
-        System.out.println("Initializing preview page");
         lessonPlan = GymnasticsAppBeta.getLessonPlan();
-        lessonPlan.printEverything();
-        System.out.println("^^^^should have printed everything");
         course = GymnasticsAppBeta.getCourse();
         //clear and reset panes
         mainFlowPane.getChildren().clear();
@@ -365,11 +362,9 @@ public class PreviewPageController {
      */
     private void setLessonPlanTitles() {
         lessonPlanTextField.setText(lessonPlan.getLessonPlanTitle());
-        System.out.println("size of event names" + lessonPlan.getEventNames().size());
         for(int i = 0; i < lessonPlan.getEventNames().size(); i++ ) {
             eventTitles.add(new TextField());
             eventTitles.get(i).setText(lessonPlan.getEventNames().get(i));
-            System.out.println("event title: " + eventTitles.get(i).getText());
         }
     }
 
@@ -490,10 +485,7 @@ public class PreviewPageController {
     private void initializeTextOnly(){
         showEquipment = false;
         showNotes = false;
-        System.out.println("Initializing preview page");
         lessonPlan = GymnasticsAppBeta.getLessonPlan();
-        lessonPlan.printEverything();
-        System.out.println("^^^^should have printed everything");
         course = GymnasticsAppBeta.getCourse();
         //clear and reset panes
         mainFlowPane.getChildren().clear();

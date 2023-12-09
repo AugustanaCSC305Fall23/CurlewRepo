@@ -17,8 +17,6 @@ public class PrefCourses {
 
 
     public void setCoursePreference(String filePath){
-        System.out.println(filePath);
-
         // now set the values
         prefs.put("Course3", prefs.get("Course2",""));
         prefs.put("Course2", prefs.get("Course1",""));

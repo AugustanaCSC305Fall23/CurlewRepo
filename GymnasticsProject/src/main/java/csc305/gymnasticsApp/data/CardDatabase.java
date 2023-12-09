@@ -44,24 +44,6 @@ public class CardDatabase {
         }
     }
 
-//    /**
-//     * Main method for testing and demonstrating the functionality of the CardDatabase class.
-//     *
-//     * @param args - Command-line arguments (not used).
-//     */
-//    public static void main(String[] args){
-//        addCardsFromCSVFile();
-//        setUniqueIDs();
-//        addCardsToMap();
-//        printAllCards(allCards);
-//        filters male = new CodeFilter("S1");
-//        List<Card> filteredCards = filter(male);
-//        System.out.println();
-//        System.out.println();
-//        printAllCards(filteredCards);
-//
-//    }
-
     /**
      * Adds cards to the mapping of unique IDs to cards for efficient retrieval
      */
