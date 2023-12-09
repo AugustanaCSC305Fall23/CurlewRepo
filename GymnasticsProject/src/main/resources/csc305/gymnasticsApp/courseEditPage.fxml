@@ -33,7 +33,7 @@
                   <Tooltip style="-fx-font-size: 12;" text="Opens another course but deletes this one!" />
                </tooltip>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="167.0" style="-fx-background-radius: 30; -fx-background-color: #3A5069;" text="Preview Entire Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button mnemonicParsing="false" onAction="#printCoursePageHandle" prefHeight="100.0" prefWidth="167.0" style="-fx-background-radius: 30; -fx-background-color: #3A5069;" text="Preview Entire Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

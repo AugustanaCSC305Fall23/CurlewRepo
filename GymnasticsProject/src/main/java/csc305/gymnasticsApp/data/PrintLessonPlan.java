@@ -37,12 +37,13 @@ public class PrintLessonPlan {
             for (Node flowPaneChild : mainFlowPane.getChildren()) {
                 if (flowPaneChild instanceof VBox) {
                     VBox eventPreviewVBox = (VBox) flowPaneChild;
+                    double originalRotation = eventPreviewVBox.getRotate();
+
 
                     double scaleX = pageLayout.getPrintableWidth() / eventPreviewVBox.getBoundsInParent().getWidth();
                     double scaleY = pageLayout.getPrintableHeight() / eventPreviewVBox.getBoundsInParent().getHeight();
                     double scale = Math.min(scaleX, scaleY);
                     eventPreviewVBox.setRotate(90);
-
                     eventPreviewVBox.getTransforms().add(new javafx.scene.transform.Scale(scale, scale));
 
                     // Create an image of the VBox with higher DPI for better resolution
@@ -60,6 +61,7 @@ public class PrintLessonPlan {
                     // Print the ImageView
                     boolean success = job.printPage(imageView);
 
+                    eventPreviewVBox.setRotate(originalRotation);
                     eventPreviewVBox.getTransforms().clear(); // Clear any transformations applied after printing
 
                     if (!success) {

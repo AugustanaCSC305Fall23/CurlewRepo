@@ -83,6 +83,8 @@ public class MainEditDisplayController implements Initializable {
         lessonPlan = GymnasticsAppBeta.getLessonPlan().getThePlan();
         if(lessonPlan.getEventNames().isEmpty()){
             lessonPlan.getThePlan().addEventName("Event 1");
+            List<Card> eventCards = new ArrayList<>();
+            lessonPlan.getThePlan().addToEventList(eventCards);
         }
         clearAndResetAlertButtons();
         initializeTreeView();
@@ -90,8 +92,6 @@ public class MainEditDisplayController implements Initializable {
         allCards = getAllCardButtons();
         resetFlowPane();
         initFilterList();
-        List<Card> eventCards = new ArrayList<>();
-        lessonPlan.getThePlan().addToEventList(eventCards);
         lessonTitle.setText(lessonPlan.getThePlan().getLessonPlanTitle());
         undoRedoHandler = new LessonPlanUndoRedoHandler(lessonPlan);
         GymnasticsAppBeta.lessonPlanURHandler = undoRedoHandler;

@@ -280,5 +280,9 @@ public class CourseEditPageController {
         Course.setCourseName(courseName.getText());
         System.out.println(Course.getCourseName());
     }
+    @FXML
+    private void printCoursePageHandle(){
+        GymnasticsAppBeta.switchToPrintCoursePage();
+    }
 }
 
