@@ -47,7 +47,6 @@ public class CourseEditPageController {
      */
     @FXML
     public void initialize() {
-        System.out.println("Initializing Course Edit Page");
         course = GymnasticsAppBeta.getCourse();
         initializeTreeView();
         courseName.setText(Course.getCourseName());
@@ -78,9 +77,7 @@ public class CourseEditPageController {
     public void initializeTreeView(){
         rootItem.getChildren().clear();
         if (rootItem.getChildren().isEmpty()) {
-            if(course.getTheCourse().getLessonPlanList().isEmpty()){
-                System.out.println("COURSE DOESNT HAVE LESSON PLANS");
-            } else {
+            if(!course.getTheCourse().getLessonPlanList().isEmpty()){
                 addItemsToTreeView(course);
             }
         }
@@ -99,9 +96,7 @@ public class CourseEditPageController {
         for(int i = 0; i < course.getTheCourse().getLessonPlanList().size(); i++) {
             TreeItem<String> lesson = new TreeItem<>();
             lesson.setValue(course.getTheCourse().getLessonPlanList().get(i).getLessonPlanTitle());
-            rootItem.getChildren().add(lesson);
-            System.out.println(lesson.toString());
-        }
+            rootItem.getChildren().add(lesson);}
     }
 
 

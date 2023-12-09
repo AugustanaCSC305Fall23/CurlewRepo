@@ -26,9 +26,6 @@ public class recentPlansController {
     }
 
     private void setCourseButtons() {
-        System.out.println("null? " + recentCourses.getCourse1());
-        System.out.println("null? " + recentCourses.getCourse2());
-        System.out.println("null? " + recentCourses.getCourse3());
         recentCourse1.setVisible(false);
         recentCourse2.setVisible(false);
         recentCourse3.setVisible(false);
