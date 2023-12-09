@@ -359,6 +359,17 @@ public class LessonPlan implements Cloneable{
         }
     }
 
+    public String getEntirePlanAsText(){
+        String allText = lessonPlanTitle + "\n";
+        for(int i = 0; i < eventList.size(); i++){
+            allText = allText + "    " + eventNames.get(i) + "\n";
+            for(int h = 0; h < eventList.get(i).size(); h++){
+                allText = allText + "        - " + eventList.get(i).get(h).getCode() + "  " + eventList.get(i).get(h).getTitle() + "\n";
+            }
+        }
+        return allText;
+    }
+
 }
 
 

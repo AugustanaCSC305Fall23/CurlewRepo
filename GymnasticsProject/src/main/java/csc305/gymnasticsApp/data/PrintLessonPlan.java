@@ -24,7 +24,7 @@ public class PrintLessonPlan {
      * @param printNode The node to be printed
      * @param mainScrollPane The ScrollPane containing the lesson plan
      */
-    public static void printPlan(Node printNode, ScrollPane mainScrollPane) {
+    public static void printPlan(Node printNode, ScrollPane mainScrollPane, Boolean isTextOnly) {
         Printer printer = Printer.getDefaultPrinter();
         PrinterJob job = PrinterJob.createPrinterJob(printer);
 
@@ -43,9 +43,10 @@ public class PrintLessonPlan {
                     double scaleX = pageLayout.getPrintableWidth() / eventPreviewVBox.getBoundsInParent().getWidth();
                     double scaleY = pageLayout.getPrintableHeight() / eventPreviewVBox.getBoundsInParent().getHeight();
                     double scale = Math.min(scaleX, scaleY);
-                    eventPreviewVBox.setRotate(90);
-                    eventPreviewVBox.getTransforms().add(new javafx.scene.transform.Scale(scale, scale));
-
+                    if(!isTextOnly) {
+                        eventPreviewVBox.setRotate(90);
+                        eventPreviewVBox.getTransforms().add(new javafx.scene.transform.Scale(scale, scale));
+                    }
                     // Create an image of the VBox with higher DPI for better resolution
                     SnapshotParameters snapshotParams = new SnapshotParameters();
                     snapshotParams.setFill(Color.WHITE);
@@ -61,9 +62,10 @@ public class PrintLessonPlan {
                     // Print the ImageView
                     boolean success = job.printPage(imageView);
 
-                    eventPreviewVBox.setRotate(originalRotation);
-                    eventPreviewVBox.getTransforms().clear(); // Clear any transformations applied after printing
-
+                    if(!isTextOnly) {
+                        eventPreviewVBox.setRotate(originalRotation);
+                        eventPreviewVBox.getTransforms().clear(); // Clear any transformations applied after printing
+                    }
                     if (!success) {
                         break; // Break the loop if printing is unsuccessful
                     }

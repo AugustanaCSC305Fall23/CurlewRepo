@@ -362,7 +362,7 @@ public class PrintCoursePageController {
     @FXML
     void printButtonController(ActionEvent event) {
         Node lessonPlanNode = mainScrollPane;
-        PrintLessonPlan.printPlan(lessonPlanNode, mainScrollPane);
+        PrintLessonPlan.printPlan(lessonPlanNode, mainScrollPane, false);
     }
     @FXML
     void handleEquipmentBar(ActionEvent event) throws FileNotFoundException {

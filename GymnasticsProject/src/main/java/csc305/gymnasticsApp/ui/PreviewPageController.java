@@ -299,7 +299,10 @@ public class PreviewPageController {
     @FXML
     void printButtonController(ActionEvent event) {
         Node lessonPlanNode = mainScrollPane;
-        PrintLessonPlan.printPlan(lessonPlanNode, mainScrollPane);
+        if(VBoxes.get(0).getPrefHeight() == 700){
+            PrintLessonPlan.printPlan(lessonPlanNode, mainScrollPane, true);
+        }
+        PrintLessonPlan.printPlan(lessonPlanNode, mainScrollPane, false);
     }
 
     /**
@@ -477,6 +480,52 @@ public class PreviewPageController {
             VBoxes.add(currentVBox);
 
         }
+        mainFlowPane.setAlignment(Pos.CENTER);
+    }
+
+    @FXML
+    private void textModeHandle(ActionEvent event){
+        initializeTextOnly();
+    }
+    private void initializeTextOnly(){
+        showEquipment = false;
+        showNotes = false;
+        System.out.println("Initializing preview page");
+        lessonPlan = GymnasticsAppBeta.getLessonPlan();
+        lessonPlan.printEverything();
+        System.out.println("^^^^should have printed everything");
+        course = GymnasticsAppBeta.getCourse();
+        //clear and reset panes
+        mainFlowPane.getChildren().clear();
+        VBoxes.clear();
+        VBox nVBox = getNewVBox();
+        nVBox.setPrefSize(595, 700);
+        TextArea allText = new TextArea();
+        allText.setText(lessonPlan.getEntirePlanAsText());
+        System.out.println(lessonPlan.getEntirePlanAsText());
+        allText.setPrefSize(595, 700);
+        allText.setStyle("-fx-font-size: 12; -fx-font-weight: bold; -fx-background-color: white; -fx-border-color: white;");
+
+        String finalString = "All Equipment:\n";
+        for(int i = 0; i < lessonPlan.getEventNames().size(); i++) {
+            for (int j = 0; j < lessonPlan.getEventList().get(i).size(); j++) {
+                String[] equipmentList = lessonPlan.getEventList().get(i).get(j).getEquipment().split(", "); //gets each equipment item
+
+                for (int h = 0; h < equipmentList.length; h++) {
+                    if (!(equipmentList[h].equalsIgnoreCase("none"))) {//checks if the equipment is none
+                        if (!(finalString.contains(equipmentList[h]))) {
+                            finalString = finalString + "- " + equipmentList[h] + "\n";
+                        }
+                    }
+                }
+            }
+        }
+
+        allText.setText(allText.getText() + finalString);
+
+        nVBox.getChildren().add(allText);
+        mainFlowPane.getChildren().add(nVBox);
+        VBoxes.add(nVBox);
         mainFlowPane.setAlignment(Pos.CENTER);
     }
 
