@@ -32,6 +32,7 @@ public class PreviewPageController {
 
     private boolean showEquipment;
     private boolean showNotes;
+    private boolean isTextOnlyShowing;
     @FXML
     private VBox eventPreviewVBox;
 
@@ -62,6 +63,7 @@ public class PreviewPageController {
     public void initialize() throws FileNotFoundException {
         showEquipment = false;
         showNotes = false;
+        isTextOnlyShowing = false;
         lessonPlan = GymnasticsAppBeta.getLessonPlan();
         course = GymnasticsAppBeta.getCourse();
         //clear and reset panes
@@ -406,6 +408,7 @@ public class PreviewPageController {
         VBoxes.clear();
         boolean isFirst = true;
         boolean createdTitle = false;
+        isTextOnlyShowing = false;
 
         //iterates through each event and adds subsequent cards
         for(int i = 0; i < lessonPlan.getEventNames().size(); i++){
@@ -479,8 +482,15 @@ public class PreviewPageController {
     }
 
     @FXML
-    private void textModeHandle(ActionEvent event){
-        initializeTextOnly();
+    private void textModeHandle(ActionEvent event) throws FileNotFoundException {
+        if(isTextOnlyShowing == false) {
+            isTextOnlyShowing = true;
+            initializeTextOnly();
+        }
+        else{
+            isTextOnlyShowing = false;
+            initialize();
+        }
     }
     private void initializeTextOnly(){
         showEquipment = false;
