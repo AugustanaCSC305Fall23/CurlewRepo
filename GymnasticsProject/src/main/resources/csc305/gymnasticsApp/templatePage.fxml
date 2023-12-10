@@ -10,14 +10,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: EEF8FF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.TemplatePageController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.TemplatePageController">
    <left>
-      <VBox alignment="CENTER" prefHeight="700.0" prefWidth="152.0" style="-fx-border-color: black; -fx-border-width: 0 2 0 0;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="700.0" prefWidth="152.0" style="-fx-background-color: #3A5069;" BorderPane.alignment="CENTER">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" text="Home" textAlignment="CENTER" textFill="#eef8ff">
+            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: white; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" text="Home" textAlignment="CENTER" textFill="#3a5069">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -28,7 +28,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;">
                <children>
                   <Text fill="#3a5069" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 4.5em;" text="Choose a Template">
                      <font>
@@ -37,9 +37,9 @@
                   </Text>
                </children>
             </HBox>
-            <ScrollPane fitToWidth="true" hbarPolicy="ALWAYS" prefHeight="667.0" prefWidth="848.0" style="-fx-background-color: EEF8FF;" vbarPolicy="ALWAYS">
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="667.0" prefWidth="848.0" style="-fx-background-color: white;" vbarPolicy="ALWAYS">
                <content>
-                  <VBox alignment="TOP_CENTER" prefHeight="628.0" prefWidth="848.0">
+                  <VBox alignment="TOP_CENTER" prefHeight="628.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: white;">
                      <children>
                         <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="848.0" spacing="10.0">
                            <children>
@@ -48,7 +48,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </Text>
-                              <HBox alignment="CENTER" prefHeight="250.0" prefWidth="848.0" spacing="60.0">
+                              <HBox alignment="CENTER" prefHeight="250.0" prefWidth="848.0" spacing="60.0" style="-fx-background-color: white;">
                                  <children>
                                     <Button fx:id="allFloorButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAllFloorButton" prefHeight="250.0" prefWidth="350.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;">
                                        <tooltip>
