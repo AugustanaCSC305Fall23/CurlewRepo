@@ -75,7 +75,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TreeView fx:id="treeView" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="387.0" prefWidth="410.0" style="-fx-border-color: black; -fx-font-size: 28px;" VBox.vgrow="ALWAYS">
+                  <TreeView fx:id="treeView" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="387.0" prefWidth="410.0" style="-fx-border-color: black; -fx-font-size: 28px;" stylesheets="@scrollpane.css" VBox.vgrow="ALWAYS">
                      <tooltip>
                         <Tooltip maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-font-size: 12;" text="Click these!" />
                      </tooltip></TreeView>
