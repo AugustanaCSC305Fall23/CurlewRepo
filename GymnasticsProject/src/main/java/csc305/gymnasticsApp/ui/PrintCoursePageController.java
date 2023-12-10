@@ -113,7 +113,7 @@ public class PrintCoursePageController {
      */
     private VBox getNewVBox(){
         VBox returnVBox = new VBox();
-        returnVBox.setStyle("-fx-background-color: grey;");
+        returnVBox.setStyle("-fx-background-color: #CCCCCC;");
         returnVBox.setPrefSize(770.0, 595.0);
         returnVBox.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         returnVBox.setAlignment(Pos.TOP_CENTER);
@@ -373,7 +373,7 @@ public class PrintCoursePageController {
         VBox nVBox = getNewVBox();
         nVBox.setAlignment(Pos.CENTER);
         TextField courseName = new TextField(Course.getCourseName());
-        courseName.setStyle("-fx-font-size: 50; -fx-font-weight: bold; -fx-text-fill: white;-fx-background-color: grey");
+        courseName.setStyle("-fx-font-size: 50; -fx-font-weight: bold; -fx-text-fill: white;-fx-background-color: #CCCCCC");
         courseName.setPrefSize(900, 50);
         courseName.setAlignment(Pos.CENTER);
 
