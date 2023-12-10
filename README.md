@@ -1,8 +1,9 @@
 # CurlewRepo
-Team Curlew's Gymnastics Coach Lesson Planner
-Team Curlew Developers - Jack Bigler, Braeden Poole, Johnny Breeden and Tyler Leslie
-Project Supervisor - Dr. Forrest Stonedahl
-Product Designer - Dr. Samantha Keehn
+
+Team Curlew's Gymnastics Coach Lesson Planner  
+Team Curlew Developers - Jack Bigler, Braeden Poole, Johnny Breeden and Tyler Leslie  
+Project Supervisor - Dr. Forrest Stonedahl  
+Product Designer - Dr. Samantha Keehn  
 
 Version 1.0 Release Notes 
   - Equipment feature with 8 cards in an event has too much equipment
