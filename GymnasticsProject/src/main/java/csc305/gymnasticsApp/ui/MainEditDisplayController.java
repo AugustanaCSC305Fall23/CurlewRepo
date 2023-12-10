@@ -420,7 +420,7 @@ public class MainEditDisplayController implements Initializable {
                 alert.setHeaderText("Are you sure you want to delete this card?");
                 alert.setContentText("Please select an option.");
                 ButtonType yesButton = new ButtonType("Yes");
-                ButtonType noButton = new ButtonType("No");
+                ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
                 alert.getButtonTypes().setAll(yesButton, noButton);
                 Optional<ButtonType> result = alert.showAndWait();
 
@@ -437,7 +437,7 @@ public class MainEditDisplayController implements Initializable {
                 choose.setContentText("Please select an option.");
                 ButtonType renameButton = new ButtonType("Rename Event");
                 ButtonType deleteButton = new ButtonType("Delete Event");
-                ButtonType cancelButton = new ButtonType("Cancel");
+                ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
                 choose.getButtonTypes().setAll(renameButton, deleteButton, cancelButton);
                 Optional<ButtonType> initialResult = choose.showAndWait();
                 if(initialResult.isPresent()) {

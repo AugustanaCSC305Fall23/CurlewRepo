@@ -50,11 +50,11 @@
                               </Text>
                               <HBox alignment="CENTER" prefHeight="250.0" prefWidth="848.0" spacing="60.0" style="-fx-background-color: white;">
                                  <children>
-                                    <Button fx:id="allFloorButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAllFloorButton" prefHeight="250.0" prefWidth="350.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;">
+                                    <Button fx:id="allFloorButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAllFloorButton" prefHeight="250.0" prefWidth="350.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
-                                    <Button fx:id="floorAndStrength" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleFloorAndStrength" prefHeight="250.0" prefWidth="350.0">
+                                    <Button fx:id="floorAndStrength" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleFloorAndStrength" prefHeight="250.0" prefWidth="350.0" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
@@ -71,11 +71,11 @@
                               </Text>
                               <HBox alignment="CENTER" prefHeight="250.0" prefWidth="848.0" spacing="60.0">
                                  <children>
-                                    <Button fx:id="beginnerOnlyButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBeginnerOnlyButtonOne" prefHeight="250.0" prefWidth="350.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;">
+                                    <Button fx:id="beginnerOnlyButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBeginnerOnlyButtonOne" prefHeight="250.0" prefWidth="350.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
-                                    <Button fx:id="varietyBeginner" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleVarietyBeginner" prefHeight="250.0" prefWidth="350.0">
+                                    <Button fx:id="varietyBeginner" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleVarietyBeginner" prefHeight="250.0" prefWidth="350.0" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
@@ -92,11 +92,11 @@
                               </Text>
                               <HBox alignment="CENTER" prefHeight="250.0" prefWidth="848.0" spacing="60.0">
                                  <children>
-                                    <Button fx:id="maleOnlyButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMaleOnlyButtonOne" prefHeight="250.0" prefWidth="350.0">
+                                    <Button fx:id="maleOnlyButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMaleOnlyButtonOne" prefHeight="250.0" prefWidth="350.0" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
-                                    <Button fx:id="maleUpper" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMaleUpper" prefHeight="250.0" prefWidth="350.0">
+                                    <Button fx:id="maleUpper" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMaleUpper" prefHeight="250.0" prefWidth="350.0" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>

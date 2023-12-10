@@ -115,7 +115,8 @@ public class CourseEditPageController {
             alert.setContentText("Please select an option.");
             ButtonType editButton = new ButtonType("Edit");
             ButtonType deleteButton = new ButtonType("Delete");
-            alert.getButtonTypes().setAll(editButton, deleteButton);
+            ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(editButton, deleteButton, cancelButton);
 
             Optional<ButtonType> result = alert.showAndWait();
 
@@ -136,8 +137,7 @@ public class CourseEditPageController {
                         System.out.println("Could not find LessonPlan in the Course");
                     }
                 }
-            }
-            if(result.get() == deleteButton){
+            } else if(result.get() == deleteButton){
                 for (int i = 0; i < course.getTheCourse().getLessonPlanList().size(); i++) {
                     if (course.getTheCourse().getLessonPlanList().get(i).getLessonPlanTitle().equals(selectedItem.getValue())) {
                         LessonPlan selectedLessonPlan = course.getTheCourse().getLessonPlanList().get(i);
@@ -149,6 +149,8 @@ public class CourseEditPageController {
                 }
                 undoRedoHandler.saveState();
                 initializeTreeView();
+            } else{
+                alert.close();
             }
         }
         treeView.getSelectionModel().clearSelection();
@@ -187,10 +189,25 @@ public class CourseEditPageController {
      */
     @FXML
     private void resetCourseButtonHandle(ActionEvent event){
-        course.getTheCourse().clearLessonPlanList();
-        rootItem.getChildren().clear();
-        initializeTreeView();
-        undoRedoHandler.saveState();
+        Alert maxCardAlert = new Alert(Alert.AlertType.WARNING);
+        maxCardAlert.setTitle("Caution");
+        maxCardAlert.setHeaderText("This will FULLY RESET your course! ");
+        ButtonType yesButton = new ButtonType("Yes, reset my course");
+        ButtonType noButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        maxCardAlert.getButtonTypes().setAll(yesButton, noButton);
+        Optional<ButtonType> newResult = maxCardAlert.showAndWait();
+
+        if(newResult.isPresent()) {
+            if (newResult.get() == noButton) {
+                maxCardAlert.close();
+            } else if (newResult.get() == yesButton) {
+                course.getTheCourse().clearLessonPlanList();
+                rootItem.getChildren().clear();
+                initializeTreeView();
+                undoRedoHandler.saveState();
+            }
+        }
+
     }
     @FXML
     private void homePageButtonHandle(ActionEvent event){
@@ -256,7 +273,7 @@ public class CourseEditPageController {
         maxCardAlert.setTitle("Caution");
         maxCardAlert.setHeaderText("This will FULLY DELETE the course you are currently working on! ");
         ButtonType yesButton = new ButtonType("Load New Course and delete current one");
-        ButtonType noButton = new ButtonType("Cancel");
+        ButtonType noButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
         maxCardAlert.getButtonTypes().setAll(yesButton, noButton);
         Optional<ButtonType> newResult = maxCardAlert.showAndWait();
         if(newResult.isPresent()) {
