@@ -319,14 +319,30 @@ public class LessonPlan implements Cloneable{
             return null;
         }
     }
+
+    /**
+     * Creates a memento for the current state of the LessonPlan
+     * @return
+     */
     public State createMemento() {
         return new State();
     }
 
+    /**
+     * Restores the LessonPlan to a specific state represented by the provided memento.
+     *
+     * @param lessonPlan The memento representing the state to be restored.
+     */
     public void restoreState(LessonPlan.State lessonPlan) {
         lessonPlan.restore();
         resetDisplay();
     }
+
+    /**
+     * Resets the display after restoring the lesson plan state.
+     * Prints for UNDO, sets the lesson plan in GymnasticsAppBeta, clears and adds tree card items,
+     * and clears and resets alert buttons in the MainEditDisplayController.
+     */
     private void resetDisplay(){
         System.out.println("Printing for the UNDO: ");
         LessonPlan.this.thePlan.printEverything();
@@ -359,6 +375,11 @@ public class LessonPlan implements Cloneable{
         }
     }
 
+    /**
+     * Gets the entire lesson plan as text, including titles, event names, and details.
+     *
+     * @return A string representation of the entire lesson plan.
+     */
     public String getEntirePlanAsText(){
         String allText = lessonPlanTitle + "\n";
         for(int i = 0; i < eventList.size(); i++){

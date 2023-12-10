@@ -164,6 +164,9 @@ public class Course implements Cloneable{
         resetDisplay();
     }
 
+    /**
+     * Resets the course display
+     */
     private void resetDisplay(){
         GymnasticsAppBeta.setCourse(Course.this.theCourse);
         CourseEditPageController.clearTreeCardItems();

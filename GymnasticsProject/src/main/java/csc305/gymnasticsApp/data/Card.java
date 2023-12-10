@@ -85,10 +85,18 @@ public class Card implements Cloneable{
         }
     }
 
+    /**
+     * Sets a card to a favorite
+     * @param favorite the favorite boolean
+     */
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
     }
 
+    /**
+     * Returns if a card is a favorite
+     * @return true if the card is a favorite, otherwise returns false
+     */
     public boolean isFavorite() {
         return favorite;
     }
