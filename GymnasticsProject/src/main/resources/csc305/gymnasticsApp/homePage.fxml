@@ -19,7 +19,7 @@
                   <Font size="55.0" />
                </font>
             </Text>
-            <Button fx:id="NewLessonButton" alignment="CENTER" minHeight="150.0" minWidth="400.0" mnemonicParsing="false" onAction="#handleNewLessonButton" style="-fx-background-color: A2AE98; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Create New Lesson Plan" textFill="#3a5069" VBox.vgrow="ALWAYS">
+            <Button fx:id="NewLessonButton" alignment="CENTER" minHeight="150.0" minWidth="400.0" mnemonicParsing="false" onAction="#handleNewLessonButton" style="-fx-background-color: white; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Create New Lesson Plan" textFill="#3a5069" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
@@ -29,22 +29,22 @@
             </Button>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="810.0" spacing="15.0">
                <children>
-                  <Button fx:id="loadCourseButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadCourseButtonHandle" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: A2AE98; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Load Existing Course" textAlignment="CENTER" textFill="#3a5069" wrapText="true">
+                  <Button fx:id="loadCourseButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadCourseButtonHandle" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: white; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Load Existing Course" textAlignment="CENTER" textFill="#3a5069" wrapText="true">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="recentButton" alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#recentButtonHandle" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: A2AE98; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Recent Plans and Courses" textAlignment="CENTER" textFill="#3a5069" wrapText="true">
+                  <Button fx:id="recentButton" alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#recentButtonHandle" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: white; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Recent Plans and Courses" textAlignment="CENTER" textFill="#3a5069" wrapText="true">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="templateButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleTemplateButton" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: A2AE98; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Pre-Made Templates" textAlignment="CENTER" textFill="#3a5069" wrapText="true">
+                  <Button fx:id="templateButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleTemplateButton" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: white; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Pre-Made Templates" textAlignment="CENTER" textFill="#3a5069" wrapText="true">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="loadLessonPlanButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadLessonPlanButtonHandle" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: A2AE98; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Load Existing LessonPlan" textAlignment="CENTER" textFill="#3a5069" wrapText="true">
+                  <Button fx:id="loadLessonPlanButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadLessonPlanButtonHandle" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: white; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Load Existing LessonPlan" textAlignment="CENTER" textFill="#3a5069" wrapText="true">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
@@ -59,7 +59,7 @@
             <Insets bottom="50.0" top="50.0" />
          </padding>
       </VBox>
-      <Button fx:id="aboutButton" layoutX="800.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAboutButton" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: A2AE98; -fx-font-family: Inter; -fx-font-weight: Bold; -fx-font-size: 1em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="About?" textFill="#3a5069" AnchorPane.bottomAnchor="19.6" AnchorPane.rightAnchor="40.0">
+      <Button fx:id="aboutButton" layoutX="800.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAboutButton" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: white; -fx-font-family: Inter; -fx-font-weight: Bold; -fx-font-size: 1em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="About?" textFill="#3a5069" AnchorPane.bottomAnchor="19.6" AnchorPane.rightAnchor="40.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -67,7 +67,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <ImageView fitHeight="157.0" fitWidth="140.0" layoutY="9.0" preserveRatio="true" y="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+      <ImageView fitHeight="131.0" fitWidth="152.0" layoutY="9.0" preserveRatio="true" y="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
          <image>
             <Image url="@gymProfLogo.png" />
          </image>
