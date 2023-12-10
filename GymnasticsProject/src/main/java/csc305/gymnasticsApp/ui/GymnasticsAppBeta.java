@@ -149,6 +149,9 @@ public class GymnasticsAppBeta extends Application {
     public static void switchToPrintCoursePage(){
         switchToView("/csc305/gymnasticsApp/printCoursePage.fxml");
     }
+    public static void switchToSingleCardPage(){
+        switchToView("/csc305/gymnasticsApp/singleCardPage.fxml");
+    }
 
     /**
      * Opens a file chooser dialog for selecting the Gymnastics Picture files
@@ -273,4 +276,6 @@ public class GymnasticsAppBeta extends Application {
     public static void setUserClickedCancel(Boolean setBoolean){
         userClickedCancel = setBoolean;
     }
+
+
 }

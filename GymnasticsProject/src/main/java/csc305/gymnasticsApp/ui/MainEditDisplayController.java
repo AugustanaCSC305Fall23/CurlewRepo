@@ -57,6 +57,7 @@ public class MainEditDisplayController implements Initializable {
     private ChoiceBox<String> levelCB;
     @FXML
     private CheckBox favCheckBox;
+    public static CardButton currentSelectedCard;
     private List<CardFilter> filterList = new ArrayList<>();
     public static TreeItem<String> rootItem = new TreeItem<>("Root");
 
@@ -494,6 +495,7 @@ public class MainEditDisplayController implements Initializable {
      * @param cardButton The CardButton representing the card to be added
      */
     public void addCardToTreeView(CardButton cardButton) {
+        setCurrentSelectedCard(cardButton);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Add Card to Event");
         alert.setHeaderText("");
@@ -512,12 +514,16 @@ public class MainEditDisplayController implements Initializable {
         }
 
         ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-        alert.getButtonTypes().setAll(cancelButton);
+        ButtonType printCardButton = new ButtonType("Print This Card");
+        alert.getButtonTypes().setAll(cancelButton, printCardButton);
 
-        // Create an HBox to organize the layout
+
+
+
         FlowPane flowpane = new FlowPane(); // Set spacing between nodes
-        flowpane.setPrefWrapLength(201);
+        flowpane.setPrefWrapLength(0);
         flowpane.setVgap(2);
+        flowpane.setHgap(2);
 
         // Add the event buttons to the HBox
         for (ButtonType eventButtonType : eventButtonList) {
@@ -530,19 +536,28 @@ public class MainEditDisplayController implements Initializable {
         // Add the Cancel button to the HBox
         Button cancelButtonNode = (Button) alert.getDialogPane().lookupButton(cancelButton);
         cancelButtonNode.setStyle("-fx-font-size: 20px; -fx-min-width: 200px; -fx-min-height: 30px");
+        Button printCardButtonNode = (Button) alert.getDialogPane().lookupButton(printCardButton);
+        printCardButtonNode.setOnAction(event -> printSingleCard());
+        printCardButtonNode.setStyle("-fx-font-size: 20px; -fx-min-width: 200px; -fx-min-height: 30px");
+        flowpane.getChildren().add(printCardButtonNode);
         flowpane.getChildren().add(cancelButtonNode);
+        flowpane.setPrefWidth(100);
 
-        // Create a ScrollPane and add the HBox to it
         ScrollPane scrollPane = new ScrollPane(flowpane);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.setMaxHeight(300); // Set maximum width for the ViewPort of the ScrollPane
+        scrollPane.setMaxWidth(100);
         scrollPane.setStyle("-fx-background-color:  transparent; -fx-border-color: transparent;-fx-padding: 0px");
 
 
         // Set the content of the dialog pane to the ScrollPane
         alert.getDialogPane().setContent(scrollPane);
-        alert.getDialogPane().setMinHeight(450); // Set a fixed height for the DialogPane
+        alert.getDialogPane().setMinHeight(500); // Set a fixed height for the DialogPane
         alert.getDialogPane().setMaxHeight(500);
+        alert.getDialogPane().setMinWidth(630);
+        alert.getDialogPane().setMaxWidth(630);
+        alert.setWidth(600);
+        alert.setHeight(450);
         Optional<ButtonType> result = alert.showAndWait();
         //equiv to mouse press action
         result.ifPresent(buttonType -> {
@@ -572,6 +587,17 @@ public class MainEditDisplayController implements Initializable {
         }
         undoRedoHandler.saveState();
     }
+
+    private void printSingleCard(){
+        GymnasticsAppBeta.switchToSingleCardPage();
+    }
+    public static CardButton getCurrentSelectedCard(){
+        return currentSelectedCard;
+    }
+    public static void setCurrentSelectedCard(CardButton cardButton){
+        currentSelectedCard = cardButton;
+    }
+
 
     /**
      * Retrieves the current LessonPlan instance
