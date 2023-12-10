@@ -128,7 +128,7 @@
             </VBox>
          </children>
       </HBox>
-      <VBox fx:id="filterMenu" alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" onMouseExited="#mouseExitHandle" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: D48973;" AnchorPane.bottomAnchor="250.0" AnchorPane.topAnchor="0.0" visible="false">
+      <VBox fx:id="filterMenu" alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" onMouseExited="#mouseExitHandle" prefHeight="402.0" prefWidth="250.0" style="-fx-background-color: D48973;" visible="false" AnchorPane.bottomAnchor="198.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="200.0" spacing="10.0">
                <children>
@@ -142,7 +142,7 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: D48973;" stylesheets="@scrollpane.css" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: D48973;" stylesheets="@scrollpane.css" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                <content>
                   <VBox fx:id="filterVBox1" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="5.0" style="-fx-border-width: 2; -fx-background-color: D48973;">
                      <children>
