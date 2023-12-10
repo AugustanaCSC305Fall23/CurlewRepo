@@ -32,36 +32,21 @@ import java.util.List;
  * This class also facilitates the interaction between the graphical user interface (GUI) and the underlying data model
  */
 public class MainEditDisplayController implements Initializable {
-    @FXML
-    private Button doneButton;
-    @FXML
-    private TextField lessonTitle;
-    @FXML
-    private VBox filterMenu;
-    @FXML
-    private TextField searchBar;
-    @FXML
-    private FlowPane cardFlowPane;
-    @FXML
-    private TreeView treeView;
+    
+    @FXML private TextField lessonTitle;
+    @FXML private VBox filterMenu;
+    @FXML private TextField searchBar;
+    @FXML private FlowPane cardFlowPane;
+    @FXML private TreeView treeView;
     @FXML public VBox filterVBox;
     @FXML private TextField equipmentTextfield;
-
-    @FXML
-    private ChoiceBox<String> genderCB;
-    @FXML
-    private ChoiceBox<String> modelGenderCB;
-    @FXML
-    private ChoiceBox<String> eventCB;
-    @FXML
-    private ChoiceBox<String> levelCB;
-    @FXML
-    private CheckBox favCheckBox;
+    @FXML private ChoiceBox<String> genderCB;
+    @FXML private ChoiceBox<String> modelGenderCB;
+    @FXML private ChoiceBox<String> eventCB;
+    @FXML private ChoiceBox<String> levelCB;
+    @FXML private CheckBox favCheckBox;
     public static CardButton currentSelectedCard;
-    private List<CardFilter> filterList = new ArrayList<>();
     public static TreeItem<String> rootItem = new TreeItem<>("Root");
-
-
     public static List<TreeItem<String>> events = new ArrayList<>();
     private static final List<CardButton> currentFilteredCards = new ArrayList<>();
     private static List<CardButton> allCards = new ArrayList<>();
@@ -148,8 +133,6 @@ public class MainEditDisplayController implements Initializable {
         }
     }
 
-
-    //Need to reset currentFilteredCards at some point
     /**
      * Adds cards to the FlowPane for display.
      */
