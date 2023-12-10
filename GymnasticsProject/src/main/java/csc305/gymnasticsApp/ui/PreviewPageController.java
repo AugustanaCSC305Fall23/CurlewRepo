@@ -104,7 +104,7 @@ public class PreviewPageController {
      */
     private VBox getNewVBox(){
         VBox returnVBox = new VBox();
-        returnVBox.setStyle("-fx-background-color: grey;");
+        returnVBox.setStyle("-fx-background-color: #CCCCCC;");
         returnVBox.setPrefSize(770.0, 595.0);
         returnVBox.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         returnVBox.setAlignment(Pos.TOP_CENTER);
