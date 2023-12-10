@@ -479,7 +479,7 @@ public class PreviewPageController {
             if(showNotes == true){
                 equipmentBox.setPrefHeight(500);
             } else {
-                equipmentBox.setPrefHeight(300);
+                equipmentBox.setPrefHeight(350);
             }
             equipmentBox.setWrapText(true);
             equipmentBox.setText(finalString);
@@ -537,8 +537,10 @@ public class PreviewPageController {
         System.out.println(lessonPlan.getEntirePlanAsText());
         allText.setPrefSize(595, 700);
         allText.setStyle("-fx-font-size: 12; -fx-font-weight: bold; -fx-background-color: white; -fx-border-color: white;");
+        allText.setWrapText(true);
 
         String finalString = "All Equipment:\n";
+        boolean isFirstEquipment = true;
         for(int i = 0; i < lessonPlan.getEventNames().size(); i++) {
             for (int j = 0; j < lessonPlan.getEventList().get(i).size(); j++) {
                 String[] equipmentList = lessonPlan.getEventList().get(i).get(j).getEquipment().split(", "); //gets each equipment item
@@ -546,7 +548,12 @@ public class PreviewPageController {
                 for (int h = 0; h < equipmentList.length; h++) {
                     if (!(equipmentList[h].equalsIgnoreCase("none"))) {//checks if the equipment is none
                         if (!(finalString.contains(equipmentList[h]))) {
-                            finalString = finalString + "- " + equipmentList[h] + "\n";
+                            if(isFirstEquipment){
+                                finalString = finalString + equipmentList[h];
+                                isFirstEquipment = false;
+                            } else {
+                                finalString = finalString + ", " + equipmentList[h];
+                            }
                         }
                     }
                 }

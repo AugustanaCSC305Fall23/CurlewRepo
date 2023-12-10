@@ -323,6 +323,7 @@ public class PrintCoursePageController {
 
 
                 String finalString = "";
+                Boolean isFirstEquipment = true;
                 if(showEquipment == true) {
                     finalString = "Equipment:\n";
                     for (int j = 0; j < lessonPlan.getEventList().get(i).size(); j++) {
@@ -330,8 +331,11 @@ public class PrintCoursePageController {
 
                         for (int h = 0; h < equipmentList.length; h++) {
                             if (!(equipmentList[h].equalsIgnoreCase("none"))) {//checks if the equipment is none
-                                if (!(finalString.contains(equipmentList[h]))) {
-                                    finalString = finalString + "- " + equipmentList[h] + "\n";
+                                if(isFirstEquipment){
+                                    finalString = finalString + equipmentList[h];
+                                    isFirstEquipment = false;
+                                } else {
+                                    finalString = finalString + ", " + equipmentList[h];
                                 }
                             }
                         }
@@ -339,7 +343,11 @@ public class PrintCoursePageController {
                     finalString = finalString + "\n";
                 }
                 if(showNotes == true){
-                    finalString = finalString + "Notes:\n";
+                    if(showEquipment == true) {
+                        finalString = finalString + "\n" + "Notes:\n";
+                    } else{
+                        finalString = finalString + "Notes:\n";
+                    }
                 }
 
                 TextArea equipmentBox = new TextArea();
@@ -347,7 +355,7 @@ public class PrintCoursePageController {
                 if(showNotes == true){
                     equipmentBox.setPrefHeight(500);
                 } else {
-                    equipmentBox.setPrefHeight(300);
+                    equipmentBox.setPrefHeight(350);
                 }
                 equipmentBox.setWrapText(true);
                 equipmentBox.setText(finalString);
@@ -373,7 +381,7 @@ public class PrintCoursePageController {
         VBox nVBox = getNewVBox();
         nVBox.setAlignment(Pos.CENTER);
         TextField courseName = new TextField(Course.getCourseName());
-        courseName.setStyle("-fx-font-size: 50; -fx-font-weight: bold; -fx-text-fill: white;-fx-background-color: #CCCCCC");
+        courseName.setStyle("-fx-font-size: 50; -fx-font-weight: bold; -fx-text-fill: black;-fx-background-color: #CCCCCC");
         courseName.setPrefSize(900, 50);
         courseName.setAlignment(Pos.CENTER);
 

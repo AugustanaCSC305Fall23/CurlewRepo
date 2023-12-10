@@ -156,17 +156,17 @@ public class TemplatePageController {
      * Initializes the controller
      */
     public void initialize(){
-        Image allFloorImage = new Image("file:src/main/resources/templatePlans/allFloor-1.png");
+        Image allFloorImage = new Image("file:src/main/resources/templatePlans/allFloorPDF-1.png");
         initializeImages(allFloorImage, allFloorButton);
-        Image floorAndStrengthImage = new Image("file:src/main/resources/templatePlans/floorAndStrength-1.png");
+        Image floorAndStrengthImage = new Image("file:src/main/resources/templatePlans/beginnerFloorPDF-1.png");
         initializeImages(floorAndStrengthImage, floorAndStrength);
-        Image beginnerFloorAndTrampolineImage = new Image("file:src/main/resources/templatePlans/newBeginnerFloor-1.png");
+        Image beginnerFloorAndTrampolineImage = new Image("file:src/main/resources/templatePlans/beginnerFloorPDF-1.png");
         initializeImages(beginnerFloorAndTrampolineImage, beginnerOnlyButtonOne);
-        Image varietyBeginnerImage = new Image("file:src/main/resources/templatePlans/varietyBeginner-1.png");
+        Image varietyBeginnerImage = new Image("file:src/main/resources/templatePlans/varietyBeginnerPDF-1.png");
         initializeImages(varietyBeginnerImage, varietyBeginner);
-        Image maleOnlyLessonPlanImage = new Image("file:src/main/resources/templatePlans/newMaleOnly-1.png");
+        Image maleOnlyLessonPlanImage = new Image("file:src/main/resources/templatePlans/maleOnlyPDF-1.png");
         initializeImages(maleOnlyLessonPlanImage, maleOnlyButtonOne);
-        Image maleUpperImage = new Image("file:src/main/resources/templatePlans/maleUpper-1.png");
+        Image maleUpperImage = new Image("file:src/main/resources/templatePlans/maleUpperPDF-1.png");
         initializeImages(maleUpperImage, maleUpper);
     }
 
