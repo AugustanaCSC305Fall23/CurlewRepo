@@ -7,7 +7,6 @@ import java.util.List;
  * The ModelGenderFilter class is an implementation of the filters interface
  * designed to filter Card objects based on a desired model gender.
  */
-
 public class ModelGenderFilter implements CardFilter {
     private final String desiredModelGender;
 
@@ -20,7 +19,12 @@ public class ModelGenderFilter implements CardFilter {
         this.desiredModelGender = desiredModelGender;
     }
 
-
+    /**
+     * Determines whether a card matches the filter criteria based on the desired model gender.
+     *
+     * @param card The card to be checked against the filter criteria.
+     * @return True if the card matches the filter criteria, false otherwise.
+     */
     @Override
     public boolean matches(Card card) {
         return (desiredModelGender.equalsIgnoreCase("All") ||
