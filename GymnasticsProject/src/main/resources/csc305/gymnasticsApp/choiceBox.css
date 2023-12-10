@@ -1,0 +1,18 @@
+.choice-box
+{
+    -fx-border-width: 0.5px;
+    -fx-border-color: #ACACAC;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-font-size: 13px;
+    -fx-padding: 0px;
+    -fx-font-weight: 600;
+    -fx-font-family: 'Inter';
+}
+
+.choice-box .list-view
+{
+    -fx-border-width: 0.5px;
+    -fx-border-color: #ACACAC;
+    -fx-padding: 0px;
+}
