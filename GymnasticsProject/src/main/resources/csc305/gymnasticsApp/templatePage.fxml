@@ -43,18 +43,18 @@
                      <children>
                         <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="848.0" spacing="10.0">
                            <children>
-                              <Text fill="#3a5069" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Male Only Plans">
+                              <Text fill="#3a5069" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="All Floor Exercise Plans">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Text>
                               <HBox alignment="CENTER" prefHeight="250.0" prefWidth="848.0" spacing="60.0">
                                  <children>
-                                    <Button fx:id="maleOnlyButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMaleOnlyButtonOne" prefHeight="250.0" prefWidth="350.0">
+                                    <Button fx:id="allFloorButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAllFloorButton" prefHeight="250.0" prefWidth="350.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
-                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="250.0" prefWidth="350.0">
+                                    <Button fx:id="floorAndStrength" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleFloorAndStrength" prefHeight="250.0" prefWidth="350.0">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
@@ -75,7 +75,7 @@
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
-                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="250.0" prefWidth="350.0">
+                                    <Button fx:id="varietyBeginner" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleVarietyBeginner" prefHeight="250.0" prefWidth="350.0">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
@@ -85,18 +85,18 @@
                         </VBox>
                         <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="848.0" spacing="10.0">
                            <children>
-                              <Text fill="#3a5069" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="All Floor Exercise Plans">
+                              <Text fill="#3a5069" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Male Variety Plans">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Text>
                               <HBox alignment="CENTER" prefHeight="250.0" prefWidth="848.0" spacing="60.0">
                                  <children>
-                                    <Button fx:id="allFloorExercisesButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAllFloorExercisesButtonOne" prefHeight="250.0" prefWidth="350.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;">
+                                    <Button fx:id="maleOnlyButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMaleOnlyButtonOne" prefHeight="250.0" prefWidth="350.0">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>
-                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="250.0" prefWidth="350.0">
+                                    <Button fx:id="maleUpper" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMaleUpper" prefHeight="250.0" prefWidth="350.0">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip></Button>

@@ -433,7 +433,7 @@ public class MainEditDisplayController implements Initializable {
             } else { //is event, so shows text box
                 Alert choose = new Alert(Alert.AlertType.WARNING);
                 choose.setTitle("Caution");
-                choose.setHeaderText("Are you sure you want to delete this card?");
+                choose.setHeaderText("Are you sure you want to delete this event?");
                 choose.setContentText("Please select an option.");
                 ButtonType renameButton = new ButtonType("Rename Event");
                 ButtonType deleteButton = new ButtonType("Delete Event");
@@ -456,11 +456,23 @@ public class MainEditDisplayController implements Initializable {
                         });
                     } else if(initialResult.get() == deleteButton){//deletes event
                        int index = rootItem.getChildren().indexOf(selectedItem);
-                       lessonPlan.getThePlan().getEventList().remove(index);
-                       lessonPlan.getThePlan().getEventNames().remove(index);
-                       eventButtonList.remove(index);
-                       events.remove(index);
-                       rootItem.getChildren().remove(index);
+                       if(rootItem.getChildren().size() <= 1){
+                           Alert minEventAlert = new Alert(Alert.AlertType.WARNING);
+                           minEventAlert.setTitle("Caution");
+                           minEventAlert.setHeaderText("You cannot delete the last event!");
+                           ButtonType yesButton = new ButtonType("Ok");
+                           minEventAlert.getButtonTypes().setAll(yesButton);
+                           Optional<ButtonType> newResult = minEventAlert.showAndWait();
+                           if (newResult.isPresent()) {
+                               minEventAlert.close();
+                           }
+                       } else {
+                           lessonPlan.getThePlan().getEventList().remove(index);
+                           lessonPlan.getThePlan().getEventNames().remove(index);
+                           eventButtonList.remove(index);
+                           events.remove(index);
+                           rootItem.getChildren().remove(index);
+                       }
                     } else{
                         choose.close();
                     }
