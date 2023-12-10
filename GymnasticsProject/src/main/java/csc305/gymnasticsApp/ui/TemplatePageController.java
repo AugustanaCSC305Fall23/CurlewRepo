@@ -9,7 +9,9 @@ import javafx.scene.image.Image;
 import java.io.File;
 import java.util.ArrayList;
 
-
+/**
+ * Controller class for the template page, responsible for handling template selections.
+ */
 public class TemplatePageController {
     @FXML
     private Button homeButton;
@@ -26,8 +28,11 @@ public class TemplatePageController {
     @FXML
     private Button maleUpper;
 
-
-
+    /**
+     * Handles the action event for loading the all floor lesson plan.
+     *
+     * @param event The action event triggered by the button.
+     */
     @FXML
     void handleAllFloorButton(ActionEvent event) {
         LessonPlan.resetBoolean();
@@ -42,6 +47,11 @@ public class TemplatePageController {
         }
     }
 
+    /**
+     * Handles the action event for loading the floor and strength lesson plan.
+     *
+     * @param event The action event triggered by the button.
+     */
     @FXML
     void handleFloorAndStrength(ActionEvent event) {
         LessonPlan.resetBoolean();
@@ -55,9 +65,6 @@ public class TemplatePageController {
             GymnasticsAppBeta.switchToPreviewPage();
         }
     }
-
-
-
 
     /**
      * Handles the action event for loading the beginner-only lesson plan
@@ -78,6 +85,11 @@ public class TemplatePageController {
         }
     }
 
+    /**
+     * Handles the action event for loading the variety beginner lesson plan.
+     *
+     * @param event The action event triggered by the button.
+     */
     @FXML
     void handleVarietyBeginner(ActionEvent event) {
         LessonPlan.resetBoolean();
@@ -111,6 +123,11 @@ public class TemplatePageController {
         }
     }
 
+    /**
+     * Handles the action event for loading the male upper floor lesson plan.
+     *
+     * @param event The action event triggered by the button.
+     */
     @FXML
     void handleMaleUpper(ActionEvent event) {
         LessonPlan.resetBoolean();

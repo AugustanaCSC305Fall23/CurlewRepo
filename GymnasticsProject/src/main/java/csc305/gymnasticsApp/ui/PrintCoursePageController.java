@@ -53,6 +53,12 @@ public class PrintCoursePageController {
     @FXML
     private Button hideEquipment;
 
+    /**
+     * Initializes the display for the main course page. Clears and resets panes, sets up a new VBox, and adds titles and content
+     * for each lesson plan and its associated events. The display is organized within the main flow pane.
+     *
+     * @throws FileNotFoundException If there is an issue with locating or loading the required file.
+     */
     public void initialize() throws FileNotFoundException {
         showEquipment = false;
         showNotes = false;
@@ -238,6 +244,12 @@ public class PrintCoursePageController {
         nVBox.getChildren().add(lessonPlanTextField);
     }
 
+    /**
+     * Toggles the display of equipment content. If equipment is not currently shown, it adds the equipment content to the
+     * display. If equipment is already shown, it removes the equipment content. In either case, it updates the display accordingly.
+     *
+     * @throws FileNotFoundException If there is an issue with locating or loading the required file.
+     */
     private void fillEquipmentBox() throws FileNotFoundException {
         //if equipment isn't shown, add equipment. If equipment is shown, remove it
         if(showEquipment == false){
@@ -250,6 +262,13 @@ public class PrintCoursePageController {
             initialize();
         }
     }
+
+    /**
+     * Toggles the display of notes content. If notes are not currently shown, it adds the notes content to the display.
+     * If notes are already shown, it removes the notes content. In either case, it updates the display accordingly.
+     *
+     * @throws FileNotFoundException If there is an issue with locating or loading the required file.
+     */
     private void fillNotesBox() throws FileNotFoundException{
         if(showNotes == false){
             showNotes = true;
@@ -346,6 +365,10 @@ public class PrintCoursePageController {
         mainFlowPane.setAlignment(Pos.CENTER);
     }
 
+    /**
+     * Initializes the course page by creating a new VBox, setting up the course name display, and adding it to the main flow pane.
+     * The course name is displayed in a TextField with specified styles and dimensions.
+     */
     private void initializeCoursePage() {
         VBox nVBox = getNewVBox();
         nVBox.setAlignment(Pos.CENTER);
@@ -359,20 +382,44 @@ public class PrintCoursePageController {
         VBoxes.add(nVBox);
     }
 
+    /**
+     * Handles the action event when the print button is clicked. Prints the lesson plan displayed in the main scroll pane.
+     *
+     * @param event The ActionEvent triggered by clicking the print button.
+     */
     @FXML
     void printButtonController(ActionEvent event) {
         Node lessonPlanNode = mainScrollPane;
         PrintLessonPlan.printPlan(lessonPlanNode, mainScrollPane, false);
     }
+
+    /**
+     * Handles the action event when the equipment bar button is clicked. Toggles the display of equipment content.
+     *
+     * @param event The ActionEvent triggered by clicking the equipment bar button.
+     * @throws FileNotFoundException If there is an issue with locating or loading the required file.
+     */
     @FXML
     void handleEquipmentBar(ActionEvent event) throws FileNotFoundException {
         fillEquipmentBox();
     }
+
+    /**
+     * Handles the action event when the notes box button is clicked. Toggles the display of notes content.
+     *
+     * @param event The ActionEvent triggered by clicking the notes box button.
+     * @throws FileNotFoundException If there is an issue with locating or loading the required file.
+     */
     @FXML
     void handleNotesBox(ActionEvent event) throws FileNotFoundException {
         fillNotesBox();
     }
 
+    /**
+     * Handles the action event when the home button is clicked. Clears tree card items, resets buttons, and switches to the home page.
+     *
+     * @param event The ActionEvent triggered by clicking the home button.
+     */
     @FXML
     void homeButtonController(ActionEvent event) {
             MainEditDisplayController.clearTreeCardItems();
@@ -381,7 +428,11 @@ public class PrintCoursePageController {
             GymnasticsAppBeta.switchToHomePage();
     }
 
-
+    /**
+     * Handles the action event when the back button is clicked. Switches to the course edit page.
+     *
+     * @param event The ActionEvent triggered by clicking the back button.
+     */
     @FXML
     private void backButtonController(ActionEvent event){
         GymnasticsAppBeta.switchToCourseEditPage();

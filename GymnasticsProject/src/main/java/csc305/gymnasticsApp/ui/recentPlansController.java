@@ -9,7 +9,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import java.io.File;
-
+/**
+ * Controller class for the recent plans view, responsible for handling user interactions and managing recent lesson plans and courses.
+ */
 public class recentPlansController {
     @FXML private Button recentPlan1;
     @FXML private Button recentPlan2;
@@ -20,11 +22,16 @@ public class recentPlansController {
     private PrefPlans recentLP = GymnasticsAppBeta.getRecentPlans();
     private PrefCourses recentCourses = GymnasticsAppBeta.getRecentCourses();
 
+    /**
+     * Initializes the recent plans view by setting up the visibility and labels of recent lesson plans and courses.
+     */
     public void initialize() {
         setLessonPlanButtons();
         setCourseButtons();
     }
-
+    /**
+     * Sets up the visibility and labels of recent course buttons based on the recentCourses object.
+     */
     private void setCourseButtons() {
         recentCourse1.setVisible(false);
         recentCourse2.setVisible(false);
@@ -46,7 +53,9 @@ public class recentPlansController {
         }
 
     }
-
+    /**
+     * Sets up the visibility and labels of recent lesson plan buttons based on the recentLP object.
+     */
     private void setLessonPlanButtons() {
         recentPlan1.setVisible(false);
         recentPlan2.setVisible(false);
@@ -69,7 +78,12 @@ public class recentPlansController {
         }
     }
 
-
+    /**
+     * Opens the selected recent lesson plan by calling the file chooser and loading the plan.
+     * Switches to the preview page after loading the plan.
+     *
+     * @param event The ActionEvent triggered by clicking the open recent lesson plan button.
+     */
     @FXML
    void openRecentLessonPlan(ActionEvent event){
         Button lessonButton = (Button) event.getSource();
@@ -87,6 +101,12 @@ public class recentPlansController {
 
     }
 
+    /**
+     * Loads the selected recent course by calling the file chooser and loading the course.
+     * Switches to the course edit page after loading the course.
+     *
+     * @param event The ActionEvent triggered by clicking the load recent course button.
+     */
     @FXML
     void loadRecentCourse(ActionEvent event){
         Button courseButton = (Button) event.getSource();
@@ -103,6 +123,9 @@ public class recentPlansController {
         GymnasticsAppBeta.switchToCourseEditPage();
     }
 
+    /**
+     * Switches to the home page.
+     */
     @FXML
     void backToHomePage(){
         GymnasticsAppBeta.switchToHomePage();

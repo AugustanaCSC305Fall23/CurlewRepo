@@ -82,10 +82,20 @@ public class GymnasticsAppBeta extends Application {
 
     }
 
+    /**
+     * Retrieves the recent courses preferences.
+     *
+     * @return The PrefCourses object representing recent courses preferences.
+     */
     public static PrefCourses getRecentCourses() {
         return recentCourses;
     }
 
+    /**
+     * Retrieves the recent plans preferences.
+     *
+     * @return The PrefPlans object representing recent plans preferences.
+     */
     public static PrefPlans getRecentPlans() {
         return recentPlans;
     }
@@ -123,6 +133,9 @@ public class GymnasticsAppBeta extends Application {
         switchToView("/csc305/gymnasticsApp/homePage.fxml");
     }
 
+    /**
+     * Switches the view to the recent plans display
+     */
     public static void switchToRecentPlans() {
         switchToView("/csc305/gymnasticsApp/recentSelector.fxml");
     }

@@ -199,6 +199,9 @@ public class MainEditDisplayController implements Initializable {
 
     }
 
+    /**
+     * Resets the filter options to their default values
+     */
     private void resetFilterList(){
         favCheckBox.setSelected(false);
         genderCB.setValue("N");
@@ -207,7 +210,6 @@ public class MainEditDisplayController implements Initializable {
         eventCB.setValue("ALL");
 
     }
-
 
     /**
      * Updates the visibility of card buttons based on selected filter criteria such as gender, model gender, event, level,
@@ -600,12 +602,27 @@ public class MainEditDisplayController implements Initializable {
         undoRedoHandler.saveState();
     }
 
+    /**
+     * Handles switching to the single card page
+     */
     private void printSingleCard(){
         GymnasticsAppBeta.switchToSingleCardPage();
     }
+
+    /**
+     * Retrieves the currently selected card in the user interface.
+     *
+     * @return The CardButton representing the currently selected card.
+     */
     public static CardButton getCurrentSelectedCard(){
         return currentSelectedCard;
     }
+
+    /**
+     * Sets the currently selected card in the user interface.
+     *
+     * @param cardButton The CardButton to set as the currently selected card.
+     */
     public static void setCurrentSelectedCard(CardButton cardButton){
         currentSelectedCard = cardButton;
     }
@@ -651,6 +668,12 @@ public class MainEditDisplayController implements Initializable {
         filterMenu.setVisible(false);
     }
 
+    /**
+     * Handles the event triggered when the mouse exits the specified area, typically associated with the filter menu.
+     * If the mouse is outside the boundaries of the filter menu, it sets the visibility of the filter menu to false.
+     *
+     * @param event The MouseEvent triggered by the mouse exit event.
+     */
     @FXML
     void mouseExitHandle(MouseEvent event){
         if(filterMenu.getLayoutX()+filterMenu.getWidth() <= event.getX() || filterMenu.getLayoutY()+filterMenu.getHeight() <= event.getY()) {

@@ -258,6 +258,12 @@ public class PreviewPageController {
         fillEquipmentBox();
     }
 
+    /**
+     * Handles the action event triggered when the user interacts with the "Notes Box."
+     *
+     * @param event The ActionEvent triggered by user interaction with the "Notes Box."
+     * @throws FileNotFoundException If there is an issue with locating or loading the required file.
+     */
     @FXML
     void handleNotesBox(ActionEvent event) throws FileNotFoundException {
         fillNotesBox();
@@ -387,6 +393,15 @@ public class PreviewPageController {
             initialize();
         }
     }
+
+    /**
+     * Fills or updates the content of the "Notes Box" based on the current state of display options.
+     * If the "Notes Box" is not currently displayed, it sets the display state to show notes and initializes with equipment.
+     * If the "Equipment Box" is currently displayed, it switches to displaying notes and initializes with equipment.
+     * Otherwise, it initializes the "Notes Box" without equipment.
+     *
+     * @throws FileNotFoundException If there is an issue with locating or loading the required file.
+     */
     private void fillNotesBox() throws FileNotFoundException{
         if(showNotes == false){
             showNotes = true;
@@ -481,6 +496,13 @@ public class PreviewPageController {
         mainFlowPane.setAlignment(Pos.CENTER);
     }
 
+    /**
+     * Handles the action when the "Text Mode" option is selected. If text-only mode is not currently showing,
+     * it switches to text-only mode and initializes the display. Otherwise, it switches back to the regular display.
+     *
+     * @param event The ActionEvent triggered by selecting the "Text Mode" option.
+     * @throws FileNotFoundException If there is an issue with locating or loading the required file.
+     */
     @FXML
     private void textModeHandle(ActionEvent event) throws FileNotFoundException {
         if(isTextOnlyShowing == false) {
@@ -492,6 +514,14 @@ public class PreviewPageController {
             initialize();
         }
     }
+
+    /**
+     * Initializes the display in text-only mode. Clears and resets panes, sets up a new VBox, and adds a TextArea
+     * containing the entire lesson plan as text, including a list of all equipment used. The display is then added
+     * to the main flow pane.
+     *
+     * @throws FileNotFoundException If there is an issue with locating or loading the required file.
+     */
     private void initializeTextOnly(){
         showEquipment = false;
         showNotes = false;

@@ -88,18 +88,25 @@ public class CourseEditPageController {
 
     }
 
+    /**
+     * Clears all child items from the root of the tree view.
+     * This method is used to reset the tree view by removing all existing items.
+     */
     public static void clearTreeCardItems(){
         rootItem.getChildren().clear();
     }
 
+    /**
+     * Adds lesson plan items to the tree view based on the specified course.
+     *
+     * @param course The course containing lesson plans to be added to the tree view.
+     */
     public static void addItemsToTreeView(Course course){
         for(int i = 0; i < course.getTheCourse().getLessonPlanList().size(); i++) {
             TreeItem<String> lesson = new TreeItem<>();
             lesson.setValue(course.getTheCourse().getLessonPlanList().get(i).getLessonPlanTitle());
             rootItem.getChildren().add(lesson);}
     }
-
-
 
     /**
      * Handles the selection of an item in the tree view
@@ -209,6 +216,12 @@ public class CourseEditPageController {
         }
 
     }
+
+    /**
+     * Handles the "Home" button click
+     *
+     * @param event The action event
+     */
     @FXML
     private void homePageButtonHandle(ActionEvent event){
         MainEditDisplayController.clearTreeCardItems();
@@ -302,6 +315,11 @@ public class CourseEditPageController {
         System.out.println(Course.getCourseName());
         undoRedoHandler.saveState();
     }
+
+    /**
+     * Handles the action when the "Print Course Page" button is clicked.
+     * Switches the view to the print course page in the GymnasticsAppBeta application.
+     */
     @FXML
     private void printCoursePageHandle(){
         GymnasticsAppBeta.switchToPrintCoursePage();
