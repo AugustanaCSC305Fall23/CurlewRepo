@@ -13,7 +13,7 @@
    <children>
       <VBox alignment="CENTER" style="-fx-background-color: linear-gradient(#EEF8FF, #7B97B7);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text fill="#3a5069" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Inter; -fx-font-weight: Bold; -fx-font-size: 4.5em;" text="The Gym Professor Acknowledgements" textAlignment="CENTER" wrappingWidth="900.0">
+            <Text fill="#3a5069" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Inter; -fx-font-weight: Bold; -fx-font-size: 4.5em;" text="Gym Coach Hero Acknowledgements" textAlignment="CENTER" wrappingWidth="900.0">
                <font>
                   <Font size="55.0" />
                </font>
