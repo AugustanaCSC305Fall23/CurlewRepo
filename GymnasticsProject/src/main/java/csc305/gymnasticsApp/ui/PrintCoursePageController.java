@@ -331,11 +331,13 @@ public class PrintCoursePageController {
 
                         for (int h = 0; h < equipmentList.length; h++) {
                             if (!(equipmentList[h].equalsIgnoreCase("none"))) {//checks if the equipment is none
-                                if(isFirstEquipment){
-                                    finalString = finalString + equipmentList[h];
-                                    isFirstEquipment = false;
-                                } else {
-                                    finalString = finalString + ", " + equipmentList[h];
+                                if (!(finalString.contains(equipmentList[h]))) {
+                                    if (isFirstEquipment) {
+                                        finalString = finalString + "- " + equipmentList[h] + "\n";
+                                        isFirstEquipment = false;
+                                    } else {
+                                        finalString = finalString + "- " + equipmentList[h] + "\n";
+                                    }
                                 }
                             }
                         }
