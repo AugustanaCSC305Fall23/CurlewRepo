@@ -7,6 +7,8 @@ module GymnasticsProject {
     requires com.google.gson;
     requires java.prefs;
 
+    exports csc305.gymnasticsApp;
+    opens csc305.gymnasticsApp to javafx.fxml;
     exports csc305.gymnasticsApp.filters;
     opens csc305.gymnasticsApp.filters to javafx.fxml;
     exports csc305.gymnasticsApp.data;

@@ -39,7 +39,9 @@ public class GymnasticsAppBeta extends Application {
     private static PrefPlans recentPlans = new PrefPlans();
     private static PrefCourses recentCourses = new PrefCourses();
 
-
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     /**
      *

@@ -108,8 +108,6 @@
     </Entities>
     <Relationships>
       <Relationship type="Association" first="3" second="5">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -128,6 +126,8 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="3" second="2">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -142,6 +142,8 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="3" second="4">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -156,6 +158,8 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="3" second="1">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -166,22 +170,20 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="2" second="1">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Bidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="3">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="5">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -192,16 +194,12 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="1">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="4">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -216,8 +214,6 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="2">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -230,6 +226,122 @@
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>GymnasticsPresentation</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>GymnasticsAppBeta</Name>
+        <Access>Public</Access>
+        <Location left="485" top="224" />
+        <Size width="255" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private MainEditDisplayController start</Member>
+        <Member type="Method">public void start(Stage primaryStage)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>FavoriteCollection</Name>
+        <Access>Public</Access>
+        <Location left="827" top="390" />
+        <Size width="248" height="279" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public static FavoriteCollection theCollection</Member>
+        <Member type="Field">private HashSet&lt;String&gt; favoriteSet</Member>
+        <Member type="Constructor">private FavoriteCollection()</Member>
+        <Member type="Method">public static FavoriteCollection getInstance()</Member>
+        <Member type="Method">public Set&lt;String&gt; getFavoriteSet()</Member>
+        <Member type="Method">public void modifyFavorites(String ID)</Member>
+        <Member type="Method">public void saveFavorites()</Member>
+        <Member type="Method">private void loadFavorites()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Card</Name>
+        <Access>Public</Access>
+        <Location left="1231" top="265" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String uniqueID</Member>
+        <Member type="Field">private boolean favorite</Member>
+        <Member type="Method">public boolean isFavorite()</Member>
+        <Member type="Method">public void setFavorite(boolean favorite)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MainEditDisplayController</Name>
+        <Access>Public</Access>
+        <Location left="485" top="517" />
+        <Size width="211" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private List&lt;CardButton&gt; allCards</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CardButton</Name>
+        <Access>Public</Access>
+        <Location left="1231" top="523" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Card associatedCard</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>Cloneable</Name>
+        <Access>Public</Access>
+        <Location left="1231" top="145" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Dependency" first="1" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="3" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="2" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="4" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="4" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1297</X>
+          <Y>498</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="3">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1185</X>
+          <Y>702</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>*</EndMultiplicity>
       </Relationship>
     </Relationships>
   </ProjectItem>
