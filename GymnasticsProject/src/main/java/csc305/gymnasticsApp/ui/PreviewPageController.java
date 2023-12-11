@@ -534,7 +534,6 @@ public class PreviewPageController {
         nVBox.setPrefSize(595, 700);
         TextArea allText = new TextArea();
         allText.setText(lessonPlan.getEntirePlanAsText());
-        System.out.println(lessonPlan.getEntirePlanAsText());
         allText.setPrefSize(595, 700);
         allText.setStyle("-fx-font-size: 12; -fx-font-weight: bold; -fx-background-color: white; -fx-border-color: white;");
         allText.setWrapText(true);

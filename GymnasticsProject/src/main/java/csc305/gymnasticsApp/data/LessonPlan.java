@@ -87,7 +87,6 @@ public class LessonPlan implements Cloneable{
      * @param index The index of the event
      */
     public void setEventName(String name, int index){
-        System.out.println("This is the index in setEventName" + index);
         eventNames.set(index, name);
     }
 
@@ -183,20 +182,6 @@ public class LessonPlan implements Cloneable{
      * Prints information about the lesson plan and its events to the console
      */
     public void printEverything(){
-        String eventsName = "";
-        for(String name : eventNames){
-            eventsName += name + " ";
-        }
-        System.out.println(lessonPlanTitle + " " + eventsName);
-        for(List<Card> eventCards : eventList){
-            if (!(eventCards.isEmpty())) {
-                for(Card card : eventCards){
-                    System.out.println(card.toString());
-                }
-            } else{
-                System.out.println("event is empty");
-            }
-        }
     }
 
     /**
@@ -205,10 +190,7 @@ public class LessonPlan implements Cloneable{
      * @param loadedLessonPlan The loaded lesson plan data
      */
     public void loadPlanFromFile(ArrayList<String> loadedLessonPlan) {
-        System.out.println("has been loaded? " + hasBeenLoaded);
-        System.out.println(GymnasticsAppBeta.getLoaded());
         if (GymnasticsAppBeta.getLoaded() && !hasBeenLoaded) {
-            System.out.println("LOADING FROM FILE");
             CardDatabase.getAllCards();
             resetLessonPlan();
             lessonPlanTitle = loadedLessonPlan.remove(0);
@@ -249,7 +231,6 @@ public class LessonPlan implements Cloneable{
                 return card;
             }
         }
-        System.out.println("Didnt get card from tree item");
         return null;
     }
 
@@ -344,7 +325,6 @@ public class LessonPlan implements Cloneable{
      * and clears and resets alert buttons in the MainEditDisplayController.
      */
     private void resetDisplay(){
-        System.out.println("Printing for the UNDO: ");
         LessonPlan.this.thePlan.printEverything();
         GymnasticsAppBeta.setLessonPlan(LessonPlan.this.thePlan);
         MainEditDisplayController.clearTreeCardItems();

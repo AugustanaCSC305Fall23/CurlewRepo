@@ -140,8 +140,6 @@ public class CourseEditPageController {
                         GymnasticsAppBeta.switchToMainEditDisplay();
                         MainEditDisplayController.addTreeCardItems(selectedLessonPlan);
 
-                    } else {
-                        System.out.println("Could not find LessonPlan in the Course");
                     }
                 }
             } else if(result.get() == deleteButton){
@@ -312,7 +310,6 @@ public class CourseEditPageController {
     @FXML
     private void changeCourseNameHandle(){
         Course.setCourseName(courseName.getText());
-        System.out.println(Course.getCourseName());
         undoRedoHandler.saveState();
     }
 

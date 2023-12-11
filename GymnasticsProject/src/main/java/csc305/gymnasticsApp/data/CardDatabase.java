@@ -134,20 +134,7 @@ public class CardDatabase {
                 }
             }
         }
-//        for(File file : csvFiles) {
-//            System.out.println(file.getName());
-//        }
         return csvFiles;
-    }
-    /**
-     * Prints a list of cards to the console.
-     *
-     * @param cardList The list of cards to be printed.
-     */
-    public static void printAllCards(List<Card> cardList){
-        for(Card card : cardList){
-            System.out.println(card.toString());
-        }
     }
 
     /**

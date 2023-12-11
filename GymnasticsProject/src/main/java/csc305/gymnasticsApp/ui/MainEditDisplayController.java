@@ -98,7 +98,6 @@ public class MainEditDisplayController implements Initializable {
      * sets the display properties, and establishes the root item for the tree view
      */
     private void initializeTreeView(){
-        System.out.println("size of root items: " + rootItem.getChildren().size());
         if (rootItem.getChildren().isEmpty()) {
             if(events.isEmpty()){
                 events.add(new TreeItem<String>("Event 1"));

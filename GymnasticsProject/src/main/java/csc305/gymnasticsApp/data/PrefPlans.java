@@ -26,8 +26,6 @@ public class PrefPlans {
      * @param filePath The file path of the first plan.
      */
     public void setPreference(String filePath){
-        System.out.println(filePath);
-
         // now set the values
         prefs.put("Plan3", prefs.get("Plan2",""));
         prefs.put("Plan2", prefs.get("Plan1",""));

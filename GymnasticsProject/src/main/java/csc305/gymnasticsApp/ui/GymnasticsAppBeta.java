@@ -232,8 +232,6 @@ public class GymnasticsAppBeta extends Application {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else{
-            System.out.println("selected file is null");
         }
         return arrayList;
     }

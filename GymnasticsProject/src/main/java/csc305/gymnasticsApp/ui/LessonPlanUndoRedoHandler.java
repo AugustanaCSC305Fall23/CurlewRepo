@@ -33,7 +33,6 @@ public class LessonPlanUndoRedoHandler {
      */
     public void saveState() {
         LessonPlan.State lessonPlanState = lessonplan.createMemento();
-        System.out.print("Printing For the Save State: ");
         lessonplan.printEverything();
         undoStack.push(lessonPlanState);
         redoStack.clear();
@@ -46,7 +45,6 @@ public class LessonPlanUndoRedoHandler {
      * the startup state).
      */
     public void undo() {
-        System.out.println(undoStack.size());
         if (undoStack.size() == 1) { // only the current state is on the stack
             return;
         }
