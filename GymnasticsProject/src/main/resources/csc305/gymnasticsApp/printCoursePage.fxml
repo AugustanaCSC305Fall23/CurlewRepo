@@ -55,7 +55,7 @@
       </VBox>
    </left>
    <center>
-      <ScrollPane fx:id="mainScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="858.0" style="-fx-background-color: #eef8ff;" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="mainScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="858.0" style="-fx-background-color: #eef8ff;" stylesheets="@scrollpane.css" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
          <content>
             <FlowPane fx:id="mainFlowPane" alignment="CENTER" columnHalignment="CENTER" prefHeight="635.0" prefWidth="857.0" style="-fx-background-color: #eef8ff;" vgap="50.0">
                <children>

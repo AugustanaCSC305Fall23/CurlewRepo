@@ -32,7 +32,7 @@ import java.util.List;
  * This class also facilitates the interaction between the graphical user interface (GUI) and the underlying data model
  */
 public class MainEditDisplayController implements Initializable {
-    
+
     @FXML private TextField lessonTitle;
     @FXML private VBox filterMenu;
     @FXML private TextField searchBar;
@@ -515,12 +515,10 @@ public class MainEditDisplayController implements Initializable {
         alert.getButtonTypes().setAll(cancelButton, printCardButton);
 
 
-
-
         FlowPane flowpane = new FlowPane(); // Set spacing between nodes
         flowpane.setPrefWrapLength(0);
-        flowpane.setVgap(2);
-        flowpane.setHgap(2);
+        flowpane.setVgap(5);
+        flowpane.setHgap(5);
 
         // Add the event buttons to the HBox
         for (ButtonType eventButtonType : eventButtonList) {
