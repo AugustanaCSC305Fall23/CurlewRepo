@@ -10,6 +10,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.control.TreeView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
@@ -81,17 +83,34 @@
                      </tooltip></TreeView>
                   <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="422.0" spacing="20.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER" textFill="#eef8ff">
+                        <Button fx:id="undoButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#undoButtonHandle" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" textAlignment="CENTER" textFill="#eef8ff">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@undo.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
-                        <Button fx:id="previewButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previewButtonHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview" textAlignment="CENTER" wrapText="true">
+                        <Button fx:id="redoButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#redoButtonHandle" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" textAlignment="CENTER" textFill="#eef8ff">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@redo.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
-                        <Button fx:id="eventAdder" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#eventAdderHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Event" textAlignment="CENTER" textFill="#eef8ff">
+                        <Button fx:id="eventAdder" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#eventAdderHandle" prefHeight="52.0" prefWidth="275.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Event" textAlignment="CENTER" textFill="#eef8ff">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -103,18 +122,15 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="24.0" layoutY="500.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="422.0" spacing="40.0">
                      <children>
-                        <Button fx:id="undoButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#undoButtonHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Undo" textAlignment="CENTER" textFill="#eef8ff">
+                        <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER" textFill="#eef8ff">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="redoButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#redoButtonHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Redo" textAlignment="CENTER" textFill="#eef8ff">
+                        <Button fx:id="previewButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previewButtonHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
                         </Button>
                      </children>
                      <VBox.margin>
