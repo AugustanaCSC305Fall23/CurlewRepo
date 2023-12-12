@@ -2,7 +2,7 @@ module GymnasticsProject {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
-    requires com.opencsv;
+    //requires com.opencsv;
     requires java.sql;
     requires com.google.gson;
     requires java.prefs;
