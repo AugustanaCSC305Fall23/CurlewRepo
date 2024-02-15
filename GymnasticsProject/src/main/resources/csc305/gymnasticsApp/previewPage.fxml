@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #3A5069; -fx-border-color: #3A5069;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.PreviewPageController">
    <left>
@@ -55,7 +54,7 @@
                   <Tooltip style="-fx-font-size: 12;" text="Go back home but delete the current Lesson Plan" />
                </tooltip>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#textModeHandle" prefHeight="73.6" prefWidth="137.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 23; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Text Only" textAlignment="CENTER" textFill="WHITE">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#textModeHandle" prefHeight="73.6" prefWidth="137.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 23; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Text/Pic" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
@@ -132,16 +131,11 @@
             </ScrollPane>
             <HBox alignment="CENTER" prefHeight="76.0" prefWidth="846.0" spacing="50.0" style="-fx-background-color: #3A5069; -fx-border-color: #3A5069;">
                <children>
-                  <Button fx:id="addPlanToCurrentCourseButton" minHeight="-Infinity" mnemonicParsing="false" onAction="#addPlanToCurrentCourseButtonHandle" prefHeight="50.0" prefWidth="291.0" style="-fx-background-color: green; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Plan To Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Button>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text is editible and saves when printing!">
+                  <Button fx:id="addPlanToCurrentCourseButton" minHeight="-Infinity" mnemonicParsing="false" onAction="#addPlanToCurrentCourseButtonHandle" prefHeight="50.0" prefWidth="291.0" style="-fx-background-color: white; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Plan To Course" textAlignment="CENTER" textFill="#3a5069" wrapText="true">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
-                  </Text>
+                  </Button>
                </children>
                <padding>
                   <Insets bottom="10.0" top="10.0" />
