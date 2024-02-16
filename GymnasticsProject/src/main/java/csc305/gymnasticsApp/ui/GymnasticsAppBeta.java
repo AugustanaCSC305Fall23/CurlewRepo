@@ -59,14 +59,6 @@ public class GymnasticsAppBeta extends Application {
         scene = new Scene(new BorderPane(), 1000, 700);
         stage.setScene(scene);
         stage.setResizable(true);
-        MainEditDisplayController start = new MainEditDisplayController();
-
-        new Thread(() -> {
-            try{Thread.sleep(20); } catch (InterruptedException e) { }
-            Platform.runLater(() -> start.createCardButtons());
-        }).start();
-
-        //start.createCardButtons();
         // Handles window close event by toggling maximized state.
         stage.setOnCloseRequest(event -> {
             if(stage.isMaximized()) {

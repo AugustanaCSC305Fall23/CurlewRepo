@@ -2,6 +2,7 @@ package csc305.gymnasticsApp.ui;
 
 import csc305.gymnasticsApp.data.*;
 import csc305.gymnasticsApp.filters.*;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -66,6 +67,7 @@ public class MainEditDisplayController implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        createCardButtons();
         lessonPlan = GymnasticsAppBeta.getLessonPlan().getThePlan();
         if(lessonPlan.getEventNames().isEmpty()){
             lessonPlan.getThePlan().addEventName("Event 1");
@@ -375,6 +377,7 @@ public class MainEditDisplayController implements Initializable {
      */
     private List<CardButton> getAllCardButtons() {
         List<CardButton> cardButtons = new ArrayList<>();
+
         for (int i = 0; i < cardFlowPane.getChildren().size(); i++) {
             if (cardFlowPane.getChildren().get(i) instanceof CardButton) {
                 cardButtons.add((CardButton) cardFlowPane.getChildren().get(i));

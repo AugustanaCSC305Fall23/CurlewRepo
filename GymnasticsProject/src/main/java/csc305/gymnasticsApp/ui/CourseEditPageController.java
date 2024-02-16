@@ -137,8 +137,10 @@ public class CourseEditPageController {
                     if (course.getTheCourse().getLessonPlanList().get(i).getLessonPlanTitle().equals(selectedItem.getValue())) {
                         LessonPlan selectedLessonPlan = course.getTheCourse().getLessonPlanList().get(i);
                         GymnasticsAppBeta.setLessonPlan(selectedLessonPlan);
+                        MainEditDisplayController.isInitialized = false;
                         GymnasticsAppBeta.switchToMainEditDisplay();
                         MainEditDisplayController.addTreeCardItems(selectedLessonPlan);
+
 
                     }
                 }
