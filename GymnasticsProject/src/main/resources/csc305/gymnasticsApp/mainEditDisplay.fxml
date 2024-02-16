@@ -81,6 +81,34 @@
                      </tooltip></TreeView>
                   <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="422.0" spacing="20.0" VBox.vgrow="ALWAYS">
                      <children>
+                        <Button fx:id="undoButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#undoButtonHandle" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Undo" textAlignment="CENTER" textFill="#eef8ff">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="redoButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#redoButtonHandle" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Redo" textAlignment="CENTER" textFill="#eef8ff">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="eventAdder" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#eventAdderHandle" prefHeight="52.0" prefWidth="186.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Event" textAlignment="CENTER" textFill="#eef8ff">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="-10.0" top="-20.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="24.0" layoutY="500.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="422.0" spacing="40.0">
+                     <children>
                         <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER" textFill="#eef8ff">
                            <font>
                               <Font name="System Bold" size="16.0" />
@@ -90,31 +118,6 @@
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
-                        </Button>
-                        <Button fx:id="eventAdder" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#eventAdderHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Event" textAlignment="CENTER" textFill="#eef8ff">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="-10.0" top="-20.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox alignment="CENTER" layoutX="24.0" layoutY="500.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="422.0" spacing="40.0">
-                     <children>
-                        <Button fx:id="undoButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#undoButtonHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Undo" textAlignment="CENTER" textFill="#eef8ff">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="redoButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#redoButtonHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Redo" textAlignment="CENTER" textFill="#eef8ff">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
                         </Button>
                      </children>
                      <VBox.margin>
@@ -128,7 +131,7 @@
             </VBox>
          </children>
       </HBox>
-      <VBox fx:id="filterMenu" alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" onMouseExited="#mouseExitHandle" prefHeight="402.0" prefWidth="250.0" style="-fx-background-color: D48973;" visible="false" AnchorPane.bottomAnchor="198.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="filterMenu" alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" onMouseExited="#mouseExitHandle" prefWidth="250.0" style="-fx-background-color: D48973;" visible="false" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="200.0" spacing="10.0">
                <children>
@@ -142,9 +145,9 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: D48973;" stylesheets="@scrollpane.css" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" style="-fx-background-color: D48973;" stylesheets="@scrollpane.css" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                <content>
-                  <VBox fx:id="filterVBox1" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="5.0" style="-fx-border-width: 2; -fx-background-color: D48973;">
+                  <VBox fx:id="filterVBox1" fillWidth="false" maxHeight="100.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="5.0" style="-fx-border-width: 2; -fx-background-color: D48973;">
                      <children>
                         <HBox alignment="CENTER" spacing="10.0">
                            <children>

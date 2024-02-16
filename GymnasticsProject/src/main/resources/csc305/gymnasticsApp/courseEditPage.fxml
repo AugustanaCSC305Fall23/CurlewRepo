@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: EEF8FF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.CourseEditPageController">
    <left>
@@ -54,20 +53,10 @@
    </left>
    <center>
       <BorderPane prefHeight="200.0" prefWidth="738.0" BorderPane.alignment="CENTER">
-         <left>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Click To Edit LessonPlan in Your Course" textAlignment="CENTER" wrappingWidth="150.0" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="30.0" />
-               </font>
-               <BorderPane.margin>
-                  <Insets bottom="70.0" left="30.0" right="30.0" />
-               </BorderPane.margin>
-            </Text>
-         </left>
          <center>
             <TreeView fx:id="treeView" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="200.0" prefWidth="420.0" style="-fx-font-size: 28px; -fx-border-color: black;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets bottom="20.0" right="150.0" />
+                  <Insets bottom="20.0" left="150.0" right="150.0" />
                </BorderPane.margin>
             </TreeView>
          </center>
@@ -96,7 +85,7 @@
          <top>
             <HBox alignment="CENTER" prefHeight="19.0" prefWidth="725.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="courseName" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="470.0" style="-fx-background-color: EEF8FF;" text="Current Course Name">
+                  <TextField fx:id="courseName" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="391.0" style="-fx-background-color: EEF8FF;" text="Current Course Name">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -104,12 +93,18 @@
                         <Insets left="125.0" right="-15.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button fx:id="undoButton" mnemonicParsing="false" onAction="#undoButtonHandle" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="UNDO">
+                  <Button fx:id="undoButton" mnemonicParsing="false" onAction="#undoButtonHandle" style="-fx-background-radius: 30; -fx-background-color: #3A5069;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="UNDO" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="redoButton" mnemonicParsing="false" onAction="#redoButtonHandle" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="REDO" />
+                  <Button fx:id="redoButton" mnemonicParsing="false" onAction="#redoButtonHandle" style="-fx-background-radius: 30px; -fx-background-color: #3A5069;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="REDO" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font></Button>
                </children>
                <BorderPane.margin>
                   <Insets bottom="20.0" top="20.0" />
