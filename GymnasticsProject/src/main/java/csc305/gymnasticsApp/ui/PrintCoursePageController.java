@@ -84,7 +84,7 @@ public class PrintCoursePageController {
                     currentVBox = nVBox;
                 }
                 fillVBox(currentVBox, i, 30, lessonPlan);
-
+                currentVBox.setStyle("-fx-border-color: black;-fx-background-color: white;");
                 mainFlowPane.getChildren().add(currentVBox);
                 VBoxes.add(currentVBox);
 
@@ -95,16 +95,6 @@ public class PrintCoursePageController {
 
     }
 
-    private void createCourseBox(){
-//        VBox nVBox = getNewVBox();
-//        addTitleToVBox(nVBox, lessonPlan.getLessonPlanTitle());
-//        titleVBox = nVBox;
-//        nVBox.setPadding(new javafx.geometry.Insets(20, 0, 0, 0));
-//        fillVBox(nVBox, 30);
-//
-//        mainFlowPane.getChildren().add(currentVBox);
-//        VBoxes.add(currentVBox);
-    }
 
     /**
      * Creates and returns a new VBox with specific styling and dimensions.
@@ -113,7 +103,7 @@ public class PrintCoursePageController {
      */
     private VBox getNewVBox(){
         VBox returnVBox = new VBox();
-        returnVBox.setStyle("-fx-background-color: #CCCCCC;");
+        returnVBox.setStyle("-fx-background-color: white;");
         returnVBox.setPrefSize(770.0, 595.0);
         returnVBox.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         returnVBox.setAlignment(Pos.TOP_CENTER);
@@ -151,10 +141,11 @@ public class PrintCoursePageController {
      * @param isEquipment  a flag indicating whether the cards are equipment.
      * @return a list of ImageViews representing the cards.
      */
-    private List<ImageView> addCards(int eventIndex, boolean isEquipment, LessonPlan lessonPlan){
+    private List<StackPane> addCards(int eventIndex, boolean isEquipment, LessonPlan lessonPlan) {
         List<Card> eventCards = lessonPlan.getEventCards(eventIndex);
-        List<ImageView> cardView = new ArrayList<>();
-        for(Card card : eventCards){
+        List<StackPane> cardViews = new ArrayList<>();
+
+        for (Card card : eventCards) {
             Image image = null;
             try {
                 image = new Image(new FileInputStream("GymSoftwarePics/" +
@@ -163,12 +154,14 @@ public class PrintCoursePageController {
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
+
             ImageView imageView = new ImageView(image);
-            if(eventCards.size() > 6){
-                if(isEquipment) {
+
+            if (eventCards.size() > 6) {
+                if (isEquipment) {
                     imageView.setFitWidth(150); // Set the width of the image view
                     imageView.setFitHeight(150); // Set the height of the image view
-                } else{
+                } else {
                     imageView.setFitWidth(175); // Set the width of the image view
                     imageView.setFitHeight(175); // Set the height of the image view
                 }
@@ -176,9 +169,18 @@ public class PrintCoursePageController {
                 imageView.setFitWidth(200); // Set the width of the image view
                 imageView.setFitHeight(200); // Set the height of the image view
             }
-            cardView.add(imageView);
+
+            // Create a StackPane to contain the ImageView
+            StackPane stackPane = new StackPane();
+            stackPane.getChildren().add(imageView);
+
+            // Apply the border style to the StackPane
+            stackPane.setStyle("-fx-border-color: black;");
+
+            cardViews.add(stackPane);
         }
-        return cardView;
+
+        return cardViews;
     }
 
     /**
@@ -191,7 +193,7 @@ public class PrintCoursePageController {
         TextField eventTitleTextField = new TextField();
         eventTitleTextField.setAlignment(Pos.CENTER);
         eventTitleTextField.setPrefSize(250.0, 40.0);
-        eventTitleTextField.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;");
+        eventTitleTextField.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
         eventTitleTextField.setFont(Font.font("System Bold", 16.0));
         eventTitleTextField.setText(lessonPlan.getEventNames().get(eventIndex));
 
@@ -238,7 +240,7 @@ public class PrintCoursePageController {
         TextField lessonPlanTextField = new TextField();
         lessonPlanTextField.setAlignment(Pos.CENTER);
         lessonPlanTextField.setPrefSize(402.0, 50.0);
-        lessonPlanTextField.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;");
+        lessonPlanTextField.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
         lessonPlanTextField.setFont(Font.font("System Bold", 24.0));
         lessonPlanTextField.setText(title);
         nVBox.getChildren().add(lessonPlanTextField);
@@ -361,8 +363,7 @@ public class PrintCoursePageController {
                 }
                 equipmentBox.setWrapText(true);
                 equipmentBox.setText(finalString);
-                equipmentBox.setStyle("-fx-font-size: 14;");
-                equipmentBox.setStyle("-fx-font-weight: bold;");
+                equipmentBox.setStyle("-fx-font-size: 12; -fx-font-weight: bold; -fx-border-color: black;");
                 nHBox.getChildren().add(equipmentBox);
                 nHBox.setFillHeight(false);
 
@@ -383,11 +384,12 @@ public class PrintCoursePageController {
         VBox nVBox = getNewVBox();
         nVBox.setAlignment(Pos.CENTER);
         TextField courseName = new TextField(Course.getCourseName());
-        courseName.setStyle("-fx-font-size: 50; -fx-font-weight: bold; -fx-text-fill: black;-fx-background-color: #CCCCCC");
+        courseName.setStyle("-fx-font-size: 50; -fx-font-weight: bold; -fx-text-fill: black;-fx-background-color: white");
         courseName.setPrefSize(900, 50);
         courseName.setAlignment(Pos.CENTER);
 
         nVBox.getChildren().add(courseName);
+        nVBox.setStyle("-fx-background-color: white; -fx-border-color: black;");
         mainFlowPane.getChildren().add(nVBox);
         VBoxes.add(nVBox);
     }

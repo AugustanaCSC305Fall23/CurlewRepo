@@ -14,6 +14,7 @@ import javafx.scene.layout.FlowPane;
 
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
@@ -104,7 +105,7 @@ public class PreviewPageController {
      */
     private VBox getNewVBox(){
         VBox returnVBox = new VBox();
-        returnVBox.setStyle("-fx-background-color: #CCCCCC;");
+        returnVBox.setStyle("-fx-background-color: white; -fx-border-color: black;");
         returnVBox.setPrefSize(770.0, 595.0);
         returnVBox.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         returnVBox.setAlignment(Pos.TOP_CENTER);
@@ -142,10 +143,11 @@ public class PreviewPageController {
      * @param isEquipment  a flag indicating whether the cards are equipment.
      * @return a list of ImageViews representing the cards.
      */
-    private List<ImageView> addCards(int eventIndex, boolean isEquipment){
+    private List<StackPane> addCards(int eventIndex, boolean isEquipment) {
         List<Card> eventCards = lessonPlan.getEventCards(eventIndex);
-        List<ImageView> cardView = new ArrayList<>();
-        for(Card card : eventCards){
+        List<StackPane> cardViews = new ArrayList<>();
+
+        for (Card card : eventCards) {
             Image image = null;
             try {
                 image = new Image(new FileInputStream("GymSoftwarePics/" +
@@ -154,12 +156,14 @@ public class PreviewPageController {
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
+
             ImageView imageView = new ImageView(image);
-            if(eventCards.size() > 6){
-                if(isEquipment) {
+
+            if (eventCards.size() > 6) {
+                if (isEquipment) {
                     imageView.setFitWidth(150); // Set the width of the image view
                     imageView.setFitHeight(150); // Set the height of the image view
-                } else{
+                } else {
                     imageView.setFitWidth(175); // Set the width of the image view
                     imageView.setFitHeight(175); // Set the height of the image view
                 }
@@ -167,9 +171,18 @@ public class PreviewPageController {
                 imageView.setFitWidth(200); // Set the width of the image view
                 imageView.setFitHeight(200); // Set the height of the image view
             }
-            cardView.add(imageView);
+
+            // Create a StackPane to contain the ImageView
+            StackPane stackPane = new StackPane();
+            stackPane.getChildren().add(imageView);
+
+            // Apply the border style to the StackPane
+            stackPane.setStyle("-fx-border-color: black;");
+
+            cardViews.add(stackPane);
         }
-        return cardView;
+
+        return cardViews;
     }
 
     /**
@@ -182,7 +195,7 @@ public class PreviewPageController {
         TextField eventTitleTextField = new TextField();
         eventTitleTextField.setAlignment(Pos.CENTER);
         eventTitleTextField.setPrefSize(250.0, 40.0);
-        eventTitleTextField.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;");
+        eventTitleTextField.setStyle("-fx-text-fill: black; -fx-border-color: black;");
         eventTitleTextField.setFont(Font.font("System Bold", 16.0));
         eventTitleTextField.setText(lessonPlan.getEventNames().get(eventIndex));
 
@@ -229,7 +242,7 @@ public class PreviewPageController {
         TextField lessonPlanTextField = new TextField();
         lessonPlanTextField.setAlignment(Pos.CENTER);
         lessonPlanTextField.setPrefSize(402.0, 50.0);
-        lessonPlanTextField.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;");
+        lessonPlanTextField.setStyle("-fx-text-fill: black; -fx-border-color: black;");
         lessonPlanTextField.setFont(Font.font("System Bold", 24.0));
         lessonPlanTextField.setText(title);
         nVBox.getChildren().add(lessonPlanTextField);
@@ -483,8 +496,7 @@ public class PreviewPageController {
             }
             equipmentBox.setWrapText(true);
             equipmentBox.setText(finalString);
-            equipmentBox.setStyle("-fx-font-size: 14;");
-            equipmentBox.setStyle("-fx-font-weight: bold;");
+            equipmentBox.setStyle("-fx-font-size: 12;-fx-font-weight: bold;-fx-border-color: black");
             nHBox.getChildren().add(equipmentBox);
             nHBox.setFillHeight(false);
 

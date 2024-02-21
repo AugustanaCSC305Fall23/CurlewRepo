@@ -10,6 +10,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
@@ -40,8 +41,14 @@ public class SingleCardPageController {
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(595); // Set the width of the image view
         imageView.setFitHeight(595);
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().add(imageView);
+
+        // Apply the border style to the StackPane
+        stackPane.setStyle("-fx-border-color: black;");
+
         mainVBox.setStyle("-fx-background-color: white");
-        mainVBox.getChildren().add(imageView);
+        mainVBox.getChildren().add(stackPane);
     }
 
     /**

@@ -12,9 +12,9 @@
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #eef8ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.PrintCoursePageController">
    <left>
-      <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="154.0" spacing="30.0" style="-fx-background-color: #3A5069;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="154.0" spacing="30.0" style="-fx-background-color: #eef8ff; -fx-border-color: #eef8ff;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="printButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#printButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: white; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Print" textAlignment="CENTER" textFill="#3a5069" VBox.vgrow="ALWAYS">
+            <Button fx:id="printButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#printButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Print" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -22,17 +22,17 @@
                   <Tooltip style="-fx-font-size: 12;" text="Prints every page you see! Landscape mode by default!" />
                </tooltip>
             </Button>
-            <Button fx:id="hideEquipment" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleEquipmentBar" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: white; -fx-font-family: Inter; -fx-font-size: 20; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Show Equipment" textAlignment="CENTER" textFill="#3a5069" wrapText="true">
+            <Button fx:id="hideEquipment" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleEquipmentBar" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 20; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Show Equipment" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleNotesBox" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: white; -fx-font-family: Inter; -fx-font-size: 20; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Notes" textAlignment="CENTER" textFill="#3a5069" wrapText="true">
+            <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleNotesBox" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 20; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Notes" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: white; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Home" textAlignment="CENTER" textFill="#3a5069" VBox.vgrow="ALWAYS">
+            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Home" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -40,7 +40,7 @@
                   <Tooltip style="-fx-font-size: 12;" text="Go back home but delete the current Lesson Plan" />
                </tooltip>
             </Button>
-            <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#backButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: white; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER" textFill="#3a5069">
+            <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#backButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -57,7 +57,7 @@
    <center>
       <ScrollPane fx:id="mainScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="858.0" style="-fx-background-color: #eef8ff;" stylesheets="@scrollpane.css" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
          <content>
-            <FlowPane fx:id="mainFlowPane" alignment="CENTER" columnHalignment="CENTER" prefHeight="635.0" prefWidth="857.0" style="-fx-background-color: #eef8ff;" vgap="50.0">
+            <FlowPane fx:id="mainFlowPane" alignment="CENTER" columnHalignment="CENTER" prefHeight="635.0" prefWidth="857.0" style="-fx-background-color: #3A5069;" vgap="50.0">
                <children>
                   <VBox fx:id="eventPreviewVBox" alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="770.0" spacing="10.0" style="-fx-background-color: grey;">
                      <padding>
