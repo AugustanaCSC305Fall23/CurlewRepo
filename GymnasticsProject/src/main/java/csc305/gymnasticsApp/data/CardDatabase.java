@@ -193,9 +193,11 @@ public class CardDatabase {
      */
     public static List<String> getLevelList() {
         Set<String> levelSet = new TreeSet<>();
-        for (Card card : allCards) {
-            levelSet.add(card.getLevel());
-        }
+        levelSet.add("ALL");
+        levelSet.add("Beginner");
+        levelSet.add("Advanced Beginner");
+        levelSet.add("Intermediate");
+        levelSet.add("Advanced");
         return new ArrayList<>(levelSet);
     }
 

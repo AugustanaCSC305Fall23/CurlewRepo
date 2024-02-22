@@ -17,8 +17,18 @@ public class LevelFilter implements CardFilter{
      *
      * @param desiredLevel The level criteria to fitler by
      */
-    public LevelFilter(String desiredLevel) {
-        this.desiredLevel = desiredLevel;
+    public LevelFilter(String levelChoice) {
+        if(levelChoice.equalsIgnoreCase("Beginner")){
+            desiredLevel = "B";
+        } else if (levelChoice.equalsIgnoreCase("Advanced Beginner")) {
+            desiredLevel = "AB";
+        } else if (levelChoice.equalsIgnoreCase("Intermediate")) {
+            desiredLevel = "I";
+        } else if (levelChoice.equalsIgnoreCase("Advanced")) {
+            desiredLevel = "A";
+        }else{
+            desiredLevel = "ALL";
+        }
     }
 
     /**
@@ -29,7 +39,7 @@ public class LevelFilter implements CardFilter{
      */
     public boolean matches(Card card) {
         return (desiredLevel.equalsIgnoreCase("All") ||
-                desiredLevel.toUpperCase().contains(card.getLevel().toUpperCase()) ||
+                card.getLevel().toUpperCase().contains(desiredLevel.toUpperCase()) ||
                         card.getLevel().toUpperCase().contains("ALL"));
     }
 }
