@@ -56,6 +56,8 @@ public class PreviewPageController {
 
     private PrefPlans recents = GymnasticsAppBeta.getRecentPlans();
 
+    private PrefFileLocation saveLocation = GymnasticsAppBeta.getSavedLocation();
+
     /**
      * Initializes the preview page
      *
@@ -346,16 +348,20 @@ public class PreviewPageController {
             cardList.addAll(lessonPlan.getEventCards(i));
             eventCardList.add(cardList);
         }
+        String location = saveLocation.getLastSavedLocationLP();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save File");
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Gym Plan Files (*.GymPlanFile)", "*.GymPlanFile");
         fileChooser.getExtensionFilters().add(extensionFilter);
-
+        if(location != ""){
+            fileChooser.setInitialDirectory(new File(location).getParentFile());
+        }
         // Show the file save dialog and get the selected file.
         File selectedFile = fileChooser.showSaveDialog(null);
 
         if (selectedFile != null) {
             recents.setPreference(selectedFile.getAbsolutePath());
+            saveLocation.setLastSavedLocationLP(selectedFile.getAbsolutePath());
             // Create a FileWriter for the selected file and write the data.
             try (FileWriter fileWriter = new FileWriter(selectedFile)) {
                 fileWriter.write(lessonPlan.getLessonPlanTitle() + "\n");

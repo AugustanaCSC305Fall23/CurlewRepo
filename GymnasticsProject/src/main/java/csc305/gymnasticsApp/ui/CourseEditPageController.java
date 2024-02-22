@@ -3,6 +3,7 @@ package csc305.gymnasticsApp.ui;
 import csc305.gymnasticsApp.data.Course;
 import csc305.gymnasticsApp.data.LessonPlan;
 import csc305.gymnasticsApp.data.PrefCourses;
+import csc305.gymnasticsApp.data.PrefFileLocation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -41,6 +42,7 @@ public class CourseEditPageController {
     private static CourseUndoRedoHandler undoRedoHandler;
 
     private PrefCourses recentCourses = GymnasticsAppBeta.getRecentCourses();
+    private PrefFileLocation saveLocation = GymnasticsAppBeta.getSavedLocation();
 
     /**
      * Initializes the Course Edit Page
@@ -239,10 +241,16 @@ public class CourseEditPageController {
      */
     @FXML
     void saveCourseButtonHandle(ActionEvent event) throws IOException {
+
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save File");
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Gym Plan Files (*.GymPlanFile)", "*.GymPlanFile");
         fileChooser.getExtensionFilters().add(extensionFilter);
+
+        String location = saveLocation.getLastSavedLocationCourse();
+        if(location != ""){
+            fileChooser.setInitialDirectory(new File(location).getParentFile());
+        }
 
         // Show the file save dialog and get the selected file.
         File selectedFile = fileChooser.showSaveDialog(null);
@@ -250,6 +258,7 @@ public class CourseEditPageController {
 
         if (selectedFile != null) {
             recentCourses.setCoursePreference(selectedFile.getAbsolutePath());
+            saveLocation.setLastSavedLocationCourses(selectedFile.getAbsolutePath());
             // Create a FileWriter for the selected file and write the data.
             try (FileWriter fileWriter = new FileWriter(selectedFile)) {
                 fileWriter.write(course.getTheCourse().getCourseName() + "\n");

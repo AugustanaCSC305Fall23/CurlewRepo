@@ -39,6 +39,8 @@ public class GymnasticsAppBeta extends Application {
     private static PrefPlans recentPlans = new PrefPlans();
     private static PrefCourses recentCourses = new PrefCourses();
 
+    private static PrefFileLocation savedLocation = new PrefFileLocation();
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -84,6 +86,13 @@ public class GymnasticsAppBeta extends Application {
     public static PrefCourses getRecentCourses() {
         return recentCourses;
     }
+
+    /**
+     * Retrieves the last save location of the user.
+     *
+     * @return The PrefFileLocation object representing the last save location.
+     */
+    public static PrefFileLocation getSavedLocation(){return savedLocation; }
 
     /**
      * Retrieves the recent plans preferences.
