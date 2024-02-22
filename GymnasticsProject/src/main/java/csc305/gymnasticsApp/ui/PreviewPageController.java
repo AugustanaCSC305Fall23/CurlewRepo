@@ -158,18 +158,19 @@ public class PreviewPageController {
             }
 
             ImageView imageView = new ImageView(image);
+            imageView.setPreserveRatio(true);
 
             if (eventCards.size() > 6) {
                 if (isEquipment) {
                     imageView.setFitWidth(150); // Set the width of the image view
-                    imageView.setFitHeight(150); // Set the height of the image view
+                    //imageView.setFitHeight(150); // Set the height of the image view
                 } else {
                     imageView.setFitWidth(175); // Set the width of the image view
-                    imageView.setFitHeight(175); // Set the height of the image view
+                    //imageView.setFitHeight(175); // Set the height of the image view
                 }
             } else {
                 imageView.setFitWidth(200); // Set the width of the image view
-                imageView.setFitHeight(200); // Set the height of the image view
+                //imageView.setFitHeight(200); // Set the height of the image view
             }
 
             // Create a StackPane to contain the ImageView
@@ -476,7 +477,7 @@ public class PreviewPageController {
                     for (int h = 0; h < equipmentList.length; h++) {
                         if (!(equipmentList[h].equalsIgnoreCase("none"))) {//checks if the equipment is none
                             if (!(finalString.contains(equipmentList[h]))) {
-                                finalString = finalString + "- " + equipmentList[h] + "\n";
+                                finalString = finalString + "• " + equipmentList[h] + "\n";
                             }
                         }
                     }
