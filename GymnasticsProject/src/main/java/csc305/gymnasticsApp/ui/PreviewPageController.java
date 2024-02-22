@@ -158,19 +158,16 @@ public class PreviewPageController {
             }
 
             ImageView imageView = new ImageView(image);
-            imageView.setPreserveRatio(true);
+            imageView.setPreserveRatio(true);  //Allows us to only have to set one size of the image
 
             if (eventCards.size() > 6) {
                 if (isEquipment) {
                     imageView.setFitWidth(150); // Set the width of the image view
-                    //imageView.setFitHeight(150); // Set the height of the image view
                 } else {
                     imageView.setFitWidth(175); // Set the width of the image view
-                    //imageView.setFitHeight(175); // Set the height of the image view
                 }
             } else {
                 imageView.setFitWidth(200); // Set the width of the image view
-                //imageView.setFitHeight(200); // Set the height of the image view
             }
 
             // Create a StackPane to contain the ImageView
