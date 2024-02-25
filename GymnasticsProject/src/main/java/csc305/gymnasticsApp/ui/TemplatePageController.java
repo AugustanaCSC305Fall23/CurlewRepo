@@ -14,19 +14,17 @@ import java.util.ArrayList;
  */
 public class TemplatePageController {
     @FXML
-    private Button homeButton;
-    @FXML
-    private Button beginnerOnlyButtonOne;
-    @FXML
-    private Button maleOnlyButtonOne;
-    @FXML
     private Button allFloorButton;
     @FXML
-    private Button floorAndStrength;
+    private Button templateOneButton;
     @FXML
-    private Button varietyBeginner;
+    private Button templateTwoButton;
     @FXML
-    private Button maleUpper;
+    private Button templateThreeButton;
+    @FXML
+    private Button templateFourButton;
+    @FXML
+    private Button templateFiveButton;
 
     /**
      * Handles the action event for loading the all floor lesson plan.
@@ -47,16 +45,11 @@ public class TemplatePageController {
         }
     }
 
-    /**
-     * Handles the action event for loading the floor and strength lesson plan.
-     *
-     * @param event The action event triggered by the button.
-     */
     @FXML
-    void handleFloorAndStrength(ActionEvent event) {
+    void handleTemplateOneButton(ActionEvent event) {
         LessonPlan.resetBoolean();
         HomePageController.loadPlan = new LessonPlan();
-        GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/floorAndStrengthTemplatePlan.GymPlanFile"));
+        GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/templateOne.GymPlanFile"));
         GymnasticsAppBeta.readFile();
         ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();
         HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
@@ -66,16 +59,11 @@ public class TemplatePageController {
         }
     }
 
-    /**
-     * Handles the action event for loading the beginner-only lesson plan
-     *
-     * @param event The action event triggered by the button
-     */
     @FXML
-    void handleBeginnerOnlyButtonOne(ActionEvent event) {
+    void handleTemplateTwoButton(ActionEvent event) {
         LessonPlan.resetBoolean();
         HomePageController.loadPlan = new LessonPlan();
-        GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/beginnerFloorAndTrampolinePlan.GymPlanFile"));
+        GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/templateTwo.GymPlanFile"));
         GymnasticsAppBeta.readFile();
         ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();
         HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
@@ -85,16 +73,11 @@ public class TemplatePageController {
         }
     }
 
-    /**
-     * Handles the action event for loading the variety beginner lesson plan.
-     *
-     * @param event The action event triggered by the button.
-     */
     @FXML
-    void handleVarietyBeginner(ActionEvent event) {
+    void handleTemplateThreeButton(ActionEvent event) {
         LessonPlan.resetBoolean();
         HomePageController.loadPlan = new LessonPlan();
-        GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/varietyBeginnerTemplatePlan.GymPlanFile"));
+        GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/templateThree.GymPlanFile"));
         GymnasticsAppBeta.readFile();
         ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();
         HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
@@ -104,16 +87,11 @@ public class TemplatePageController {
         }
     }
 
-    /**
-     * Handles the action event for loading the male-only lesson plan
-     *
-     * @param event The action event triggered by the button
-     */
     @FXML
-    void handleMaleOnlyButtonOne(ActionEvent event) {
+    void handleTemplateFourButton(ActionEvent event) {
         LessonPlan.resetBoolean();
         HomePageController.loadPlan = new LessonPlan();
-        GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/maleOnlyLessonPlan.GymPlanFile"));
+        GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/templateFour.GymPlanFile"));
         GymnasticsAppBeta.readFile();
         ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();
         HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
@@ -123,16 +101,11 @@ public class TemplatePageController {
         }
     }
 
-    /**
-     * Handles the action event for loading the male upper floor lesson plan.
-     *
-     * @param event The action event triggered by the button.
-     */
     @FXML
-    void handleMaleUpper(ActionEvent event) {
+    void handleTemplateFiveButton(ActionEvent event) {
         LessonPlan.resetBoolean();
         HomePageController.loadPlan = new LessonPlan();
-        GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/maleUpperFloorTemplatePlan.GymPlanFile"));
+        GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/templateFive.GymPlanFile"));
         GymnasticsAppBeta.readFile();
         ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();
         HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
@@ -158,16 +131,17 @@ public class TemplatePageController {
     public void initialize(){
         Image allFloorImage = new Image("file:src/main/resources/templatePlans/allFloorPDF-1.png");
         initializeImages(allFloorImage, allFloorButton);
-        Image floorAndStrengthImage = new Image("file:src/main/resources/templatePlans/beginnerFloorPDF-1.png");
-        initializeImages(floorAndStrengthImage, floorAndStrength);
-        Image beginnerFloorAndTrampolineImage = new Image("file:src/main/resources/templatePlans/beginnerFloorPDF-1.png");
-        initializeImages(beginnerFloorAndTrampolineImage, beginnerOnlyButtonOne);
-        Image varietyBeginnerImage = new Image("file:src/main/resources/templatePlans/varietyBeginnerPDF-1.png");
-        initializeImages(varietyBeginnerImage, varietyBeginner);
-        Image maleOnlyLessonPlanImage = new Image("file:src/main/resources/templatePlans/maleOnlyPDF-1.png");
-        initializeImages(maleOnlyLessonPlanImage, maleOnlyButtonOne);
-        Image maleUpperImage = new Image("file:src/main/resources/templatePlans/maleUpperPDF-1.png");
-        initializeImages(maleUpperImage, maleUpper);
+
+        Image templateOneImage = new Image("file:src/main/resources/templatePlans/templateOneSS.png");
+        initializeImages(templateOneImage, templateOneButton);
+        Image templateTwoImage = new Image("file:src/main/resources/templatePlans/templateTwoSS.png");
+        initializeImages(templateTwoImage, templateTwoButton);
+        Image templateThreeImage = new Image("file:src/main/resources/templatePlans/templateThreeSS.png");
+        initializeImages(templateThreeImage, templateThreeButton);
+        Image templateFourImage = new Image("file:src/main/resources/templatePlans/templateFourSS.png");
+        initializeImages(templateFourImage, templateFourButton);
+        Image templateFiveImage = new Image("file:src/main/resources/templatePlans/templateFiveSS.png");
+        initializeImages(templateFiveImage, templateFiveButton);
     }
 
     /**

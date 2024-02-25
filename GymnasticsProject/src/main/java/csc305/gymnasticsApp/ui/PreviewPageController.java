@@ -195,7 +195,7 @@ public class PreviewPageController {
         TextField eventTitleTextField = new TextField();
         eventTitleTextField.setAlignment(Pos.CENTER);
         eventTitleTextField.setPrefSize(250.0, 40.0);
-        eventTitleTextField.setStyle("-fx-text-fill: black; -fx-border-color: black;");
+        eventTitleTextField.setStyle("-fx-text-fill: black; -fx-border-color: black;-fx-border-radius: 10px;-fx-background-radius: 10px;");
         eventTitleTextField.setFont(Font.font("System Bold", 16.0));
         eventTitleTextField.setText(lessonPlan.getEventNames().get(eventIndex));
 
@@ -242,7 +242,7 @@ public class PreviewPageController {
         TextField lessonPlanTextField = new TextField();
         lessonPlanTextField.setAlignment(Pos.CENTER);
         lessonPlanTextField.setPrefSize(402.0, 50.0);
-        lessonPlanTextField.setStyle("-fx-text-fill: black; -fx-border-color: black;");
+        lessonPlanTextField.setStyle("-fx-text-fill: black; -fx-border-color: black;-fx-border-radius: 10px;-fx-background-radius: 10px;");
         lessonPlanTextField.setFont(Font.font("System Bold", 24.0));
         lessonPlanTextField.setText(title);
         nVBox.getChildren().add(lessonPlanTextField);
@@ -500,7 +500,7 @@ public class PreviewPageController {
             }
             equipmentBox.setWrapText(true);
             equipmentBox.setText(finalString);
-            equipmentBox.setStyle("-fx-font-size: 12;-fx-font-weight: bold;-fx-border-color: black");
+            equipmentBox.setStyle("-fx-font-size: 12;-fx-font-weight: bold;-fx-border-color: black;");
             nHBox.getChildren().add(equipmentBox);
             nHBox.setFillHeight(false);
 

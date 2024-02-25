@@ -12,12 +12,12 @@
 
 <BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.TemplatePageController">
    <left>
-      <VBox alignment="CENTER" prefHeight="700.0" prefWidth="152.0" style="-fx-background-color: #3A5069;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="700.0" prefWidth="152.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: white; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" text="Home" textAlignment="CENTER" textFill="#3a5069">
+            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" text="Home" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -28,85 +28,97 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #3A5069;">
                <children>
-                  <Text fill="#3a5069" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 4.5em;" text="Choose a Template">
+                  <Text fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 4.5em;" text="Choose a Template">
                      <font>
                         <Font size="55.0" />
                      </font>
                   </Text>
                </children>
             </HBox>
-            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="667.0" prefWidth="848.0" style="-fx-background-color: white;" vbarPolicy="ALWAYS">
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="667.0" prefWidth="848.0" style="-fx-background-color: #3A5069;" vbarPolicy="ALWAYS">
                <content>
-                  <VBox alignment="TOP_CENTER" prefHeight="628.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: white;">
+                  <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="628.0" prefWidth="848.0" spacing="15.0" style="-fx-background-color: #3A5069; -fx-border-color: #3A5069;">
                      <children>
-                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="848.0" spacing="10.0">
+                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="848.0" spacing="20.0" style="-fx-background-color: #3A5069;">
                            <children>
-                              <Text fill="#3a5069" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="All Floor Exercise Plans">
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Template One                                Template Two" wrappingWidth="537.7296662330627">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Text>
-                              <HBox alignment="CENTER" prefHeight="250.0" prefWidth="848.0" spacing="60.0" style="-fx-background-color: white;">
+                              <HBox alignment="CENTER" prefHeight="322.5" prefWidth="850.0" spacing="60.0" style="-fx-background-color: #3A5069;">
                                  <children>
-                                    <Button fx:id="allFloorButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAllFloorButton" prefHeight="250.0" prefWidth="350.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
+                                    <Button fx:id="templateOneButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleTemplateOneButton" prefHeight="323.0" prefWidth="300.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
-                                       </tooltip></Button>
-                                    <Button fx:id="floorAndStrength" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleFloorAndStrength" prefHeight="250.0" prefWidth="350.0" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
+                                       </tooltip>
+                                    </Button>
+                                    <Button fx:id="templateTwoButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleTemplateTwoButton" prefHeight="323.0" prefWidth="300.0" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
-                                       </tooltip></Button>
+                                       </tooltip>
+                                    </Button>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="848.0" spacing="10.0">
+                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="848.0" spacing="20.0" style="-fx-background-color: #3A5069;">
                            <children>
-                              <Text fill="#3a5069" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Beginner Only Plans">
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Template Three                              Template Four" wrappingWidth="555.874267578125">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Text>
-                              <HBox alignment="CENTER" prefHeight="250.0" prefWidth="848.0" spacing="60.0">
+                              <HBox alignment="CENTER" prefHeight="322.5" prefWidth="850.0" spacing="60.0" style="-fx-background-color: #3A5069;">
                                  <children>
-                                    <Button fx:id="beginnerOnlyButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBeginnerOnlyButtonOne" prefHeight="250.0" prefWidth="350.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
+                                    <Button fx:id="templateThreeButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleTemplateThreeButton" prefHeight="323.0" prefWidth="300.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
-                                       </tooltip></Button>
-                                    <Button fx:id="varietyBeginner" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleVarietyBeginner" prefHeight="250.0" prefWidth="350.0" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
+                                       </tooltip>
+                                    </Button>
+                                    <Button fx:id="templateFourButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleTemplateFourButton" prefHeight="323.0" prefWidth="300.0" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
-                                       </tooltip></Button>
+                                       </tooltip>
+                                    </Button>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="848.0" spacing="10.0">
+                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="848.0" spacing="20.0" style="-fx-background-color: #3A5069;">
                            <children>
-                              <Text fill="#3a5069" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Male Variety Plans">
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Template Five                              Template Test ">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Text>
-                              <HBox alignment="CENTER" prefHeight="250.0" prefWidth="848.0" spacing="60.0">
+                              <HBox alignment="CENTER" prefHeight="322.5" prefWidth="850.0" spacing="60.0" style="-fx-background-color: #3A5069;">
                                  <children>
-                                    <Button fx:id="maleOnlyButtonOne" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMaleOnlyButtonOne" prefHeight="250.0" prefWidth="350.0" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
+                                    <Button fx:id="templateFiveButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleTemplateFiveButton" prefHeight="323.0" prefWidth="300.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
-                                       </tooltip></Button>
-                                    <Button fx:id="maleUpper" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMaleUpper" prefHeight="250.0" prefWidth="350.0" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
+                                       </tooltip>
+                                    </Button>
+                                    <Button fx:id="allFloorButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAllFloorButton" prefHeight="323.0" prefWidth="300.0" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
-                                       </tooltip></Button>
+                                       </tooltip>
+                                    </Button>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
                      </children>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
                   </VBox>
                </content>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </ScrollPane>
          </children>
       </VBox>
