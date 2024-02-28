@@ -12,19 +12,19 @@
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: EEF8FF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.CourseEditPageController">
    <left>
-      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="175.0" spacing="20.0" style="-fx-background-color: #eef8ff; -fx-border-color: #eef8ff;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="175.0" spacing="20.0" style="-fx-background-color: #e8f4f8; -fx-border-color: #e8f4f8;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="saveCourseButton" mnemonicParsing="false" onAction="#saveCourseButtonHandle" prefHeight="100.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: #3A5069;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Save This Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="saveCourseButton" mnemonicParsing="false" onAction="#saveCourseButtonHandle" prefHeight="100.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Save This Course" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#homePageButtonHandle" prefHeight="100.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: #3A5069;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Home" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#homePageButtonHandle" prefHeight="100.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Home" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="loadCourseButton" mnemonicParsing="false" onAction="#loadCourseButtonHandle" prefHeight="106.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: #3A5069;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Load Different Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="loadCourseButton" mnemonicParsing="false" onAction="#loadCourseButtonHandle" prefHeight="106.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Load Different Course" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -32,12 +32,12 @@
                   <Tooltip style="-fx-font-size: 12;" text="Opens another course but deletes this one!" />
                </tooltip>
             </Button>
-            <Button mnemonicParsing="false" onAction="#printCoursePageHandle" prefHeight="100.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: #3A5069;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview Entire Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button mnemonicParsing="false" onAction="#printCoursePageHandle" prefHeight="100.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview Entire Course" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="resetCourseButton" mnemonicParsing="false" onAction="#resetCourseButtonHandle" prefHeight="100.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: red;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Reset Entire Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="resetCourseButton" mnemonicParsing="false" onAction="#resetCourseButtonHandle" prefHeight="100.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: #f5424a;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Reset Entire Course" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -52,9 +52,9 @@
       </VBox>
    </left>
    <center>
-      <BorderPane prefHeight="600.0" prefWidth="690.0" style="-fx-background-color: #3A5069;" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="600.0" prefWidth="690.0" style="-fx-background-color: #00004d;" BorderPane.alignment="CENTER">
          <center>
-            <TreeView fx:id="treeView" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="200.0" prefWidth="420.0" style="-fx-font-size: 28px; -fx-border-color: black;" BorderPane.alignment="CENTER">
+            <TreeView fx:id="treeView" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="200.0" prefWidth="420.0" style="-fx-font-size: 28px;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="20.0" left="150.0" right="150.0" />
                </BorderPane.margin>
@@ -63,12 +63,12 @@
          <bottom>
             <HBox alignment="CENTER" fillHeight="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="728.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="createNewLessonPlanButton" mnemonicParsing="false" onAction="#createNewLessonPlanButtonHandle" style="-fx-background-color: white; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Create New Lesson Plan" textFill="#3a5069" HBox.hgrow="ALWAYS">
+                  <Button fx:id="createNewLessonPlanButton" mnemonicParsing="false" onAction="#createNewLessonPlanButtonHandle" style="-fx-background-color: #e8f4f8; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Create New Lesson Plan" textFill="#00004d" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="preMadeLessonButton" mnemonicParsing="false" onAction="#preMadeLessonButtonHandle" style="-fx-background-color: white; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Premade LessonPlan" textFill="#3a5069">
+                  <Button fx:id="preMadeLessonButton" mnemonicParsing="false" onAction="#preMadeLessonButtonHandle" style="-fx-background-color: #e8f4f8; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Premade LessonPlan" textFill="#00004d">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -85,7 +85,7 @@
          <top>
             <HBox alignment="CENTER" prefHeight="19.0" prefWidth="666.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="courseName" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="391.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Current Course Name">
+                  <TextField fx:id="courseName" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="391.0" style="-fx-background-color: #e8f4f8; -fx-background-radius: 30;" text="Current Course Name">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -93,7 +93,7 @@
                         <Insets />
                      </HBox.margin>
                   </TextField>
-                  <Button fx:id="undoButton" mnemonicParsing="false" onAction="#undoButtonHandle" style="-fx-background-radius: 30; -fx-background-color: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="UNDO" textFill="#3a5069">
+                  <Button fx:id="undoButton" mnemonicParsing="false" onAction="#undoButtonHandle" style="-fx-background-radius: 30; -fx-background-color: #e8f4f8;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="UNDO" textFill="#00004d">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -101,7 +101,7 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="redoButton" mnemonicParsing="false" onAction="#redoButtonHandle" style="-fx-background-radius: 30px; -fx-background-color: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="REDO" textFill="#3a5069">
+                  <Button fx:id="redoButton" mnemonicParsing="false" onAction="#redoButtonHandle" style="-fx-background-radius: 30px; -fx-background-color: #e8f4f8;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="REDO" textFill="#00004d">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font></Button>

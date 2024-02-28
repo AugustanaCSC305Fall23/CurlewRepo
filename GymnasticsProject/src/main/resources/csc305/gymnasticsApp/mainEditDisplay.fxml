@@ -18,13 +18,13 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.MainEditDisplayController">
    <children>
-      <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: EEF8FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #00004d;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" spacing="10.0" style="-fx-background-color: EEF8FF;" HBox.hgrow="ALWAYS">
+            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" spacing="10.0" style="-fx-background-color: #00004d;" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="444.0" spacing="20.0" style="-fx-background-color: EEF8FF;" VBox.vgrow="NEVER">
+                  <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="444.0" spacing="20.0" style="-fx-background-color: #00004d;" VBox.vgrow="NEVER">
                      <children>
-                        <Button fx:id="filterButton" alignment="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseEntered="#openFilterMenu" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #3A5069;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Filters" textFill="#eef8ff" HBox.hgrow="ALWAYS">
+                        <Button fx:id="filterButton" alignment="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseEntered="#openFilterMenu" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: grey;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Filters" textFill="#eef8ff" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -32,7 +32,7 @@
                               <Insets top="2.0" />
                            </HBox.margin>
                         </Button>
-                        <TextField fx:id="searchBar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="162.4" promptText="Search Cards" style="-fx-prompt-text-fill: EEF8FF; -fx-background-color: A2AE98; -fx-background-radius: 2.0em;" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="searchBar" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="162.4" promptText="Search Cards" style="-fx-prompt-text-fill: EEF8FF; -fx-background-color: grey; -fx-background-radius: 2.0em;" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -45,12 +45,9 @@
                         <Insets top="2.0" />
                      </VBox.margin>
                   </HBox>
-                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.6" prefWidth="440.8" stylesheets="@scrollpane.css" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
+                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.6" prefWidth="440.8" style="-fx-background-color: #00004d;" stylesheets="@scrollpane.css" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                      <content>
-                        <FlowPane fx:id="cardFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="378.0" style="-fx-background-color: #3A5069;" vgap="10.0">
+                        <FlowPane fx:id="cardFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="378.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;" vgap="10.0">
                            <rotationAxis>
                               <Point3D />
                            </rotationAxis>
@@ -59,15 +56,18 @@
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
                   </ScrollPane>
                </children>
                <HBox.margin>
                   <Insets bottom="10.0" />
                </HBox.margin>
             </VBox>
-            <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="450.0" spacing="25.0" style="-fx-background-color: EEF8FF;" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="450.0" spacing="25.0" style="-fx-background-color: #e8f4f8;" HBox.hgrow="ALWAYS">
                <children>
-                  <TextField fx:id="lessonTitle" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#setLessonTitle" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Plan Title" style="-fx-prompt-text-fill: EEF8FF; -fx-background-color: A2AE98; -fx-background-radius: 2.0em; -fx-text-fill: white;" VBox.vgrow="ALWAYS">
+                  <TextField fx:id="lessonTitle" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#setLessonTitle" prefHeight="48.0" prefWidth="375.0" promptText="Lesson Plan Title" style="-fx-prompt-text-fill: EEF8FF; -fx-background-color: grey; -fx-background-radius: 2.0em; -fx-text-fill: white;" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -81,12 +81,12 @@
                      </tooltip></TreeView>
                   <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="422.0" spacing="20.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button fx:id="undoButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#undoButtonHandle" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Undo" textAlignment="CENTER" textFill="#eef8ff">
+                        <Button fx:id="undoButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#undoButtonHandle" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: #00004d; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Undo" textAlignment="CENTER" textFill="#eef8ff">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="redoButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#redoButtonHandle" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Redo" textAlignment="CENTER" textFill="#eef8ff">
+                        <Button fx:id="redoButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#redoButtonHandle" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: #00004d; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Redo" textAlignment="CENTER" textFill="#eef8ff">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -94,7 +94,7 @@
                               <Insets />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="eventAdder" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#eventAdderHandle" prefHeight="52.0" prefWidth="186.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Event" textAlignment="CENTER" textFill="#eef8ff">
+                        <Button fx:id="eventAdder" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#eventAdderHandle" prefHeight="52.0" prefWidth="186.0" style="-fx-background-color: #00004d; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Event" textAlignment="CENTER" textFill="#eef8ff">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -109,12 +109,12 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="24.0" layoutY="500.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="422.0" spacing="40.0">
                      <children>
-                        <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER" textFill="#eef8ff">
+                        <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #00004d; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textAlignment="CENTER" textFill="#eef8ff">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="previewButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previewButtonHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #3A5069; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview" textAlignment="CENTER" wrapText="true">
+                        <Button fx:id="previewButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previewButtonHandle" prefHeight="52.0" prefWidth="134.0" style="-fx-background-color: #00004d; -fx-text-fill: EEF8FF; -fx-font-family: Inter; -fx-font-size: 1.8em; -fx-font-weight: bold; -fx-background-radius: 2.0em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -126,16 +126,16 @@
                   </HBox>
                </children>
                <HBox.margin>
-                  <Insets top="5.0" />
+                  <Insets right="1.0" />
                </HBox.margin>
             </VBox>
          </children>
       </HBox>
-      <VBox fx:id="filterMenu" alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" onMouseExited="#mouseExitHandle" prefWidth="250.0" style="-fx-background-color: D48973;" visible="false" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="filterMenu" alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" onMouseExited="#mouseExitHandle" prefHeight="425.0" prefWidth="250.0" style="-fx-background-color: grey;" visible="false" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="200.0" spacing="10.0">
+            <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: grey;">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#resetButton" prefHeight="56.0" prefWidth="200.0" style="-fx-background-radius: 2.0em; -fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 1.5em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Reset" textFill="#eef8ff">
+                  <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#resetButton" prefHeight="56.0" prefWidth="200.0" style="-fx-background-radius: 2.0em; -fx-background-color: f5424a; -fx-font-family: Inter; -fx-font-size: 1.5em; -fx-font-weight: bold;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Reset" textFill="#eef8ff">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -145,9 +145,9 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" style="-fx-background-color: D48973;" stylesheets="@scrollpane.css" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" style="-fx-background-color: grey;" stylesheets="@scrollpane.css" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                <content>
-                  <VBox fx:id="filterVBox1" fillWidth="false" maxHeight="100.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="5.0" style="-fx-border-width: 2; -fx-background-color: D48973;">
+                  <VBox fx:id="filterVBox1" fillWidth="false" maxHeight="530.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="5.0" style="-fx-border-width: 2; -fx-background-color: grey;">
                      <children>
                         <HBox alignment="CENTER" spacing="10.0">
                            <children>
@@ -199,7 +199,7 @@
                               <ChoiceBox fx:id="levelCB" prefWidth="110.0" stylesheets="@choiceBox.css" />
                            </children>
                         </HBox>
-                        <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                        <VBox prefHeight="134.0" prefWidth="234.0" spacing="5.0" style="-fx-background-color: grey;" VBox.vgrow="ALWAYS">
                            <children>
                               <Label style="-fx-font-family: Inter; -fx-font-size: 2em; -fx-font-weight: bold;" text="Equipment:" textFill="#eef8ff" />
                               <TextField fx:id="equipmentTextfield" maxWidth="200.0" prefHeight="25.0" promptText="Equipment Keyword" style="-fx-font-family: Inter;" />

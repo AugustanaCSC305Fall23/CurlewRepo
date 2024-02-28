@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: EEF8FF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.recentPlansController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #00004d;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.recentPlansController">
    <children>
-      <GridPane layoutX="101.0" layoutY="56.0" prefHeight="519.0" prefWidth="798.0" style="-fx-background-color: #3A5069;" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="101.0" AnchorPane.rightAnchor="101.0" AnchorPane.topAnchor="56.0">
+      <GridPane layoutX="101.0" layoutY="56.0" prefHeight="519.0" prefWidth="798.0" style="-fx-background-color: #e8f4f8;" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="101.0" AnchorPane.rightAnchor="101.0" AnchorPane.topAnchor="56.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -21,25 +21,25 @@
           <RowConstraints maxHeight="259.2" minHeight="10.0" prefHeight="259.2" valignment="CENTER" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
-            <Label text="Recent Lesson Plans" textAlignment="CENTER" textFill="WHITE">
+            <Label text="Recent Lesson Plans" textAlignment="CENTER" textFill="#00004d">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font></Label>
-            <Label text="Recent Courses" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+            <Label text="Recent Courses" textAlignment="CENTER" textFill="#00004d" GridPane.columnIndex="1">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font></Label>
             <VBox alignment="TOP_CENTER" prefHeight="249.0" prefWidth="388.0" spacing="15.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <children>
-                  <Button fx:id="recentPlan1" mnemonicParsing="false" onAction="#openRecentLessonPlan" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Button" textFill="#3a5069">
+                  <Button fx:id="recentPlan1" mnemonicParsing="false" onAction="#openRecentLessonPlan" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Button" textFill="#e8f4f8">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font></Button>
-                  <Button fx:id="recentPlan2" mnemonicParsing="false" onAction="#openRecentLessonPlan" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Button" textFill="#3a5069">
+                  <Button fx:id="recentPlan2" mnemonicParsing="false" onAction="#openRecentLessonPlan" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Button" textFill="#e8f4f8">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font></Button>
-                  <Button fx:id="recentPlan3" mnemonicParsing="false" onAction="#openRecentLessonPlan" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Button" textFill="#3a5069">
+                  <Button fx:id="recentPlan3" mnemonicParsing="false" onAction="#openRecentLessonPlan" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Button" textFill="#e8f4f8">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font></Button>
@@ -47,15 +47,15 @@
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="183.0" prefWidth="176.0" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="recentCourse1" mnemonicParsing="false" onAction="#loadRecentCourse" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Button" textFill="#3a5069">
+                  <Button fx:id="recentCourse1" mnemonicParsing="false" onAction="#loadRecentCourse" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Button" textFill="#e8f4f8">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font></Button>
-                  <Button fx:id="recentCourse2" mnemonicParsing="false" onAction="#loadRecentCourse" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Button" textFill="#3a5069">
+                  <Button fx:id="recentCourse2" mnemonicParsing="false" onAction="#loadRecentCourse" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Button" textFill="#e8f4f8">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font></Button>
-                  <Button fx:id="recentCourse3" mnemonicParsing="false" onAction="#loadRecentCourse" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: white;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Button" textFill="#3a5069">
+                  <Button fx:id="recentCourse3" mnemonicParsing="false" onAction="#loadRecentCourse" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Button" textFill="#e8f4f8">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font></Button>
@@ -63,7 +63,7 @@
             </VBox>
          </children>
       </GridPane>
-      <Button fx:id="backButton" layoutX="39.0" layoutY="602.0" mnemonicParsing="false" onAction="#backToHomePage" prefHeight="65.0" prefWidth="128.0" style="-fx-background-color: #3A5069;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textFill="WHITE" AnchorPane.bottomAnchor="31.600000000000023" AnchorPane.leftAnchor="39.0">
+      <Button fx:id="backButton" layoutX="39.0" layoutY="602.0" mnemonicParsing="false" onAction="#backToHomePage" prefHeight="65.0" prefWidth="128.0" style="-fx-background-color: #e8f4f8;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Back" textFill="#00004d" AnchorPane.bottomAnchor="31.600000000000023" AnchorPane.leftAnchor="39.0">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>

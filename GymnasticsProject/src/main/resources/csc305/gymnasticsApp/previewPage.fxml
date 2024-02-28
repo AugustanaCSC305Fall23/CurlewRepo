@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #3A5069; -fx-border-color: #3A5069;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.PreviewPageController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.PreviewPageController">
    <left>
-      <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="166.0" spacing="25.0" style="-fx-background-color: #eef8ff; -fx-border-color: #eef8ff;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="166.0" spacing="25.0" style="-fx-background-color: #e8f4f8; -fx-border-color: #e8f4f8;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="editButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 23; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Edit Plan" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
+            <Button fx:id="editButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #00004d; -fx-font-family: Inter; -fx-font-size: 23; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Edit Plan" textAlignment="CENTER" textFill="#e8f4f8" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
@@ -23,12 +23,12 @@
                   <Tooltip style="-fx-font-size: 12;" text="Back to the edit screen" />
                </tooltip>
             </Button>
-            <Button fx:id="saveButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#saveController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Save" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
+            <Button fx:id="saveButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#saveController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #00004d; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Save" textAlignment="CENTER" textFill="#e8f4f8" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="printButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#printButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Print" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
+            <Button fx:id="printButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#printButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #00004d; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Print" textAlignment="CENTER" textFill="#e8f4f8" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -36,17 +36,17 @@
                   <Tooltip style="-fx-font-size: 12;" text="Prints every page you see! Landscape mode by default!" />
                </tooltip>
             </Button>
-            <Button fx:id="hideEquipment" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleEquipmentBar" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 20; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Show Equipment" textAlignment="CENTER" textFill="#eef8ff" wrapText="true">
+            <Button fx:id="hideEquipment" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleEquipmentBar" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #00004d; -fx-font-family: Inter; -fx-font-size: 20; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Show Equipment" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleNotesBox" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 20; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Notes" textAlignment="CENTER" textFill="#eef8ff" wrapText="true">
+            <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleNotesBox" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #00004d; -fx-font-family: Inter; -fx-font-size: 20; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Notes" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Home" textAlignment="CENTER" textFill="#eef8ff" VBox.vgrow="ALWAYS">
+            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #00004d; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Home" textAlignment="CENTER" textFill="#e8f4f8" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -54,7 +54,7 @@
                   <Tooltip style="-fx-font-size: 12;" text="Go back home but delete the current Lesson Plan" />
                </tooltip>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#textModeHandle" prefHeight="73.6" prefWidth="137.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 23; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Text/Pic" textAlignment="CENTER" textFill="WHITE">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#textModeHandle" prefHeight="73.6" prefWidth="137.0" style="-fx-background-color: #00004d; -fx-font-family: Inter; -fx-font-size: 23; -fx-font-weight: bold; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Text/Pic" textAlignment="CENTER" textFill="#e8f4f8">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
@@ -72,17 +72,17 @@
       </VBox>
    </left>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #3A5069; -fx-border-color: #3A5069;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane fx:id="mainScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="900.0" prefWidth="858.0" style="-fx-background-color: #3A5069; -fx-border-color: #3A5069;" stylesheets="@scrollpane.css" vbarPolicy="ALWAYS">
+            <ScrollPane fx:id="mainScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="900.0" prefWidth="858.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;" stylesheets="@scrollpane.css" vbarPolicy="ALWAYS">
                <content>
-                  <FlowPane fx:id="mainFlowPane" alignment="CENTER" columnHalignment="CENTER" style="-fx-background-color: #3A5069; -fx-border-color: #3A5069;" vgap="50.0">
+                  <FlowPane fx:id="mainFlowPane" alignment="CENTER" columnHalignment="CENTER" style="-fx-background-color: #00004d; -fx-border-color: #00004d;" vgap="50.0">
                      <children>
-                        <VBox fx:id="eventPreviewVBox" alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="770.0" spacing="10.0" style="-fx-background-color: grey;">
+                        <VBox fx:id="eventPreviewVBox" alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="770.0" spacing="10.0" style="-fx-background-color: white;">
                            <children>
                               <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="760.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <TextField fx:id="lessonPlanTextField" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="402.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;">
+                                    <TextField fx:id="lessonPlanTextField" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="402.0" style="-fx-text-fill: black; -fx-border-radius: 10px; -fx-border-color: black; -fx-background-color: white;">
                                        <font>
                                           <Font name="System Bold" size="24.0" />
                                        </font>
@@ -91,25 +91,25 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="760.0" spacing="50.0">
                                  <children>
-                                    <TextField fx:id="eventOneTitle" alignment="CENTER" prefHeight="40.0" prefWidth="250.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;">
+                                    <TextField fx:id="eventOneTitle" alignment="CENTER" prefHeight="40.0" prefWidth="250.0" style="-fx-text-fill: black; -fx-border-radius: 10px; -fx-border-color: black; -fx-background-color: white;">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
                                     </TextField>
                                  </children>
                               </HBox>
-                              <FlowPane fx:id="eventFlowPane" prefHeight="200.0" prefWidth="754.0" />
+                              <FlowPane fx:id="eventFlowPane" prefHeight="200.0" prefWidth="754.0" style="-fx-background-color: white;" />
                               <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="760.0" spacing="50.0">
                                  <children>
-                                    <TextField fx:id="eventTwoTitle" alignment="CENTER" prefHeight="40.0" prefWidth="250.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;">
+                                    <TextField fx:id="eventTwoTitle" alignment="CENTER" prefHeight="40.0" prefWidth="250.0" style="-fx-text-fill: black; -fx-border-radius: 10px; -fx-border-color: black; -fx-background-color: white;">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
                                     </TextField>
                                  </children>
                               </HBox>
-                              <FlowPane prefHeight="186.0" prefWidth="749.0" />
-                              <TextField prefHeight="20.0" prefWidth="770.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10px;" text="Equipment:" VBox.vgrow="NEVER">
+                              <FlowPane prefHeight="186.0" prefWidth="749.0" style="-fx-background-color: white;" />
+                              <TextField prefHeight="20.0" prefWidth="770.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;" text="Equipment:" VBox.vgrow="NEVER">
                                  <font>
                                     <Font name="System Bold" size="10.0" />
                                  </font>
@@ -129,9 +129,9 @@
                   <Insets bottom="-1.0" />
                </VBox.margin>
             </ScrollPane>
-            <HBox alignment="CENTER" prefHeight="76.0" prefWidth="846.0" spacing="50.0" style="-fx-background-color: #3A5069; -fx-border-color: #3A5069;">
+            <HBox alignment="CENTER" prefHeight="76.0" prefWidth="846.0" spacing="50.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;">
                <children>
-                  <Button fx:id="addPlanToCurrentCourseButton" minHeight="-Infinity" mnemonicParsing="false" onAction="#addPlanToCurrentCourseButtonHandle" prefHeight="50.0" prefWidth="291.0" style="-fx-background-color: white; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Plan To Course" textAlignment="CENTER" textFill="#3a5069" wrapText="true">
+                  <Button fx:id="addPlanToCurrentCourseButton" minHeight="-Infinity" mnemonicParsing="false" onAction="#addPlanToCurrentCourseButtonHandle" prefHeight="50.0" prefWidth="291.0" style="-fx-background-color: #e8f4f8; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Plan To Course" textAlignment="CENTER" textFill="#00004d" wrapText="true">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

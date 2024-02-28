@@ -10,14 +10,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.TemplatePageController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #00004d;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc305.gymnasticsApp.ui.TemplatePageController">
    <left>
-      <VBox alignment="CENTER" prefHeight="700.0" prefWidth="152.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="700.0" prefWidth="152.0" style="-fx-background-color: #e8f4f8;" BorderPane.alignment="CENTER">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #3A5069; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" text="Home" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#homeButtonController" prefHeight="73.0" prefWidth="130.0" style="-fx-background-color: #00004d; -fx-font-family: Inter; -fx-font-size: 2.2em; -fx-font-weight: bold; -fx-background-radius: 30;" text="Home" textAlignment="CENTER" textFill="#e8f4f8">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -26,29 +26,29 @@
       </VBox>
    </left>
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #3A5069;">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;">
                <children>
-                  <Text fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 4.5em;" text="Choose a Template">
+                  <Text fill="#e8f4f8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 4.5em;" text="Choose a Template">
                      <font>
                         <Font size="55.0" />
                      </font>
                   </Text>
                </children>
             </HBox>
-            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="667.0" prefWidth="848.0" style="-fx-background-color: #3A5069;" vbarPolicy="ALWAYS">
+            <ScrollPane fitToHeight="true" fitToWidth="true" focusTraversable="false" hbarPolicy="NEVER" prefHeight="667.0" prefWidth="848.0" scaleShape="false" style="-fx-background-color: #00004d; -fx-border-color: #00004d;" vbarPolicy="ALWAYS">
                <content>
-                  <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="628.0" prefWidth="848.0" spacing="15.0" style="-fx-background-color: #3A5069; -fx-border-color: #3A5069;">
+                  <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="628.0" prefWidth="848.0" spacing="20.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;">
                      <children>
-                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="848.0" spacing="20.0" style="-fx-background-color: #3A5069;">
+                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="848.0" spacing="20.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;">
                            <children>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Template One                                Template Two" wrappingWidth="537.7296662330627">
+                              <Text fill="#e8f4f8" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Template One                                Template Two" textAlignment="CENTER" wrappingWidth="537.7296662330627">
                                  <font>
-                                    <Font size="24.0" />
+                                    <Font name="System Bold" size="24.0" />
                                  </font>
                               </Text>
-                              <HBox alignment="CENTER" prefHeight="322.5" prefWidth="850.0" spacing="60.0" style="-fx-background-color: #3A5069;">
+                              <HBox alignment="CENTER" prefHeight="322.5" prefWidth="850.0" spacing="60.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;">
                                  <children>
                                     <Button fx:id="templateOneButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleTemplateOneButton" prefHeight="323.0" prefWidth="300.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
@@ -64,14 +64,14 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="848.0" spacing="20.0" style="-fx-background-color: #3A5069;">
+                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="848.0" spacing="20.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;">
                            <children>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Template Three                              Template Four" wrappingWidth="555.874267578125">
+                              <Text fill="#e8f4f8" strokeType="OUTSIDE" strokeWidth="0.0" text="Template Three                              Template Four" wrappingWidth="555.874267578125">
                                  <font>
-                                    <Font size="24.0" />
+                                    <Font name="System Bold" size="24.0" />
                                  </font>
                               </Text>
-                              <HBox alignment="CENTER" prefHeight="322.5" prefWidth="850.0" spacing="60.0" style="-fx-background-color: #3A5069;">
+                              <HBox alignment="CENTER" prefHeight="322.5" prefWidth="850.0" spacing="60.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;">
                                  <children>
                                     <Button fx:id="templateThreeButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleTemplateThreeButton" prefHeight="323.0" prefWidth="300.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
@@ -87,14 +87,14 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="848.0" spacing="20.0" style="-fx-background-color: #3A5069;">
+                        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="848.0" spacing="20.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;">
                            <children>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Template Five                              Template Test ">
+                              <Text fill="#e8f4f8" strokeType="OUTSIDE" strokeWidth="0.0" text="Template Five                              Template Test ">
                                  <font>
-                                    <Font size="24.0" />
+                                    <Font name="System Bold" size="24.0" />
                                  </font>
                               </Text>
-                              <HBox alignment="CENTER" prefHeight="322.5" prefWidth="850.0" spacing="60.0" style="-fx-background-color: #3A5069;">
+                              <HBox alignment="CENTER" prefHeight="322.5" prefWidth="850.0" spacing="60.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;">
                                  <children>
                                     <Button fx:id="templateFiveButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleTemplateFiveButton" prefHeight="323.0" prefWidth="300.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
@@ -112,15 +112,24 @@
                         </VBox>
                      </children>
                      <padding>
-                        <Insets bottom="5.0" top="5.0" />
+                        <Insets bottom="30.0" top="5.0" />
                      </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                   </VBox>
                </content>
                <VBox.margin>
-                  <Insets />
+                  <Insets left="1.0" />
                </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
             </ScrollPane>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </VBox>
    </center>
 </BorderPane>
