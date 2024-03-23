@@ -18,6 +18,7 @@ public class HomePageController {
     @FXML private Button aboutButton;
     @FXML
     private Button loadCourseButton;
+    @FXML private Button goToCurrentCourse;
     public static LessonPlan loadPlan;
     private Course course;
 
@@ -49,6 +50,9 @@ public class HomePageController {
      */
     @FXML
     private void handleAboutButton(ActionEvent event) {GymnasticsAppBeta.switchToAboutPage(); }
+
+    @FXML
+    private void handleCurrentCourseButton(ActionEvent event){GymnasticsAppBeta.switchToCourseEditPage();}
     /**
      * Handles the action when the "Load Lesson" button is clicked.
      *

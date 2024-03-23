@@ -30,7 +30,7 @@
             </Button>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="810.0" spacing="15.0">
                <children>
-                  <Button fx:id="loadCourseButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadCourseButtonHandle" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: #e8f4f8; -fx-font-family: Inter; -fx-font-weight: bold; -fx-background-radius: 1.5em; -fx-font-size: 2.15em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Load Existing Course" textAlignment="CENTER" textFill="#00004d" wrapText="true">
+                  <Button fx:id="templateButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleTemplateButton" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: #e8f4f8; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Pre-Made Templates" textAlignment="CENTER" textFill="#00004d" wrapText="true">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
@@ -40,7 +40,7 @@
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="templateButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleTemplateButton" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: #e8f4f8; -fx-font-family: Inter; -fx-font-weight: bold; -fx-font-size: 2.15em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Pre-Made Templates" textAlignment="CENTER" textFill="#00004d" wrapText="true">
+                  <Button fx:id="loadCourseButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadCourseButtonHandle" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: #e8f4f8; -fx-font-family: Inter; -fx-font-weight: bold; -fx-background-radius: 1.5em; -fx-font-size: 2.15em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Load Existing Course" textAlignment="CENTER" textFill="#00004d" wrapText="true">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
@@ -77,5 +77,13 @@
             </ImageView>
          </children>
       </Pane>
+      <Button fx:id="goToCurrentCourse" layoutX="810.0" layoutY="560.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleCurrentCourseButton" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #e8f4f8; -fx-font-family: Inter; -fx-font-weight: Bold; -fx-font-size: 1em; -fx-background-radius: 1.5em;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Go To Current Course" textFill="#00004d" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="120.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
