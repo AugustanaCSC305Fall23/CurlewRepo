@@ -81,12 +81,11 @@ public class HomePageController {
      */
     @FXML
     public void loadCourseButtonHandle(ActionEvent event){
-        course = new Course();
+        course = GymnasticsAppBeta.getCourse();
         GymnasticsAppBeta.callFileChooser();
         if(GymnasticsAppBeta.getUserClickedCancel() == false) {
             ArrayList<String> loadedCoursePlan = GymnasticsAppBeta.readFile();
             course.loadCourseFromFile(loadedCoursePlan);
-            GymnasticsAppBeta.setCourse(course);
             GymnasticsAppBeta.switchToCourseEditPage();
         }
         GymnasticsAppBeta.setUserClickedCancel(false);
