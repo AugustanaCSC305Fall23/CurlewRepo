@@ -169,7 +169,7 @@ public class PreviewPageController {
                     imageView.setFitWidth(175); // Set the width of the image view
                 }
             } else {
-                imageView.setFitWidth(200); // Set the width of the image view
+                    imageView.setFitWidth(200); //width if no equipment
             }
 
             // Create a StackPane to contain the ImageView
@@ -353,9 +353,9 @@ public class PreviewPageController {
         fileChooser.setTitle("Save File");
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Gym Plan Files (*.GymPlanFile)", "*.GymPlanFile");
         fileChooser.getExtensionFilters().add(extensionFilter);
-        if(location != ""){
-            fileChooser.setInitialDirectory(new File(location).getParentFile());
-        }
+        // Set initial directory
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"), "Desktop"));
+
         // Show the file save dialog and get the selected file.
         File selectedFile = fileChooser.showSaveDialog(null);
 

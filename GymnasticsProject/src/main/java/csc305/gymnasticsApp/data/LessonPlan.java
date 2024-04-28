@@ -198,23 +198,33 @@ public class LessonPlan implements Cloneable{
             int eventNumber = 0;
             int sizeOfLoadedLessonPlan = loadedLessonPlan.size();
             //i is the line in the textFile
-            for(int i = 0; i < sizeOfLoadedLessonPlan; i++){
-                //checks if the next line is a card or still an event
-                if(loadedLessonPlan.get(i).equals("end")) {
-                    loadedLessonPlan.get(i);
-                    eventNumber = eventNumber + 1;
-                }else if(!(CardDatabase.getAllCards().contains(CardDatabase.getCardByID(loadedLessonPlan.get(i))))){
-                    List<Card> eventCards = new ArrayList<>();
-                    addToEventList(eventCards);
-                    eventNames.add(loadedLessonPlan.get(i));
-                } else{
-                    Card card = CardDatabase.getCardByID(loadedLessonPlan.get(i));
-                    addToEvent(card, eventNumber);
+            try {
+                for (int i = 0; i < sizeOfLoadedLessonPlan; i++) {
+                    //checks if the next line is a card or still an event
+                    if (loadedLessonPlan.get(i).equals("end")) {
+                        loadedLessonPlan.get(i);
+                        eventNumber = eventNumber + 1;
+                    } else if (!(CardDatabase.getAllCards().contains(CardDatabase.getCardByID(loadedLessonPlan.get(i))))) {
+                        List<Card> eventCards = new ArrayList<>();
+                        addToEventList(eventCards);
+                        eventNames.add(loadedLessonPlan.get(i));
+                        if (eventNames.size() > 8) {
+                            throw new IllegalAccessException("Event names exceed the maximum limit of 8");
+                        }
+                    } else {
+                        Card card = CardDatabase.getCardByID(loadedLessonPlan.get(i));
+                        addToEvent(card, eventNumber);
+                    }
                 }
+                GymnasticsAppBeta.setLessonPlan(this);
+                MainEditDisplayController.addTreeCardItems(this);
+                hasBeenLoaded = true;
             }
-            GymnasticsAppBeta.setLessonPlan(this);
-            MainEditDisplayController.addTreeCardItems(this);
-            hasBeenLoaded = true;
+            catch (IllegalAccessException e){
+                e.printStackTrace();
+                System.out.println("User either loaded a Course, or loaded a lessonplan with greater than 8 cards in an event.");
+                this.resetLessonPlan();
+            }
         }
     }
 

@@ -51,7 +51,7 @@ public class PrintLessonPlan {
                     SnapshotParameters snapshotParams = new SnapshotParameters();
                     snapshotParams.setFill(Color.WHITE);
                     snapshotParams.setTransform(javafx.scene.transform.Scale.scale(scale, scale));
-                    double dpi = 300;
+                    double dpi = 300;//changed from 300
                     snapshotParams.setTransform(javafx.scene.transform.Scale.scale(dpi / 72, dpi / 72));
                     WritableImage writableImage = eventPreviewVBox.snapshot(snapshotParams, null);
 

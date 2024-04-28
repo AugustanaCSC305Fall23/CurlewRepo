@@ -67,7 +67,7 @@ public class HomePageController {
             loadPlan.loadPlanFromFile(loadedLessonPlan);
             GymnasticsAppBeta.setLessonPlan(loadPlan);
             GymnasticsAppBeta.getLessonPlan().printEverything();
-            if (GymnasticsAppBeta.getLoaded() == true) {
+            if (!(loadPlan.getEventList().isEmpty()) && GymnasticsAppBeta.getLoaded() == true) {
                 GymnasticsAppBeta.switchToPreviewPage();
             }
         }
