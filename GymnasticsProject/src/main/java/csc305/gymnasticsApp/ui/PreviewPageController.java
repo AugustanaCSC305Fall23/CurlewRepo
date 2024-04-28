@@ -128,10 +128,10 @@ public class PreviewPageController {
         TextField eventTitleTextField = createEventTitleTextField(eventIndex);
         FlowPane eventCards = createEventCardFlowPane();
         eventCards.getChildren().addAll(addCards(eventIndex, flowGap == 10));
-        eventCards.setHgap(flowGap);
+        eventCards.setHgap(5);
         if(eventCards.getChildren().size() > 6){
-            eventCards.setVgap(50);
-            eventCards.setHgap(10);
+            eventCards.setVgap(5);
+            eventCards.setHgap(5);
         }
         eventTitleHBox.getChildren().add(eventTitleTextField);
         vbox.getChildren().addAll(eventTitleHBox, eventCards);
@@ -163,13 +163,16 @@ public class PreviewPageController {
             imageView.setPreserveRatio(true);  //Allows us to only have to set one size of the image
 
             if (eventCards.size() > 6) {
+                imageView.setFitWidth(185);
+            } else if(eventCards.size() > 4) {
                 if (isEquipment) {
-                    imageView.setFitWidth(150); // Set the width of the image view
+                    imageView.setFitWidth(205);
                 } else {
-                    imageView.setFitWidth(175); // Set the width of the image view
+                    imageView.setFitWidth(235);
                 }
-            } else {
-                    imageView.setFitWidth(200); //width if no equipment
+            } else{
+                imageView.setFitWidth(275);
+
             }
 
             // Create a StackPane to contain the ImageView

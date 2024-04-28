@@ -124,10 +124,10 @@ public class PrintCoursePageController {
         TextField eventTitleTextField = createEventTitleTextField(eventIndex, lessonPlan);
         FlowPane eventCards = createEventCardFlowPane();
         eventCards.getChildren().addAll(addCards(eventIndex, flowGap == 10, lessonPlan));
-        eventCards.setHgap(flowGap);
+        eventCards.setHgap(5);
         if(eventCards.getChildren().size() > 6){
-            eventCards.setVgap(50);
-            eventCards.setHgap(10);
+            eventCards.setVgap(5);
+            eventCards.setHgap(5);
         }
         eventTitleHBox.getChildren().add(eventTitleTextField);
         vbox.getChildren().addAll(eventTitleHBox, eventCards);
@@ -156,18 +156,22 @@ public class PrintCoursePageController {
             }
 
             ImageView imageView = new ImageView(image);
+            imageView.setPreserveRatio(true);  //Allows us to only have to set one size of the image
 
             if (eventCards.size() > 6) {
+                imageView.setFitWidth(185); // Set the width of the image view
+                imageView.setFitHeight(185); // Set the height of the image view
+            } else if(eventCards.size() > 4) {
                 if (isEquipment) {
-                    imageView.setFitWidth(150); // Set the width of the image view
-                    imageView.setFitHeight(150); // Set the height of the image view
+                    imageView.setFitWidth(205);
+                    imageView.setFitHeight(205);
                 } else {
-                    imageView.setFitWidth(175); // Set the width of the image view
-                    imageView.setFitHeight(175); // Set the height of the image view
+                    imageView.setFitWidth(235);
+                    imageView.setFitHeight(235);
                 }
-            } else {
-                imageView.setFitWidth(200); // Set the width of the image view
-                imageView.setFitHeight(200); // Set the height of the image view
+            }else {
+                imageView.setFitWidth(275); // Set the width of the image view
+                imageView.setFitHeight(275); // Set the height of the image view
             }
 
             // Create a StackPane to contain the ImageView
