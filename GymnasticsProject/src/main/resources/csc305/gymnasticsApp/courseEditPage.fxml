@@ -14,17 +14,17 @@
    <left>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="175.0" spacing="20.0" style="-fx-background-color: #e8f4f8; -fx-border-color: #e8f4f8;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="saveCourseButton" mnemonicParsing="false" onAction="#saveCourseButtonHandle" prefHeight="100.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Save This Course" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
+            <Button fx:id="saveCourseButton" mnemonicParsing="false" onAction="#saveCourseButtonHandle" prefHeight="100.0" prefWidth="152.0" style="-fx-background-radius: 30; -fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Save This Course" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#homePageButtonHandle" prefHeight="100.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Home" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
+            <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#homePageButtonHandle" prefHeight="100.0" prefWidth="152.0" style="-fx-background-radius: 30; -fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Home" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="loadCourseButton" mnemonicParsing="false" onAction="#loadCourseButtonHandle" prefHeight="106.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Load Different Course" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
+            <Button fx:id="loadCourseButton" mnemonicParsing="false" onAction="#loadCourseButtonHandle" prefHeight="106.0" prefWidth="152.0" style="-fx-background-radius: 30; -fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Load Different Course" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -32,12 +32,12 @@
                   <Tooltip style="-fx-font-size: 12;" text="Opens another course but deletes this one!" />
                </tooltip>
             </Button>
-            <Button mnemonicParsing="false" onAction="#printCoursePageHandle" prefHeight="100.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview Entire Course" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
+            <Button mnemonicParsing="false" onAction="#printCoursePageHandle" prefHeight="100.0" prefWidth="152.0" style="-fx-background-radius: 30; -fx-background-color: #00004d;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Preview Entire Course" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="resetCourseButton" mnemonicParsing="false" onAction="#resetCourseButtonHandle" prefHeight="100.0" prefWidth="165.0" style="-fx-background-radius: 30; -fx-background-color: #f5424a;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Reset Entire Course" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
+            <Button fx:id="resetCourseButton" mnemonicParsing="false" onAction="#resetCourseButtonHandle" prefHeight="100.0" prefWidth="152.0" style="-fx-background-radius: 30; -fx-background-color: #f5424a;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Reset Entire Course" textAlignment="CENTER" textFill="#e8f4f8" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

@@ -385,17 +385,17 @@ public class PrintCoursePageController {
      * The course name is displayed in a TextField with specified styles and dimensions.
      */
     private void initializeCoursePage() {
-        VBox nVBox = getNewVBox();
-        nVBox.setAlignment(Pos.CENTER);
-        TextField courseName = new TextField(Course.getCourseName());
-        courseName.setStyle("-fx-font-size: 50; -fx-font-weight: bold; -fx-text-fill: black;-fx-background-color: white; -fx-border-radius: 10px;-fx-background-radius: 10px;");
-        courseName.setPrefSize(900, 50);
-        courseName.setAlignment(Pos.CENTER);
-
-        nVBox.getChildren().add(courseName);
-        nVBox.setStyle("-fx-background-color: white; -fx-border-color: black;");
-        mainFlowPane.getChildren().add(nVBox);
-        VBoxes.add(nVBox);
+//        VBox nVBox = getNewVBox();
+//        nVBox.setAlignment(Pos.CENTER);
+//        TextField courseName = new TextField(Course.getCourseName());
+//        courseName.setStyle("-fx-font-size: 50; -fx-font-weight: bold; -fx-text-fill: black;-fx-background-color: white; -fx-border-radius: 10px;-fx-background-radius: 10px;");
+//        courseName.setPrefSize(900, 50);
+//        courseName.setAlignment(Pos.CENTER);
+//
+//        nVBox.getChildren().add(courseName);
+//        nVBox.setStyle("-fx-background-color: white; -fx-border-color: black;");
+//        mainFlowPane.getChildren().add(nVBox);
+//        VBoxes.add(nVBox);
     }
 
     /**
