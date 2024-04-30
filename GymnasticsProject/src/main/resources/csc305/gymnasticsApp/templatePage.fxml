@@ -89,7 +89,7 @@
                         </VBox>
                         <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="848.0" spacing="20.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;">
                            <children>
-                              <Text fill="#e8f4f8" strokeType="OUTSIDE" strokeWidth="0.0" text="Template Five                              Template Test ">
+                              <Text fill="#e8f4f8" strokeType="OUTSIDE" strokeWidth="0.0" text="Template Five">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -97,11 +97,6 @@
                               <HBox alignment="CENTER" prefHeight="322.5" prefWidth="850.0" spacing="60.0" style="-fx-background-color: #00004d; -fx-border-color: #00004d;">
                                  <children>
                                     <Button fx:id="templateFiveButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleTemplateFiveButton" prefHeight="323.0" prefWidth="300.0" style="-fx-background-image: templatePlans\beginnerFLoorAndTrampolinePlanImage-1.png;" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
-                                       <tooltip>
-                                          <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
-                                       </tooltip>
-                                    </Button>
-                                    <Button fx:id="allFloorButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAllFloorButton" prefHeight="323.0" prefWidth="300.0" styleClass="hover-grow-button" stylesheets="@buttonHover.css">
                                        <tooltip>
                                           <Tooltip style="-fx-font-size: 12;" text="Click to load the pre-made Lesson Plan" />
                                        </tooltip>

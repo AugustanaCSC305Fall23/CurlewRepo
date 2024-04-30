@@ -24,6 +24,10 @@ public class CourseEditPageController {
     private TreeView treeView;
     @FXML
     private TextField courseName;
+    public static LessonPlan loadPlan;
+    @FXML private Button loadLessonPlanButton;
+
+
     @FXML
     private Button createNewLessonPlanButton;
     @FXML
@@ -342,5 +346,28 @@ public class CourseEditPageController {
     private void printCoursePageHandle(){
         GymnasticsAppBeta.switchToPrintCoursePage();
     }
+
+
+    @FXML
+    public void loadLessonPlanButtonHandle(ActionEvent event) {
+
+        loadPlan = new LessonPlan();
+        GymnasticsAppBeta.callFileChooser();
+        if(GymnasticsAppBeta.getUserClickedCancel() == false) {
+
+            ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();
+            loadPlan.loadPlanFromFile(loadedLessonPlan);
+            GymnasticsAppBeta.setLessonPlan(loadPlan);
+            GymnasticsAppBeta.getLessonPlan().printEverything();
+            if (!(loadPlan.getEventList().isEmpty()) && GymnasticsAppBeta.getLoaded() == true) {
+                GymnasticsAppBeta.switchToPreviewPage();
+            }
+        }
+        GymnasticsAppBeta.setUserClickedCancel(false);
+    }
+    public static LessonPlan getloadPlan() {
+        return loadPlan;
+    }
+
 }
 

@@ -14,8 +14,6 @@ import java.util.ArrayList;
  */
 public class TemplatePageController {
     @FXML
-    private Button allFloorButton;
-    @FXML
     private Button templateOneButton;
     @FXML
     private Button templateTwoButton;
@@ -31,19 +29,6 @@ public class TemplatePageController {
      *
      * @param event The action event triggered by the button.
      */
-    @FXML
-    void handleAllFloorButton(ActionEvent event) {
-        LessonPlan.resetBoolean();
-        HomePageController.loadPlan = new LessonPlan();
-        GymnasticsAppBeta.callFileChooser(new File("src/main/resources/templatePlans/allFloorTemplatePlan.GymPlanFile"));
-        GymnasticsAppBeta.readFile();
-        ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();
-        HomePageController.loadPlan.loadPlanFromFile(loadedLessonPlan);
-        GymnasticsAppBeta.setLessonPlan(HomePageController.loadPlan);
-        if (GymnasticsAppBeta.getLoaded()) {
-            GymnasticsAppBeta.switchToPreviewPage();
-        }
-    }
 
     @FXML
     void handleTemplateOneButton(ActionEvent event) {
@@ -122,6 +107,10 @@ public class TemplatePageController {
      */
     @FXML
     void homeButtonController(ActionEvent event) {
+        MainEditDisplayController.clearTreeCardItems();
+        MainEditDisplayController.events.clear();
+        MainEditDisplayController.resetButtons();
+        GymnasticsAppBeta.setLessonPlan(new LessonPlan());
         GymnasticsAppBeta.switchToHomePage();
     }
 
@@ -129,8 +118,6 @@ public class TemplatePageController {
      * Initializes the controller
      */
     public void initialize(){
-        Image allFloorImage = new Image("file:src/main/resources/templatePlans/allFloorPDF-1.png");
-        initializeImages(allFloorImage, allFloorButton);
 
         Image templateOneImage = new Image("file:src/main/resources/templatePlans/templateOneSS.png");
         initializeImages(templateOneImage, templateOneButton);

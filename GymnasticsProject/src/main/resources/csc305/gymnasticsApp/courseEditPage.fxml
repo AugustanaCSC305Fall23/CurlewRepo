@@ -63,18 +63,15 @@
          <bottom>
             <HBox alignment="CENTER" fillHeight="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="728.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="createNewLessonPlanButton" mnemonicParsing="false" onAction="#createNewLessonPlanButtonHandle" style="-fx-background-color: #e8f4f8; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Create New Lesson Plan" textFill="#00004d" HBox.hgrow="ALWAYS">
+                  <Button fx:id="createNewLessonPlanButton" mnemonicParsing="false" onAction="#createNewLessonPlanButtonHandle" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #e8f4f8; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Create New Plan" textFill="#00004d" HBox.hgrow="ALWAYS">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="preMadeLessonButton" mnemonicParsing="false" onAction="#preMadeLessonButtonHandle" style="-fx-background-color: #e8f4f8; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Premade LessonPlan" textFill="#00004d">
+                  <Button fx:id="preMadeLessonButton" mnemonicParsing="false" onAction="#preMadeLessonButtonHandle" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #e8f4f8; -fx-background-radius: 30;" styleClass="hover-grow-button" stylesheets="@buttonHover.css" text="Add Premade Plan" textFill="#00004d">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
-                     <tooltip>
-                        <Tooltip style="-fx-font-size: 12;" text="Check out the template Lesson Plans" />
-                     </tooltip>
                   </Button>
                </children>
                <BorderPane.margin>
