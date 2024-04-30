@@ -17,6 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 import java.io.*;
@@ -542,49 +543,102 @@ public class PreviewPageController {
      *
      * @throws FileNotFoundException If there is an issue with locating or loading the required file.
      */
-    private void initializeTextOnly(){
+    private void initializeTextOnly() {
         showEquipment = false;
         showNotes = false;
         lessonPlan = GymnasticsAppBeta.getLessonPlan();
         course = GymnasticsAppBeta.getCourse();
-        //clear and reset panes
+
+        // Clear and reset panes
         mainFlowPane.getChildren().clear();
         VBoxes.clear();
-        VBox nVBox = getNewVBox();
-        nVBox.setPrefSize(595, 700);
-        TextArea allText = new TextArea();
-        allText.setText(lessonPlan.getEntirePlanAsText());
-        allText.setPrefSize(595, 700);
-        allText.setStyle("-fx-font-size: 12; -fx-font-weight: bold; -fx-background-color: white; -fx-border-color: white;");
-        allText.setWrapText(true);
+        mainFlowPane.setHgap(100);
+        // Constants for the VBox dimensions
+        final double PAGE_WIDTH = 595;
+        final double PAGE_HEIGHT = 700;
+        final int MAX_LINES_PER_PAGE = 39;
 
+        // Gather initial text and equipment information
+        String lessonPlanText = lessonPlan.getEntirePlanAsText();
         String finalString = "All Equipment:\n";
         boolean isFirstEquipment = true;
-        for(int i = 0; i < lessonPlan.getEventNames().size(); i++) {
-            for (int j = 0; j < lessonPlan.getEventList().get(i).size(); j++) {
-                String[] equipmentList = lessonPlan.getEventList().get(i).get(j).getEquipment().split(", "); //gets each equipment item
 
-                for (int h = 0; h < equipmentList.length; h++) {
-                    if (!(equipmentList[h].equalsIgnoreCase("none"))) {//checks if the equipment is none
-                        if (!(finalString.contains(equipmentList[h]))) {
-                            if(isFirstEquipment){
-                                finalString = finalString + equipmentList[h];
-                                isFirstEquipment = false;
-                            } else {
-                                finalString = finalString + ", " + equipmentList[h];
-                            }
+        // Add equipment details to the final string
+        for (int i = 0; i < lessonPlan.getEventNames().size(); i++) {
+            for (int j = 0; j < lessonPlan.getEventList().get(i).size(); j++) {
+                String[] equipmentList = lessonPlan.getEventList().get(i).get(j).getEquipment().split(", ");
+
+                for (String equipment : equipmentList) {
+                    if (!equipment.equalsIgnoreCase("none") && !finalString.contains(equipment)) {
+                        if (isFirstEquipment) {
+                            finalString += equipment;
+                            isFirstEquipment = false;
+                        } else {
+                            finalString += ", " + equipment;
                         }
                     }
                 }
             }
         }
 
-        allText.setText(allText.getText() + finalString);
+        // Complete text to be paginated
+        String completeText = lessonPlanText + "\n" + finalString;
 
-        nVBox.getChildren().add(allText);
-        mainFlowPane.getChildren().add(nVBox);
-        VBoxes.add(nVBox);
+        // Split the text into pages
+        List<String> pages = splitTextIntoPages(completeText, MAX_LINES_PER_PAGE);
+
+        // Create and add VBoxes for each page
+        for (String pageText : pages) {
+            VBox nVBox = new VBox();
+            nVBox.setPrefSize(PAGE_WIDTH, PAGE_HEIGHT); // Correct width and height
+            nVBox.setAlignment(Pos.TOP_LEFT); // Left-aligned text
+
+            TextArea textArea = new TextArea(pageText);
+            textArea.setPrefSize(PAGE_WIDTH, PAGE_HEIGHT); // Consistent size
+            textArea.setWrapText(true); // Ensure text wraps
+            textArea.setEditable(false); // Non-editable
+            textArea.setStyle("-fx-font-size: 12; -fx-font-weight: bold; -fx-background-color: white; -fx-border-color: white;");
+
+            nVBox.getChildren().add(textArea); // Add TextArea to VBox
+            mainFlowPane.getChildren().add(nVBox); // Add VBox to FlowPane
+            VBoxes.add(nVBox); // Track VBoxes
+        }
+
+        // Center alignment for the FlowPane
         mainFlowPane.setAlignment(Pos.CENTER);
+    }
+
+    // Function to split text into pages with a maximum line limit
+    private List<String> splitTextIntoPages(String text, final int MAX_LINES) {
+        List<String> pages = new ArrayList<>();
+        StringBuilder currentPage = new StringBuilder();
+        String[] lines = text.split("\n");
+        int lineCount = 0;
+
+        for (String line : lines) {
+            if (lineCount >= MAX_LINES) {
+                pages.add(currentPage.toString()); // Add the current page
+                currentPage.setLength(0); // Clear current page
+                lineCount = 0; // Reset the line count
+            }
+
+            currentPage.append(line).append("\n");
+            lineCount++; // Increment the line count
+        }
+
+        if (currentPage.length() > 0) {
+            pages.add(currentPage.toString()); // Add any remaining text
+        }
+
+        return pages;
+    }
+
+
+    // Helper function to calculate text height
+    private double calculateTextHeight(String text) {
+        Text textNode = new Text(text);
+        textNode.setStyle("-fx-font-size: 12;");
+        return textNode.getBoundsInLocal().getHeight();
     }
 
     /**
