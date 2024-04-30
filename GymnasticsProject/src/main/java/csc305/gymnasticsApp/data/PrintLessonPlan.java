@@ -46,6 +46,13 @@ public class PrintLessonPlan {
                     if(!isTextOnly) {
                         eventPreviewVBox.setRotate(90);
                         eventPreviewVBox.getTransforms().add(new javafx.scene.transform.Scale(scale, scale));
+                    } else{
+                        eventPreviewVBox.setStyle(
+                                "-fx-border-color: transparent; " +  // Makes the border transparent
+                                "-fx-background-color: transparent; " +  // Makes the background transparent
+                                "-fx-padding: 0; " +  // Removes any padding
+                                "-fx-border-width: 0;"  // Ensures the border width is zero
+                        );
                     }
                     // Create an image of the VBox with higher DPI for better resolution
                     SnapshotParameters snapshotParams = new SnapshotParameters();

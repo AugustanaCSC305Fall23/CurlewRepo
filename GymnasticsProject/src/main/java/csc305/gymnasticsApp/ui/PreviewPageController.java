@@ -322,8 +322,9 @@ public class PreviewPageController {
         Node lessonPlanNode = mainScrollPane;
         if(VBoxes.get(0).getPrefHeight() == 700){
             PrintLessonPlan.printPlan(lessonPlanNode, mainScrollPane, true);
+        } else {
+            PrintLessonPlan.printPlan(lessonPlanNode, mainScrollPane, false);
         }
-        PrintLessonPlan.printPlan(lessonPlanNode, mainScrollPane, false);
     }
 
     /**
