@@ -248,8 +248,18 @@ public class CourseEditPageController {
         fileChooser.getExtensionFilters().add(extensionFilter);
 
         String location = saveLocation.getLastSavedLocationCourse();
-        if(location != ""){
-            fileChooser.setInitialDirectory(new File(location).getParentFile());
+        try {
+            String userHome = System.getProperty("user.home");
+            File desktopDirectory = new File(userHome, "Desktop");
+            if (desktopDirectory.exists() && desktopDirectory.isDirectory()) {
+                fileChooser.setInitialDirectory(desktopDirectory);
+            } else {
+                throw new IllegalArgumentException("Desktop directory is invalid");
+            }
+        } catch (Exception e) {
+            // Fallback if `user.home` or `Desktop` isn't valid
+            File defaultLocation = new File(".");
+            fileChooser.setInitialDirectory(defaultLocation);
         }
 
         // Show the file save dialog and get the selected file.
