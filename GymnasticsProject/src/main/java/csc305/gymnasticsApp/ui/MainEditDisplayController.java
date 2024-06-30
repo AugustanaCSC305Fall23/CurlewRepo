@@ -120,9 +120,8 @@ public class MainEditDisplayController implements Initializable {
      * and an action event listener is set to add the card to the tree view when clicked
      */
     public void createCardButtons(){
-        if(!isInitialized) {
             allCards.clear();
-            for (Card card : CardDatabase.getAllCards()) {
+            for (Card card : CardDatabase.getInstance().getAllCards()) {
                 if(FavoriteCollection.getInstance().getFavoriteSet().contains(card.getUniqueID())){
                     card.setFavorite(true);
                 }
@@ -130,8 +129,9 @@ public class MainEditDisplayController implements Initializable {
                 cardButton.setOnMouseClicked(event -> addCardToTreeView(cardButton));
                 allCards.add(cardButton);
             }
-            isInitialized = true;
-        }
+            if(!allCards.isEmpty()){
+                isInitialized =  true;
+            }
     }
 
     /**
@@ -160,15 +160,15 @@ public class MainEditDisplayController implements Initializable {
      * Sets up listeners for filter changes to update the displayed cards accordingly
      */
     private void initFilterList(){
-        genderCB.getItems().addAll(CardDatabase.getGenderList());
+        genderCB.getItems().addAll(CardDatabase.getInstance().getGenderList());
         genderCB.setValue("N");
         modelGenderCB.getItems().add("ALL");
-        modelGenderCB.getItems().addAll(CardDatabase.getModelGenderList());
+        modelGenderCB.getItems().addAll(CardDatabase.getInstance().getModelGenderList());
         modelGenderCB.setValue("ALL");
         eventCB.setValue("ALL");
-        eventCB.getItems().addAll(CardDatabase.getEventList());
+        eventCB.getItems().addAll(CardDatabase.getInstance().getEventList());
         levelCB.setValue("ALL");
-        levelCB.getItems().addAll(CardDatabase.getLevelList());
+        levelCB.getItems().addAll(CardDatabase.getInstance().getLevelList());
         favCheckBox.setSelected(false);
 
         genderCB.valueProperty().addListener((obs, oldVal, newVal) -> updateFilteredVisibleCards());
@@ -500,17 +500,13 @@ public class MainEditDisplayController implements Initializable {
         alert.setHeaderText("");
         Card card = cardButton.getCard();
 
-        try {
-            Image image = new Image(new FileInputStream("GymSoftwarePics/" +
-                    card.getPackFolder() + "/" +
-                    card.getImage()));
-            ImageView iv = new ImageView(image);
-            iv.setFitHeight(400.0);
-            iv.setFitWidth(400.0);
-            alert.setGraphic(iv);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        Image image = new Image(MainEditDisplayController.class.getResource( "/GymSoftwarePics/" +
+                card.getPackFolder() + "/" +
+                card.getImage()).toString());
+        ImageView iv = new ImageView(image);
+        iv.setFitHeight(400.0);
+        iv.setFitWidth(400.0);
+        alert.setGraphic(iv);
 
         ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
         ButtonType printCardButton = new ButtonType("Print This Card");
@@ -622,17 +618,6 @@ public class MainEditDisplayController implements Initializable {
 
 
     /**
-     * Handles the event when the user clicks the "Set Filter" button in the UI
-     *
-     * @param event The ActionEvent triggered by the button click
-     */
-    @FXML
-    void setFilterController(ActionEvent event) {
-        new CombineAndFilter();
-        filterMenu.setVisible(false);
-    }
-
-    /**
      * Resets all checkboxes in the filter UI
      *
      * @param event The ActionEvent triggered by the button click
@@ -643,13 +628,6 @@ public class MainEditDisplayController implements Initializable {
         resetFlowPane();
     }
 
-    /**
-     * Handles the event when the user clicks the "Done" button in the filter UI
-     */
-    @FXML
-    void doneButtonHandle(){
-        filterMenu.setVisible(false);
-    }
 
     /**
      * Handles the event triggered when the mouse exits the specified area, typically associated with the filter menu.

@@ -1,6 +1,7 @@
 package csc305.gymnasticsApp.data;
 
 
+import csc305.gymnasticsApp.ui.GymnasticsAppBeta;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -12,15 +13,13 @@ public class CardDatabaseTest {
 
     @Test
     void testNumLoadedCards(){
-        CardDatabase.addCardsFromCSVFile();
-        List<Card> cardList = CardDatabase.getAllCards();
+        List<Card> cardList = CardDatabase.getInstance().getAllCards();
         assertEquals(36, cardList.size());
     }
 
     @Test
     void testEachCardLoadedValues(){
-        CardDatabase.addCardsFromCSVFile();
-        List<Card> cardList = CardDatabase.getAllCards();
+        List<Card> cardList = CardDatabase.getInstance().getAllCards();
         for (Card card : cardList) {
             assertNotNull(card);
             assertNotNull(card.getImage());

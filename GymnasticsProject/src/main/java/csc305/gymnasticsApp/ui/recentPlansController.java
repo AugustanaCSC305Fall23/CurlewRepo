@@ -89,11 +89,11 @@ public class recentPlansController {
         Button lessonButton = (Button) event.getSource();
         LessonPlan loadPlan = new LessonPlan();
         if(lessonButton == recentPlan1){
-            GymnasticsAppBeta.callFileChooser(new File(recentLP.getPlan1()));
+            GymnasticsAppBeta.setSelectedFileBool(new File(recentLP.getPlan1()));
         } else if (lessonButton == recentPlan2) {
-            GymnasticsAppBeta.callFileChooser(new File(recentLP.getPlan2()));
+            GymnasticsAppBeta.setSelectedFileBool(new File(recentLP.getPlan2()));
         }else{
-            GymnasticsAppBeta.callFileChooser(new File(recentLP.getPlan3()));
+            GymnasticsAppBeta.setSelectedFileBool(new File(recentLP.getPlan3()));
         }
         loadPlan.loadPlanFromFile(GymnasticsAppBeta.readFile());
         GymnasticsAppBeta.setLessonPlan(loadPlan);
@@ -112,11 +112,11 @@ public class recentPlansController {
         Button courseButton = (Button) event.getSource();
         Course loadCourse = new Course();
         if(courseButton == recentCourse1){
-            GymnasticsAppBeta.callFileChooser(new File(recentCourses.getCourse1()));
+            GymnasticsAppBeta.setSelectedFileBool(new File(recentCourses.getCourse1()));
         } else if (courseButton == recentCourse2) {
-            GymnasticsAppBeta.callFileChooser(new File(recentCourses.getCourse2()));
+            GymnasticsAppBeta.setSelectedFileBool(new File(recentCourses.getCourse2()));
         }else{
-            GymnasticsAppBeta.callFileChooser(new File(recentCourses.getCourse3()));
+            GymnasticsAppBeta.setSelectedFileBool(new File(recentCourses.getCourse3()));
         }
         loadCourse.loadCourseFromFile(GymnasticsAppBeta.readFile());
         GymnasticsAppBeta.setCourse(loadCourse);

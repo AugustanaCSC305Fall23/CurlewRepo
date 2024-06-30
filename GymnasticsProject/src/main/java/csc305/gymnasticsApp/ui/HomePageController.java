@@ -61,7 +61,7 @@ public class HomePageController {
     @FXML
     public void loadLessonPlanButtonHandle(ActionEvent event) {
         loadPlan = new LessonPlan();
-        GymnasticsAppBeta.callFileChooser();
+        GymnasticsAppBeta.setSelectedFileBool();
         if(GymnasticsAppBeta.getUserClickedCancel() == false) {
             ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();
             loadPlan.loadPlanFromFile(loadedLessonPlan);
@@ -82,7 +82,7 @@ public class HomePageController {
     @FXML
     public void loadCourseButtonHandle(ActionEvent event){
         course = GymnasticsAppBeta.getCourse();
-        GymnasticsAppBeta.callFileChooser();
+        GymnasticsAppBeta.setSelectedFileBool();
         if(GymnasticsAppBeta.getUserClickedCancel() == false) {
             ArrayList<String> loadedCoursePlan = GymnasticsAppBeta.readFile();
             course.loadCourseFromFile(loadedCoursePlan);

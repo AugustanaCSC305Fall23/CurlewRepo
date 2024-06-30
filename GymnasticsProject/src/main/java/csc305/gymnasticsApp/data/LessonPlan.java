@@ -191,7 +191,6 @@ public class LessonPlan implements Cloneable{
      */
     public void loadPlanFromFile(ArrayList<String> loadedLessonPlan) {
         if (GymnasticsAppBeta.getLoaded() && !hasBeenLoaded) {
-            CardDatabase.getAllCards();
             resetLessonPlan();
             lessonPlanTitle = loadedLessonPlan.remove(0);
 
@@ -204,7 +203,7 @@ public class LessonPlan implements Cloneable{
                     if (loadedLessonPlan.get(i).equals("end")) {
                         loadedLessonPlan.get(i);
                         eventNumber = eventNumber + 1;
-                    } else if (!(CardDatabase.getAllCards().contains(CardDatabase.getCardByID(loadedLessonPlan.get(i))))) {
+                    } else if (!(CardDatabase.getInstance().getAllCards().contains(CardDatabase.getInstance().getCardByID(loadedLessonPlan.get(i))))) {
                         List<Card> eventCards = new ArrayList<>();
                         addToEventList(eventCards);
                         eventNames.add(loadedLessonPlan.get(i));
@@ -212,7 +211,7 @@ public class LessonPlan implements Cloneable{
                             throw new IllegalAccessException("Event names exceed the maximum limit of 8");
                         }
                     } else {
-                        Card card = CardDatabase.getCardByID(loadedLessonPlan.get(i));
+                        Card card = CardDatabase.getInstance().getCardByID(loadedLessonPlan.get(i));
                         addToEvent(card, eventNumber);
                     }
                 }
@@ -228,21 +227,7 @@ public class LessonPlan implements Cloneable{
         }
     }
 
-    /**
-     * Retrieves a card from a specific event based on its value and event index
-     *
-     * @param value The value to match
-     * @param treeNum The index of the event in the lesson plan
-     * @return The card with the specified value in the specified event
-     */
-    public Card getCardFromTreeItem(String value, int treeNum) {
-        for(Card card : eventList.get(treeNum - 1)){
-            if(card.getCode().equals(value)){
-                return card;
-            }
-        }
-        return null;
-    }
+
 
     /**
      * Resets the boolean flag indicating whether the lesson plan has been loaded
@@ -268,15 +253,6 @@ public class LessonPlan implements Cloneable{
         return thePlan;
     }
 
-    /**
-     * Loads a lesson plan from a file
-     *
-     * @param courseFile courseFile The file containing the lesson plan data
-     * @return The loaded lesson plan
-     */
-    public static LessonPlan loadCourseFile(File courseFile) {
-        return null;
-    }
 
     /**
      * Clones the current lesson plan

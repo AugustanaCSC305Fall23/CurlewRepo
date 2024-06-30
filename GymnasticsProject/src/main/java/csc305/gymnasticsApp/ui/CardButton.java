@@ -1,6 +1,7 @@
 package csc305.gymnasticsApp.ui;
 
 
+import csc305.gymnasticsApp.data.CardDatabase;
 import csc305.gymnasticsApp.data.FavoriteCollection;
 import javafx.fxml.FXML;
 import csc305.gymnasticsApp.data.Card;
@@ -10,7 +11,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -40,7 +40,7 @@ public class CardButton extends AnchorPane {
     public CardButton(Card card){
         associatedCard = card;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/csc305/gymnasticsApp/cardButton.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/csc305/gymnasticsApp/fxml/cardButton.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try{
@@ -58,9 +58,9 @@ public class CardButton extends AnchorPane {
     @FXML
     private void initialize() throws FileNotFoundException{
         int dotIndex = associatedCard.getImage().indexOf(".");
-        Image image = new Image(new FileInputStream("GymSoftwarePics/" +
+        Image image = new Image(CardDatabase.class.getResource("/GymSoftwarePics/" +
                 associatedCard.getPackFolder() + "/thumbs/" +
-                associatedCard.getImage().substring(0,dotIndex) + ".jpg"));
+                associatedCard.getImage().substring(0,dotIndex) + ".jpg").toString()); //change so it is get resource
         iv.setImage(image);
         favButton.setOnAction(event -> addToFavorites(associatedCard));
         if(associatedCard.isFavorite()) {

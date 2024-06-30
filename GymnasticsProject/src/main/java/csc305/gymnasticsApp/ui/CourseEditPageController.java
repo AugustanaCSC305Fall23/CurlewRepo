@@ -143,7 +143,6 @@ public class CourseEditPageController {
                     if (course.getTheCourse().getLessonPlanList().get(i).getLessonPlanTitle().equals(selectedItem.getValue())) {
                         LessonPlan selectedLessonPlan = course.getTheCourse().getLessonPlanList().get(i);
                         GymnasticsAppBeta.setLessonPlan(selectedLessonPlan);
-                        MainEditDisplayController.isInitialized = false;
                         GymnasticsAppBeta.switchToMainEditDisplay();
                         MainEditDisplayController.addTreeCardItems(selectedLessonPlan);
 
@@ -316,7 +315,7 @@ public class CourseEditPageController {
             if (newResult.get() == noButton) {
                 maxCardAlert.close();
             } else if (newResult.get() == yesButton) {
-                GymnasticsAppBeta.callFileChooser();
+                GymnasticsAppBeta.setSelectedFileBool();
                 if(GymnasticsAppBeta.getUserClickedCancel() == false) {
                     course.getTheCourse().clearLessonPlanList();
                     ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();
@@ -352,7 +351,7 @@ public class CourseEditPageController {
     public void loadLessonPlanButtonHandle(ActionEvent event) {
 
         loadPlan = new LessonPlan();
-        GymnasticsAppBeta.callFileChooser();
+        GymnasticsAppBeta.setSelectedFileBool();
         if(GymnasticsAppBeta.getUserClickedCancel() == false) {
 
             ArrayList<String> loadedLessonPlan = GymnasticsAppBeta.readFile();

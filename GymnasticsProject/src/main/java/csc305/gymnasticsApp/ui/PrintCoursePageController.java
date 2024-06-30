@@ -57,9 +57,9 @@ public class PrintCoursePageController {
      * Initializes the display for the main course page. Clears and resets panes, sets up a new VBox, and adds titles and content
      * for each lesson plan and its associated events. The display is organized within the main flow pane.
      *
-     * @throws FileNotFoundException If there is an issue with locating or loading the required file.
+     *
      */
-    public void initialize() throws FileNotFoundException {
+    public void initialize(){
         showEquipment = false;
         showNotes = false;
         mainFlowPane.getChildren().clear();
@@ -147,13 +147,9 @@ public class PrintCoursePageController {
 
         for (Card card : eventCards) {
             Image image = null;
-            try {
-                image = new Image(new FileInputStream("GymSoftwarePics/" +
-                        card.getPackFolder() + "/" +
-                        card.getImage()));
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+            image = new Image(PrintCoursePageController.class.getResource( "/GymSoftwarePics/" +
+                    card.getPackFolder() + "/" +
+                    card.getImage()).toString());
 
             ImageView imageView = new ImageView(image);
             imageView.setPreserveRatio(true);  //Allows us to only have to set one size of the image

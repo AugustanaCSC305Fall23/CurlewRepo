@@ -1,7 +1,6 @@
 package csc305.gymnasticsApp.ui;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -109,6 +108,7 @@ public class GymnasticsAppBeta extends Application {
      */
     private static void switchToView(String fxmlFileName) {
         try {
+            System.out.println(GymnasticsAppBeta.class.getResource(fxmlFileName).toString());
             FXMLLoader fxmlLoader = new FXMLLoader(GymnasticsAppBeta.class.getResource(fxmlFileName));
             scene.setRoot(fxmlLoader.load());
         } catch (IOException ex) {
@@ -120,59 +120,60 @@ public class GymnasticsAppBeta extends Application {
     /**
      * Switches the view to the main edit display
      */
-    public static void switchToMainEditDisplay(){switchToView("/csc305/gymnasticsApp/mainEditDisplay.fxml");}
+    public static void switchToMainEditDisplay(){
+        switchToView("/csc305/gymnasticsApp/fxml/mainEditDisplay.fxml");
+        }
 
     /**
      * Switches the view to the course edit display
      */
     public static void switchToCourseEditPage(){
-        switchToView("/csc305/gymnasticsApp/courseEditPage.fxml");
+        switchToView("/csc305/gymnasticsApp/fxml/courseEditPage.fxml");
     }
     /**
      * Switches the view to the home page display
      */
     public static void switchToHomePage(){
         LessonPlan.resetBoolean();
-        switchToView("/csc305/gymnasticsApp/homePage.fxml");
+        switchToView("/csc305/gymnasticsApp/fxml/homePage.fxml");
     }
 
     /**
      * Switches the view to the recent plans display
      */
     public static void switchToRecentPlans() {
-        switchToView("/csc305/gymnasticsApp/recentSelector.fxml");
+        switchToView("/csc305/gymnasticsApp/fxml/recentSelector.fxml");
     }
 
     /**
      * Switches the view to the preview page display.
      */
     public static void switchToPreviewPage(){
-        switchToView("/csc305/gymnasticsApp/previewPage.fxml");
+        switchToView("/csc305/gymnasticsApp/fxml/previewPage.fxml");
     }
 
     /**
      * Switches to the template page display.
      */
     public static void switchToTemplatePage() {
-        switchToView("/csc305/gymnasticsApp/templatePage.fxml");
+        switchToView("/csc305/gymnasticsApp/fxml/templatePage.fxml");
     }
-
 
     /**
      * Switches to the about page
      */
-    public static void switchToAboutPage() {switchToView("/csc305/gymnasticsApp/aboutPage.fxml");}
+    public static void switchToAboutPage() {switchToView("/csc305/gymnasticsApp/fxml/aboutPage.fxml");}
     public static void switchToPrintCoursePage(){
-        switchToView("/csc305/gymnasticsApp/printCoursePage.fxml");
+        switchToView("/csc305/gymnasticsApp/fxml/printCoursePage.fxml");
     }
     public static void switchToSingleCardPage(){
-        switchToView("/csc305/gymnasticsApp/singleCardPage.fxml");
+        switchToView("/csc305/gymnasticsApp/fxml/singleCardPage.fxml");
     }
 
     /**
      * Opens a file chooser dialog for selecting the Gymnastics Picture files
      */
-    public static void callFileChooser() {
+    public static void setSelectedFileBool() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Gym Lesson Plan");
 
@@ -192,7 +193,7 @@ public class GymnasticsAppBeta extends Application {
      * Selects a file and sets it to the selectedFile variable and sets the fileLoaded variable true
      * @param file the current file that is being selected
      */
-    public static void callFileChooser(File file){
+    public static void setSelectedFileBool(File file){
         selectedFile = file;
         fileLoaded = true;
     }

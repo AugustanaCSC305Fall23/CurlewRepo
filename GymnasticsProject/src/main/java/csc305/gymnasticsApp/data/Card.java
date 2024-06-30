@@ -1,42 +1,46 @@
 package csc305.gymnasticsApp.data;
 
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import com.opencsv.bean.CsvBindByName;
+import org.apache.commons.csv.CSVRecord;
 
 /**
  * The Card class represents a gymnastics card with various attributes such as code, event,
  * category, title, pack folder, image, gender, model gender, level, equipment, keywords, and a unique ID.
  */
 public class Card implements Cloneable{
-    @CsvBindByName(column = "CODE")
     private String code;
-    @CsvBindByName(column ="Event")
     private String event;
-    @CsvBindByName(column ="Category")
     private String category;
-    @CsvBindByName(column ="Title")
     private String title;
-    @CsvBindByName(column ="Pack Folder")
     private String packFolder;
-    @CsvBindByName(column ="Image")
     private String image;
-    @CsvBindByName(column ="Gender")
     private String gender;
-    @CsvBindByName(column ="Model Sex")
     private String modelGender;
-    @CsvBindByName(column ="Level")
     private String level;
-    @CsvBindByName(column ="Equipment")
+
     private String equipment;
-    @CsvBindByName(column ="Keywords")
     private String keywords;
 
     private boolean favorite;
 
     private String uniqueID;
+
+
+    public Card(CSVRecord record){
+        code = record.get("CODE");
+        event = record.get("Event");
+        category = record.get("Category");
+        title = record.get("Title");
+        packFolder = record.get("Pack Folder");
+        image = record.get("Image");
+        gender = record.get("Gender");
+        modelGender = record.get("Model Sex");
+        level = record.get("Level");
+        equipment = record.get("Equipment");
+        keywords = record.get("Keywords");
+        uniqueID = getUniqueID();
+        favorite = false;
+    }
 
     /**
      * Creates a card object and assigns all the correlating values
@@ -197,7 +201,7 @@ public class Card implements Cloneable{
     }
 
     /**
-     * Seet the image of the card.
+     * Set the image of the card.
      * @param image - The image to set.
      */
     public void setImage(String image) {
@@ -303,7 +307,7 @@ public class Card implements Cloneable{
     }
 
     /**
-     * Set the unique ID of the card based on pakc folder, code, event, and gender.
+     * Set the unique ID of the card based on pack folder, code, event, and gender.
      */
     public void setUniqueID() {
         this.uniqueID = packFolder + "." + code + "." + event + "." + gender + "."

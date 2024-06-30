@@ -62,9 +62,9 @@ public class PreviewPageController {
     /**
      * Initializes the preview page
      *
-     * @throws FileNotFoundException if files are not found
+     *
      */
-    public void initialize() throws FileNotFoundException {
+    public void initialize(){
         showEquipment = false;
         showNotes = false;
         isTextOnlyShowing = false;
@@ -152,13 +152,9 @@ public class PreviewPageController {
 
         for (Card card : eventCards) {
             Image image = null;
-            try {
-                image = new Image(new FileInputStream("GymSoftwarePics/" +
-                        card.getPackFolder() + "/" +
-                        card.getImage()));
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+            image = new Image(CardDatabase.class.getResource("/GymSoftwarePics/" +
+                    card.getPackFolder() + "/" +
+                    card.getImage()).toString());
 
             ImageView imageView = new ImageView(image);
             imageView.setPreserveRatio(true);  //Allows us to only have to set one size of the image
@@ -413,9 +409,9 @@ public class PreviewPageController {
     /**
      * Fills the equipment box based on the current state (shown/hidden)
      *
-     * @throws FileNotFoundException if equipment images are not found
+     *
      */
-    private void fillEquipmentBox() throws FileNotFoundException {
+    private void fillEquipmentBox() {
         //if equipment isn't shown, add equipment. If equipment is shown, remove it
         if(showEquipment == false){
             showEquipment = true;

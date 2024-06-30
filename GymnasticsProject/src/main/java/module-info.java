@@ -2,10 +2,10 @@ module GymnasticsProject {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
-    requires com.opencsv;
     requires java.sql;
     requires com.google.gson;
     requires java.prefs;
+    requires org.apache.commons.csv;
 
     exports csc305.gymnasticsApp;
     opens csc305.gymnasticsApp to javafx.fxml;
@@ -15,6 +15,4 @@ module GymnasticsProject {
     opens csc305.gymnasticsApp.data to javafx.fxml;
     exports csc305.gymnasticsApp.ui;
     opens csc305.gymnasticsApp.ui to javafx.fxml;
-//    exports;
-//    opens to;
 }

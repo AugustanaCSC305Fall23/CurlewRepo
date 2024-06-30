@@ -31,13 +31,13 @@ public class SingleCardPageController {
     /**
      * Initializes the single card page by displaying the image of the selected card.
      *
-     * @throws FileNotFoundException If the image file of the selected card is not found.
+     *
      */
     @FXML
-    public void initialize() throws FileNotFoundException {
+    public void initialize(){
         Card card = MainEditDisplayController.getCurrentSelectedCard().getCard();
 
-        Image image = new Image(new FileInputStream("GymSoftwarePics/" + card.getPackFolder() + "/" + card.getImage()));
+        Image image = new Image(SingleCardPageController.class.getResource( "/GymSoftwarePics/" + card.getPackFolder() + "/" + card.getImage()).toString());
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(595); // Set the width of the image view
         imageView.setFitHeight(595);

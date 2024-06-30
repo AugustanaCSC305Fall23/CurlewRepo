@@ -95,7 +95,7 @@ public class Course implements Cloneable{
      * @param file The list of strings containing file data
      */
     public void loadCourseFromFile(ArrayList<String> file){
-        CardDatabase.getAllCards();
+        CardDatabase.getInstance().getAllCards();
         courseName = file.get(0);
         file.remove(0);
         while (!(((file.get(0).equals("done with event"))) && ((file.get(1).equals("done with lessonplan"))) && ((file.get(2).equals("done with course"))))){
@@ -115,7 +115,7 @@ public class Course implements Cloneable{
                 //gets most recent event in this plan
                 List<Card> curEvent = new ArrayList<>();
                 while(!(file.get(0).equals("done with event"))){
-                    curEvent.add(CardDatabase.getCardByID(file.get(0)));
+                    curEvent.add(CardDatabase.getInstance().getCardByID(file.get(0)));
                     file.remove(0);
                 }
                 curPlan.addToEventList(curEvent);

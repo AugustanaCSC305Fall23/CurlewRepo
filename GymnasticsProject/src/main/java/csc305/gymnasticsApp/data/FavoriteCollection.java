@@ -1,6 +1,8 @@
 package csc305.gymnasticsApp.data;
 
 import java.io.*;
+import java.lang.reflect.Type;
+import java.net.URISyntaxException;
 import  java.util.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -10,9 +12,13 @@ import com.google.gson.reflect.TypeToken;
  * Allows users to add and remove favorites, and provides methods for saving and loading favorites
  */
 public class FavoriteCollection {
-    public static FavoriteCollection theCollection = new FavoriteCollection();
 
-    private HashSet<String> favoriteSet;
+
+    private final static String FILE_NAME = "favoritesCollection.json";
+    private static String FILE_PATH;
+
+    private static final FavoriteCollection theCollection = new FavoriteCollection();
+    private Set<String> favoriteSet;
 
     /**
      * Private constructor to ensure a single instance of FavoriteCollection (Singleton pattern).
@@ -20,15 +26,21 @@ public class FavoriteCollection {
      */
     private FavoriteCollection() {
         favoriteSet = new HashSet<>();
-        loadFavorites();
+        try {
+            FILE_PATH = getFilePath();
+            loadFavorites();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException("Failed to initialize FavoriteCollection", e);
+        }
     }
+
 
     /**
      * Gets the singleton instance of FavoriteCollection.
      *
      * @return The singleton instance.
      */
-    public static FavoriteCollection getInstance(){
+    public static FavoriteCollection getInstance() {
         return theCollection;
     }
 
@@ -46,47 +58,68 @@ public class FavoriteCollection {
      *
      * @param ID The ID of the item to be added or removed from favorites.
      */
-    public void modifyFavorites(String ID){
-        if(favoriteSet == null){
+    public void modifyFavorites(String ID) {
+        if (favoriteSet == null) {
             favoriteSet = new HashSet<>();
         }
-        if(favoriteSet.contains(ID)){
+        if (favoriteSet.contains(ID)) {
             favoriteSet.remove(ID);
-            CardDatabase.getCardByID(ID).setFavorite(false);
-        }else{
+            CardDatabase.getInstance().getCardByID(ID).setFavorite(false);
+        } else {
             favoriteSet.add(ID);
-            CardDatabase.getCardByID(ID).setFavorite(true);
+            CardDatabase.getInstance().getCardByID(ID).setFavorite(true);
         }
     }
 
     /**
      * Code sourced from Open AI. Using their Chat GPT
-     *
+     * <p>
      * saves a java set into a json file using gson
      */
     public void saveFavorites() {
-        try (Writer writer = new FileWriter("src/main/resources/FavoriteCollection")) {
+        try (Writer writer = new FileWriter(FILE_PATH)) {
             Gson gson = new Gson();
-            gson.toJson(getInstance().favoriteSet, writer);
+            gson.toJson(favoriteSet, writer);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to save favorites", e);
         }
     }
 
     /**
      * Code sourced from Open AI. Using their Chat GPT
-     *
-     *load favorites reads a json file and converts it to java type so that it can be utilized
+     * <p>
+     * load favorites reads a json file and converts it to java type so that it can be utilized
      */
     private void loadFavorites() {
-        try (Reader reader = new FileReader("src/main/resources/FavoriteCollection")) {
+        File file = new File(FILE_PATH);
+        System.out.println(FILE_PATH);
+        if (!file.exists()) {
+            return;
+        }
+        try (Reader reader = new FileReader(FILE_PATH)) {
             Gson gson = new Gson();
-            TypeToken<HashSet<String>> token = new TypeToken<HashSet<String>>() {};
-            favoriteSet = gson.fromJson(reader, token.getType());
-        } catch (FileNotFoundException e) {
-            // File doesn't exist yet, no need to do anything
+            Type setType = new TypeToken<HashSet<String>>() {
+            }.getType();
+            favoriteSet = gson.fromJson(reader, setType);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private String getFilePath() throws URISyntaxException {
+        String filePath;
+        if (isRunningFromJar()) {
+            // Running from JAR
+            filePath = new File(FavoriteCollection.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent();
+            return filePath + File.separator + FILE_NAME;
+        } else {
+            // Running from IDE
+            filePath = FavoriteCollection.class.getResource("/favoriteCollection").getPath();
+            return filePath;
+        }
+    }
+
+    private boolean isRunningFromJar() {
+        return FavoriteCollection.class.getResource("FavoriteCollection.class").toString().startsWith("jar:");
     }
 }
